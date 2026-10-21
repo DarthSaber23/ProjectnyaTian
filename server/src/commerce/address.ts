@@ -25,7 +25,9 @@ export function validateAddress(input: Partial<AddressInput> | undefined): Addre
     }
   }
   const digits = String(source.phone).replace(/\D/g, "");
-  const local = digits.startsWith("62") ? `0${digits.slice(2)}` : digits;
+  const national = digits.startsWith("62") ? digits.slice(2) : digits;
+  const withoutTrunk = national.startsWith("0") ? national.slice(1) : national;
+  const local = withoutTrunk.startsWith("8") ? `0${withoutTrunk}` : withoutTrunk;
   if (!/^08\d{8,11}$/.test(local)) {
     return { ok: false, message: "Nomor telepon harus diawali 08 atau +62 dan berisi 10–13 digit." };
   }
@@ -42,9 +44,15 @@ export function validateAddress(input: Partial<AddressInput> | undefined): Addre
       district: source.district!.trim(),
       postalCode: source.postalCode!.trim(),
       detail: source.detail!.trim(),
-      kelurahan: source.kelurahan?.trim() || undefined,
-      label: source.label?.trim() || undefined,
-      note: source.note?.trim() || undefined,
+      kelurahan: optionalText(source.kelurahan),
+      label: optionalText(source.label),
+      note: optionalText(source.note),
     },
   };
+}
+
+function optionalText(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const trimmed = value.trim();
+  return trimmed || undefined;
 }

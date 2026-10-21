@@ -32,5 +32,9 @@ describe("validateAddress", () => {
     expect(accepted.ok).toBe(true);
     if (accepted.ok) expect(accepted.value.phone).toBe("081200001234");
     expect(validateAddress({ ...valid, phone: "0217654321" }).ok).toBe(false);
+    const trunk = validateAddress({ ...valid, phone: "+62 0812-0000-1234" });
+    expect(trunk.ok).toBe(true);
+    if (trunk.ok) expect(trunk.value.phone).toBe("081200001234");
+    expect(validateAddress({ ...valid, kelurahan: 12 as unknown as string }).ok).toBe(true);
   });
 });

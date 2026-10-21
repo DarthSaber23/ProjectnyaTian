@@ -86,13 +86,18 @@ model IdempotencyRecord {
 }
 
 model CustomerAccount {
-  id             String  @id
+  id             String             @id
   name           String
-  email          String  @unique
+  email          String             @unique
   phone          String
   passwordHash   String
-  failedAttempts Int     @default(0)
+  failedAttempts Int                @default(0)
   lockedUntil    String?
+  addresses      AddressRecord[]
+  wishlist       WishlistItem[]
+  consents       ConsentState?
+  notifications  NotificationOutbox[]
+  reveals        RevealGrant[]
 }
 
 model StaffAccount {
@@ -124,16 +129,18 @@ model AuditRecord {
 }
 
 model WishlistItem {
-  id         String @id @default(cuid())
+  id         String          @id @default(cuid())
   customerId String
+  customer   CustomerAccount @relation(fields: [customerId], references: [id], onDelete: Cascade)
   productId  String
 
   @@unique([customerId, productId])
 }
 
 model AddressRecord {
-  id         String  @id @default(cuid())
+  id         String          @id @default(cuid())
   customerId String
+  customer   CustomerAccount @relation(fields: [customerId], references: [id], onDelete: Cascade)
   label      String?
   recipient  String
   phone      String
@@ -147,14 +154,16 @@ model AddressRecord {
 }
 
 model ConsentState {
-  customerId  String  @id
-  emailPromo  Boolean @default(false)
-  waOrderInfo Boolean @default(false)
+  customerId  String          @id
+  customer    CustomerAccount @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  emailPromo  Boolean         @default(false)
+  waOrderInfo Boolean         @default(false)
 }
 
 model NotificationOutbox {
-  id         String @id @default(cuid())
+  id         String          @id @default(cuid())
   customerId String
+  customer   CustomerAccount @relation(fields: [customerId], references: [id], onDelete: Cascade)
   channel    String
   purpose    String
   body       String
@@ -163,9 +172,10 @@ model NotificationOutbox {
 }
 
 model RevealGrant {
-  id          String @id @default(cuid())
+  id          String          @id @default(cuid())
   staffId     String
   customerId  String
+  customer    CustomerAccount @relation(fields: [customerId], references: [id], onDelete: Cascade)
   orderNumber String
   until       String
   reason      String
