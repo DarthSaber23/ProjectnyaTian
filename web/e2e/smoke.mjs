@@ -1,0 +1,152 @@
+// E2E smoke + accessibility scan against the single-file preview build.
+// Run: node e2e/smoke.mjs  (after `npm run build:preview`)
+import { chromium } from "playwright";
+import AxeBuilder from "@axe-core/playwright";
+import { pathToFileURL } from "node:url";
+import { resolve } from "node:path";
+
+const url = pathToFileURL(resolve("dist-preview/index.html")).href;
+const browser = await chromium.launch();
+const results = [];
+const check = (name, ok, detail = "") => { results.push({ name, ok, detail }); console.log(`${ok ? "PASS" : "FAIL"} ${name} ${detail}`); };
+const axeScan = async (page, label) => {
+  const r = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();
+  const serious = r.violations.filter((v) => ["serious", "critical"].includes(v.impact));
+  check(`axe ${label}`, serious.length === 0, serious.map((v) => `${v.id}(${v.nodes.length})`).join(", "));
+  return r.violations;
+};
+
+for (const vp of [{ w: 390, h: 844, n: "mobile" }, { w: 1440, h: 900, n: "desktop" }]) {
+  const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h } });
+  const page = await ctx.newPage();
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  // Web fonts are blocked in the test sandbox, so resource-load errors are ignored.
+  page.on("console", (m) => { if (m.type() === "error" && !m.text().startsWith("Failed to load resource")) errors.push(m.text()); });
+  await page.goto(url);
+  await page.getByRole("heading", { level: 1 }).first().waitFor();
+  if (vp.n === "mobile") await axeScan(page, "home sambung");
+  // Guest: wishlist requires sign-in (I6)
+  await page.goto(url.replace(/#.*$/, "") + "#/produk/hub-usb-c-7-in-1");
+  await page.getByRole("button", { name: "Simpan ke wishlist" }).click();
+  check(`${vp.n} I6 wishlist needs sign-in`, await page.getByText(/Masuk untuk menyimpan produk ke wishlist/).isVisible());
+  await page.goto(url);
+  await page.getByRole("button", { name: "Isi keranjang skenario baku" }).click();
+  await page.getByRole("heading", { name: /Keranjang/ }).waitFor();
+  await page.getByRole("button", { name: "HEMAT50" }).click();
+  check(`${vp.n} T2 HEMAT50 rejected`, await page.getByText(/kurang Rp182\.000/).isVisible());
+  await page.getByRole("button", { name: "KABEL10" }).click();
+  check(`${vp.n} T3 replace`, await page.getByText("KABEL10 menggantikan HEMAT50").isVisible());
+  await page.getByRole("button", { name: "GRATISONGKIR" }).click();
+  if (vp.n === "mobile") await axeScan(page, "cart");
+  await page.getByRole("button", { name: "Lanjut ke pengiriman" }).click();
+  // No guest checkout → sign in; wrong password first (P7), then demo credentials; guest cart merges (D7)
+  await page.getByRole("heading", { name: "Masuk" }).waitFor();
+  if (vp.n === "mobile") await axeScan(page, "sign-in");
+  await page.getByLabel("Email").fill("rina@example.com");
+  await page.getByLabel("Kata sandi").fill("salah");
+  await page.getByRole("button", { name: "Masuk", exact: true }).click();
+  check(`${vp.n} P7 wrong password`, await page.getByText("Email atau kata sandi salah. Sisa 4 percobaan.").isVisible());
+  await page.getByRole("button", { name: "Isi kredensial demo" }).click();
+  await page.getByRole("button", { name: "Masuk", exact: true }).click();
+  check(`${vp.n} D7 cart merged`, await page.getByText(/keranjang tamu \(3 barang\) digabung/).isVisible());
+  check(`${vp.n} step1 total`, await page.getByRole("button", { name: /Lanjut ke ringkasan · Rp587\.250/ }).isVisible());
+  await page.getByText("Kurir C · Kilat").click();
+  check(`${vp.n} T4 Kurir C`, await page.getByRole("button", { name: /Rp594\.250/ }).isVisible());
+  check(`${vp.n} Kurir D disabled`, await page.getByRole("radio", { name: /Kurir D/ }).isDisabled());
+  await page.getByText("Kurir A · Reguler").click();
+  if (vp.n === "mobile") await axeScan(page, "checkout step 1");
+  await page.getByRole("button", { name: /Lanjut ke ringkasan/ }).click();
+  await page.getByRole("button", { name: "Lanjut ke pembayaran" }).click();
+  await page.getByRole("button", { name: /Buat pesanan · Rp587\.250/ }).click();
+  await page.getByRole("heading", { name: "Selesaikan pembayaran" }).waitFor();
+  check(`${vp.n} T1 order number`, page.url().endsWith("/pembayaran/ORD-261020-0010"), page.url().split("#")[1]);
+  check(`${vp.n} T1 expiry 10:30`, await page.getByText(/Bayar sebelum 20 Okt 2026, 10:30 WIB/).isVisible());
+  if (vp.n === "mobile") await axeScan(page, "payment");
+  await page.getByRole("button", { name: "Simulasikan gagal" }).click();
+  check(`${vp.n} T7 failed message`, await page.getByText(/Pembayaran gagal \(simulasi\)/).isVisible());
+  await page.getByRole("button", { name: "Simulasikan kedaluwarsa" }).click();
+  await page.getByRole("button", { name: "Masukkan lagi ke keranjang" }).click();
+  check(`${vp.n} T6 cart restored`, await page.getByRole("heading", { name: "Keranjang (3)" }).isVisible());
+  await page.getByRole("button", { name: "Lanjut ke pengiriman" }).click();
+  await page.getByRole("button", { name: /Lanjut ke ringkasan/ }).click();
+  await page.getByRole("button", { name: "Lanjut ke pembayaran" }).click();
+  await page.getByRole("button", { name: /Buat pesanan · Rp635\.250/ }).click();
+  check(`${vp.n} T6 next number 0011 (vouchers removed)`, page.url().endsWith("ORD-261020-0011"));
+  await page.getByRole("button", { name: "Simulasikan berhasil" }).click();
+  check(`${vp.n} paid`, await page.getByText(/dibayar 20 Okt 2026, 10:21 WIB/).isVisible());
+  // T5 stock after purchase: 2m Hitam 7 − 2 = 5
+  await page.goto(url.replace(/#.*$/, "") + "#/produk/kabel-usb-c-100w-braided");
+  await page.getByRole("button", { name: /2 m · Hitam/ }).click();
+  check(`${vp.n} T5 stock after paid`, await page.getByText("Sisa 5").isVisible());
+  check(`${vp.n} T5 Putih disabled`, await page.getByRole("button", { name: /2 m · Putih/ }).isDisabled());
+  if (vp.n === "mobile") await axeScan(page, "product");
+  // Search (P8), compare (D2, L3), account (I7), consent
+  await page.goto(url.replace(/#.*$/, "") + "#/cari?q=type%20c%202m");
+  check(`${vp.n} P03-1 search synonym`, await page.getByRole("heading", { name: /1 hasil untuk “type c 2m”/ }).isVisible() && await page.getByText(/USB Type-C/).first().isVisible());
+  await page.goto(url.replace(/#.*$/, "") + "#/cari?q=mouse%20wireless");
+  check(`${vp.n} P03-4 zero results`, await page.getByText("Tidak ada produk yang cocok").isVisible());
+  if (vp.n === "mobile") await axeScan(page, "search zero");
+  await page.goto(url.replace(/#.*$/, "") + "#/kategori/kabel");
+  for (const n of ["Kabel USB-C ke USB-C 100W Braided", "Kabel USB-C ke Lightning · 1 m", "Kabel HDMI 2.1 8K · 2 m", "Kabel USB-A ke USB-C · 1 m", "Kabel DisplayPort 1.4 · 2 m"]) await page.getByRole("checkbox", { name: `Bandingkan ${n}` }).click();
+  check(`${vp.n} D2 max 4`, await page.getByText(/Maksimal 4 produk/).isVisible());
+  await page.getByRole("checkbox", { name: "Bandingkan Kabel USB-A ke USB-C · 1 m" }).click();
+  await page.goto(url.replace(/#.*$/, "") + "#/kategori/charger");
+  await page.getByRole("checkbox", { name: /Bandingkan Charger/ }).click();
+  check(`${vp.n} D2 same category`, await page.getByText(/kategori yang sama/).isVisible());
+  await page.getByRole("link", { name: "Bandingkan (3/4)" }).click();
+  await page.getByRole("button", { name: "Hanya perbedaan" }).click();
+  check(`${vp.n} P03-3 compare page`, await page.getByRole("heading", { name: "Bandingkan 3 produk" }).isVisible());
+  if (vp.n === "mobile") await axeScan(page, "compare");
+  await page.goto(url.replace(/#.*$/, "") + "#/akun/pesanan/ORD-261014-0003");
+  check(`${vp.n} P04-1 overdue banner`, await page.getByText(/Belum ada pembaruan dari kurir sejak 15 Okt 2026, 18:22 WIB/).isVisible());
+  await page.getByRole("button", { name: "Hubungi CS via WhatsApp" }).click();
+  check(`${vp.n} WA hand-off order no. only`, await page.getByText("Halo, saya ingin menanyakan pesanan ORD-261014-0003.").isVisible());
+  if (vp.n === "mobile") await axeScan(page, "order tracking dialog");
+  await page.getByRole("button", { name: "Batal" }).click();
+  await page.goto(url.replace(/#.*$/, "") + "#/akun/preferensi");
+  await page.getByRole("switch", { name: "Rekomendasi pribadi" }).click();
+  await page.getByRole("button", { name: "Simpan" }).click();
+  check(`${vp.n} P04-2 consent timestamp`, await page.getByText(/Tidak diizinkan · 20 Okt 2026, 10:16 WIB · Pelanggan · halaman preferensi/).last().isVisible());
+  await page.goto(url.replace(/#.*$/, "") + "#/akun");
+  check(`${vp.n} P04-2 generic list`, await page.getByRole("heading", { name: "Produk populer" }).isVisible());
+  await page.goto(url.replace(/#.*$/, "") + "#/akun/pesanan");
+  check(`${vp.n} orders list has 0011 + 0010 + 0003`, (await page.getByText(/ORD-2610/).count()) === 3);
+  // Halimun
+  await page.getByRole("button", { name: "Halimun" }).click();
+  await page.getByRole("link", { name: /Kulit sensitif/ }).click();
+  check(`${vp.n} P02-1 sensitif 3`, await page.getByText("3 produk", { exact: true }).isVisible());
+  if (vp.n === "mobile") await axeScan(page, "catalog halimun");
+  await page.goto(url.replace(/#.*$/, "") + "#/produk/niacinamide-serum");
+  await page.getByRole("button", { name: /Tambah jumlah/ }).click();
+  await page.getByRole("button", { name: /\+ Keranjang/ }).click();
+  await page.goto(url.replace(/#.*$/, "") + "#/keranjang");
+  check(`${vp.n} B2G1 gift line`, await page.getByText(/B2G1-SERUM · 1× Travel Cleanser gratis/).isVisible());
+  if (vp.n === "mobile") await axeScan(page, "cart halimun");
+  check(`${vp.n} no runtime errors`, errors.length === 0, errors.slice(0, 3).join(" | "));
+  if (vp.n === "mobile") await page.screenshot({ path: "e2e/shot-mobile-cart-halimun.png", fullPage: true });
+  await ctx.close();
+}
+// screenshots
+const p = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+await p.goto(url);
+await p.screenshot({ path: "e2e/shot-desktop-home.png" });
+await p.getByRole("button", { name: "Isi keranjang skenario baku" }).click();
+await p.getByRole("button", { name: "KABEL10" }).click();
+await p.getByRole("button", { name: "GRATISONGKIR" }).click();
+await p.screenshot({ path: "e2e/shot-desktop-cart.png", fullPage: true });
+await p.getByRole("button", { name: "Lanjut ke pengiriman" }).click();
+await p.getByRole("button", { name: "Isi kredensial demo" }).click();
+await p.getByRole("button", { name: "Masuk", exact: true }).click();
+await p.getByRole("heading", { name: /Alamat pengiriman/ }).waitFor().catch(() => {});
+await p.screenshot({ path: "e2e/shot-desktop-checkout.png", fullPage: true });
+await p.goto(url.replace(/#.*$/, "") + "#/kategori/kabel");
+for (const n of ["Kabel USB-C ke USB-C 100W Braided", "Kabel HDMI 2.1 8K · 2 m", "Kabel DisplayPort 1.4 · 2 m"]) await p.getByRole("checkbox", { name: `Bandingkan ${n}` }).click();
+await p.getByRole("link", { name: "Bandingkan (3/4)" }).click();
+await p.screenshot({ path: "e2e/shot-desktop-compare.png", fullPage: true });
+await p.goto(url.replace(/#.*$/, "") + "#/akun/pesanan/ORD-261014-0003");
+await p.screenshot({ path: "e2e/shot-desktop-tracking.png", fullPage: true });
+await browser.close();
+const failed = results.filter((r) => !r.ok);
+console.log(`\n${results.length - failed.length}/${results.length} passed`);
+process.exit(failed.length ? 1 : 0);

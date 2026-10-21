@@ -21,6 +21,30 @@ export class AdminService {
     private readonly catalog: CatalogService,
   ) {}
 
+  async orders(authorization: string | undefined, status?: string) {
+    const user = await this.auth.staff(authorization);
+    this.require(user.role, "orders.view");
+    const rows = await this.prisma.orderRecord.findMany();
+    const orders = rows.map((row) => row.payload as unknown as Order);
+    return status ? orders.filter((order) => order.fulfilment === status || order.payment.status === status) : orders;
+  }
+
+  async customers(authorization: string | undefined) {
+    const user = await this.auth.staff(authorization);
+    if (!can(user.role, "customers.contact.full") && !can(user.role, "customers.contact.reveal") && !can(user.role, "orders.view")) {
+      throw new HttpException({ code: "FORBIDDEN", message: `Peran ${ROLE_LABEL[user.role]} tidak punya izin untuk aksi ini.` }, 403);
+    }
+    return customers.map((customer) => visibleContact(user.role, customer, undefined, toWibIso(new Date())));
+  }
+
+  async promotion(authorization: string | undefined, code: string) {
+    const user = await this.auth.staff(authorization);
+    this.require(user.role, "promotions.view");
+    const row = await this.prisma.promotion.findFirst({ where: { code } });
+    if (!row) throw new HttpException({ code: "NOT_FOUND", message: "Promosi tidak ditemukan." }, 404);
+    return row.rule;
+  }
+
   async metrics(authorization: string | undefined, from: string, to: string, sessions: number) {
     const user = await this.auth.staff(authorization);
     this.require(user.role, "dashboard.view");

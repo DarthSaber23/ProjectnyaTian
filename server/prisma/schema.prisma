@@ -96,8 +96,10 @@ model CustomerAccount {
   addresses      AddressRecord[]
   wishlist       WishlistItem[]
   consents       ConsentState?
+  consentEvents  ConsentEvent[]
   notifications  NotificationOutbox[]
   reveals        RevealGrant[]
+  savedCarts     SavedCart[]
 }
 
 model StaffAccount {
@@ -180,4 +182,36 @@ model RevealGrant {
   until       String
   reason      String
   at          String
+}
+
+model SavedCart {
+  id         String          @id
+  customerId String
+  customer   CustomerAccount @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  brand      String
+  lines      Json
+}
+
+model ConsentEvent {
+  id         String          @id @default(cuid())
+  customerId String
+  customer   CustomerAccount @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  key        String
+  granted    Boolean
+  at         String
+  source     String
+}
+
+model ContentPage {
+  slug   String @id
+  title  String
+  status String
+  blocks Json
+}
+
+model PasswordReset {
+  id        String @id @default(cuid())
+  email     String
+  tokenHash String
+  expiresAt String
 }

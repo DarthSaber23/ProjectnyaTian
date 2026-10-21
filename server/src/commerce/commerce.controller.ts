@@ -1,10 +1,12 @@
-import { Body, Controller, Get, Header, Headers, HttpException, Param, Post, Put, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Header, Headers, HttpException, Param, Patch, Post, Put, Query } from "@nestjs/common";
 import type { BrandId } from "../domain/types";
 import { search } from "../domain/search";
 import { AccountApi } from "./account.api";
 import { AdminService } from "./admin.service";
 import { AuthService } from "./auth.service";
 import { CatalogService, type PriceRequest } from "./catalog.service";
+import { shippingPrice, type ShippingPriceRequest } from "./kiriminaja";
+import { notificationFor, midtransServerKey, type MidtransNotification } from "./midtrans";
 import { OrderService, type CreateOrderBody } from "./order.service";
 
 @Controller()
@@ -44,6 +46,83 @@ export class CommerceController {
   @Post("auth/sign-in")
   signIn(@Body() body: { email?: string; password?: string }) {
     return this.auth.signInCustomer(body?.email ?? "", body?.password ?? "");
+  }
+
+  @Get("products/:slug")
+  product(@Param("slug") slug: string) {
+    const found = this.catalog.bySlug(slug);
+    if (!found) throw new HttpException({ code: "NOT_FOUND", message: "Produk tidak ditemukan." }, 404);
+    return found;
+  }
+
+  @Get("pages")
+  pages() {
+    return this.accounts.listPages();
+  }
+
+  @Get("pages/:slug")
+  page(@Param("slug") slug: string) {
+    return this.accounts.page(slug);
+  }
+
+  @Post("auth/sign-out")
+  signOut(@Headers("authorization") authorization: string | undefined) {
+    return this.auth.signOut(authorization);
+  }
+
+  @Post("auth/register")
+  register(@Body() body: { name?: string; email?: string; password?: string }) {
+    return this.auth.register(body?.name ?? "", body?.email ?? "", body?.password ?? "");
+  }
+
+  @Post("auth/forgot-password")
+  forgot(@Body() body: { email?: string }) {
+    return this.auth.forgotPassword(body?.email ?? "");
+  }
+
+  @Get("auth/google/start")
+  googleStart() {
+    return this.auth.googleStart();
+  }
+
+  @Get("me/cart")
+  cart(@Headers("authorization") authorization: string | undefined, @Query("brand") brand?: string) {
+    return this.accounts.cart(authorization, brand);
+  }
+
+  @Put("me/cart")
+  saveCart(@Headers("authorization") authorization: string | undefined, @Body() body: { brand?: "halimun" | "sambung"; lines?: { sku: string; qty: number }[] }) {
+    return this.accounts.saveCart(authorization, body ?? {});
+  }
+
+  @Get("me/addresses")
+  addresses(@Headers("authorization") authorization: string | undefined) {
+    return this.accounts.listAddresses(authorization);
+  }
+
+  @Patch("me/addresses/:id")
+  patchAddress(@Headers("authorization") authorization: string | undefined, @Param("id") id: string, @Body() body: Record<string, string>) {
+    return this.accounts.updateAddress(authorization, id, body ?? {});
+  }
+
+  @Delete("me/addresses/:id")
+  deleteAddress(@Headers("authorization") authorization: string | undefined, @Param("id") id: string) {
+    return this.accounts.deleteAddress(authorization, id);
+  }
+
+  @Delete("me/wishlist/:productId")
+  deleteWishlist(@Headers("authorization") authorization: string | undefined, @Param("productId") productId: string) {
+    return this.accounts.removeWishlist(authorization, productId);
+  }
+
+  @Get("me/consents")
+  consents(@Headers("authorization") authorization: string | undefined) {
+    return this.accounts.consents(authorization);
+  }
+
+  @Patch("me/consents")
+  patchConsents(@Headers("authorization") authorization: string | undefined, @Body() body: Record<string, boolean>) {
+    return this.accounts.updateConsents(authorization, body ?? {});
   }
 
   @Post("me/cart/merge")
@@ -91,8 +170,28 @@ export class CommerceController {
     return this.orders.getForCustomer(await this.auth.customerId(authorization), number);
   }
 
+  @Post("shipping/kiriminaja/shipping_price")
+  kiriminAjaPrice(@Body() body: ShippingPriceRequest) {
+    return shippingPrice(body);
+  }
+
+  @Post("webhooks/payment/midtrans")
+  midtrans(@Body() body: MidtransNotification) {
+    return this.orders.handleMidtrans(body);
+  }
+
+  @Post("webhooks/shipping/kiriminaja")
+  kiriminAja(@Headers("authorization") authorization: string | undefined, @Body() body: { method?: "processed_packages" | "shipped_packages" | "finished_packages" | "canceled_packages" | "problem_packages"; data?: { order_id?: string; awb?: string }[] }) {
+    return this.orders.handleKiriminAja(authorization, body);
+  }
+
+  @Post("orders/:number/payment")
+  payment(@Headers("authorization") authorization: string | undefined, @Param("number") number: string) {
+    return this.auth.customerId(authorization).then((customerId) => this.orders.paymentCharge(customerId, number));
+  }
+
   @Post("orders/:number/payment-events")
-  paymentEvent(
+  async paymentEvent(
     @Headers("x-simulator-token") token: string | undefined,
     @Param("number") number: string,
     @Body() body: { outcome?: "paid" | "failed" | "expired" },
@@ -101,12 +200,30 @@ export class CommerceController {
     if (body?.outcome !== "paid" && body?.outcome !== "failed" && body?.outcome !== "expired") {
       throw new HttpException({ code: "VALIDATION", message: "Outcome pembayaran tidak dikenal." }, 422);
     }
-    return this.orders.applyPayment(number, body.outcome);
+    const order = await this.orders.getByNumber(number);
+    const note = notificationFor(order.number, order.totals.total, body.outcome, midtransServerKey());
+    await this.orders.handleMidtrans(note);
+    return this.orders.getByNumber(number);
   }
 
   @Post("admin/auth/sign-in")
   staffSignIn(@Body() body: { email?: string; password?: string; totp?: string }) {
     return this.auth.signInStaff(body?.email ?? "", body?.password ?? "", body?.totp ?? "");
+  }
+
+  @Get("admin/orders")
+  adminOrders(@Headers("authorization") authorization: string | undefined, @Query("status") status?: string) {
+    return this.admin.orders(authorization, status);
+  }
+
+  @Get("admin/customers")
+  adminCustomers(@Headers("authorization") authorization: string | undefined) {
+    return this.admin.customers(authorization);
+  }
+
+  @Get("admin/promotions/:code")
+  adminPromotion(@Headers("authorization") authorization: string | undefined, @Param("code") code: string) {
+    return this.admin.promotion(authorization, code);
   }
 
   @Get("admin/metrics")

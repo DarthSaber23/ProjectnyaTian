@@ -6,6 +6,7 @@ import { available } from "../domain/stock";
 import { isWithin, toWibIso } from "../domain/time";
 import type { BrandId, Product, Promotion, ShippingQuote, Totals } from "../domain/types";
 import { categories, products, promotions, shippingQuotes } from "../data/fixtures";
+import { toStorefrontQuotes } from "./kiriminaja";
 import { PrismaService } from "../prisma.service";
 
 export interface PriceRequest {
@@ -52,6 +53,14 @@ export class CatalogService implements OnModuleInit {
     };
   }
 
+  bySlug(slug: string) {
+    for (const brand of ["sambung", "halimun"] as const) {
+      const product = this.list(brand).products.find((item) => item.slug === slug);
+      if (product) return { brand, product };
+    }
+    return undefined;
+  }
+
   /** Price and gift promotions only. Voucher codes stay off this public list. */
   activePromotions(brand: BrandId, now = toWibIso(new Date())): Promotion[] {
     return this.requirePromos(brand).filter(
@@ -60,7 +69,7 @@ export class CatalogService implements OnModuleInit {
   }
 
   quotes(): ShippingQuote[] {
-    return shippingQuotes;
+    return toStorefrontQuotes();
   }
 
   price(body: PriceRequest): Totals & { totalDisplay: string } {

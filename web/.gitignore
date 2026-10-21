@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-preview
+e2e/*.png
+.env*
+!.env.example
+dist-artifact

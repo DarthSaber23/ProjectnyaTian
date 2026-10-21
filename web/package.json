@@ -1,0 +1,40 @@
+{
+  "name": "ecommerce-starter",
+  "private": true,
+  "version": "0.8.0",
+  "type": "module",
+  "description": "Reusable Indonesian B2C e-commerce starter (Agent 01 prototype). Mock services only.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:preview": "tsc -b && vite build --mode singlefile",
+    "build:client": "tsc -b && vite build --mode client",
+    "build:artifact": "tsc -b && vite build --mode artifact",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc -b --noEmit",
+    "e2e": "npm run build:preview && node e2e/smoke.mjs && node e2e/admin.mjs && node e2e/qa.mjs",
+    "e2e:api": "node e2e/api-smoke.mjs"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.30.6",
+    "zustand": "4.5.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@types/node": "^20.17.6",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.3",
+    "autoprefixer": "10.4.20",
+    "playwright": "^1.56.0",
+    "postcss": "8.5.28",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "vite": "5.4.10",
+    "vite-plugin-singlefile": "2.0.3",
+    "vitest": "2.1.4"
+  }
+}

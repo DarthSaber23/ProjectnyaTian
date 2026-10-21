@@ -132,4 +132,40 @@ export class AuthService {
     }
     return row.subjectId;
   }
+
+  async signOut(authorization?: string): Promise<{ ok: true }> {
+    const token = authorization?.replace(/^Bearer\s+/i, "").trim();
+    if (token) await this.prisma.sessionToken.deleteMany({ where: { tokenHash: sha256(token) } });
+    return { ok: true };
+  }
+
+  async register(name: string, email: string, password: string): Promise<{ token: string; customerId: string; name: string; email: string }> {
+    const normalized = email.trim().toLowerCase();
+    if (!name.trim() || !normalized.includes("@") || password.length < 8) {
+      throw new HttpException({ code: "VALIDATION", message: "Nama, email, dan kata sandi minimal 8 karakter wajib diisi." }, 422);
+    }
+    const existing = await this.prisma.customerAccount.findUnique({ where: { email: normalized } });
+    if (existing) throw new HttpException({ code: "CONFLICT", message: "Email sudah terdaftar." }, 409);
+    const id = `C-${Date.now().toString().slice(-6)}`;
+    const account = await this.prisma.customerAccount.create({
+      data: { id, name: name.trim(), email: normalized, phone: "", passwordHash: hashPassword(password) },
+    });
+    return { ...(await this.issue("customer", account.id)), customerId: account.id, name: account.name, email: account.email };
+  }
+
+  async forgotPassword(email: string): Promise<{ accepted: true }> {
+    const normalized = email.trim().toLowerCase();
+    const account = await this.prisma.customerAccount.findUnique({ where: { email: normalized } });
+    if (account) {
+      const token = newToken();
+      await this.prisma.passwordReset.create({
+        data: { email: normalized, tokenHash: sha256(token), expiresAt: addMinutes(toWibIso(new Date()), 30) },
+      });
+    }
+    return { accepted: true };
+  }
+
+  googleStart(): never {
+    throw new HttpException({ code: "NOT_CONFIGURED", message: "Google Sign-In belum dikonfigurasi. Isi GOOGLE_CLIENT_ID di server." }, 501);
+  }
 }

@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from "@nestjs/common";
 import type { Prisma } from "@prisma/client";
-import { assertPaymentTransition, orderNumber, paymentExpiry } from "../domain/orders";
+import { assertFulfilmentTransition, assertPaymentTransition, orderNumber, paymentExpiry } from "../domain/orders";
 import { computeTotals } from "../domain/pricing";
 import { applyStock, physicalDemand, shortages } from "../domain/stock";
 import { toWibIso, yymmdd } from "../domain/time";
@@ -8,6 +8,8 @@ import type { BrandId, CartLine, Order, PaymentMethod } from "../domain/types";
 import { shippingQuotes } from "../data/fixtures";
 import { PrismaService } from "../prisma.service";
 import { CatalogService } from "./catalog.service";
+import { fulfilmentFor, kiriminAjaApiKey, type CourierEvent } from "./kiriminaja";
+import { chargeResponse, midtransServerKey, notificationFor, verifyNotification, type MidtransNotification } from "./midtrans";
 import { maySend } from "./notify";
 
 export interface CreateOrderBody {
@@ -186,11 +188,75 @@ export class OrderService {
     return updated;
   }
 
+  async paymentCharge(customerId: string, number: string): Promise<Record<string, unknown>> {
+    const order = await this.getForCustomer(customerId, number);
+    if (order.payment.status === "paid" || order.payment.status === "expired") {
+      throw new HttpException({ code: "CONFLICT", message: "Pembayaran tidak bisa dimulai lagi." }, 409);
+    }
+    return chargeResponse(order.number, order.totals.total, order.payment.method, order.payment.expiresAt);
+  }
+
+  async handleMidtrans(body: MidtransNotification): Promise<{ ok: true }> {
+    const row = await this.prisma.orderRecord.findUnique({ where: { number: body.order_id } });
+    if (!row) throw new HttpException({ code: "NOT_FOUND", message: "Pesanan tidak ditemukan." }, 404);
+    const order = row.payload as unknown as Order;
+    let mapped: ReturnType<typeof verifyNotification>;
+    try {
+      mapped = verifyNotification(body, order.totals.total, midtransServerKey());
+    } catch (error) {
+      const message = error instanceof Error && error.message === "AMOUNT_MISMATCH" ? "Nominal tidak sesuai." : "Tanda tangan webhook tidak valid.";
+      throw new HttpException({ code: "UNAUTHORIZED", message }, 401);
+    }
+    if (mapped === "paid" || mapped === "failed" || mapped === "expired") {
+      try {
+        await this.applyPayment(body.order_id, mapped);
+      } catch (error) {
+        if (!(error instanceof HttpException) || error.getStatus() !== 409) throw error;
+      }
+    }
+    return { ok: true };
+  }
+
+  async handleKiriminAja(authorization: string | undefined, body: { method?: CourierEvent; data?: { order_id?: string; awb?: string }[] }): Promise<{ ok: true }> {
+    const token = authorization?.replace(/^Bearer\s+/i, "").trim();
+    if (token !== kiriminAjaApiKey()) throw new HttpException({ code: "UNAUTHORIZED", message: "Webhook kurir ditolak." }, 401);
+    const event = body.method;
+    if (!event) throw new HttpException({ code: "VALIDATION", message: "method webhook wajib." }, 422);
+    for (const item of body.data ?? []) {
+      if (!item.order_id) continue;
+      await this.applyCourier(item.order_id, event, item.awb);
+    }
+    return { ok: true };
+  }
+
+  private async applyCourier(number: string, event: CourierEvent, awb?: string): Promise<void> {
+    const row = await this.prisma.orderRecord.findUnique({ where: { number } });
+    if (!row) return;
+    const order = row.payload as unknown as Order;
+    const next = fulfilmentFor(event, order.fulfilment);
+    if (!next) return;
+    try {
+      assertFulfilmentTransition(order.fulfilment, next);
+    } catch {
+      return;
+    }
+    order.fulfilment = next;
+    if (awb) order.trackingNumber = awb;
+    order.history.unshift({ at: toWibIso(new Date()), status: next, actor: "KiriminAja" });
+    await this.prisma.orderRecord.update({ where: { number }, data: { payload: order as unknown as Prisma.InputJsonValue } });
+  }
+
   async getForCustomer(customerId: string, number: string): Promise<Order> {
     const row = await this.prisma.orderRecord.findUnique({ where: { number } });
     if (!row || row.customerId !== customerId) {
       throw new HttpException({ code: "NOT_FOUND", message: "Pesanan tidak ditemukan." }, 404);
     }
+    return row.payload as unknown as Order;
+  }
+
+  async getByNumber(number: string): Promise<Order> {
+    const row = await this.prisma.orderRecord.findUnique({ where: { number } });
+    if (!row) throw new HttpException({ code: "NOT_FOUND", message: "Pesanan tidak ditemukan." }, 404);
     return row.payload as unknown as Order;
   }
 
