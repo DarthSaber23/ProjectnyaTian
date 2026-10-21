@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Key User Journeys</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2300px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 28px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 13 · M1</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Key user journeys</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Seven journeys that M2 wireframes and the M6 clickable prototype must play end to end. Personas are illustrative roles, not research findings. Screen IDs refer to Board 03.</div>
+</div>
+
+<sc-for list="{{journeys}}" as="j" hint-placeholder-count="7">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px 28px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; gap: 14px; align-items: baseline"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; color: #0B6B63">{{j.id}}</span><span style="font-size: 21px; font-weight: 700">{{j.title}}</span></div>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #555B66">{{j.meta}}</span>
+</div>
+<div style="font-size: 15px; color: #3B4049">{{j.who}}</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<sc-for list="{{j.steps}}" as="s" hint-placeholder-count="7">
+<div style="display: flex; align-items: center; gap: 8px">
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 600">{{s.t}}</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #555B66">{{s.sid}}</span></div>
+<sc-if value="{{s.more}}" hint-placeholder-val="{{ true }}"><span style="color: #8A8F98; font-size: 18px" aria-hidden="true">→</span></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; font-size: 14px; line-height: 1.5">
+<div style="background: #E3F1EF; padding: 10px 14px"><strong>Success:</strong> {{j.ok}}</div>
+<div style="background: #FFF4E0; padding: 10px 14px"><strong>Must also handle:</strong> {{j.fail}}</div>
+</div>
+</div>
+</sc-for>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+renderVals() {
+function steps(list) { return list.map(function (x, i) { return { t: x[0], sid: x[1], more: i < list.length - 1 }; }); }
+return {
+journeys: [
+{ id: "J1", title: "First purchase from a campaign", meta: "BRAND A · MOBILE 390 · GUEST → NEW ACCOUNT", who: "A first-time visitor arrives from a social media campaign link looking for a gentle cleanser.",
+steps: steps([["Campaign page", "S36"], ["Product detail", "S06"], ["Choose size, add to cart", "S06 · S09"], ["Cart", "S10"], ["Register (redirect)", "S12"], ["Address + shipping", "S15 · S16"], ["Voucher + review", "S17 · S18"], ["QRIS", "S19 · S20"], ["Paid → confirmation", "S21 · S22"]]),
+ok: "Guest cart survives registration; campaign voucher applies with a visible breakdown; order reaches Paid only after the mock gateway event.",
+fail: "Voucher not eligible for a flash-sale item; QRIS window expires → order cancelled, stock released, \"Pesan ulang\" offered." },
+{ id: "J2", title: "Technical search, compare and buy", meta: "BRAND B · DESKTOP 1440 · RETURNING CUSTOMER", who: "A buyer needs a 2 m USB-C cable that supports fast charging and types \"usb c 2m\".",
+steps: steps([["Autocomplete", "S04"], ["Results: synonym \"USB Type-C\"", "S05"], ["Filter length, wattage", "S03"], ["Compare 3 cables", "S08"], ["Product detail, variant", "S07"], ["Add to cart", "S09"], ["Google sign-in (mock)", "S11"], ["Checkout", "S15–S19"], ["Virtual account → paid", "S20 · S21"]]),
+ok: "Typo and synonym handling are visible; comparison highlights differences; the chosen length/colour variant flows unchanged into the order.",
+fail: "Selected variant out of stock; 4-product comparison limit reached; shipping provider error with retry." },
+{ id: "J3", title: "Track a delayed order and contact support", meta: "BRAND A/B · MOBILE · LOGGED IN", who: "A customer checks why a parcel has not moved for three days.",
+steps: steps([["Account", "S23"], ["Order history", "S26"], ["Order detail + timeline", "S27"], ["\"Update terlambat\" notice", "S27"], ["Contact CS (WhatsApp link-out)", "S31"]]),
+ok: "Status, courier, tracking reference and last update time are visible; the delay is explained without inventing courier data.",
+fail: "Failed delivery exception; no tracking reference yet (order still Processing)." },
+{ id: "J4", title: "Recover a failed or expired payment", meta: "SHARED · MOBILE · LOGGED IN", who: "An e-wallet payment fails, the customer retries with a virtual account.",
+steps: steps([["Payment instructions", "S20"], ["Failed result", "S21"], ["Change method", "S19"], ["New instructions (same order)", "S20"], ["Paid", "S21 · S22"]]),
+ok: "The order keeps its number and reservation while the payment window lasts; the customer never sees Paid before the trusted event.",
+fail: "Window expires during retry → order Cancelled, cart can be restored from the order." },
+{ id: "J5", title: "Fulfil paid orders", meta: "ADMIN · OPERATIONS · DESKTOP", who: "The operations staff member processes the morning's paid orders.",
+steps: steps([["Dashboard alerts", "A01"], ["Orders: filter Paid", "A06"], ["Order detail → Processing", "A07"], ["Ship: courier + tracking ref", "A07"], ["Courier events (mock) → Delivered", "A07"], ["Low stock → adjust", "A05"]]),
+ok: "Each status change is recorded with actor and time; storefront tracking (S27) updates from the same data.",
+fail: "Failed delivery exception → re-attempt or return; cancel a paid order → refund recorded by Owner/Admin (I8)." },
+{ id: "J6", title: "Launch a flash sale with a landing page", meta: "ADMIN · MARKETING · DESKTOP", who: "Marketing prepares a weekend flash sale with its own campaign page.",
+steps: steps([["Create promotion", "A09"], ["Set period, eligibility, preview", "A09"], ["Schedule", "A08"], ["Create campaign page", "A10 · A11"], ["Blocks + SEO", "A11 · A12"], ["Preview desktop/mobile", "A11"], ["Publish / schedule", "A10"], ["Campaign results", "A15"]]),
+ok: "Storefront shows strikethrough prices only during the active period; campaign metrics use the documented attribution rule.",
+fail: "Promotion conflicts with an active voucher rule (D3 warning); page fails validation (missing hero image alt text)." },
+{ id: "J7", title: "Bulk purchase inquiry", meta: "BRAND B · DESKTOP · B2B BUYER", who: "An office buyer wants 50 HDMI cables and asks for a bulk price.",
+steps: steps([["Product detail", "S07"], ["\"Pembelian Grosir\" link", "S07"], ["Inquiry form", "S32"], ["Submitted (mock)", "S32"]]),
+ok: "Clear expectation of a reply by customer service; no B2B pricing or quotation is shown or implied.",
+fail: "Validation errors; service unavailable state with WhatsApp alternative." }
+]
+};
+}
+}
+</script>
+</body>
+</html>

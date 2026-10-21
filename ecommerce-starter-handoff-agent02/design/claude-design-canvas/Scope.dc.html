@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scope Classification</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+.lst{margin:0;padding-left:20px;font-size:15px;line-height:1.55;display:flex;flex-direction:column;gap:6px}
+.grp{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;color:#555B66;margin-top:8px}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 1900px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 01 · M0</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Scope classification</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Essential = must work end-to-end in high fidelity (Claude Design + React prototype). Supporting = templated pages or admin wireframes. Future = not built; shown only as a clearly labelled "preview" where a seam is needed.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start">
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; border-top: 6px solid #0B6B63; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 24px">Essential</h2><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #0B6B63">HI-FI + REACT</span></div>
+<div class="grp">STOREFRONT</div>
+<ul class="lst">
+<li>Homepage built from configurable sections (two brand compositions)</li>
+<li>Catalog: categories, product grid, card variants, filters, sort, availability, badges, result counts, pagination</li>
+<li>Search: autocomplete, recent/popular, typo tolerance, synonyms ("usb c" → "USB Type-C"), no-results</li>
+<li>PDP (product detail page) with variants, stock, quantity, wishlist, shipping-estimate entry, reviews display, recommendations</li>
+<li>PDP content block library (benefits, ingredients, specs, compatibility, comparison, FAQ, etc.)</li>
+<li>Product comparison (desktop and mobile)</li>
+<li>Cart drawer + cart page with stock/price-change handling</li>
+<li>Authentication: email/password, Google sign-in (mock), forgot password, recovery, logout, checkout redirect, guest-cart preservation</li>
+<li>Checkout: address → shipping → promotions → review → payment → confirmation</li>
+<li>Payment simulation: QRIS, virtual account, e-wallet; pending / paid / failed / expired / cancelled; retry</li>
+<li>Account: dashboard, profile, addresses, orders, order detail, tracking timeline, wishlist, communication preferences</li>
+</ul>
+<div class="grp">ADMIN (HIGH FIDELITY)</div>
+<ul class="lst">
+<li>Dashboard overview</li>
+<li>Products, categories, variants, SKU (stock-keeping unit), SEO (search engine optimisation) fields</li>
+<li>Inventory: available / reserved stock, thresholds, adjustments</li>
+<li>Orders: list, detail, status history, process/ship, cancel, failed delivery</li>
+<li>Promotions: coupon, percentage, strikethrough, flash sale, free shipping, bundle, Buy X Get Y</li>
+<li>CMS block editor, preview, publish states, SEO metadata</li>
+<li>Customers and Analytics with written metric definitions</li>
+</ul>
+<div class="grp">FOUNDATIONS</div>
+<ul class="lst">
+<li>Design tokens, core component library, two showcase brands, all critical UI states, WCAG 2.2 AA (Web Content Accessibility Guidelines) target</li>
+</ul>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; border-top: 6px solid #4C566A; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 24px">Supporting</h2><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #3B4252">TEMPLATE / WIREFRAME</span></div>
+<div class="grp">STOREFRONT PAGES (TEMPLATED HI-FI)</div>
+<ul class="lst">
+<li>About the brand</li>
+<li>Contact and customer-service entry points</li>
+<li>Bulk purchase inquiry ("Permintaan Pembelian Grosir") — a form only, no B2B (business-to-business) pricing</li>
+<li>FAQ (frequently asked questions)</li>
+<li>Blog index and blog article</li>
+<li>Campaign landing and collection landing (built from CMS blocks)</li>
+<li>Shipping information</li>
+<li>Privacy policy, terms &amp; conditions, refund &amp; returns — placeholder text, labelled "for legal/business review"</li>
+<li>404 and general error / service-unavailable pages</li>
+<li>Recently viewed products strip</li>
+</ul>
+<div class="grp">ADMIN (WIREFRAME FIRST)</div>
+<ul class="lst">
+<li>Advanced reports</li>
+<li>Users and roles</li>
+<li>Store settings</li>
+<li>Shipping configuration</li>
+<li>Payment configuration</li>
+<li>Notification configuration</li>
+<li>Audit activity log</li>
+<li>Admin sign-in</li>
+</ul>
+<div class="grp">SPECIFICATIONS (DOCUMENTS)</div>
+<ul class="lst">
+<li>GA4 (Google Analytics 4) compatible event tracking plan — 15 events</li>
+<li>SEO spec: headings, metadata, canonical, Open Graph, structured data, sitemap and robots requirements</li>
+<li>Analytics metric formulas and mock attribution rule</li>
+<li>Mock state machines: order, payment, shipment, stock reservation</li>
+</ul>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; border-top: 6px solid #6B4C9A; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 24px">Future</h2><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5B3A86">NOT BUILT</span></div>
+<ul class="lst">
+<li>B2B pricing, quotation and checkout</li>
+<li>Real payment gateways (Midtrans, Duitku)</li>
+<li>Real shipping providers (Biteship, RajaOngkir/Komerce, KiriminAja)</li>
+<li>Real Google OAuth and identity services</li>
+<li>Machine-learning recommendations (rule-based only now)</li>
+<li>Review submission and moderation (display only now — see D8)</li>
+<li>Self-service return/refund requests (information page only now)</li>
+<li>Loyalty points, gift cards, subscriptions</li>
+<li>Multi-language, multi-currency</li>
+<li>Live chat or WhatsApp Business API integration (link-out entry point only)</li>
+<li>Multi-warehouse inventory</li>
+<li>PWA (progressive web app) offline mode, push notifications</li>
+</ul>
+<div style="margin-top: 14px; padding: 18px; background: #F3EEF8; display: flex; flex-direction: column; gap: 8px">
+<div style="font-weight: 600; font-size: 16px; color: #3E2763">Excluded from Agent 01 entirely</div>
+<ul class="lst" style="color: #3E2763">
+<li>Production NestJS services, database schemas, migrations</li>
+<li>Production credentials, security guarantees</li>
+<li>Production stock-reservation algorithm (Agent 02)</li>
+<li>Production framework choice, SSR (server-side rendering) setup</li>
+<li>VPS provisioning and infrastructure</li>
+<li>Real GA4 integration</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px 32px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px">Prioritisation logic</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; font-size: 15px; line-height: 1.55; color: #3B4049">
+<div><strong style="color: #15171C">Revenue path first.</strong> Discovery → PDP → cart → login → checkout → payment → order tracking is the spine; every other screen hangs off it.</div>
+<div><strong style="color: #15171C">Operate what you sell.</strong> Admin modules that change what the storefront shows (products, stock, orders, promotions, CMS) are essential; configuration screens are wireframes.</div>
+<div><strong style="color: #15171C">Prove reusability early.</strong> Homepage, catalog card and PDP are designed for both brands; shared flows (cart, checkout, account) are designed once and re-skinned by tokens.</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Admin Sitemap and Roles</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2100px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 12 · M1</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Admin sitemap &amp; role access</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">23 screens under /admin (English paths, Indonesian labels — I1, D14). Every admin route requires an admin session; menu items a role cannot use are hidden, and direct URLs show a "no access" state.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="7">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; display: flex; flex-direction: column">
+<div style="padding: 14px 18px; border-bottom: 2px solid #15171C; font-size: 18px; font-weight: 700">{{g.name}}</div>
+<sc-for list="{{g.rows}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 18px; border-top: 1px solid #EEEFF1">
+<div style="display: flex; gap: 10px; align-items: baseline"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #555B66">{{r.id}}</span><span style="font-size: 15px; font-weight: 600">{{r.page}}</span><span style="{{r.tag}}">{{r.fid}}</span></div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #0B4F49">{{r.url}}</div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+
+<h2 style="margin: 0; font-size: 26px">Role access matrix (D10)</h2>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(5, minmax(0, 1fr)); background: #15171C; color: #F6F6F3; font-size: 12px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 10px 14px">MODULE</div><div style="padding: 10px 14px">OWNER</div><div style="padding: 10px 14px">ADMIN</div><div style="padding: 10px 14px">OPERATIONS</div><div style="padding: 10px 14px">MARKETING</div><div style="padding: 10px 14px">CUSTOMER SERVICE</div>
+</div>
+<sc-for list="{{matrix}}" as="m" hint-placeholder-count="13">
+<div style="display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(5, minmax(0, 1fr)); border-top: 1px solid #E6E7EA; font-size: 14px">
+<div style="padding: 10px 14px; font-weight: 600">{{m.mod}}</div>
+<sc-for list="{{m.cells}}" as="c" hint-placeholder-count="5">
+<div style="padding: 10px 14px"><span style="{{c.s}}">{{c.v}}</span></div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; color: #3B4049; line-height: 1.5">
+<span><strong>Full</strong> = view, create, edit, delete/archive</span>
+<span><strong>Edit</strong> = view, create, edit</span>
+<span><strong>View</strong> = read only</span>
+<span><strong>Masked</strong> = email/WhatsApp shown as r***@m***.id / 0812****89; "Reveal" is logged in the audit log</span>
+<span><strong>Aggregate</strong> = segment counts only, no individual contact data</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Admin navigation</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Desktop: left sidebar grouped as Ringkasan · Penjualan · Katalog · Marketing · Analitik · Pengaturan</li>
+<li>Mobile and tablet: sidebar collapses into a menu drawer; tables switch to stacked cards or scroll inside a box</li>
+<li>Global search: order number, SKU, product name, customer (masked per role)</li>
+<li>Alert centre: low stock, payment expiring, failed deliveries, courier updates overdue</li>
+<li>"Lihat toko" opens the storefront in a new tab; CMS preview opens inside the editor</li>
+</ul>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Audited actions (A22)</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Order status changes, cancellations and refunds (with reason)</li>
+<li>Price, stock adjustments and product archive</li>
+<li>Promotion activation, pause and edit of live promotions</li>
+<li>Content publish and unpublish</li>
+<li>Customer contact reveal and data export</li>
+<li>User invitations and role changes; settings changes</li>
+</ul>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2100}}'>
+class Component extends DCLogic {
+renderVals() {
+var HI = "font-size:11px;font-weight:600;padding:1px 6px;background:#E3F1EF;color:#0B4F49";
+var WF = "font-size:11px;font-weight:600;padding:1px 6px;background:#EEF0F4;color:#2E3440";
+function r(id, page, url, f) { return { id: id, page: page, url: url, fid: f === "H" ? "HI-FI" : "WIREFRAME", tag: f === "H" ? HI : WF }; }
+var CS = {
+"Full": "font-weight:600;color:#0B4F49",
+"Edit": "font-weight:600;color:#0B6B63",
+"View": "color:#2E3440",
+"—": "color:#8A8F98"
+};
+function cell(v) { var key = v.indexOf("Full") === 0 ? "Full" : v.indexOf("Edit") === 0 ? "Edit" : v === "—" ? "—" : "View"; return { v: v, s: CS[key] }; }
+function m(mod, a, b, c, d, e) { return { mod: mod, cells: [a, b, c, d, e].map(cell) }; }
+return {
+groups: [
+{ name: "Ringkasan", rows: [ r("A01", "Dasbor", "/admin", "H"), r("A23", "Masuk admin", "/admin/login", "W") ] },
+{ name: "Penjualan", rows: [ r("A06", "Pesanan", "/admin/orders", "H"), r("A07", "Detail pesanan", "/admin/orders/{nomor}", "H"), r("A13", "Pelanggan", "/admin/customers", "H"), r("A14", "Profil pelanggan", "/admin/customers/{id}", "H") ] },
+{ name: "Katalog", rows: [ r("A02", "Produk", "/admin/products", "H"), r("A03", "Tambah / ubah produk", "/admin/products/new · /{id}", "H"), r("A04", "Kategori", "/admin/categories", "H"), r("A05", "Inventaris", "/admin/inventory", "H") ] },
+{ name: "Marketing", rows: [ r("A08", "Promosi", "/admin/promotions", "H"), r("A09", "Tambah / ubah promosi", "/admin/promotions/new · /{id}", "H"), r("A10", "Konten", "/admin/content", "H"), r("A11", "Editor blok + pratinjau", "/admin/content/{id}/edit", "H"), r("A12", "Panel SEO", "(panel in A03, A11)", "H") ] },
+{ name: "Analitik", rows: [ r("A15", "Analitik", "/admin/analytics", "H"), r("A16", "Laporan lanjutan", "/admin/reports", "W") ] },
+{ name: "Pengaturan", rows: [ r("A17", "Pengguna & peran", "/admin/settings/users", "W"), r("A18", "Toko", "/admin/settings/store", "W"), r("A19", "Pengiriman", "/admin/settings/shipping", "W"), r("A20", "Pembayaran", "/admin/settings/payments", "W"), r("A21", "Notifikasi", "/admin/settings/notifications", "W"), r("A22", "Log aktivitas", "/admin/audit-log", "W") ] }
+],
+matrix: [
+m("Dasbor", "Full", "Full", "View (operations)", "View (marketing)", "View (orders only)"),
+m("Produk & kategori", "Full", "Full", "Edit", "Edit (SEO & content only)", "View"),
+m("Inventaris", "Full", "Full", "Edit", "View", "View"),
+m("Pesanan", "Full", "Full", "Edit (process, ship, cancel unpaid)", "—", "View"),
+m("Refund (I8)", "Edit", "Edit", "—", "—", "—"),
+m("Promosi", "Full", "Full", "View", "Edit", "View"),
+m("Konten & SEO", "Full", "Full", "—", "Edit (incl. publish)", "—"),
+m("Pelanggan", "Full", "Full", "View (masked)", "Aggregate", "View (masked, reveal)"),
+m("Analitik", "Full", "View", "View (operations)", "View (marketing)", "—"),
+m("Laporan lanjutan", "Full", "View", "—", "—", "—"),
+m("Pengguna & peran", "Full", "Edit (non-owner users)", "—", "—", "—"),
+m("Pengaturan toko, pengiriman, pembayaran, notifikasi", "Full", "Edit", "—", "—", "—"),
+m("Log aktivitas", "View", "View", "—", "—", "—")
+]
+};
+}
+}
+</script>
+</body>
+</html>

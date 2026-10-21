@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Prototype Search Compare</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #1F5AE0;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #FFFFFF; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; flex-direction: column; overflow: hidden; position: relative; font-size: 14px">
+
+<header style="flex: none; border-bottom: 1px solid #CBD2DC; padding: 6px 8px 10px; display: flex; flex-direction: column; gap: 6px">
+<div style="height: 44px; display: flex; align-items: center; gap: 4px">
+<sc-if value="{{isCompare}}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="Kembali ke hasil" onClick="{{goSearch}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 22px">‹</button></sc-if>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; padding: 0 6px">SAMBUNG<span style="color: #1F5AE0">/</span></span>
+<span style="margin-left: auto; font-size: 12px; color: #4A5568">Keranjang {{cartCount}}</span>
+</div>
+<sc-if value="{{isSearch}}" hint-placeholder-val="{{ true }}">
+<form role="search" onSubmit="{{noSubmit}}" style="display: flex; gap: 6px; margin: 0"><label style="flex: 1; display: flex"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Cari produk</span><input type="search" value="{{q}}" onChange="{{onQ}}" placeholder="Cari kabel, adaptor, charger…" style="flex: 1; height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; font-family: inherit; font-size: 15px"></label>
+<sc-if value="{{hasQ}}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="Hapus kata kunci" onClick="{{clearQ}}" style="width: 44px; height: 44px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF">✕</button></sc-if></form>
+</sc-if>
+</header>
+
+<main style="flex: 1; overflow-y: auto; min-height: 0">
+
+<sc-if value="{{isSearch}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 16px">
+
+<sc-if value="{{noQ}}" hint-placeholder-val="{{ true }}">
+<section style="display: flex; flex-direction: column; gap: 8px"><div style="display: flex; justify-content: space-between; align-items: center"><h2 style="margin: 0; font-size: 15px">Pencarian terakhir (perangkat ini)</h2><sc-if value="{{hasRecent}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{clearRecent}}" style="border: none; background: none; color: #1747B5; text-decoration: underline; font-size: 13px; min-height: 40px">Hapus</button></sc-if></div>
+<sc-if value="{{noRecent}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; color: #4A5568">Riwayat pencarian dihapus.</span></sc-if>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{recent}}" as="t" hint-placeholder-count="2"><button type="button" onClick="{{t.go}}" style="min-height: 36px; padding: 0 12px; border: 1px solid #7D8796; border-radius: 18px; background: #FFFFFF; font-size: 13px">{{t.t}}</button></sc-for></div>
+</section>
+</sc-if>
+
+<div style="border: 2px dashed #7D8796; border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; background: #F2F4F7">
+<b style="font-size: 12px; font-family: 'JetBrains Mono', monospace">PANEL UJI · kata kunci contoh</b>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{samples}}" as="t" hint-placeholder-count="4"><button type="button" onClick="{{t.go}}" style="min-height: 36px; padding: 0 10px; border: 1px solid #4A5568; border-radius: 6px; background: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 12px">{{t.t}}</button></sc-for></div>
+</div>
+
+<sc-if value="{{hasQ}}" hint-placeholder-val="{{ false }}">
+<div aria-live="polite" style="display: flex; flex-direction: column; gap: 2px"><b>{{resTitle}}</b><span style="{{synSt}}">{{synText}}</span></div>
+<sc-if value="{{zero}}" hint-placeholder-val="{{ false }}"><div style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 8px"><b>Tidak ada produk yang cocok</b><span style="color: #4A5568; font-size: 13px">Periksa ejaan atau coba kategori:</span><div style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{zeroSugg}}" as="t" hint-placeholder-count="4"><button type="button" onClick="{{t.go}}" style="min-height: 36px; padding: 0 12px; border: 1px solid #1F5AE0; border-radius: 18px; background: #FFFFFF; color: #1747B5; font-size: 13px; font-weight: 600">{{t.t}}</button></sc-for></div></div></sc-if>
+<sc-for list="{{results}}" as="p" hint-placeholder-count="3"><article style="display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px; border-bottom: 1px solid #E3E7ED; padding-bottom: 12px">
+<dc-import name="ProductArt" kind="{{p.kind}}" bg="#F2F4F7" fg="#1A2233" accent="{{p.ac}}" label="{{p.name}}" hint-size="84px,84px"></dc-import>
+<div style="display: flex; flex-direction: column; gap: 3px; min-width: 0"><b style="font-size: 14px">{{p.name}}</b><span style="font-size: 12px; color: #4A5568">{{p.spec}}</span><span style="font-family: 'JetBrains Mono', monospace; font-weight: 500">{{p.price}}</span><span style="{{p.stockSt}}">{{p.stock}}</span>
+<div style="display: flex; gap: 8px; align-items: center; margin-top: 4px"><button type="button" aria-pressed="{{p.cmpOn}}" onClick="{{p.toggle}}" style="{{p.cmpSt}}"><span aria-hidden="true" style="{{p.boxSt}}">{{p.mark}}</span>Bandingkan</button><button type="button" disabled="{{p.oos}}" onClick="{{p.add}}" style="{{p.addSt}}">{{p.addT}}</button></div></div>
+</article></sc-for>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{isCompare}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 16px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Bandingkan {{cmpN}} kabel</h1>
+<div style="display: flex; gap: 6px"><sc-for list="{{views}}" as="vw" hint-placeholder-count="2"><button type="button" aria-pressed="{{vw.on}}" onClick="{{vw.go}}" style="{{vw.st}}">{{vw.t}}</button></sc-for>
+<button type="button" aria-pressed="{{diffOn}}" onClick="{{toggleDiff}}" style="{{diffSt}}">Hanya perbedaan</button></div>
+
+<sc-if value="{{isCols}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #4A5568"><span>Kolom kiri disematkan</span><span style="display: flex; align-items: center; gap: 4px"><button type="button" aria-label="Produk sebelumnya" disabled="{{prevDis}}" onClick="{{prev}}" style="width: 40px; height: 40px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF">‹</button><span aria-live="polite">{{pageLbl}}</span><button type="button" aria-label="Produk berikutnya" disabled="{{nextDis}}" onClick="{{next}}" style="width: 40px; height: 40px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF">›</button></span></div>
+<table style="width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px">
+<thead><tr><th scope="col" style="width: 50%; text-align: left; padding: 8px; background: #F2F4F7; border-right: 1px solid #CBD2DC; vertical-align: top">{{colA.name}}<div style="font-family: 'JetBrains Mono', monospace; font-weight: 500; margin-top: 4px">{{colA.price}}</div></th><th scope="col" style="text-align: left; padding: 8px; vertical-align: top">{{colB.name}}<div style="font-family: 'JetBrains Mono', monospace; font-weight: 500; margin-top: 4px">{{colB.price}}</div></th></tr></thead>
+<tbody><sc-for list="{{pairRows}}" as="r" hint-placeholder-count="7"><tr><th scope="rowgroup" colspan="2" style="text-align: left; padding: 8px 8px 2px; font-size: 11px; letter-spacing: 0.06em; color: #4A5568; border-top: 1px solid #CBD2DC">{{r.k}}<span style="{{r.flagSt}}">{{r.flag}}</span></th></tr><tr><td style="{{r.aSt}}">{{r.a}}</td><td style="{{r.bSt}}">{{r.b}}</td></tr></sc-for></tbody>
+</table>
+</sc-if>
+
+<sc-if value="{{isList}}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{listCards}}" as="c" hint-placeholder-count="2"><section style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px"><h2 style="margin: 0; font-size: 15px">{{c.name}}</h2><dl style="margin: 0; display: grid; grid-template-columns: 40% 60%; gap: 4px 8px; font-size: 13px"><sc-for list="{{c.rows}}" as="r" hint-placeholder-count="7"><dt style="color: #4A5568">{{r.k}}</dt><dd style="{{r.st}}">{{r.v}}</dd></sc-for></dl></section></sc-for>
+</sc-if>
+<span style="font-size: 12px; color: #4A5568">"Tidak dicantumkan" = data spesifikasi belum diisi penjual; bukan berarti tidak ada. Rating tidak ditampilkan di prototipe.</span>
+</div>
+</sc-if>
+
+</main>
+
+<sc-if value="{{trayOn}}" hint-placeholder-val="{{ false }}">
+<footer style="flex: none; border-top: 1px solid #CBD2DC; padding: 10px 16px 14px; display: flex; flex-direction: column; gap: 6px; background: #FFFFFF">
+<span role="status" style="{{cmpMsgSt}}">{{cmpMsg}}</span>
+<div style="display: flex; gap: 8px; align-items: center"><span style="font-size: 13px; flex: 1">{{trayText}}</span><button type="button" onClick="{{clearCmp}}" style="min-height: 44px; padding: 0 12px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-weight: 600">Kosongkan</button><button type="button" disabled="{{cmpDis}}" onClick="{{openCompare}}" style="{{cmpBtnSt}}">Bandingkan ({{cmpN}}/4)</button></div>
+</footer>
+</sc-if>
+
+<div aria-live="polite" style="{{toastSt}}">{{toast}}</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var S = this.state || {};
+var self = this;
+var set = function (o) { self.setState(o); };
+var screen = S.s || "search";
+var q = S.q || "";
+var cmp = S.cmp || [];
+var recentList = S.recent === undefined ? ["charger gan", "hdmi"] : S.recent;
+function fmt(n) { return "Rp" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+var TD = "Tidak dicantumkan";
+var P = [
+{ id: "B01", name: "Kabel USB-C ke USB-C 100W Braided", cmpName: "Kabel USB-C 100W · 2 m", spec: "USB-C ↔ USB-C · 100W · 1/2/3 m", cat: "kabel", kind: "cable", ac: "#1F5AE0", price: 129000, from: true, len: [1, 2, 3], lenPrice: { 1: 129000, 2: 159000, 3: 189000 }, stock: "3 dari 4 varian", avail: 64,
+attr: { Konektor: "USB-C ↔ USB-C", "Daya maks.": "100W", "Kecepatan data": "USB 2.0 · 480 Mbps", "Output video": "Tidak", Panjang: "2 m (juga 1 m, 3 m)", Material: "Nilon braided", Harga: "Rp159.000", Ketersediaan: "Sisa 7" } },
+{ id: "B07", name: "Kabel USB-A ke USB-C · 1 m", cmpName: "Kabel USB-A ke USB-C · 1 m", spec: "USB-A → USB-C · 3A · 1 m", cat: "kabel", kind: "cable", ac: "#7D8796", price: 69000, len: [1], stock: "Tersedia", avail: 120,
+attr: { Konektor: "USB-A → USB-C", "Daya maks.": TD, "Kecepatan data": TD, "Output video": TD, Panjang: "1 m", Material: TD, Harga: "Rp69.000", Ketersediaan: "Tersedia" } },
+{ id: "B05", name: "Kabel USB-C ke Lightning · 1 m", cmpName: "Kabel USB-C ke Lightning · 1 m", spec: "USB-C → Lightning · 1 m", cat: "kabel", kind: "cable", ac: "#4A5568", price: 149000, len: [1], stock: "Tersedia", avail: 30,
+attr: { Konektor: "USB-C → Lightning", "Daya maks.": TD, "Kecepatan data": TD, "Output video": TD, Panjang: "1 m", Material: TD, Harga: "Rp149.000", Ketersediaan: "Tersedia" } },
+{ id: "B06", name: "Kabel HDMI 2.1 8K · 2 m", cmpName: "Kabel HDMI 2.1 8K · 2 m", spec: "HDMI 2.1 · 8K60 / 4K120 · 2 m", cat: "kabel", kind: "cable", ac: "#C0262D", price: 179000, len: [2], stock: "Stok habis", avail: 0,
+attr: { Konektor: "HDMI ↔ HDMI", "Daya maks.": TD, "Kecepatan data": TD, "Output video": "8K60 / 4K120", Panjang: "2 m", Material: TD, Harga: "Rp179.000", Ketersediaan: "Stok habis" } },
+{ id: "B08", name: "Kabel DisplayPort 1.4 · 2 m", cmpName: "Kabel DisplayPort 1.4 · 2 m", spec: "DP 1.4 · 8K60 · 2 m", cat: "kabel", kind: "cable", ac: "#4A5568", price: 199000, len: [2], stock: "Tersedia", avail: 18,
+attr: { Konektor: "DisplayPort ↔ DisplayPort", "Daya maks.": TD, "Kecepatan data": TD, "Output video": "8K60", Panjang: "2 m", Material: TD, Harga: "Rp199.000", Ketersediaan: "Tersedia" } },
+{ id: "B02", name: "Adaptor USB-C ke HDMI 4K60", spec: "USB-C → HDMI · 4K 60Hz", cat: "adaptor", kind: "adapter", ac: "#1F5AE0", price: 219000, len: [], stock: "Tersedia", avail: 23 },
+{ id: "B03", name: "Charger GaN 65W 3 Port", spec: "2× USB-C + 1× USB-A · 65W · flash sale s/d 22 Okt", cat: "charger", kind: "charger", ac: "#F5A524", price: 299250, len: [], stock: "Sisa 11", avail: 11 },
+{ id: "B04", name: "Hub USB-C 7-in-1", spec: "HDMI · 3× USB-A · SD · microSD · PD", cat: "hub", kind: "hub", ac: "#1F5AE0", price: 549000, len: [], stock: "Sisa 4", avail: 4 }
+];
+var ATTRS = ["Konektor", "Daya maks.", "Kecepatan data", "Output video", "Panjang", "Material", "Harga", "Ketersediaan"];
+function prod(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return P[i]; return P[0]; }
+// normalisation + demo synonym map (MOCK_DATA_CONTRACT)
+function norm(s) { return (" " + s.toLowerCase() + " ").replace(/usb[\s-]?type[\s-]?c|type[\s-]?c|usb[\s-]?c|usbc/g, "usb-c").replace(/(\d)\s?m\b/g, "$1m").replace(/\s+/g, " ").trim(); }
+var nq = norm(q);
+var synUsed = /usb-c/.test(nq) && !/usb-c/.test(q.toLowerCase());
+var tokens = nq ? nq.split(" ") : [];
+var lenTok = null; var words = [];
+tokens.forEach(function (t) { var m = t.match(/^(\d)m$/); if (m) lenTok = Number(m[1]); else if (t) words.push(t); });
+var KW = { kabel: "kabel cable", adaptor: "adaptor adapter", charger: "charger pengisi daya", hub: "hub dock" };
+var results = [];
+if (nq) results = P.filter(function (p) { var idx = norm(p.name + " " + p.spec + " " + KW[p.cat]); var ok = words.every(function (w) { return idx.indexOf(w) >= 0; }); if (lenTok !== null) ok = ok && p.len.indexOf(lenTok) >= 0; return ok; });
+var setQ = function (t) { return function () { var r = recentList.filter(function (x) { return x !== t; }); r.unshift(t); set({ q: t, recent: r.slice(0, 5), cmpMsg: "", toast: "" }); }; };
+var cmpMsg = S.cmpMsg || "";
+var toggle = function (p) { return function () {
+if (cmp.indexOf(p.id) >= 0) { set({ cmp: cmp.filter(function (x) { return x !== p.id; }), cmpMsg: "" }); return; }
+if (cmp.length >= 4) { set({ cmpMsg: "Maksimal 4 produk dalam perbandingan (D2)." }); return; }
+if (cmp.length && prod(cmp[0]).cat !== p.cat) { set({ cmpMsg: "Hanya produk dalam kategori yang sama yang bisa dibandingkan (D2). Kosongkan dulu untuk ganti kategori." }); return; }
+set({ cmp: cmp.concat([p.id]), cmpMsg: "" });
+}; };
+var res = results.map(function (p) {
+var on = cmp.indexOf(p.id) >= 0; var oos = p.avail === 0;
+var price = p.from ? (lenTok ? fmt(p.lenPrice[lenTok]) + " · " + lenTok + " m" : "mulai " + fmt(p.price)) : fmt(p.price);
+return { name: p.name, spec: p.spec, kind: p.kind, ac: p.ac, price: price, stock: p.stock + (p.id === "B01" && lenTok === 2 ? " · 2 m Hitam sisa 7, Putih habis" : ""),
+stockSt: "font-size:12px;font-weight:600;color:" + (oos ? "#C0262D" : (p.avail <= 11 ? "#8A5300" : "#1E7A45")),
+cmpOn: on ? "true" : "false", toggle: toggle(p), mark: on ? "✓" : "",
+cmpSt: "min-height:40px;display:inline-flex;align-items:center;gap:6px;padding:0 10px;border-radius:6px;font-size:13px;font-weight:600;" + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #7D8796;background:#FFFFFF;color:#0E1726"),
+boxSt: "display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:3px;font-size:12px;" + (on ? "background:#1F5AE0;color:#FFFFFF" : "border:1.5px solid #7D8796"),
+oos: oos, addT: oos ? "Stok habis" : (p.from ? "Pilih varian" : "+ Keranjang"),
+addSt: "min-height:40px;padding:0 12px;border-radius:6px;font-size:13px;font-weight:600;border:none;" + (oos ? "background:#CBD2DC;color:#4A5568" : "background:#1F5AE0;color:#FFFFFF"),
+add: function () { if (p.from) { set({ toast: "Pilih panjang & warna di halaman produk (lihat P01)." }); return; } set({ cart: (S.cart || 0) + 1, toast: "Ditambahkan: " + p.name }); } };
+});
+
+// compare
+var cps = cmp.map(prod);
+var page = Math.min(S.page || 1, Math.max(1, cps.length - 1));
+var diffOnly = !!S.diff;
+function differs(k) { var vals = cps.map(function (p) { return p.attr ? p.attr[k] : ""; }); return vals.some(function (v) { return v !== vals[0]; }); }
+var keys = ATTRS.filter(function (k) { return !diffOnly || differs(k); });
+var base = "padding:4px 8px 8px;vertical-align:top;";
+var A = cps[0] || { attr: {} }; var B = cps[page] || { attr: {} };
+function cellSt(v, d, pinned) { return base + (pinned ? "background:#F2F4F7;border-right:1px solid #CBD2DC;" : "") + (d ? "background:" + (pinned ? "#DDE7FB" : "#EAF0FD") + ";font-weight:600;" : "") + (v === TD ? "font-style:italic;color:#4A5568;font-weight:400;" : ""); }
+var pairRows = keys.map(function (k) { var d = differs(k); return { k: k.toUpperCase(), flag: d ? " · beda" : "", flagSt: d ? "color:#1747B5;font-weight:700" : "display:none", a: A.attr ? A.attr[k] : "", b: B.attr ? B.attr[k] : "", aSt: cellSt(A.attr[k], d, true), bSt: cellSt(B.attr[k], d, false) }; });
+var listCards = cps.map(function (p) { return { name: p.cmpName || p.name, rows: keys.map(function (k) { var v = p.attr ? p.attr[k] : ""; return { k: k, v: v, st: "margin:0;" + (v === TD ? "font-style:italic;color:#4A5568" : (differs(k) ? "font-weight:600" : "")) }; }) }; });
+var view = S.view || "cols";
+var seg = "min-height:38px;padding:0 12px;border-radius:6px;font-size:13px;font-weight:600;";
+var views = [{ id: "cols", t: "Kolom" }, { id: "list", t: "Daftar" }].map(function (v) { var on = v.id === view; return { t: v.t, on: on ? "true" : "false", go: function () { set({ view: v.id }); }, st: seg + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #7D8796;background:#FFFFFF;color:#0E1726") }; });
+var catName = cps.length ? { kabel: "Kabel", adaptor: "Adaptor", charger: "Charger", hub: "Hub" }[cps[0].cat] : "";
+var trayText = cmp.length ? cmp.length + " " + catName + " dipilih" + (cmp.length < 2 ? " · pilih minimal 2" : "") : "";
+
+return {
+isSearch: screen === "search", isCompare: screen === "compare",
+q: q, hasQ: !!nq, noQ: !nq, onQ: function (e) { set({ q: e && e.target ? e.target.value : "", cmpMsg: "" }); }, clearQ: function () { set({ q: "" }); }, noSubmit: function (e) { if (e && e.preventDefault) e.preventDefault(); },
+recent: recentList.map(function (t) { return { t: t, go: setQ(t) }; }), hasRecent: recentList.length > 0, noRecent: recentList.length === 0, clearRecent: function () { set({ recent: [] }); },
+samples: ["charger gan", "hdmi", "type c 2m", "kabel", "mouse wireless"].map(function (t) { return { t: t, go: setQ(t) }; }),
+resTitle: results.length + " hasil untuk “" + q + "”",
+synText: synUsed ? "Juga dicari sebagai “USB Type-C”" + (lenTok ? " · panjang " + lenTok + " m" : "") : (lenTok ? "Filter panjang " + lenTok + " m diterapkan" : ""), synSt: (synUsed || lenTok) ? "font-size:12px;color:#1747B5" : "display:none",
+zero: !!nq && results.length === 0, zeroSugg: ["kabel", "charger", "adaptor", "hub"].map(function (t) { return { t: t, go: setQ(t) }; }),
+results: res,
+trayOn: cmp.length > 0 && screen === "search" || (!!cmpMsg && screen === "search"), trayText: trayText, cmpN: String(cmp.length), cmpDis: cmp.length < 2,
+cmpBtnSt: "min-height:44px;padding:0 14px;border:none;border-radius:6px;font-weight:600;" + (cmp.length < 2 ? "background:#CBD2DC;color:#4A5568" : "background:#1F5AE0;color:#FFFFFF"),
+clearCmp: function () { set({ cmp: [], cmpMsg: "", page: 1 }); }, openCompare: function () { set({ s: "compare", page: 1 }); }, goSearch: function () { set({ s: "search" }); },
+cmpMsg: cmpMsg, cmpMsgSt: cmpMsg ? "font-size:13px;font-weight:600;color:#8A5300" : "display:none",
+views: views, isCols: view === "cols", isList: view === "list", diffOn: diffOnly ? "true" : "false", toggleDiff: function () { set({ diff: !diffOnly }); },
+diffSt: seg + "margin-left:auto;" + (diffOnly ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #7D8796;background:#FFFFFF;color:#0E1726"),
+colA: { name: A.cmpName || "", price: A.attr ? A.attr.Harga : "" }, colB: { name: B.cmpName || "", price: B.attr ? B.attr.Harga : "" },
+pairRows: pairRows, listCards: listCards, pageLbl: page + " / " + Math.max(1, cps.length - 1), prevDis: page <= 1, nextDis: page >= cps.length - 1,
+prev: function () { set({ page: page - 1 }); }, next: function () { set({ page: page + 1 }); },
+cartCount: String(S.cart || 0),
+toast: S.toast || "", toastSt: S.toast ? "position:absolute;left:12px;right:12px;bottom:110px;background:#0E1726;color:#FFFFFF;border-radius:6px;padding:10px 12px;font-size:13px" : "display:none"
+};
+}
+}
+</script>
+</body>
+</html>

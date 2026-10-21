@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>M3 Overview and Approval</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 1700px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">AGENT 01 · MILESTONE M3 · CLAUDE DESIGN</div><h1 style="margin: 0; font-size: 52px; font-weight: 700">M3 — Visual Direction &amp; Design System</h1><div style="font-size: 18px; color: #3B4049">One set of semantic tokens and components; two brand themes that look and compose differently.</div></div>
+<div style="background: #E3F1EF; color: #0B4F49; border: 1px solid #9CCFC8; padding: 8px 14px; font-weight: 600; font-size: 15px">Status: Approved 20 Oct 2026</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{boards}}" as="b" hint-placeholder-count="5">
+<div style="border-top: 4px solid #0B6B63; padding-top: 12px; display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #555B66">{{b.id}}</div><div style="font-size: 17px; font-weight: 600">{{b.t}}</div><div style="font-size: 14px; color: #3B4049; line-height: 1.5">{{b.d}}</div></div>
+</sc-for>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 24px">Decisions for approval</h2>
+<div style="display: grid; grid-template-columns: 64px 240px minmax(0, 1fr); font-size: 15px; line-height: 1.5; border: 1px solid #DADCE0">
+<sc-for list="{{dec}}" as="d" hint-placeholder-count="6">
+<div style="padding: 12px; border-top: 1px solid #E6E7EA; font-family: 'IBM Plex Mono', monospace; color: #0B6B63">{{d.id}}</div>
+<div style="padding: 12px; border-top: 1px solid #E6E7EA; font-weight: 600">{{d.t}}</div>
+<div style="padding: 12px; border-top: 1px solid #E6E7EA; color: #3B4049">{{d.d}}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 2px solid #15171C; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">M3 acceptance checklist</h2>
+<sc-for list="{{checks}}" as="c" hint-placeholder-count="7">
+<div style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5"><span style="flex: none; width: 18px; height: 18px; border: 2px solid #15171C; margin-top: 2px" aria-hidden="true"></span><span>{{c}}</span></div>
+</sc-for>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Risks &amp; gaps</h2>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 6px">
+<li>Working brand names are not trademark-screened (D15). Do not publish them.</li>
+<li>Imagery is placeholder blocks with art direction notes; real photography or illustration must be sourced or licensed per client.</li>
+<li>Contrast was calculated for every text/background token pair; component states were not screen-reader tested yet (M8).</li>
+<li>Icons are simple inline strokes for now; an open-licence icon set is chosen at M4 (proposal: Lucide, ISC licence).</li>
+</ul>
+</div>
+</div>
+
+<div style="background: #15171C; color: #F6F6F3; padding: 32px 36px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #B8BCC4">APPROVAL RECORD</div>
+<div style="font-size: 26px; font-weight: 600; line-height: 1.3">M3 approved by the product owner on 20 Oct 2026; T1–T6 accepted.</div>
+<div style="font-size: 16px; line-height: 1.6; color: #D5D8DD">Working names Halimun and Sambung stay in use for design only and remain unscreened; trademark screening is still required before any public use.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+boards: [
+{ id: "M3-1", t: "Tokens & foundations", d: "Semantic token roles with both brand values, type scale, spacing, radius, elevation, motion, focus." },
+{ id: "M3-2", t: "Brand A direction", d: "Calm editorial skincare: linen ground, serif display, sage primary, pill controls." },
+{ id: "M3-3", t: "Brand B direction", d: "Precise technical retail: white ground, grotesk display, electric blue, dense square controls." },
+{ id: "M3-4", t: "Component library", d: "25 components with states; switch brand with the Tweaks control to see one component in both themes." },
+{ id: "M3-5", t: "Responsive rules", d: "Breakpoints, grid, containers and how each pattern transforms from 360 to 1440 px." }
+],
+dec: [
+{ id: "T1", t: "Typefaces", d: "Brand A: Newsreader (display) + Figtree (body). Brand B: Space Grotesk (display) + IBM Plex Sans (body) + JetBrains Mono (specs). All SIL Open Font Licence, free for commercial use and self-hosting." },
+{ id: "T2", t: "Working brand names", d: "Brand A \"Halimun\" (alternatives: Sarira, Tenang). Brand B \"Sambung\" (alternatives: Kabelin, Portiq). Unscreened; owner checks trademarks before any public use." },
+{ id: "T3", t: "Promo accent usage", d: "Brand B amber (#F5A524) is a fill colour only, always with dark text (8.8:1); never as text on white (2.0:1)." },
+{ id: "T4", t: "Breakpoints", d: "sm 480 · md 768 · lg 1024 · xl 1280 · 2xl 1440 (min-width). Content max width 1280 px." },
+{ id: "T5", t: "Input borders", d: "Form controls use a separate border-strong token (≥ 3:1) so field edges meet WCAG 2.2 non-text contrast; hairline dividers stay light." },
+{ id: "T6", t: "Token export", d: "tokens/brand-a.json and tokens/brand-b.json (same keys) are the hand-off to the React prototype's Tailwind theme." }
+],
+checks: [
+"Both brands read as different products, not a colour swap",
+"Every shared component reads tokens only (no brand hex values inside)",
+"All text tokens pass 4.5:1; control borders and focus pass 3:1",
+"Component states: default, hover, focus, active, disabled, loading, error",
+"Commerce components cover price, discount, variant, quantity, shipping, payment, status",
+"Responsive rules cover navigation, grid, filters, comparison, checkout, admin tables",
+"T1–T6 confirmed and brand names chosen or deferred"
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Order Payment Shipment Stock States</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 3200px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 36px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 17 · M1 (DEFERRED, ADDED WITH M2)</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Order, payment, shipment &amp; stock state models</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Mock state machines for the prototype. Any transition not listed is refused and shown as an error. Production timing, idempotency and race handling belong to Agent 02. Labels: Indonesian UI label / English code.</div>
+</div>
+
+<sc-for list="{{machines}}" as="m" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><h2 style="margin: 0; font-size: 26px">{{m.title}}</h2><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #555B66">{{m.code}}</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<sc-for list="{{m.path}}" as="p" hint-placeholder-count="5">
+<div style="display: flex; gap: 8px; align-items: center"><span style="{{p.st}}">{{p.t}}</span><sc-if value="{{p.more}}" hint-placeholder-val="{{ true }}"><span style="color: #8A8F98" aria-hidden="true">→</span></sc-if></div>
+</sc-for>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) 150px minmax(0, 1fr) minmax(0, 1.6fr); background: #15171C; color: #F6F6F3; font-size: 11px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 10px 12px">FROM</div><div style="padding: 10px 12px">EVENT / ACTION</div><div style="padding: 10px 12px">SOURCE</div><div style="padding: 10px 12px">TO</div><div style="padding: 10px 12px">SIDE EFFECTS</div>
+</div>
+<sc-for list="{{m.rows}}" as="r" hint-placeholder-count="8">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) 150px minmax(0, 1fr) minmax(0, 1.6fr); border-top: 1px solid #E6E7EA; font-size: 13px; line-height: 1.45">
+<div style="padding: 9px 12px; font-weight: 600">{{r.f}}</div><div style="padding: 9px 12px">{{r.e}}</div><div style="padding: 9px 12px; color: #3B4049">{{r.s}}</div><div style="padding: 9px 12px; font-weight: 600">{{r.t}}</div><div style="padding: 9px 12px; color: #3B4049">{{r.x}}</div>
+</div>
+</sc-for>
+</div>
+<div style="font-size: 14px; color: #3B4049; line-height: 1.5">{{m.note}}</div>
+</div>
+</sc-for>
+
+<div style="background: #FFFFFF; border: 2px solid #15171C; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Worked example from the M2 dataset (W00) · SKU B01-2M-BLK</h2>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); font-size: 14px; border: 1px solid #DADCE0">
+<div style="padding: 8px 12px; background: #F6F6F3; font-weight: 600">Moment</div><div style="padding: 8px 12px; background: #F6F6F3; font-weight: 600">On hand</div><div style="padding: 8px 12px; background: #F6F6F3; font-weight: 600">Reserved</div><div style="padding: 8px 12px; background: #F6F6F3; font-weight: 600">Available</div>
+<div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">Before ORD-261020-0010 (10:15)</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">9</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">0</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">9</div>
+<div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">Order created, ×2 reserved (snapshot 10:16)</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">9</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">2</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">7</div>
+<div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">If payment.paid</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">7</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">0</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">7</div>
+<div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">If expired at 10:30 instead</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">9</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">0</div><div style="padding: 8px 12px; border-top: 1px solid #E6E7EA">9</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+renderVals() {
+var chip = "background:#FFFFFF;border:2px solid #15171C;padding:6px 12px;font-size:13px;font-weight:600";
+var end = "background:#E3F1EF;border:2px solid #0B6B63;padding:6px 12px;font-size:13px;font-weight:600";
+function path(list) { return list.map(function (t, i) { return { t: t, more: i < list.length - 1, st: i === list.length - 1 ? end : chip }; }); }
+function r(f, e, s, t, x) { return { f: f, e: e, s: s, t: t, x: x }; }
+return {
+machines: [
+{ title: "1 · Order (fulfilment) status", code: "order.status",
+path: path(["Menunggu Pembayaran / pending_payment", "Dibayar / paid", "Diproses / processing", "Dikirim / shipped", "Dalam Perjalanan / in_transit", "Diterima / delivered"]),
+rows: [
+r("—", "\"Buat Pesanan\" after stock & price re-check", "Customer", "Menunggu Pembayaran", "Reserve stock; create payment attempt with expiry (D6)"),
+r("Menunggu Pembayaran", "payment.paid", "Gateway (mock event)", "Dibayar", "Reserved → sold; send confirmation; analytics purchase"),
+r("Menunggu Pembayaran", "payment.failed / attempt cancelled", "Gateway / Customer", "Menunggu Pembayaran", "New attempt allowed until order expiry"),
+r("Menunggu Pembayaran", "Payment window ends", "System timer", "Dibatalkan / cancelled", "Release reservation; offer \"Pesan ulang\""),
+r("Menunggu Pembayaran", "Customer cancels order", "Customer", "Dibatalkan", "Release reservation"),
+r("Dibayar", "\"Proses\"", "Operations / Admin", "Diproses", "Audit log"),
+r("Dibayar / Diproses", "\"Batalkan\" with reason", "Owner / Admin", "Dibatalkan", "Refund recorded (I8); admin chooses restock"),
+r("Diproses", "\"Kirim\" with courier + tracking ref", "Operations", "Dikirim", "Shipment created; customer sees tracking ref"),
+r("Dikirim", "shipment.in_transit", "Courier (mock event)", "Dalam Perjalanan", "Timeline entry"),
+r("Dikirim / Dalam Perjalanan", "shipment.delivered", "Courier (mock event)", "Diterima", "Terminal; review prompt is Future"),
+r("Dikirim / Dalam Perjalanan", "shipment.exception", "Courier (mock event)", "Gagal Kirim / delivery_exception", "Alert in admin; customer notice"),
+r("Gagal Kirim", "shipment.reattempt", "Courier (mock event)", "Dalam Perjalanan", "Timeline entry"),
+r("Gagal Kirim", "shipment.returned + \"Batalkan\"", "Courier + Owner / Admin", "Dibatalkan", "Refund recorded; restock when received")
+],
+note: "Terminal: Diterima, Dibatalkan. A refund after delivery changes the payment status only. \"Update terlambat\" is a display flag (no courier event for more than 72 hours while Dikirim or Dalam Perjalanan), not a status." },
+{ title: "2 · Payment attempt", code: "payment.status",
+path: path(["Pending / pending", "Dibayar / paid"]),
+rows: [
+r("—", "Customer chooses method and places order", "Customer", "Pending", "QRIS / e-wallet 15 min, VA 24 h (D6)"),
+r("Pending", "payment.paid", "Gateway (mock event only)", "Dibayar / paid", "Order → Dibayar"),
+r("Pending", "payment.failed", "Gateway (mock event)", "Gagal / failed", "Customer may retry or change method"),
+r("Pending", "Window ends", "System timer", "Kedaluwarsa / expired", "Order → Dibatalkan if no other attempt is paid"),
+r("Pending", "\"Ganti metode\" or \"Batalkan\"", "Customer", "Dibatalkan / cancelled", "Attempt closed; order stays pending until expiry"),
+r("Dibayar", "Refund recorded (full)", "Owner / Admin", "Refund penuh / refunded", "Revenue −amount on refund date (D12)"),
+r("Dibayar", "Refund recorded (partial)", "Owner / Admin", "Refund sebagian / partially_refunded", "Revenue −amount; amount ≤ paid − already refunded")
+],
+note: "Rule: a customer click can never set Dibayar. The prototype's \"payment.paid\" button is a labelled stand-in for the gateway webhook and is not shown to customers." },
+{ title: "3 · Shipment and shipping quote", code: "shipment.status · quote.status",
+path: path(["Quote requested", "Quoted", "Selected", "Dibuat / created", "Dalam perjalanan", "Diterima"]),
+rows: [
+r("—", "Checkout step 1 with address + cart weight", "Storefront", "Quote requested", "Loading state"),
+r("Quote requested", "Provider returns services", "Shipping provider (mock)", "Quoted", "All rates labelled \"simulasi\""),
+r("Quote requested", "Provider error / timeout", "Shipping provider (mock)", "Quote failed", "Retry; contact CS"),
+r("Quote requested", "No service for destination", "Shipping provider (mock)", "No service", "Change address"),
+r("Quoted / Selected", "Address, items or quantity change", "Customer", "Invalidated", "Selection cleared; re-quote"),
+r("Quoted / Selected", "30 minutes pass", "System timer", "Expired", "Re-quote before \"Buat Pesanan\""),
+r("—", "\"Kirim\" with tracking ref", "Operations", "Dibuat", "Order → Dikirim"),
+r("Dibuat", "in_transit / delivered / exception / returned", "Courier (mock events)", "per event", "Mirrors order status rows above")
+],
+note: "Courier names are neutral placeholders (Kurir A–D). Real provider vocabularies are mapped by Agent 02 once a provider is chosen." },
+{ title: "4 · Stock per variant", code: "available = on_hand − reserved",
+path: path(["On hand", "Reserved at order", "Sold at payment"]),
+rows: [
+r("—", "Order created", "Customer", "reserved + q", "Refused if available < q → \"Stok berubah\" state"),
+r("reserved", "payment.paid", "Gateway (mock)", "on_hand − q, reserved − q", "Available unchanged"),
+r("reserved", "Expired / cancelled before payment", "System / Customer", "reserved − q", "Available + q"),
+r("on_hand", "Paid order cancelled with restock", "Owner / Admin", "on_hand + q", "Audit log"),
+r("on_hand", "Returned parcel received", "Operations", "on_hand + q", "Audit log"),
+r("on_hand", "Manual adjustment (reason required)", "Operations / Admin", "on_hand ± q", "Audit log; cannot go below reserved"),
+r("available", "available ≤ threshold (default 10)", "System", "Low-stock alert", "Admin dashboard + inventory list")
+],
+note: "Cart does not hold stock. Stock is re-checked at cart view, at each checkout step and at \"Buat Pesanan\"." }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Sambung Checkout Review and Payment</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E1726}a:hover{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 2100px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S17 + S18 · /checkout/ringkasan · HEMAT50 rejected, KABEL10 + GRATISONGKIR applied (D3)</div>
+<div style="width: 1440px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 48px; padding: 18px 48px; border-bottom: 1px solid #CBD2DC">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span>
+<ol aria-label="Langkah checkout" style="margin: 0; padding: 0; list-style: none; display: flex; gap: 12px; align-items: center; font-size: 14px"><li style="display: flex; gap: 8px; align-items: center"><span style="width: 28px; height: 28px; border-radius: 14px; background: #1E7A45; color: #FFFFFF; display: flex; align-items: center; justify-content: center">✓</span>Pengiriman</li><li aria-hidden="true" style="width: 40px; height: 2px; background: #1E7A45"></li><li aria-current="step" style="display: flex; gap: 8px; align-items: center; font-weight: 600"><span style="width: 28px; height: 28px; border-radius: 14px; background: #1F5AE0; color: #FFFFFF; display: flex; align-items: center; justify-content: center">2</span>Ringkasan</li><li aria-hidden="true" style="width: 40px; height: 2px; background: #CBD2DC"></li><li style="display: flex; gap: 8px; align-items: center; color: #4A5568"><span style="width: 26px; height: 26px; border-radius: 13px; border: 1.5px solid #7D8796; display: flex; align-items: center; justify-content: center">3</span>Pembayaran</li></ol>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 40px; padding: 32px 48px 48px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; font-size: 14px">
+<div style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px"><span style="display: flex; justify-content: space-between"><b>Dikirim ke · Rumah</b><a href="#" style="color: #1747B5">Ubah</a></span><span style="color: #2D3748">Rina Pratama · Jl. Melati No. 12, Kec. Coblong, Kota Bandung 40132</span></div>
+<div style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px"><span style="display: flex; justify-content: space-between"><b>Kurir A · Reguler</b><a href="#" style="color: #1747B5">Ubah</a></span><span style="color: #2D3748">Estimasi 2–3 hari · Rp18.000 <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">SIMULASI</span></span></div>
+</div>
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Barang (3)</h2>
+<div style="border: 1px solid #CBD2DC; border-radius: 6px">
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) 130px 60px 120px; gap: 14px; padding: 14px 16px; align-items: center; font-size: 14px; border-bottom: 1px solid #E3E7ED"><div style="height: 64px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Kabel USB-C 100W" hint-size="64px,64px"></dc-import></div><span style="display: flex; flex-direction: column"><b>Kabel USB-C ke USB-C 100W Braided</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">2 m · Hitam · kategori Kabel</span></span><span style="font-family: 'JetBrains Mono', monospace">Rp159.000</span><span>×2</span><b style="text-align: right; font-family: 'JetBrains Mono', monospace">Rp318.000</b></div>
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) 130px 60px 120px; gap: 14px; padding: 14px 16px; align-items: center; font-size: 14px"><div style="height: 64px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="charger" bg="#FDF1DC" fg="#0E1726" accent="#F5A524" label="Charger GaN 65W" hint-size="64px,64px"></dc-import></div><span style="display: flex; flex-direction: column"><b>Charger GaN 65W 3 Port</b><span style="font-size: 12px; color: #4A5568"><span style="background: #F5A524; color: #0E1726; border-radius: 3px; padding: 0 4px; font-weight: 700">FLASH −25%</span> tidak ikut voucher pesanan</span></span><span style="font-family: 'JetBrains Mono', monospace">Rp299.250</span><span>×1</span><b style="text-align: right; font-family: 'JetBrains Mono', monospace">Rp299.250</b></div>
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Voucher</h2>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600" for="vc">Kode voucher</label>
+<div style="display: flex; gap: 10px"><input id="vc" value="HEMAT50" aria-invalid="true" aria-describedby="vc-err" style="flex: 1; height: 46px; border: 2px solid #C0262D; border-radius: 6px; padding: 0 14px; font-family: 'JetBrains Mono', monospace; font-size: 15px"><button type="button" style="height: 46px; padding: 0 22px; border: 1.5px solid #0E1726; border-radius: 6px; background: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600">Pakai</button></div>
+<span id="vc-err" style="font-size: 13px; color: #C0262D; font-weight: 500">HEMAT50 belum bisa dipakai: min. belanja Rp500.000 di luar produk flash sale. Belanja yang memenuhi syarat: Rp318.000.</span>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px">
+<div style="border: 2px solid #1F5AE0; background: #EAF0FD; border-radius: 6px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px"><span><b style="font-family: 'JetBrains Mono', monospace">KABEL10</b> · 10% untuk kategori Kabel, maks. Rp30.000 <span style="color: #4A5568">(10% × Rp318.000 = Rp31.800)</span></span><span style="display: flex; gap: 14px; align-items: center"><b style="font-family: 'JetBrains Mono', monospace">−Rp30.000</b><button type="button" style="border: none; background: none; color: #1747B5; text-decoration: underline; font-family: inherit; font-size: 13px">Lepas</button></span></div>
+<div style="border: 2px solid #1F5AE0; background: #EAF0FD; border-radius: 6px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px"><span><b style="font-family: 'JetBrains Mono', monospace">GRATISONGKIR</b> · voucher ongkir, maks. Rp20.000</span><span style="display: flex; gap: 14px; align-items: center"><b style="font-family: 'JetBrains Mono', monospace">−Rp18.000</b><button type="button" style="border: none; background: none; color: #1747B5; text-decoration: underline; font-family: inherit; font-size: 13px">Lepas</button></span></div>
+</div>
+<span style="font-size: 13px; color: #4A5568">Maks. 1 voucher pesanan + 1 voucher ongkir per transaksi.</span>
+</section>
+</div>
+<aside style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Rincian harga</b>
+<div style="display: flex; justify-content: space-between"><span>Subtotal (3 barang)</span><span style="font-family: 'JetBrains Mono', monospace">Rp617.250</span></div>
+<div style="display: flex; justify-content: space-between; color: #1E7A45"><span>Voucher KABEL10</span><span style="font-family: 'JetBrains Mono', monospace">−Rp30.000</span></div>
+<div style="display: flex; justify-content: space-between"><span>Ongkir · Kurir A Reguler</span><span style="font-family: 'JetBrains Mono', monospace">Rp18.000</span></div>
+<div style="display: flex; justify-content: space-between; color: #1E7A45"><span>Voucher GRATISONGKIR</span><span style="font-family: 'JetBrains Mono', monospace">−Rp18.000</span></div>
+<div style="border-top: 2px solid #0E1726; padding-top: 12px; margin-top: 4px; display: flex; justify-content: space-between; font-size: 20px"><b>Total</b><b style="font-family: 'JetBrains Mono', monospace">Rp587.250</b></div>
+<span style="font-size: 13px; color: #1E7A45; font-weight: 600">Total hemat Rp147.750 (flash sale Rp99.750 + voucher Rp48.000)</span>
+<span style="font-size: 12px; color: #4A5568">Harga sudah termasuk PPN.</span>
+<button type="button" style="margin-top: 6px; height: 50px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 600">Lanjut ke Pembayaran</button>
+</aside>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S19 · /checkout/pembayaran · order created on "Buat Pesanan" (I4)</div>
+<div style="width: 1440px; background: #FFFFFF; display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 40px; padding: 32px 48px 40px; box-sizing: border-box; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Metode pembayaran</h2><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">SIMULASI · TIDAK ADA TRANSAKSI NYATA</span></div>
+<div role="radio" aria-checked="true" style="border: 2px solid #1F5AE0; background: #EAF0FD; border-radius: 6px; padding: 16px; display: flex; gap: 14px; align-items: center"><span style="width: 22px; height: 22px; border-radius: 11px; border: 2px solid #1F5AE0; display: flex; align-items: center; justify-content: center; box-sizing: border-box"><span style="width: 10px; height: 10px; border-radius: 5px; background: #1F5AE0"></span></span><span style="width: 56px; height: 34px; border-radius: 4px; background: #FFFFFF; border: 1px solid #CBD2DC; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700">QRIS</span><span style="display: flex; flex-direction: column"><b>QRIS</b><span style="font-size: 13px; color: #4A5568">Scan dari aplikasi bank atau e-wallet · bayar dalam 15 menit</span></span></div>
+<div role="radio" aria-checked="false" style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 16.5px; display: flex; gap: 14px; align-items: center"><span style="width: 22px; height: 22px; border-radius: 11px; border: 1.5px solid #7D8796; box-sizing: border-box"></span><span style="width: 56px; height: 34px; border-radius: 4px; background: #F2F4F7; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700">VA</span><span style="display: flex; flex-direction: column"><b>Virtual Account · Bank A / B / C</b><span style="font-size: 13px; color: #4A5568">Transfer ke nomor VA · bayar dalam 24 jam</span></span></div>
+<div role="radio" aria-checked="false" style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 16.5px; display: flex; gap: 14px; align-items: center"><span style="width: 22px; height: 22px; border-radius: 11px; border: 1.5px solid #7D8796; box-sizing: border-box"></span><span style="width: 56px; height: 34px; border-radius: 4px; background: #F2F4F7; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700">E-WALLET</span><span style="display: flex; flex-direction: column"><b>E-wallet</b><span style="font-size: 13px; color: #4A5568">Diarahkan ke aplikasi · bayar dalam 15 menit</span></span></div>
+<div aria-disabled="true" style="border: 1.5px dashed #CBD2DC; border-radius: 6px; padding: 16.5px; display: flex; gap: 14px; align-items: center; color: #4A5568"><span style="width: 22px; height: 22px; border-radius: 11px; border: 1.5px solid #CBD2DC; background: #EEF1F5; box-sizing: border-box"></span><span style="display: flex; flex-direction: column"><b>Kartu kredit / paylater</b><span style="font-size: 13px">Segera hadir</span></span></div>
+</div>
+<aside style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<div style="display: flex; justify-content: space-between; font-size: 20px"><b>Total</b><b style="font-family: 'JetBrains Mono', monospace">Rp587.250</b></div>
+<span style="font-size: 12px; color: #4A5568">Dengan menekan tombol, kamu menyetujui <a href="#">Syarat &amp; Ketentuan</a>. Stok dan harga dicek ulang saat pesanan dibuat.</span>
+<button type="button" style="height: 50px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 600">Buat Pesanan · Rp587.250</button>
+</aside>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 32px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S20 /pembayaran/ORD-261020-0010</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid #CBD2DC"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Pembayaran</b><span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">ORD-261020-0010</span></div>
+<div role="status" style="margin: 16px; background: #FDF1DC; color: #8A5300; border-radius: 6px; padding: 14px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center"><b style="font-size: 15px">Menunggu pembayaran</b><span style="font-size: 13px">Bayar sebelum <b>10:30 WIB</b> · sisa <span style="font-family: 'JetBrains Mono', monospace; font-weight: 500">13:52</span></span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 16px 16px">
+<div role="img" aria-label="Kode QR simulasi untuk pembayaran Rp587.250" style="width: 220px; height: 220px; border: 1px solid #CBD2DC; border-radius: 8px; display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(7, 1fr); gap: 4px; padding: 14px; box-sizing: border-box"><span style="background: #0E1726; grid-column: span 2; grid-row: span 2"></span><span></span><span style="background: #0E1726"></span><span></span><span style="background: #0E1726; grid-column: span 2; grid-row: span 2"></span><span style="background: #0E1726"></span><span></span><span style="background: #0E1726"></span><span style="background: #0E1726"></span><span></span><span style="background: #0E1726"></span><span></span><span style="background: #0E1726"></span><span></span><span style="background: #0E1726"></span><span style="background: #0E1726"></span><span></span><span style="background: #0E1726"></span><span></span><span style="background: #0E1726"></span><span style="background: #0E1726; grid-column: span 2; grid-row: span 2"></span><span></span><span style="background: #0E1726"></span><span style="background: #0E1726"></span><span></span><span></span><span style="background: #0E1726"></span><span style="background: #0E1726"></span><span></span></div>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">QR SIMULASI · BUKAN UNTUK DIBAYAR</span>
+<span style="font-size: 13px; color: #4A5568">Total</span>
+<b style="font-family: 'JetBrains Mono', monospace; font-size: 28px">Rp587.250</b>
+</div>
+<ol style="margin: 0 16px 16px; padding-left: 20px; font-size: 13px; line-height: 1.7; color: #2D3748"><li>Buka aplikasi bank atau e-wallet</li><li>Pilih "Scan QRIS" lalu arahkan ke kode</li><li>Periksa nominal Rp587.250, lalu konfirmasi</li></ol>
+<div style="padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px">
+<button type="button" style="height: 50px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600">Cek status pembayaran</button>
+<button type="button" style="height: 48px; border: 1.5px solid #0E1726; border-radius: 6px; background: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600">Ganti metode pembayaran</button>
+<button type="button" style="height: 44px; border: none; background: none; color: #C0262D; text-decoration: underline; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px">Batalkan pesanan</button>
+</div>
+<div style="margin: 0 16px 16px; border: 2px dashed #7D8796; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 12px"><b style="font-family: 'JetBrains Mono', monospace">PROTOTYPE ONLY · event gateway (mock)</b><div style="display: flex; gap: 6px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace"><span style="border: 1px solid #4A5568; border-radius: 4px; padding: 5px 8px">payment.paid</span><span style="border: 1px solid #4A5568; border-radius: 4px; padding: 5px 8px">payment.failed</span><span style="border: 1px solid #4A5568; border-radius: 4px; padding: 5px 8px">payment.expired</span></div><span style="color: #4A5568">Tidak ditampilkan ke pelanggan sungguhan.</span></div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S21 paid → S22 confirmation (10:21 WIB)</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="padding: 32px 20px 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 64px; height: 64px; border-radius: 32px; background: #E3F4EA; color: #1E7A45; display: flex; align-items: center; justify-content: center; font-size: 30px" aria-hidden="true">✓</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600">Pembayaran diterima</h1>
+<span style="font-size: 14px; color: #4A5568">ORD-261020-0010 · QRIS · 20 Okt 2026, 10:21 WIB</span>
+</div>
+<div style="margin: 0 16px; border: 1px solid #CBD2DC; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<div style="display: flex; justify-content: space-between"><span>Kabel USB-C 100W · 2 m ×2</span><span style="font-family: 'JetBrains Mono', monospace">Rp318.000</span></div>
+<div style="display: flex; justify-content: space-between"><span>Charger GaN 65W ×1</span><span style="font-family: 'JetBrains Mono', monospace">Rp299.250</span></div>
+<div style="display: flex; justify-content: space-between; color: #1E7A45"><span>Voucher</span><span style="font-family: 'JetBrains Mono', monospace">−Rp30.000</span></div>
+<div style="display: flex; justify-content: space-between"><span>Ongkir − voucher ongkir</span><span style="font-family: 'JetBrains Mono', monospace">Rp0</span></div>
+<div style="border-top: 1px solid #CBD2DC; padding-top: 8px; display: flex; justify-content: space-between"><b>Total dibayar</b><b style="font-family: 'JetBrains Mono', monospace">Rp587.250</b></div>
+</div>
+<div style="margin: 16px; background: #F2F4F7; border-radius: 8px; padding: 14px; font-size: 13px; line-height: 1.6"><b>Berikutnya:</b> pesanan diproses tim kami, lalu kamu mendapat nomor resi. Estimasi tiba 2–3 hari kerja setelah dikirim (simulasi).</div>
+<div style="padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px"><a href="#" style="height: 50px; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 600; text-decoration: none">Lihat pesanan</a><a href="#" style="height: 48px; border-radius: 6px; border: 1.5px solid #0E1726; display: flex; align-items: center; justify-content: center; font-weight: 600; text-decoration: none">Belanja lagi</a></div>
+<div style="border-top: 1px solid #CBD2DC; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">OTHER RESULT STATES (S21)</span>
+<div style="background: #FCE6E7; color: #C0262D; border-radius: 6px; padding: 12px; font-size: 13px; display: flex; flex-direction: column; gap: 2px"><b>Pembayaran gagal</b><span style="color: #7A1A1E">Pesanan tetap menunggu sampai 10:30 WIB. Coba lagi atau ganti metode.</span></div>
+<div style="background: #F2F4F7; border-radius: 6px; padding: 12px; font-size: 13px; display: flex; flex-direction: column; gap: 2px"><b>Waktu pembayaran habis</b><span style="color: #4A5568">Pesanan dibatalkan dan stok dilepas. "Pesan ulang" memulihkan isi keranjang.</span></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":2100}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

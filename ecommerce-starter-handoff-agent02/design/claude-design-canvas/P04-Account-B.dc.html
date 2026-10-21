@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Prototype Account Sambung</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #1F5AE0;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F2F4F7; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; flex-direction: column; overflow: hidden; position: relative; font-size: 14px">
+
+<header style="height: 56px; flex: none; border-bottom: 1px solid #CBD2DC; display: flex; align-items: center; gap: 4px; padding: 0 6px; background: #FFFFFF">
+<sc-if value="{{hasBack}}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="Kembali" onClick="{{back}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 22px">‹</button></sc-if>
+<b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; padding: 0 6px">{{title}}</b>
+<span style="margin-left: auto; font-size: 12px; color: #4A5568; padding-right: 8px">Keranjang {{cartCount}}</span>
+</header>
+
+<main style="flex: 1; overflow-y: auto; min-height: 0">
+
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 14px"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Hai, Rina</b><div style="font-size: 13px; color: #4A5568">rina@example.com · akun demo C-0001</div></div>
+<nav aria-label="Menu akun" style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; display: flex; flex-direction: column"><sc-for list="{{menu}}" as="m" hint-placeholder-count="4"><button type="button" onClick="{{m.go}}" style="min-height: 52px; border: none; border-bottom: 1px solid #E3E7ED; background: none; display: flex; justify-content: space-between; align-items: center; padding: 0 14px; font-size: 15px; color: #0E1726"><span>{{m.t}}</span><span style="color: #4A5568">{{m.d}} ›</span></button></sc-for></nav>
+<section style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px"><h2 style="margin: 0; font-size: 15px">{{recTitle}}</h2><span style="font-size: 12px; color: #4A5568">{{recWhy}}</span>
+<sc-for list="{{recs}}" as="r" hint-placeholder-count="3"><div style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px; align-items: center; border-top: 1px solid #E3E7ED; padding-top: 8px"><dc-import name="ProductArt" kind="{{r.kind}}" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="{{r.name}}" hint-size="56px,56px"></dc-import><span style="display: flex; flex-direction: column"><b style="font-size: 13px">{{r.name}}</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px">{{r.price}}</span><span style="font-size: 12px; color: #4A5568">{{r.why}}</span></span></div></sc-for>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isOrders}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px">
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="2"><button type="button" onClick="{{o.open}}" style="text-align: left; background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; color: #0E1726">
+<span style="display: flex; justify-content: space-between; width: 100%"><b style="font-family: 'JetBrains Mono', monospace; font-size: 13px">{{o.no}}</b><span style="{{o.chipSt}}">{{o.status}}</span></span>
+<span style="font-size: 12px; color: #4A5568">{{o.date}} · {{o.short}}</span><span style="{{o.noteSt}}">{{o.note}}</span><span style="font-size: 13px; color: #1747B5; text-decoration: underline">{{o.cta}}</span></button></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px">
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; justify-content: space-between"><b style="font-family: 'JetBrains Mono', monospace">{{od.no}}</b><span style="{{od.chipSt}}">{{od.status}}</span></span>
+<span style="font-size: 12px; color: #4A5568">{{od.meta}}</span>
+<sc-if value="{{od.hasResi}}" hint-placeholder-val="{{ false }}"><span style="display: flex; align-items: center; gap: 8px; font-size: 13px">Resi <b style="font-family: 'JetBrains Mono', monospace">SIM-KA-88213004</b><button type="button" onClick="{{copyResi}}" style="min-height: 36px; padding: 0 10px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-size: 12px; font-weight: 600">Salin</button></span></sc-if>
+<ol aria-label="Tahap pesanan" style="list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px"><sc-for list="{{od.steps}}" as="s" hint-placeholder-count="5"><li aria-current="{{s.cur}}" style="display: flex; flex-direction: column; gap: 4px; font-size: 11px"><span style="{{s.bar}}"></span><span style="{{s.lbl}}">{{s.t}}</span></li></sc-for></ol>
+</div>
+<sc-if value="{{od.overdue}}" hint-placeholder-val="{{ false }}"><div role="status" style="background: #FDF1DC; color: #6B4100; border-radius: 6px; padding: 10px 12px; font-size: 13px; display: flex; flex-direction: column; gap: 6px"><b>Belum ada pembaruan dari kurir sejak 15 Okt, 18:22 WIB</b><span>Lebih dari 72 jam. Kami bisa bantu menanyakan ke kurir.</span><button type="button" onClick="{{openWa}}" style="align-self: flex-start; min-height: 44px; padding: 0 14px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-weight: 600">Hubungi CS via WhatsApp</button></div></sc-if>
+<section style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px"><h2 style="margin: 0; font-size: 15px">Riwayat status</h2>
+<sc-for list="{{od.tl}}" as="t" hint-placeholder-count="4"><div style="display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 8px; align-items: start; border-top: 1px solid #E3E7ED; padding-top: 6px"><span style="{{t.dot}}"></span><span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 600">{{t.s}}</span><span style="font-size: 12px; color: #4A5568">{{t.d}}</span></span></div></sc-for></section>
+<section style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 13px"><h2 style="margin: 0 0 4px; font-size: 15px">Rincian</h2>
+<sc-for list="{{od.rows}}" as="r" hint-placeholder-count="5"><span style="{{r.st}}"><span>{{r.l}}</span><span style="font-family: 'JetBrains Mono', monospace">{{r.v}}</span></span></sc-for>
+<span style="color: #4A5568; margin-top: 6px">{{od.pay}}</span><span style="color: #4A5568">Rina Pratama · Jl. Melati No. 12, Kec. Coblong, Kota Bandung 40132</span></section>
+</div>
+</sc-if>
+
+<sc-if value="{{isWish}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px">
+<sc-if value="{{wishEmpty}}" hint-placeholder-val="{{ false }}"><span style="color: #4A5568">Wishlist kosong.</span></sc-if>
+<sc-for list="{{wish}}" as="w" hint-placeholder-count="2"><div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 10px 12px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; align-items: center">
+<dc-import name="ProductArt" kind="{{w.kind}}" bg="#F2F4F7" fg="#1A2233" accent="{{w.ac}}" label="{{w.name}}" hint-size="64px,64px"></dc-import>
+<div style="display: flex; flex-direction: column; gap: 4px"><b style="font-size: 13px">{{w.name}}</b><span style="font-family: 'JetBrains Mono', monospace">{{w.price}}</span><span style="{{w.stockSt}}">{{w.stock}}</span>
+<div style="display: flex; gap: 10px; align-items: center"><button type="button" disabled="{{w.oos}}" onClick="{{w.add}}" style="{{w.addSt}}">{{w.addT}}</button><button type="button" onClick="{{w.rm}}" style="border: none; background: none; color: #C0262D; text-decoration: underline; font-size: 13px; min-height: 40px">Hapus</button></div></div></div></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{isAddr}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px">
+<div style="background: #FFFFFF; border: 2px solid #1F5AE0; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px"><b>Rumah · utama</b><span style="font-size: 13px">Rina Pratama · 0812-0000-1234</span><span style="font-size: 12px; color: #4A5568">Jl. Melati No. 12, RT 03/RW 05, Kec. Coblong, Kota Bandung, Jawa Barat 40132</span></div>
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px"><b>Kantor</b><span style="font-size: 13px">Rina Pratama · 0812-0000-1234</span><span style="font-size: 12px; color: #4A5568">Jl. Kenanga No. 8, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40111</span></div>
+<span style="font-size: 12px; color: #4A5568">Formulir tambah/ubah alamat ada di desain H14 (field D13). Tidak dibuat interaktif di prototipe ini.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isPrefs}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 16px">
+<span style="font-size: 13px; color: #4A5568">Pilihanmu disimpan beserta waktunya sebagai bukti persetujuan. Bisa diubah kapan saja.</span>
+<sc-for list="{{prefs}}" as="p" hint-placeholder-count="3"><div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><span style="display: flex; flex-direction: column"><b id="{{p.id}}">{{p.t}}</b><span style="font-size: 12px; color: #4A5568">{{p.d}}</span></span><button type="button" role="switch" aria-checked="{{p.on}}" aria-labelledby="{{p.id}}" onClick="{{p.flip}}" style="border: none; background: none; padding: 8px 0; min-width: 48px"><span style="{{p.track}}"><span style="{{p.knob}}"></span></span></button></div>
+<span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #4A5568">{{p.stamp}}</span><span style="{{p.warnSt}}">{{p.warn}}</span></div></sc-for>
+</div>
+</sc-if>
+
+</main>
+
+<sc-if value="{{showSave}}" hint-placeholder-val="{{ false }}">
+<footer style="flex: none; border-top: 1px solid #CBD2DC; padding: 10px 16px 14px; background: #FFFFFF; display: flex; gap: 8px">
+<button type="button" disabled="{{saveDis}}" onClick="{{discard}}" style="flex: 1; min-height: 48px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-weight: 600">Batal</button>
+<button type="button" disabled="{{saveDis}}" onClick="{{save}}" style="{{saveSt}}">Simpan</button>
+</footer>
+</sc-if>
+
+<sc-if value="{{waOpen}}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" onClick="{{closeWa}}" style="position: absolute; inset: 0; background: rgba(14,23,38,0.55)"></div>
+<div role="dialog" aria-modal="true" aria-labelledby="wa-t" style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 12px 12px 0 0; padding: 20px 16px 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="wa-t" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Buka WhatsApp CS?</h2>
+<span>Pesan yang akan terisi otomatis:</span>
+<div style="background: #F2F4F7; border-radius: 6px; padding: 10px 12px; font-size: 13px">Halo, saya ingin menanyakan pesanan ORD-261014-0003.</div>
+<span style="font-size: 12px; color: #4A5568">Hanya nomor pesanan yang dikirim. Nomor WhatsApp CS diisi pemilik toko (D16). Di prototipe tidak ada yang benar-benar dibuka.</span>
+<div style="display: flex; gap: 8px"><button type="button" onClick="{{closeWa}}" style="flex: 1; min-height: 48px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-weight: 600">Batal</button><button type="button" onClick="{{sendWa}}" style="flex: 1; min-height: 48px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-weight: 600">Buka WhatsApp (simulasi)</button></div>
+</div>
+</sc-if>
+
+<div aria-live="polite" style="{{toastSt}}">{{toast}}</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var S = this.state || {};
+var self = this;
+var set = function (o) { self.setState(o); };
+var screen = S.s || "home";
+var saved = S.saved || { email: false, wa: true, rec: true };
+var draft = S.draft || saved;
+var stamps = S.stamps || { email: "Tidak diizinkan · diubah 20 Okt 2026", wa: "Diizinkan · 14 Okt 2026", rec: "Diizinkan · 14 Okt 2026" };
+var wishIds = S.wish || ["B04", "B06"];
+var go = function (s) { return function () { set({ s: s, toast: "" }); }; };
+var chip = "display:inline-flex;padding:3px 8px;border-radius:4px;font-size:12px;font-weight:600;";
+var paidChip = chip + "background:#E3F4EA;color:#1E7A45";
+var shipChip = chip + "background:#EAF0FD;color:#1747B5";
+var row = "display:flex;justify-content:space-between";
+var on = "display:block;height:6px;border-radius:3px;background:#1F5AE0";
+var off = "display:block;height:6px;border-radius:3px;background:#E3E7ED";
+var dOn = "width:14px;height:14px;border-radius:7px;background:#1F5AE0;margin-top:3px";
+var dCur = "width:14px;height:14px;border-radius:7px;background:#FFFFFF;border:3px solid #1F5AE0;box-sizing:border-box;margin-top:3px";
+function steps(n) { return ["Dibayar", "Diproses", "Dikirim", "Jalan", "Diterima"].map(function (t, i) { return { t: t, bar: i < n ? on : off, lbl: i < n ? "font-weight:600" : "color:#4A5568", cur: i === n - 1 ? "step" : "false" }; }); }
+var O = {
+"0010": { no: "ORD-261020-0010", status: "Dibayar", chipSt: paidChip, date: "20 Okt 2026", short: "3 barang · Rp587.250", note: "Menunggu diproses tim kami", noteSt: "font-size:13px;color:#4A5568", cta: "Lihat detail",
+meta: "Dipesan 20 Okt 2026, 10:15 WIB · Kurir A Reguler", hasResi: false, overdue: false, steps: steps(1),
+tl: [{ s: "Dibayar · QRIS", d: "20 Okt 2026, 10:21 WIB", dot: dCur }, { s: "Pesanan dibuat", d: "20 Okt 2026, 10:15 WIB", dot: dOn }],
+rows: [{ l: "Kabel USB-C 100W · 2 m Hitam ×2", v: "Rp318.000", st: row }, { l: "Charger GaN 65W ×1 (flash sale)", v: "Rp299.250", st: row }, { l: "Voucher KABEL10", v: "−Rp30.000", st: row + ";color:#1E7A45" }, { l: "Ongkir Kurir A", v: "Rp18.000", st: row }, { l: "Voucher GRATISONGKIR", v: "−Rp18.000", st: row + ";color:#1E7A45" }, { l: "Total", v: "Rp587.250", st: row + ";font-weight:700;border-top:1px solid #E3E7ED;padding-top:4px" }],
+pay: "QRIS · dibayar 20 Okt, 10:21 WIB (simulasi)" },
+"0003": { no: "ORD-261014-0003", status: "Dalam Perjalanan", chipSt: shipChip, date: "14 Okt 2026", short: "2 barang · Rp386.000", note: "Belum ada pembaruan kurir sejak 15 Okt 18:22", noteSt: "font-size:13px;color:#8A5300;font-weight:600", cta: "Lacak pesanan",
+meta: "Dipesan 14 Okt 2026, 09:12 WIB · Kurir A Reguler", hasResi: true, overdue: true, steps: steps(4),
+tl: [{ s: "Dalam perjalanan · Hub Jakarta (simulasi)", d: "15 Okt 2026, 18:22 WIB · dari kurir", dot: dCur }, { s: "Dikirim · resi dibuat", d: "15 Okt 2026, 10:40 WIB", dot: dOn }, { s: "Diproses", d: "14 Okt 2026, 13:05 WIB", dot: dOn }, { s: "Dibayar · Virtual Account", d: "14 Okt 2026, 09:20 WIB", dot: dOn }, { s: "Pesanan dibuat", d: "14 Okt 2026, 09:12 WIB", dot: dOn }],
+rows: [{ l: "Adaptor USB-C ke HDMI 4K60 ×1", v: "Rp219.000", st: row }, { l: "Kabel USB-C ke Lightning · 1 m ×1", v: "Rp149.000", st: row }, { l: "Ongkir", v: "Rp18.000", st: row }, { l: "Total", v: "Rp386.000", st: row + ";font-weight:700;border-top:1px solid #E3E7ED;padding-top:4px" }],
+pay: "Virtual Account Bank A · dibayar 14 Okt, 09:20 WIB" }
+};
+var orders = ["0010", "0003"].map(function (k) { var o = O[k]; return { no: o.no, status: o.status, chipSt: o.chipSt, date: o.date, short: o.short, note: o.note, noteSt: o.noteSt, cta: o.cta, open: function () { set({ s: "detail", oid: k, toast: "" }); } }; });
+var od = O[S.oid || "0003"];
+var W = { B04: { name: "Hub USB-C 7-in-1", kind: "hub", ac: "#1F5AE0", price: "Rp549.000", stock: "Sisa 4", oos: false }, B06: { name: "Kabel HDMI 2.1 8K · 2 m", kind: "cable", ac: "#C0262D", price: "Rp179.000", stock: "Stok habis", oos: true } };
+var wish = wishIds.map(function (id) { var w = W[id]; return { name: w.name, kind: w.kind, ac: w.ac, price: w.price, stock: w.stock, oos: w.oos,
+stockSt: "font-size:12px;font-weight:600;color:" + (w.oos ? "#C0262D" : "#8A5300"), addT: w.oos ? "Stok habis" : "+ Keranjang",
+addSt: "min-height:40px;padding:0 12px;border:none;border-radius:6px;font-size:13px;font-weight:600;" + (w.oos ? "background:#CBD2DC;color:#4A5568" : "background:#1F5AE0;color:#FFFFFF"),
+add: function () { set({ cart: (S.cart || 0) + 1, toast: "Ditambahkan: " + w.name }); },
+rm: function () { set({ wish: wishIds.filter(function (x) { return x !== id; }), toast: "Dihapus dari wishlist" }); } }; });
+var tOn = "position:relative;display:inline-block;width:48px;height:28px;border-radius:14px;background:#1F5AE0";
+var tOff = "position:relative;display:inline-block;width:48px;height:28px;border-radius:14px;background:#7D8796";
+var kOn = "position:absolute;right:3px;top:3px;width:22px;height:22px;border-radius:11px;background:#FFFFFF";
+var kOff = "position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:11px;background:#FFFFFF";
+var PREF = [
+{ k: "email", t: "Email promo & produk baru", d: "Maks. 2 email per bulan.", offWarn: "" },
+{ k: "wa", t: "Info pesanan lewat WhatsApp", d: "Pembayaran diterima, resi, dan kendala pengiriman.", offWarn: "Info pesanan tetap dikirim lewat email." },
+{ k: "rec", t: "Rekomendasi pribadi", d: "Saran berdasarkan pesanan dan wishlist di situs ini.", offWarn: "Rekomendasi di akun diganti produk populer umum." }
+];
+var dirty = PREF.some(function (p) { return draft[p.k] !== saved[p.k]; });
+var prefs = PREF.map(function (p) { var v = !!draft[p.k]; var changed = v !== saved[p.k]; var w = v ? "" : p.offWarn;
+return { id: "pf-" + p.k, t: p.t, d: p.d, on: v ? "true" : "false", track: v ? tOn : tOff, knob: v ? kOn : kOff, stamp: changed ? "Belum disimpan" : stamps[p.k], warn: w, warnSt: w ? "font-size:12px;color:#8A5300" : "display:none",
+flip: function () { var d2 = { email: draft.email, wa: draft.wa, rec: draft.rec }; d2[p.k] = !v; set({ draft: d2 }); } }; });
+var save = function () { var st2 = { email: stamps.email, wa: stamps.wa, rec: stamps.rec }; PREF.forEach(function (p) { if (draft[p.k] !== saved[p.k]) st2[p.k] = (draft[p.k] ? "Diizinkan" : "Tidak diizinkan") + " · diubah 20 Okt 2026, 10:16 WIB"; }); set({ saved: { email: draft.email, wa: draft.wa, rec: draft.rec }, stamps: st2, toast: "Preferensi disimpan dengan waktu perubahan." }); };
+var recOn = saved.rec;
+var recs = recOn ? [
+{ name: "Hub USB-C 7-in-1", price: "Rp549.000", why: "Ada di wishlist kamu · sisa 4", kind: "hub" },
+{ name: "Kabel USB-A ke USB-C · 1 m", price: "Rp69.000", why: "Kategori Kabel dari pesananmu", kind: "cable" },
+{ name: "Kabel DisplayPort 1.4 · 2 m", price: "Rp199.000", why: "Kategori yang sering kamu lihat", kind: "cable" }
+] : [
+{ name: "Kabel USB-C ke USB-C 100W Braided", price: "mulai Rp129.000", why: "Terlaris minggu ini (3 unit)", kind: "cable" },
+{ name: "Charger GaN 65W 3 Port", price: "Rp299.250", why: "Flash sale s/d 22 Okt", kind: "charger" }
+];
+var titles = { home: "Akun", orders: "Pesanan", detail: "Detail pesanan", wish: "Wishlist", addr: "Buku alamat", prefs: "Preferensi komunikasi" };
+var backMap = { orders: "home", detail: "orders", wish: "home", addr: "home", prefs: "home" };
+return {
+title: titles[screen], isHome: screen === "home", isOrders: screen === "orders", isDetail: screen === "detail", isWish: screen === "wish", isAddr: screen === "addr", isPrefs: screen === "prefs",
+hasBack: !!backMap[screen], back: function () { set({ s: backMap[screen] || "home", toast: "", draft: saved }); },
+menu: [{ t: "Pesanan", d: "2", go: go("orders") }, { t: "Wishlist", d: String(wishIds.length), go: go("wish") }, { t: "Buku alamat", d: "2", go: go("addr") }, { t: "Preferensi komunikasi", d: "", go: go("prefs") }],
+recTitle: recOn ? "Rekomendasi untukmu" : "Produk populer", recWhy: recOn ? "Berdasarkan pesanan dan wishlist (izin rekomendasi pribadi: aktif)." : "Rekomendasi pribadi dimatikan, jadi ini daftar umum yang sama untuk semua orang.", recs: recs,
+orders: orders, od: od, copyResi: function () { set({ toast: "Nomor resi disalin (simulasi)" }); },
+waOpen: !!S.wa, openWa: function () { set({ wa: true }); }, closeWa: function () { set({ wa: false }); }, sendWa: function () { set({ wa: false, toast: "WhatsApp dibuka (simulasi) · tidak ada pesan terkirim" }); },
+wish: wish, wishEmpty: wishIds.length === 0,
+prefs: prefs, showSave: screen === "prefs", saveDis: !dirty, save: save, discard: function () { set({ draft: saved }); },
+saveSt: "flex:2;min-height:48px;border:none;border-radius:6px;font-weight:600;" + (dirty ? "background:#1F5AE0;color:#FFFFFF" : "background:#CBD2DC;color:#4A5568"),
+cartCount: String(S.cart || 0),
+toast: S.toast || "", toastSt: S.toast ? "position:absolute;left:12px;right:12px;bottom:" + (screen === "prefs" ? "90" : "16") + "px;background:#0E1726;color:#FFFFFF;border-radius:6px;padding:10px 12px;font-size:13px" : "display:none"
+};
+}
+}
+</script>
+</body>
+</html>

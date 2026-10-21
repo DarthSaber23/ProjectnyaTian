@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Support Wireframes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 3072px; min-height: 1560px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #222428; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 22px">Wireframe modul pendukung A16–A23 · greyscale, belum hi-fi</b><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">Data dari W00 dan papan X01–X11 · teks [dalam kurung] = diisi pemilik / Agent 02</span></div>
+<div style="display: grid; grid-template-columns: repeat(4, 720px); gap: 32px; align-items: start">
+
+<section aria-label="A16 Laporan" style="{{frame}}">
+<div style="{{hdr}}">A16 · Laporan · /admin/reports · Owner/Admin</div>
+<div style="{{body}}">
+<b style="font-size: 18px">Laporan</b>
+<div style="display: flex; gap: 8px"><span style="{{field}}">Periode: 14–20 Okt 2026 ▾</span><span style="{{field}}">Format: CSV ▾</span></div>
+<sc-for list="{{reports}}" as="r" hint-placeholder-count="4"><div style="{{row}}"><span style="display: flex; flex-direction: column"><b>{{r.t}}</b><span style="{{sub}}">{{r.s}}</span></span><span style="{{btn}}">Unduh</span></div></sc-for>
+<span style="{{note}}">Unduhan dicatat di log audit (EXPORT). Kolom kontak pelanggan ikut tersamar kecuali Owner. Riwayat unduhan: belum ada.</span>
+</div>
+</section>
+
+<section aria-label="A17 Pengguna dan peran" style="{{frame}}">
+<div style="{{hdr}}">A17 · Pengguna &amp; peran · /admin/users · Owner</div>
+<div style="{{body}}">
+<div style="display: flex; justify-content: space-between"><b style="font-size: 18px">Pengguna (3)</b><span style="{{btnDark}}">+ Undang pengguna</span></div>
+<sc-for list="{{users}}" as="u" hint-placeholder-count="4"><div style="{{row}}"><span>{{u.n}}</span><span style="{{sub}}">{{u.r}}</span><span style="{{sub}}">{{u.s}}</span></div></sc-for>
+<table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px"><caption style="text-align: left; font-weight: 600; padding-bottom: 4px">Matriks akses (usulan, turunan D10)</caption>
+<thead><tr style="background: #E4E6EA; text-align: left"><th scope="col" style="padding: 5px">Modul</th><th scope="col" style="padding: 5px">Owner</th><th scope="col" style="padding: 5px">Admin</th><th scope="col" style="padding: 5px">Operasional</th><th scope="col" style="padding: 5px">Marketing</th><th scope="col" style="padding: 5px">CS</th></tr></thead>
+<tbody><sc-for list="{{matrix}}" as="m" hint-placeholder-count="9"><tr style="border-top: 1px solid #C9CDD3"><th scope="row" style="padding: 5px; text-align: left; font-weight: 500">{{m.m}}</th><td style="padding: 5px">{{m.o}}</td><td style="padding: 5px">{{m.a}}</td><td style="padding: 5px">{{m.op}}</td><td style="padding: 5px">{{m.mk}}</td><td style="padding: 5px">{{m.cs}}</td></tr></sc-for></tbody></table>
+<span style="{{note}}">U = ubah · L = lihat · Samar = kontak disamarkan, buka dengan alasan + log · — = tidak ada akses</span>
+</div>
+</section>
+
+<section aria-label="A18 Pengaturan toko" style="{{frame}}">
+<div style="{{hdr}}">A18 · Pengaturan toko · /admin/settings/store · Owner/Admin</div>
+<div style="{{body}}">
+<b style="font-size: 18px">Toko</b>
+<sc-for list="{{store}}" as="f" hint-placeholder-count="8"><label style="display: flex; flex-direction: column; gap: 3px; font-size: 13px; font-weight: 600">{{f.l}}<span style="{{f.st}}">{{f.v}}</span></label></sc-for>
+<div style="display: flex; justify-content: flex-end; gap: 8px"><span style="{{btn}}">Batal</span><span style="{{btnDark}}">Simpan</span></div>
+</div>
+</section>
+
+<section aria-label="A19 Pengiriman" style="{{frame}}">
+<div style="{{hdr}}">A19 · Pengiriman · /admin/settings/shipping · Owner/Admin/Operasional</div>
+<div style="{{body}}">
+<div style="{{sim}}">SIMULASI · kurir fiktif, tarif dari mock service. Integrasi nyata (Biteship / RajaOngkir / KiriminAja) = Agent 02.</div>
+<label style="display: flex; flex-direction: column; gap: 3px; font-size: 13px; font-weight: 600">Alamat asal pengiriman<span style="{{field}}">Jakarta Barat (demo W00) · alamat lengkap [isi oleh pemilik]</span></label>
+<b style="font-size: 14px">Kurir</b>
+<sc-for list="{{couriers}}" as="c" hint-placeholder-count="4"><div style="{{row}}"><span style="display: flex; flex-direction: column"><b>{{c.n}}</b><span style="{{sub}}">{{c.s}}</span></span><span style="{{c.tg}}">{{c.on}}</span></div></sc-for>
+<span style="{{note}}">Ongkir gratis diatur lewat Promosi (GRATISONGKIR), bukan di sini. Berat produk wajib untuk hitung tarif.</span>
+</div>
+</section>
+
+<section aria-label="A20 Pembayaran" style="{{frame}}">
+<div style="{{hdr}}">A20 · Pembayaran · /admin/settings/payment · Owner</div>
+<div style="{{body}}">
+<div style="{{sim}}">SIMULASI · gateway mock. Midtrans / Duitku = Agent 02.</div>
+<sc-for list="{{pays}}" as="p" hint-placeholder-count="3"><div style="{{row}}"><span style="display: flex; flex-direction: column"><b>{{p.n}}</b><span style="{{sub}}">{{p.s}}</span></span><span style="{{tgOn}}">Aktif</span></div></sc-for>
+<b style="font-size: 14px">Kredensial gateway</b>
+<label style="display: flex; flex-direction: column; gap: 3px; font-size: 13px; font-weight: 600">Server key<span style="{{fieldOff}}">Dikelola di variabel lingkungan server · tidak ditampilkan</span></label>
+<label style="display: flex; flex-direction: column; gap: 3px; font-size: 13px; font-weight: 600">URL notifikasi (webhook)<span style="{{fieldOff}}">[ditentukan saat deploy]</span></label>
+<span style="{{note}}">Kunci rahasia tidak pernah disimpan atau ditampilkan di browser. Batas bayar mengikuti D6 dan dipakai untuk pelepasan stok.</span>
+</div>
+</section>
+
+<section aria-label="A21 Notifikasi" style="{{frame}}">
+<div style="{{hdr}}">A21 · Notifikasi · /admin/settings/notifications · Owner/Admin</div>
+<div style="{{body}}">
+<b style="font-size: 18px">Notifikasi pelanggan</b>
+<table style="width: 100%; border-collapse: collapse; font-size: 12.5px"><thead><tr style="background: #E4E6EA; text-align: left"><th scope="col" style="padding: 6px">Peristiwa</th><th scope="col" style="padding: 6px">Jenis</th><th scope="col" style="padding: 6px">Email</th><th scope="col" style="padding: 6px">WhatsApp</th></tr></thead>
+<tbody><sc-for list="{{notifs}}" as="x" hint-placeholder-count="6"><tr style="border-top: 1px solid #C9CDD3"><th scope="row" style="padding: 6px; text-align: left; font-weight: 500">{{x.e}}</th><td style="padding: 6px">{{x.k}}</td><td style="padding: 6px">{{x.m}}</td><td style="padding: 6px">{{x.w}}</td></tr></sc-for></tbody></table>
+<span style="{{note}}">Email transaksional selalu dikirim; WhatsApp transaksional hanya jika pelanggan mengizinkan "Info pesanan via WhatsApp". Promosi hanya lewat email dan hanya dengan izin email promo (contoh: C-0001 email promo = tidak, info WA = ya). Tidak ada promosi via WhatsApp. Pengiriman nyata = simulasi; penyedia WhatsApp/email = Agent 02.</span>
+<span style="{{btn}}">Pratinjau template</span>
+</div>
+</section>
+
+<section aria-label="A22 Log audit" style="{{frame}}">
+<div style="{{hdr}}">A22 · Log audit · /admin/audit-log · Owner (Admin: lihat)</div>
+<div style="{{body}}">
+<div style="display: flex; gap: 8px"><span style="{{field}}">14–20 Okt ▾</span><span style="{{field}}">Semua pengguna ▾</span><span style="{{field}}">Semua modul ▾</span></div>
+<table style="width: 100%; border-collapse: collapse; font-size: 12.5px"><thead><tr style="background: #E4E6EA; text-align: left"><th scope="col" style="padding: 6px">Waktu (WIB)</th><th scope="col" style="padding: 6px">Pengguna</th><th scope="col" style="padding: 6px">Aksi</th><th scope="col" style="padding: 6px">Objek</th></tr></thead>
+<tbody><sc-for list="{{audit}}" as="a" hint-placeholder-count="5"><tr style="border-top: 1px solid #C9CDD3; vertical-align: top"><td style="padding: 6px; font-family: 'IBM Plex Mono', monospace; white-space: nowrap">{{a.t}}</td><td style="padding: 6px">{{a.u}}</td><td style="padding: 6px">{{a.a}}</td><td style="padding: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">{{a.o}}</td></tr></sc-for></tbody></table>
+<span style="{{note}}">Hanya-tambah (append-only): tidak ada tombol ubah/hapus. Setiap baris menyimpan nilai lama → baru (ALCOA+). Hanya peristiwa yang tampil di papan X01–X10 yang dimasukkan; draf yang belum disimpan (X06) tidak tercatat.</span>
+</div>
+</section>
+
+<section aria-label="A23 Masuk admin" style="{{frame}}">
+<div style="{{hdr}}">A23 · Masuk admin · /admin/login · publik</div>
+<div style="{{bodyC}}">
+<div style="width: 360px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #9AA0A8; padding: 24px; margin-top: 20px">
+<b style="font-size: 20px">SAMBUNG/ Admin</b>
+<label style="display: flex; flex-direction: column; gap: 3px; font-size: 13px; font-weight: 600">Email<span style="{{field}}">nama@toko.id</span></label>
+<label style="display: flex; flex-direction: column; gap: 3px; font-size: 13px; font-weight: 600">Kata sandi<span style="{{field}}">••••••••••</span></label>
+<label style="display: flex; flex-direction: column; gap: 3px; font-size: 13px; font-weight: 600">Kode autentikator (6 digit)<span style="{{field}}">______</span></label>
+<span style="{{btnDarkC}}">Masuk</span>
+<span style="{{sub}}">Lupa kata sandi? Hubungi Owner (tidak ada reset mandiri untuk admin).</span>
+<div style="border: 1px dashed #6B7079; padding: 8px; font-size: 12px">Status galat: "Email atau kata sandi salah." (tidak menyebut mana yang salah) · Terkunci 15 menit setelah 5 kali gagal.</div>
+</div>
+<span style="{{note}}">Tidak ada login Google untuk admin. Autentikator (TOTP), kunci 5 kali / 15 menit dan reset oleh Owner adalah usulan; perlu keputusan Owner / Agent 02.</span>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":3072,"height":1560}}'>
+class Component extends DCLogic {
+renderVals() {
+var field = "display:block;height:34px;line-height:34px;border:1px solid #6B7079;padding:0 10px;font-size:13px;font-weight:400;background:#FFFFFF";
+var on = "display:inline-block;padding:3px 10px;border:1px solid #222428;background:#222428;color:#FFFFFF;font-size:12px;font-weight:600";
+var off = "display:inline-block;padding:3px 10px;border:1px solid #6B7079;background:#FFFFFF;color:#222428;font-size:12px;font-weight:600";
+return {
+frame: "background:#FFFFFF;border:1px solid #9AA0A8;min-height:640px;display:flex;flex-direction:column",
+hdr: "font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 14px;background:#D5D8DD;border-bottom:1px solid #9AA0A8",
+body: "padding:16px 18px;display:flex;flex-direction:column;gap:10px;font-size:13px",
+field: field,
+fieldEmpty: field + ";border-style:dashed;color:#6B7079",
+fieldOff: field + ";background:#E4E6EA;color:#4A4F57",
+row: "display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #C9CDD3;padding-top:8px",
+sub: "font-size:12px;color:#4A4F57",
+note: "font-size:12px;color:#4A4F57;border-left:3px solid #9AA0A8;padding-left:8px",
+btn: "display:inline-block;padding:6px 12px;border:1px solid #222428;font-size:12.5px;font-weight:600;align-self:flex-start",
+btnDark: "display:inline-block;padding:8px 14px;background:#222428;color:#FFFFFF;font-size:13px;font-weight:600",
+sim: "border:2px dashed #222428;padding:8px 10px;font-size:12px;font-weight:600",
+tgOn: on,
+bodyC: "padding:16px 18px;display:flex;flex-direction:column;gap:10px;font-size:13px;align-items:center",
+btnDarkC: "display:block;padding:10px 14px;background:#222428;color:#FFFFFF;font-size:14px;font-weight:600;text-align:center",
+reports: [
+{ t: "Penjualan harian", s: "7 baris · bersih Rp2.097.000 (= X11)" },
+{ t: "Pesanan", s: "10 pesanan · status, total, pembayaran" },
+{ t: "Stok & pergerakan", s: "Stok tersedia, dicadangkan, penyesuaian" },
+{ t: "Pemakaian promosi", s: "6 promosi · dibayar / menunggu (= X07)" }
+],
+users: [
+{ n: "Andi S.", r: "Owner", s: "Aktif · autentikator aktif" },
+{ n: "Dewi O.", r: "Operasional", s: "Aktif" },
+{ n: "Rina M.", r: "Marketing", s: "Aktif" },
+{ n: "[belum ada pengguna]", r: "CS", s: "Undang untuk uji X10" }
+],
+matrix: [
+{ m: "Dasbor & analitik", o: "L", a: "L", op: "L", mk: "L", cs: "—" },
+{ m: "Pesanan", o: "U", a: "U", op: "U", mk: "—", cs: "L" },
+{ m: "Refund", o: "U", a: "U", op: "—", mk: "—", cs: "—" },
+{ m: "Kontak pelanggan", o: "Penuh", a: "Penuh", op: "Samar", mk: "—", cs: "Samar" },
+{ m: "Produk & inventaris", o: "U", a: "U", op: "U", mk: "L", cs: "L" },
+{ m: "Promosi & konten", o: "U", a: "U", op: "—", mk: "U", cs: "—" },
+{ m: "Laporan / ekspor", o: "U", a: "U", op: "—", mk: "—", cs: "—" },
+{ m: "Pengaturan", o: "U", a: "U", op: "Pengiriman", mk: "—", cs: "—" },
+{ m: "Pengguna & log audit", o: "U", a: "L (log)", op: "—", mk: "—", cs: "—" }
+],
+store: [
+{ l: "Nama toko", v: "SAMBUNG (nama kerja, belum dicek merek)", st: field },
+{ l: "Mata uang", v: "IDR · tetap", st: field + ";background:#E4E6EA" },
+{ l: "Zona waktu", v: "Asia/Jakarta (WIB) · tetap", st: field + ";background:#E4E6EA" },
+{ l: "Harga sudah termasuk PPN", v: "Ya (D5)", st: field + ";background:#E4E6EA" },
+{ l: "Nama badan usaha", v: "[isi oleh pemilik]", st: field + ";border-style:dashed;color:#6B7079" },
+{ l: "Email layanan pelanggan", v: "[isi oleh pemilik]", st: field + ";border-style:dashed;color:#6B7079" },
+{ l: "Nomor WhatsApp CS", v: "[isi oleh pemilik] · cek format saja (D16)", st: field + ";border-style:dashed;color:#6B7079" },
+{ l: "Jam layanan", v: "[isi oleh pemilik]", st: field + ";border-style:dashed;color:#6B7079" }
+],
+couriers: [
+{ n: "Kurir A (simulasi)", s: "Contoh ke Bandung 40132: Rp18.000", on: "Aktif", tg: on },
+{ n: "Kurir B (simulasi)", s: "Contoh: Rp15.000", on: "Aktif", tg: on },
+{ n: "Kurir C (simulasi)", s: "Contoh: Rp27.000", on: "Aktif", tg: on },
+{ n: "Kurir D (simulasi)", s: "Tidak melayani tujuan contoh", on: "Aktif", tg: on }
+],
+pays: [
+{ n: "QRIS", s: "Batas bayar 15 menit (D6)" },
+{ n: "E-wallet", s: "Batas bayar 15 menit (D6)" },
+{ n: "Virtual account", s: "Batas bayar 24 jam (D6)" }
+],
+notifs: [
+{ e: "Pesanan dibuat, menunggu bayar", k: "Transaksi", m: "Ya", w: "Jika diizinkan" },
+{ e: "Pembayaran diterima", k: "Transaksi", m: "Ya", w: "Jika diizinkan" },
+{ e: "Pesanan dikirim + no. resi", k: "Transaksi", m: "Ya", w: "Jika diizinkan" },
+{ e: "Pesanan kedaluwarsa", k: "Transaksi", m: "Ya", w: "Tidak" },
+{ e: "Refund dicatat", k: "Transaksi", m: "Ya", w: "Tidak" },
+{ e: "Kampanye promosi", k: "Pemasaran", m: "Sesuai izin", w: "Tidak" }
+],
+audit: [
+{ t: "20 Okt 10:12", u: "Rina M. · Marketing", a: "Draf konten disimpan", o: "Halaman \"Flash sale akhir pekan\"" },
+{ t: "19 Okt 16:40", u: "Andi S. · Owner", a: "Refund penuh dicatat Rp237.000", o: "ORD-261019-0008" },
+{ t: "19 Okt 16:40", u: "Andi S. · Owner", a: "Pesanan dibatalkan · alasan: pelanggan membatalkan", o: "ORD-261019-0008" },
+{ t: "18 Okt 15:02", u: "Dewi O. · Operasional", a: "Produk diubah", o: "B01 Kabel USB-C 100W" },
+{ t: "18 Okt 09:10", u: "Dewi O. · Operasional", a: "Status → Diproses", o: "ORD-261017-0005" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

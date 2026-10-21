@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tokens and Foundations</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Figtree:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2700px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 36px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">M3-1 · DESIGN TOKENS</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Tokens &amp; foundations</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Components reference the semantic name (left column) only. A client fork changes the values, not the components. Contrast is measured against the background named in the last column.</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 26px">Colour roles</h2>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: 200px minmax(0, 1fr) 220px 220px 200px; background: #15171C; color: #F6F6F3; font-size: 11px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 10px 12px">TOKEN</div><div style="padding: 10px 12px">USE</div><div style="padding: 10px 12px">BRAND A</div><div style="padding: 10px 12px">BRAND B</div><div style="padding: 10px 12px">CONTRAST A / B</div>
+</div>
+<sc-for list="{{colors}}" as="c" hint-placeholder-count="16">
+<div style="display: grid; grid-template-columns: 200px minmax(0, 1fr) 220px 220px 200px; border-top: 1px solid #E6E7EA; font-size: 13px; align-items: center">
+<div style="padding: 8px 12px; font-family: 'IBM Plex Mono', monospace; font-weight: 500">{{c.k}}</div>
+<div style="padding: 8px 12px; color: #3B4049">{{c.u}}</div>
+<div style="padding: 8px 12px; display: flex; gap: 8px; align-items: center"><span style="{{c.sa}}"></span><span style="font-family: 'IBM Plex Mono', monospace">{{c.a}}</span></div>
+<div style="padding: 8px 12px; display: flex; gap: 8px; align-items: center"><span style="{{c.sb}}"></span><span style="font-family: 'IBM Plex Mono', monospace">{{c.b}}</span></div>
+<div style="padding: 8px 12px; color: #3B4049">{{c.cr}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 26px">Type scale (shared sizes, brand typefaces)</h2>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<sc-for list="{{type}}" as="t" hint-placeholder-count="9">
+<div style="display: grid; grid-template-columns: 160px 170px minmax(0, 1fr) minmax(0, 1fr); gap: 16px; padding: 12px 16px; border-top: 1px solid #E6E7EA; align-items: center">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500">{{t.k}}</span>
+<span style="font-size: 12px; color: #555B66">{{t.m}}</span>
+<span style="{{t.sa}}">Rutinitas pagi</span>
+<span style="{{t.sb}}">Kabel USB-C 100W</span>
+</div>
+</sc-for>
+</div>
+<div style="font-size: 14px; color: #3B4049">Desktop / mobile sizes in px (line height after the slash). Display styles step down at &lt; 768 px. Body text never below 14 px; captions 12 px only for metadata.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px">Spacing (4 px base)</h2>
+<sc-for list="{{space}}" as="s" hint-placeholder-count="11">
+<div style="display: grid; grid-template-columns: 90px 60px minmax(0, 1fr); gap: 12px; align-items: center; font-size: 13px"><span style="font-family: 'IBM Plex Mono', monospace">{{s.k}}</span><span>{{s.v}} px</span><span style="{{s.bar}}"></span></div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px">Radius</h2>
+<div style="display: grid; grid-template-columns: 120px repeat(2, minmax(0, 1fr)); gap: 10px; font-size: 13px; align-items: center">
+<b>Token</b><b>Brand A</b><b>Brand B</b>
+<span style="font-family: 'IBM Plex Mono', monospace">radius.sm</span><span style="border: 2px solid #4F6B57; border-radius: 8px; padding: 8px">8 px</span><span style="border: 2px solid #1F5AE0; border-radius: 4px; padding: 8px">4 px</span>
+<span style="font-family: 'IBM Plex Mono', monospace">radius.md</span><span style="border: 2px solid #4F6B57; border-radius: 16px; padding: 8px">16 px · cards</span><span style="border: 2px solid #1F5AE0; border-radius: 6px; padding: 8px">6 px · cards</span>
+<span style="font-family: 'IBM Plex Mono', monospace">radius.lg</span><span style="border: 2px solid #4F6B57; border-radius: 24px; padding: 8px">24 px · sheets</span><span style="border: 2px solid #1F5AE0; border-radius: 8px; padding: 8px">8 px · sheets</span>
+<span style="font-family: 'IBM Plex Mono', monospace">radius.control</span><span style="border: 2px solid #4F6B57; border-radius: 999px; padding: 8px">pill</span><span style="border: 2px solid #1F5AE0; border-radius: 6px; padding: 8px">6 px</span>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px">Elevation</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; font-size: 13px">
+<div style="background: #FFFFFF; padding: 16px; border: 1px solid #E6E7EA">shadow.none<br><span style="color: #555B66">cards (B), lists</span></div>
+<div style="background: #FFFFFF; padding: 16px; box-shadow: 0 2px 8px rgba(35,32,29,0.08)">shadow.sm<br><span style="color: #555B66">cards (A), sticky bars</span></div>
+<div style="background: #FFFFFF; padding: 16px; box-shadow: 0 12px 32px rgba(14,23,38,0.18)">shadow.lg<br><span style="color: #555B66">drawers, dialogs, menus</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.5">
+<h2 style="margin: 0; font-size: 20px">Motion</h2>
+<span><b>motion.fast</b> 120 ms — hover, press, checkbox</span>
+<span><b>motion.base</b> 200 ms — toasts, accordions</span>
+<span><b>motion.slow</b> 280 ms — drawers, sheets, dialogs</span>
+<span><b>ease.standard</b> cubic-bezier(0.2, 0, 0, 1)</span>
+<span style="color: #3B4049">With prefers-reduced-motion: no movement, opacity fades ≤ 120 ms. State is never shown by motion alone.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5">
+<h2 style="margin: 0; font-size: 20px">Focus</h2>
+<span>2 px outline in <b>color.focus</b>, 2 px offset, on every interactive element, keyboard-visible only (:focus-visible).</span>
+<div style="display: flex; gap: 16px"><span style="border-radius: 999px; background: #4F6B57; color: #FFFFFF; padding: 10px 18px; outline: 2px solid #2B5FA8; outline-offset: 2px; font-family: Figtree, sans-serif; font-weight: 600">Brand A</span><span style="border-radius: 6px; background: #1F5AE0; color: #FFFFFF; padding: 10px 18px; outline: 2px solid #0E1726; outline-offset: 2px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600">Brand B</span></div>
+<span style="color: #3B4049">Brand B uses ink as the focus ring on blue buttons so the ring stays visible against the fill.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.5">
+<h2 style="margin: 0; font-size: 20px">Size &amp; targets</h2>
+<span><b>control.h</b> 44 px (A) · 40 px desktop / 44 px touch (B)</span>
+<span><b>touch.min</b> 44 × 44 px for every tap target</span>
+<span><b>icon</b> 20 px in controls, 24 px standalone, 1.75 px stroke</span>
+<span><b>container.max</b> 1280 px content; gutters 16 / 24 / 40 px</span>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
+class Component extends DCLogic {
+renderVals() {
+function sw(hex) { return "display:inline-block;width:28px;height:28px;border:1px solid #C9CCD2;background:" + hex; }
+function c(k, u, a, b, cr) { return { k: k, u: u, a: a, b: b, cr: cr, sa: sw(a), sb: sw(b) }; }
+var A = "font-family:Newsreader,serif;";
+var Ab = "font-family:Figtree,sans-serif;";
+var B = "font-family:'Space Grotesk',sans-serif;";
+var Bb = "font-family:'IBM Plex Sans',sans-serif;";
+function t(k, m, size, lh, w, disp) {
+var sa = (disp ? A : Ab) + "font-size:" + size + "px;line-height:" + lh + "px;font-weight:" + (disp ? 500 : w) + ";color:#23201D";
+var sb = (disp ? B : Bb) + "font-size:" + size + "px;line-height:" + lh + "px;font-weight:" + (disp ? 600 : w) + ";color:#0E1726";
+return { k: k, m: m, sa: sa, sb: sb };
+}
+var sp = [["space.1", 4], ["space.2", 8], ["space.3", 12], ["space.4", 16], ["space.5", 20], ["space.6", 24], ["space.8", 32], ["space.10", 40], ["space.12", 48], ["space.16", 64], ["space.20", 80]];
+return {
+colors: [
+c("color.bg", "Page background", "#F7F4EF", "#FFFFFF", "—"),
+c("color.surface", "Cards, inputs, sheets", "#FFFFFF", "#FFFFFF", "—"),
+c("color.surface-alt", "Bands, table headers, chips", "#EFE6DC", "#F2F4F7", "—"),
+c("color.text", "Body and headings", "#23201D", "#0E1726", "14.8 / 18.0 on bg"),
+c("color.text-muted", "Secondary text, metadata", "#6B625A", "#4A5568", "5.4 / 7.5 on bg"),
+c("color.border", "Hairline dividers (decorative)", "#D9CFC4", "#CBD2DC", "1.4 / 1.5 (decor only)"),
+c("color.border-strong", "Input and control edges", "#8C8279", "#7D8796", "3.8 / 3.6 on surface"),
+c("color.primary", "Primary buttons, links, selection", "#4F6B57", "#1F5AE0", "5.4 / 5.8 on bg"),
+c("color.on-primary", "Text on primary", "#FFFFFF", "#FFFFFF", "5.9 / 5.8"),
+c("color.accent", "Promotions (A: text and fill; B: fill only)", "#8C3B2E", "#F5A524", "6.9 / fill only (T3)"),
+c("color.on-accent", "Text on accent fill", "#FFFFFF", "#0E1726", "7.6 / 8.8"),
+c("color.success", "Paid, delivered, in stock", "#2F6B3F", "#1E7A45", "6.4 / 5.4 on surface"),
+c("color.warning", "Low stock, pending, overdue", "#8A5300", "#8A5300", "6.3 / 6.3 on surface"),
+c("color.danger", "Errors, sold out, failed", "#A3302A", "#C0262D", "7.0 / 5.9 on surface"),
+c("color.focus", "Focus ring", "#2B5FA8", "#1F5AE0", "5.8 / 5.8 on bg"),
+c("color.text-disabled", "Disabled labels (exempt, paired with a reason)", "#9A9188", "#8A94A3", "2.8 / 3.1")
+],
+type: [
+t("display.xl", "48/56 · 34/40", 48, 56, 500, true),
+t("display.l", "36/44 · 28/34", 36, 44, 500, true),
+t("heading.1", "28/36 · 24/32", 28, 36, 600, true),
+t("heading.2", "22/30 · 20/28", 22, 30, 600, true),
+t("heading.3", "18/26", 18, 26, 600, false),
+t("body.l", "18/28", 18, 28, 400, false),
+t("body", "16/24", 16, 24, 400, false),
+t("body.s", "14/20", 14, 20, 400, false),
+t("caption", "12/16", 12, 16, 500, false)
+],
+space: sp.map(function (s) { return { k: s[0], v: s[1], bar: "display:block;height:12px;background:#15171C;width:" + (s[1] * 4) + "px" }; })
+};
+}
+}
+</script>
+</body>
+</html>

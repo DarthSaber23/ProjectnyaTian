@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Checkout Pengiriman</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1500px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · S15 + S16 · /checkout/pengiriman · logged in after redirect (D7 merge done)</div>
+<div style="width: 1440px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 18px 40px; border-bottom: 1px solid #DADCE0; gap: 40px">
+<div style="width: 120px; height: 36px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px">[BRAND B]</div>
+<div style="display: flex; gap: 12px; align-items: center; font-size: 14px"><b style="border-bottom: 3px solid #2B2F36; padding-bottom: 4px">1 Pengiriman</b><span style="color: #8A8F98">—</span><span style="color: #5A606B">2 Ringkasan</span><span style="color: #8A8F98">—</span><span style="color: #5A606B">3 Pembayaran</span></div>
+<u style="margin-left: auto; font-size: 14px">Kembali ke keranjang</u>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 40px; padding: 32px 40px 40px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 28px">
+<div style="background: #F3F4F5; padding: 12px 16px; font-size: 14px">Masuk sebagai <b>Rina Pratama</b> · rina@example.com · <u>Bukan Anda?</u></div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<b style="font-size: 20px">Alamat pengiriman</b>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div style="border: 2px solid #2B2F36; padding: 16px; display: flex; flex-direction: column; gap: 4px; font-size: 14px"><span>◉ <b>Rumah</b> · Utama</span><span>Rina Pratama · 0812-0000-1234</span><span style="color: #5A606B">Jl. Melati No. 12, RT 03/RW 05, Kec. Coblong, Kota Bandung, Jawa Barat 40132</span><u style="font-size: 13px">Ubah</u></div>
+<div style="border: 1px solid #BFC3C9; padding: 16px; display: flex; flex-direction: column; gap: 4px; font-size: 14px"><span>○ <b>Kantor</b></span><span>Rina Pratama · 0812-0000-1234</span><span style="color: #5A606B">Jl. Kenanga No. 8, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40111</span><u style="font-size: 13px">Ubah</u></div>
+</div>
+<span style="border: 1px dashed #8A8F98; padding: 12px; text-align: center; font-size: 14px; font-weight: 600">+ Tambah alamat baru</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 20px">Layanan pengiriman</b><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">TARIF SIMULASI · 1 kg · ke 40132</span></div>
+<sc-for list="{{ship}}" as="s" hint-placeholder-count="4">
+<div style="{{s.box}}">
+<span style="font-size: 16px">{{s.radio}}</span>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><b style="font-size: 15px">{{s.svc}}</b><span style="font-size: 13px; color: #5A606B">{{s.eta}}</span></div>
+<b style="font-size: 15px">{{s.cost}}</b>
+</div>
+</sc-for>
+<span style="font-size: 13px; color: #5A606B">Mengubah alamat atau isi keranjang akan menghitung ulang pilihan ini.</span>
+</div>
+</div>
+
+<div style="border: 1px solid #DADCE0; padding: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<b style="font-size: 17px">Ringkasan pesanan</b>
+<div style="display: flex; gap: 10px"><div style="width: 48px; height: 48px; background: #E4E6E9; flex: none"></div><div style="flex: 1; display: flex; flex-direction: column"><span>Kabel USB-C 100W Braided</span><span style="color: #5A606B; font-size: 13px">2 m · Hitam · ×2</span></div><span>Rp318.000</span></div>
+<div style="display: flex; gap: 10px"><div style="width: 48px; height: 48px; background: #E4E6E9; flex: none"></div><div style="flex: 1; display: flex; flex-direction: column"><span>Charger GaN 65W 3 Port</span><span style="color: #5A606B; font-size: 13px">Flash sale · ×1</span></div><span>Rp299.250</span></div>
+<div style="border-top: 1px solid #DADCE0; padding-top: 12px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between"><span>Subtotal</span><span>Rp617.250</span></div>
+<div style="display: flex; justify-content: space-between"><span>Ongkir (Kurir A · Reguler)</span><span>Rp18.000</span></div>
+<div style="display: flex; justify-content: space-between; color: #5A606B"><span>Voucher</span><span>di langkah 2</span></div>
+</div>
+<div style="border-top: 2px solid #2B2F36; padding-top: 12px; display: flex; justify-content: space-between; font-size: 16px"><b>Total sementara</b><b>Rp635.250</b></div>
+<span style="font-size: 12px; color: #5A606B">Harga sudah termasuk PPN.</span>
+<span style="background: #2B2F36; color: #FFFFFF; padding: 13px; text-align: center; font-weight: 600">Lanjut ke Ringkasan</span>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · step 1</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><span>←</span><b>Pengiriman</b><span style="margin-left: auto; font-size: 13px; color: #5A606B">1 / 3</span></div>
+<div style="height: 4px; background: #DADCE0"><div style="width: 33%; height: 4px; background: #2B2F36"></div></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<b>Alamat</b>
+<div style="border: 2px solid #2B2F36; padding: 12px; display: flex; flex-direction: column; gap: 2px"><span><b>Rumah</b> · Utama</span><span style="color: #5A606B; font-size: 13px">Jl. Melati No. 12, Kec. Coblong, Kota Bandung 40132</span><u style="font-size: 13px">Ganti alamat</u></div>
+<b style="margin-top: 8px">Layanan pengiriman <span style="font-weight: 400; font-size: 12px; color: #5A606B">(simulasi)</span></b>
+<sc-for list="{{ship}}" as="s" hint-placeholder-count="4">
+<div style="{{s.mbox}}"><span>{{s.radio}}</span><div style="flex: 1; display: flex; flex-direction: column"><b style="font-size: 14px">{{s.svc}}</b><span style="font-size: 12px; color: #5A606B">{{s.eta}}</span></div><b style="font-size: 14px">{{s.cost}}</b></div>
+</sc-for>
+</div>
+<div style="padding: 12px 16px; border-top: 2px solid #2B2F36; display: flex; align-items: center; gap: 12px"><div style="display: flex; flex-direction: column; font-size: 12px"><span style="color: #5A606B">Total sementara</span><b style="font-size: 16px">Rp635.250</b></div><span style="flex: 1; background: #2B2F36; color: #FFFFFF; padding: 13px; text-align: center; font-weight: 600">Lanjut</span></div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · new address form, validation state (D13)</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column; gap: 12px; padding-bottom: 16px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><span>✕</span><b>Alamat baru</b></div>
+<div style="padding: 0 16px; display: flex; flex-direction: column; gap: 10px; font-size: 13px">
+<label style="display: flex; flex-direction: column; gap: 4px">Nama penerima *<span style="border: 1px solid #BFC3C9; padding: 9px">Rina Pratama</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">No. WhatsApp *<span style="border: 2px solid #A4262C; padding: 8px">0812-00</span><span style="color: #A4262C">Nomor harus 10–13 digit, diawali 08 atau +62</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Provinsi *<span style="border: 1px solid #BFC3C9; padding: 9px">Jawa Barat ▾</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Kota / Kabupaten *<span style="border: 1px solid #BFC3C9; padding: 9px">Kota Bandung ▾</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Kecamatan *<span style="border: 1px solid #BFC3C9; padding: 9px; color: #5A606B">Pilih kecamatan ▾</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Kelurahan (opsional)<span style="border: 1px solid #BFC3C9; padding: 9px; color: #5A606B">Pilih kelurahan ▾</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Kode pos *<span style="border: 1px solid #BFC3C9; padding: 9px; color: #5A606B">Terisi otomatis setelah kecamatan</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Alamat lengkap *<span style="border: 1px solid #BFC3C9; padding: 9px; height: 48px; color: #5A606B">Nama jalan, nomor, RT/RW, patokan</span></label>
+<span>☐ Jadikan alamat utama</span>
+<span style="background: #2B2F36; color: #FFFFFF; padding: 13px; text-align: center; font-weight: 600; font-size: 14px">Simpan alamat</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+var sel = "border:2px solid #2B2F36;padding:14px 16px;display:flex;gap:14px;align-items:center";
+var nor = "border:1px solid #BFC3C9;padding:15px 17px;display:flex;gap:14px;align-items:center";
+var dis = "border:1px dashed #BFC3C9;padding:15px 17px;display:flex;gap:14px;align-items:center;color:#8A8F98";
+var msel = "border:2px solid #2B2F36;padding:10px;display:flex;gap:10px;align-items:center";
+var mnor = "border:1px solid #BFC3C9;padding:11px;display:flex;gap:10px;align-items:center";
+var mdis = "border:1px dashed #BFC3C9;padding:11px;display:flex;gap:10px;align-items:center;color:#8A8F98";
+return {
+ship: [
+{ svc: "Kurir A · Reguler", eta: "Estimasi 2–3 hari", cost: "Rp18.000", radio: "◉", box: sel, mbox: msel },
+{ svc: "Kurir B · Hemat", eta: "Estimasi 3–5 hari", cost: "Rp15.000", radio: "○", box: nor, mbox: mnor },
+{ svc: "Kurir C · Kilat", eta: "Estimasi 1 hari", cost: "Rp27.000", radio: "○", box: nor, mbox: mnor },
+{ svc: "Kurir D · Same Day", eta: "Tidak tersedia untuk alamat ini", cost: "—", radio: "○", box: dis, mbox: mdis }
+]
+};
+}
+}
+</script>
+</body>
+</html>

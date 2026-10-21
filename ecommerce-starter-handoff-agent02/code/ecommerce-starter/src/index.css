@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { background: rgb(var(--c-bg)); color: rgb(var(--c-text)); font-family: var(--font-body); }
+  body { margin: 0; min-height: 100vh; background: rgb(var(--c-bg)); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--font-display); }
+  :focus-visible { outline: 3px solid rgb(var(--c-focus)); outline-offset: 2px; }
+  button:disabled { cursor: not-allowed; }
+  fieldset { min-inline-size: 0; }
+}
+
+@layer components {
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-ctl px-4 text-[15px] font-semibold transition-colors; }
+  .btn-primary { @apply btn bg-primary text-white hover:bg-primary-ink disabled:bg-line disabled:text-muted; }
+  .btn-secondary { @apply btn border border-line-strong bg-surface text-ink hover:bg-alt; }
+  .btn-ghost { @apply btn px-2 text-primary-ink underline; }
+  .card { @apply rounded-brand border border-line bg-surface; }
+  .chip { @apply inline-flex min-h-[36px] items-center rounded-ctl border px-3 text-[13px] font-semibold; }
+  .chip-on { @apply chip border-2 border-primary bg-primary-soft text-primary-ink; }
+  .chip-off { @apply chip border-line-strong bg-surface text-ink; }
+  .money { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .sim-panel { @apply rounded-brand border-2 border-dashed border-line-strong bg-alt p-3; }
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

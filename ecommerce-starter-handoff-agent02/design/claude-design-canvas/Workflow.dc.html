@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Workflow, Risks and M0 Acceptance</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2500px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 04 · M0</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Workflow, risks &amp; M0 acceptance</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Each milestone ends with a report (deliverables, decisions, assumptions, trade-offs, risks, checklist, preview) and stops for APPROVE or REVISE.</div>
+</div>
+
+<h2 style="margin: 0; font-size: 26px">Milestone plan</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{ms}}" as="m" hint-placeholder-count="9">
+<div style="{{m.box}}">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; color: #0B6B63">{{m.id}}</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #555B66">{{m.tool}}</span></div>
+<div style="font-size: 19px; font-weight: 600">{{m.name}}</div>
+<div style="font-size: 14px; line-height: 1.5; color: #3B4049">{{m.out}}</div>
+<div style="font-size: 13px; line-height: 1.45; color: #555B66; border-top: 1px dashed #C9CCD2; padding-top: 8px">Gate: {{m.gate}}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px">Design workflow principles</h2>
+<ol style="margin: 0; padding-left: 22px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 6px">
+<li>Mobile and desktop are drawn together for every screen, never desktop-then-shrink.</li>
+<li>Shared flows are designed once; brand differences live in tokens and composition (homepage, card, PDP).</li>
+<li>Every essential screen lists its states before it is drawn (loading, empty, error, success, disabled, validation, unavailable).</li>
+<li>One naming scheme across Claude Design components, tokens and React components (e.g. <code>ProductCard/Compact</code> ↔ <code>ProductCard variant="compact"</code>).</li>
+<li>Prices, stock and statuses in mockups come from the same seeded dataset the React prototype will use.</li>
+<li>Accessibility is checked per milestone (contrast, focus order, target size), not only at M8.</li>
+</ol>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px">Trade-offs taken in M0</h2>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5">
+<div><strong>Claude Design as the single design tool</strong> (owner decision D1): one source of record, no Figma export step; the cost is building component variants as tweakable artboards instead of Figma variants.</div>
+<div><strong>Reserve stock at order creation, not add-to-cart:</strong> avoids phantom holds from abandoned carts; the cost is a possible stock failure at the review step, which gets its own state.</div>
+<div><strong>Pagination over infinite scroll:</strong> crawlable and reachable pages; mobile still gets "load more".</div>
+<div><strong>Same-category comparison:</strong> meaningful shared attributes, at the cost of not comparing across categories.</div>
+<div><strong>Reviews display-only:</strong> no moderation tooling needed now.</div>
+</div>
+</div>
+</div>
+
+<h2 style="margin: 0; font-size: 26px">Risk register</h2>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1.2fr) 90px 90px minmax(0, 1.6fr); background: #15171C; color: #F6F6F3; font-size: 12px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 10px 12px">ID</div><div style="padding: 10px 12px">RISK</div><div style="padding: 10px 12px">IMPACT</div><div style="padding: 10px 12px">LIKELY</div><div style="padding: 10px 12px">MITIGATION</div>
+</div>
+<sc-for list="{{risks}}" as="r" hint-placeholder-count="9">
+<div style="display: grid; grid-template-columns: 60px minmax(0, 1.2fr) 90px 90px minmax(0, 1.6fr); border-top: 1px solid #E6E7EA; font-size: 14px; line-height: 1.45">
+<div style="padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; color: #555B66">{{r.id}}</div>
+<div style="padding: 10px 12px; font-weight: 600">{{r.risk}}</div>
+<div style="padding: 10px 12px"><span style="{{r.iStyle}}">{{r.i}}</span></div>
+<div style="padding: 10px 12px"><span style="{{r.lStyle}}">{{r.l}}</span></div>
+<div style="padding: 10px 12px; color: #3B4049">{{r.mit}}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="background: #FFFFFF; border: 2px solid #15171C; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 26px">M0 acceptance checklist</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 32px; font-size: 15px; line-height: 1.5">
+<sc-for list="{{checks}}" as="c" hint-placeholder-count="8">
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 18px; height: 18px; border: 2px solid #15171C; margin-top: 2px" aria-hidden="true"></span><span>{{c}}</span></div>
+</sc-for>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+renderVals() {
+var base = "background:#FFFFFF;border:1px solid #DADCE0;padding:20px;display:flex;flex-direction:column;gap:8px";
+var cur = "background:#E3F1EF;border:2px solid #0B6B63;padding:19px;display:flex;flex-direction:column;gap:8px";
+var H = "display:inline-block;padding:2px 8px;font-size:12px;font-weight:600;background:#FBE4E5;color:#8A1F24";
+var M = "display:inline-block;padding:2px 8px;font-size:12px;font-weight:600;background:#FFF4E0;color:#7A4300";
+var L = "display:inline-block;padding:2px 8px;font-size:12px;font-weight:600;background:#EEF0F4;color:#2E3440";
+function lv(x) { return x === "High" ? H : x === "Medium" ? M : L; }
+function risk(id, r, i, l, mit) { return { id: id, risk: r, i: i, l: l, iStyle: lv(i), lStyle: lv(l), mit: mit }; }
+var ms = [
+{ id: "M0", name: "Scope & Design Brief", tool: "APPROVED 20 OCT", out: "Understanding, scope classes, decisions, assumptions, screen inventory, plan.", gate: "Approved; D1 changed to Claude Design." },
+{ id: "M1", name: "Information Architecture", tool: "CLAUDE DESIGN · NOW", out: "Storefront and admin sitemaps; discovery, checkout, CMS publishing, order/payment/shipping status flows; state machines.", gate: "Sitemaps cover all 66 screens; flows include error paths." },
+{ id: "M2", name: "Wireframes", tool: "CLAUDE DESIGN", out: "Low-fidelity mobile + desktop for core shopping and admin flows, with structural alternatives and trade-offs.", gate: "Owner picks one alternative per contested layout." },
+{ id: "M3", name: "Visual Direction & Design System", tool: "CLAUDE DESIGN", out: "Two brand directions, token sets (plus JSON export), foundations, core components with documentation, responsive rules.", gate: "Both brands approved; components mapped to code names." },
+{ id: "M4", name: "High-Fidelity Storefront", tool: "CLAUDE DESIGN", out: "All essential storefront screens and states for both brands; supporting page templates.", gate: "State coverage checked against inventory." },
+{ id: "M5", name: "Admin & CMS", tool: "CLAUDE DESIGN", out: "High-fidelity core admin modules, CMS block editor, supporting wireframes, metric definitions.", gate: "Metric write-up matches approved D12." },
+{ id: "M6", name: "Clickable Prototype", tool: "CLAUDE DESIGN", out: "Artboards linked into playable journeys; list of unconnected or partial interactions.", gate: "Key journeys clickable end-to-end." },
+{ id: "M7", name: "React Prototype", tool: "VITE · REACT · TS", out: "Interactive build with mock services and seeded data; no reinterpretation of approved visuals.", gate: "Core interactions work as specified." },
+{ id: "M8", name: "QA & Handoff", tool: "DOCS", out: "Design QA report, accessibility checklist, 18 documentation files, Agent 02 handoff.", gate: "Final acceptance against the 20 criteria." }
+];
+ms = ms.map(function (m) { return Object.assign({}, m, { box: m.id === "M1" ? cur : base }); });
+return {
+ms: ms,
+risks: [
+risk("R1", "Design tool switch (Figma → Claude Design) loses component/variant features", "Low", "Low", "Resolved by D1. Components built as reusable Claude Design artboards with tweak props; tokens exported as JSON at M3."),
+risk("R2", "Promotion stacking rules unconfirmed", "High", "Medium", "Default rule in D3; cart/checkout show applied promotion names and full breakdown."),
+risk("R3", "Volume: 66 screens × 2 widths × 2 brands", "Medium", "High", "Brand-specific design only for A + B screens; shared screens re-skinned by tokens."),
+risk("R4", "Unverified cosmetic or certification claims in demo copy", "High", "Medium", "Neutral benefit wording, no regulatory (e.g. BPOM — Indonesia's food and drug authority) or medical claims, no certification badges."),
+risk("R5", "Personal data exposure in admin or analytics", "High", "Low", "Least-privilege roles (D10), masked contacts, no PII in events; aligned with Indonesia's Personal Data Protection Law (UU PDP No. 27/2022) and GDPR principles."),
+risk("R6", "Prototype mock behaviour drifts from production design", "Medium", "Medium", "Typed service interfaces, documented state machines, explicit Agent 02 handoff."),
+risk("R7", "Placeholder legal text mistaken for final", "Medium", "Medium", "Visible \"for legal/business review\" label on every policy page."),
+risk("R8", "Fictional brand names collide with real trademarks", "Medium", "Medium", "Codenames until owner trademark screening (D15)."),
+risk("R9", "Client-rendered prototype read as SEO-ready", "Low", "Medium", "SEO delivered as specification; production rendering is Agent 02's decision.")
+],
+checks: [
+"Project understanding on Board 00 matches the owner's intent",
+"Essential / supporting / future classification accepted (Board 01)",
+"Exclusions assigned to Agents 02 / 03 accepted",
+"Every open decision has a proposed default and a needed-by milestone",
+"D1, D3, D4 and D5 confirmed or changed by the owner",
+"Screen inventory covers spec sections 6 and 7 (66 screens)",
+"Milestone plan, gates and design workflow accepted",
+"No fabricated links, screenshots, KPI targets or test results in M0"
+]
+};
+}
+}
+</script>
+</body>
+</html>

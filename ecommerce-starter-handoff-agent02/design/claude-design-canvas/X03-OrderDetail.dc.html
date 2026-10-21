@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Order Detail</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1600px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A07 · /admin/orders/ORD-261017-0005 · Owner · "Batalkan &amp; refund" dialog open (not yet confirmed)</div>
+<div style="width: 1440px; height: 1100px; background: #F5F6F8; display: flex; position: relative; overflow: hidden">
+<nav aria-label="Admin" style="width: 232px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; font-size: 14px">
+<div style="padding: 0 8px 18px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span></div>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Dasbor</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Pesanan</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Pelanggan</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Produk</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Inventaris</span>
+</nav>
+<main style="flex: 1; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<nav aria-label="Breadcrumb" style="font-size: 13px; color: #4A5568"><a href="#">Pesanan</a> / <span style="font-family: 'JetBrains Mono', monospace; color: #0E1726">ORD-261017-0005</span></nav>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<div style="display: flex; gap: 12px; align-items: center"><h1 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 500">ORD-261017-0005</h1><span style="background: #E3F4EA; color: #1E7A45; border-radius: 4px; padding: 3px 8px; font-size: 12px; font-weight: 600">Pembayaran: Dibayar</span><span style="background: #EAF0FD; color: #1747B5; border-radius: 4px; padding: 3px 8px; font-size: 12px; font-weight: 600">Pemenuhan: Diproses</span></div>
+<div style="display: flex; gap: 10px"><button type="button" style="height: 40px; padding: 0 14px; border: 1.5px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit">Cetak label</button><button type="button" style="height: 40px; padding: 0 16px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">Kirim</button><button type="button" style="height: 40px; padding: 0 14px; border: 1.5px solid #C0262D; color: #C0262D; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 600">Batalkan &amp; refund</button></div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; align-items: start; font-size: 14px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px">
+<div style="display: grid; grid-template-columns: 56px minmax(0, 1fr) 110px 50px 110px; gap: 12px; padding: 14px; align-items: center"><div style="height: 56px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="hub" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Hub USB-C 7-in-1" hint-size="56px,56px"></dc-import></div><span style="display: flex; flex-direction: column"><b>Hub USB-C 7-in-1</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">B04</span></span><span style="font-family: 'JetBrains Mono', monospace">Rp549.000</span><span>×1</span><b style="text-align: right; font-family: 'JetBrains Mono', monospace">Rp549.000</b></div>
+<div style="border-top: 1px solid #E3E7ED; padding: 14px; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between"><span>Subtotal</span><span style="font-family: 'JetBrains Mono', monospace">Rp549.000</span></div><div style="display: flex; justify-content: space-between"><span>Ongkir · Kurir A Reguler</span><span style="font-family: 'JetBrains Mono', monospace">Rp18.000</span></div><div style="display: flex; justify-content: space-between"><b>Total dibayar</b><b style="font-family: 'JetBrains Mono', monospace">Rp567.000</b></div></div>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 8px"><b>Riwayat status</b>
+<sc-for list="{{hist}}" as="h" hint-placeholder-count="3"><div style="display: grid; grid-template-columns: 170px minmax(0, 1fr) 180px; gap: 10px; border-top: 1px solid #E3E7ED; padding-top: 8px; font-size: 13px"><span style="color: #4A5568">{{h.t}}</span><b>{{h.s}}</b><span style="color: #4A5568">{{h.a}}</span></div></sc-for>
+</section>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b>Pelanggan · C-0005</b><span>Eka P.</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5568">e***@example.com · 0813****21</span><button type="button" style="align-self: flex-start; border: none; background: none; color: #1F5AE0; padding: 0; font-family: inherit; font-size: 13px; text-decoration: underline">Tampilkan kontak (dicatat di log)</button></section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b>Alamat pengiriman</b><span style="color: #2D3748">Eka P. · [alamat demo], Kota Surabaya, Jawa Timur 60271</span></section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b>Pembayaran</b><span style="color: #2D3748">Virtual Account Bank C · dibayar 17 Okt, 13:02 WIB</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">ref. SIM-PAY-20261017-0005</span></section>
+</div>
+</div>
+</main>
+<div style="position: absolute; inset: 0; background: rgba(14,23,38,0.5)"></div>
+<div role="dialog" aria-label="Batalkan dan refund pesanan" style="position: absolute; left: 440px; top: 160px; width: 560px; background: #FFFFFF; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 12px 32px rgba(14,23,38,0.18); font-size: 14px">
+<div style="display: flex; justify-content: space-between"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Batalkan &amp; catat refund</b><button type="button" aria-label="Tutup" style="border: none; background: none; font-size: 16px">✕</button></div>
+<div style="background: #FDF1DC; color: #8A5300; border-radius: 6px; padding: 12px; line-height: 1.5">Prototipe hanya <b>mencatat</b> refund (I8). Pengembalian dana nyata dilakukan di penyedia pembayaran.</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Alasan *<span style="height: 42px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-weight: 400">Pelanggan membatalkan sebelum dikirim <span>▾</span></span></label>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px"><legend style="font-weight: 600; padding: 0; margin-bottom: 8px">Jumlah refund</legend><label style="display: flex; gap: 10px; align-items: center"><span style="width: 20px; height: 20px; border-radius: 10px; border: 2px solid #1F5AE0; display: flex; align-items: center; justify-content: center; box-sizing: border-box"><span style="width: 10px; height: 10px; border-radius: 5px; background: #1F5AE0"></span></span>Penuh · <b style="font-family: 'JetBrains Mono', monospace">Rp567.000</b> (barang + ongkir)</label><label style="display: flex; gap: 10px; align-items: center"><span style="width: 20px; height: 20px; border-radius: 10px; border: 1.5px solid #7D8796; box-sizing: border-box"></span>Sebagian · maks. Rp567.000</label></fieldset>
+<label style="display: flex; gap: 10px; align-items: center"><span style="width: 20px; height: 20px; border-radius: 4px; background: #1F5AE0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 12px">✓</span>Kembalikan 1 × Hub USB-C 7-in-1 ke stok (stok: 4 → 5)</label>
+<span style="font-size: 13px; color: #4A5568">Akibat: pendapatan 17 Okt tidak berubah; refund Rp567.000 dicatat pada tanggal hari ini (D12). Tindakan dicatat di log aktivitas.</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end"><button type="button" style="height: 42px; padding: 0 16px; border: 1.5px solid #0E1726; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 600">Kembali</button><button type="button" style="height: 42px; padding: 0 16px; border: none; border-radius: 6px; background: #C0262D; color: #FFFFFF; font-family: inherit; font-weight: 600">Batalkan &amp; catat refund</button></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · ORD-261019-0008 · refunded order record</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><b style="font-family: 'JetBrains Mono', monospace; font-size: 15px">ORD-261019-0008</b></div>
+<div style="padding: 12px; display: flex; gap: 6px"><span style="background: #FCE6E7; color: #C0262D; border-radius: 4px; padding: 3px 8px; font-size: 12px; font-weight: 600">Refund penuh</span><span style="background: #F2F4F7; border-radius: 4px; padding: 3px 8px; font-size: 12px; font-weight: 600">Dibatalkan</span></div>
+<section style="margin: 0 12px 12px; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px; font-size: 13px"><b style="font-size: 14px">Adaptor USB-C ke HDMI 4K60 ×1</b><div style="display: flex; justify-content: space-between"><span>Dibayar (e-wallet)</span><span style="font-family: 'JetBrains Mono', monospace">Rp237.000</span></div><div style="display: flex; justify-content: space-between; color: #C0262D"><span>Refund dicatat</span><span style="font-family: 'JetBrains Mono', monospace">−Rp237.000</span></div><div style="display: flex; justify-content: space-between; border-top: 1px solid #E3E7ED; padding-top: 6px"><b>Bersih</b><b style="font-family: 'JetBrains Mono', monospace">Rp0</b></div></section>
+<section style="margin: 0 12px 12px; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 8px; font-size: 13px"><b style="font-size: 14px">Riwayat</b>
+<sc-for list="{{hist8}}" as="h" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; border-left: 2px solid #CBD2DC; padding-left: 10px"><b>{{h.s}}</b><span style="color: #4A5568">{{h.t}} · {{h.a}}</span></div></sc-for>
+</section>
+<section style="margin: 0 12px 16px; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 4px"><b style="font-size: 14px">Stok</b><span style="color: #2D3748">1 × B02 dikembalikan ke stok saat pembatalan (on hand 22 → 23).</span></section>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1600}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+hist: [
+{ t: "18 Okt 2026, 09:10 WIB", s: "Diproses", a: "Operasional · Dewi O." },
+{ t: "17 Okt 2026, 13:02 WIB", s: "Dibayar · VA", a: "Event gateway (mock)" },
+{ t: "17 Okt 2026, 12:55 WIB", s: "Pesanan dibuat", a: "Pelanggan" }
+],
+hist8: [
+{ s: "Refund penuh dicatat · Rp237.000", t: "19 Okt 2026, 16:40", a: "Owner · Andi S." },
+{ s: "Dibatalkan · alasan: pelanggan membatalkan", t: "19 Okt 2026, 16:40", a: "Owner · Andi S." },
+{ s: "Dibayar · e-wallet", t: "19 Okt 2026, 11:20", a: "Event gateway (mock)" },
+{ s: "Pesanan dibuat", t: "19 Okt 2026, 11:12", a: "Pelanggan" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

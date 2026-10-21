@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Halimun Password Recovery</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#4F6B57}a:hover{color:#2F4A37}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 1300px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: Figtree, system-ui, sans-serif; color: #23201D; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S13 · /lupa-kata-sandi · after submit ("email sent" state)</div>
+<div style="width: 1440px; height: 820px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="padding: 22px 56px; border-bottom: 1px solid #D9CFC4; display: flex; justify-content: center"><span style="font-family: Newsreader, serif; font-size: 34px">halimun</span></div>
+<div style="flex: 1; display: flex; align-items: center; justify-content: center">
+<div style="width: 520px; background: #FFFFFF; border-radius: 24px; padding: 48px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 2px 8px rgba(35,32,29,0.08)">
+<span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 32px; background: #E7EEE8; display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2F4A37" stroke-width="1.75"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 40px; line-height: 1.1">Cek email kamu</h1>
+<p role="status" style="margin: 0; font-size: 16px; line-height: 1.6; color: #3E3833">Jika <b>rina@example.com</b> terdaftar, kami sudah mengirim tautan untuk mengatur ulang kata sandi. Tautan berlaku 30 menit.</p>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B625A">PROTOTIPE: email tidak benar-benar dikirim; tautan tersedia di panel demo</span>
+<button type="button" style="height: 52px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600">Kembali ke halaman masuk</button>
+<span style="font-size: 14px; color: #3E3833">Tidak menerima email? <button type="button" disabled style="border: none; background: none; color: #6B625A; font-family: inherit; font-size: 14px">Kirim ulang dalam 0:52</button></span>
+<a href="#" style="font-size: 14px; font-weight: 600">Tidak bisa akses email ini lagi?</a>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 32px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · /atur-ulang-kata-sandi · valid link + expired link</div>
+<div style="width: 390px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: center; padding: 14px"><span style="font-family: Newsreader, serif; font-size: 24px">halimun</span></div>
+<form style="padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 14px">
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 32px">Kata sandi baru</h1>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Kata sandi baru<input type="password" value="kopipagi2026" autocomplete="new-password" style="height: 48px; border: 1.5px solid #8C8279; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"><span style="font-weight: 500; font-size: 13px; color: #2F6B3F">✓ Minimal 8 karakter</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Ulangi kata sandi<input type="password" value="kopipagi2026" autocomplete="new-password" style="height: 48px; border: 1.5px solid #8C8279; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"><span style="font-weight: 500; font-size: 13px; color: #2F6B3F">✓ Cocok</span></label>
+<button type="button" style="height: 52px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600">Simpan dan masuk</button>
+</form>
+<div style="margin: 0 20px 24px; border-top: 1px solid #D9CFC4; padding-top: 20px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B625A">STATE · LINK EXPIRED</span>
+<div role="alert" style="background: #F8E3E1; color: #A3302A; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 4px; font-size: 14px"><b>Tautan sudah tidak berlaku</b><span>Tautan berlaku 30 menit dan hanya bisa dipakai sekali.</span></div>
+<button type="button" style="height: 50px; border: 1.5px solid #23201D; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-size: 15px; font-weight: 600">Kirim tautan baru</button>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S14 /pemulihan-akun · lost access to email</div>
+<div style="width: 390px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 4px 8px"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><span style="font-family: Newsreader, serif; font-size: 22px; margin: 0 auto">halimun</span><span style="width: 44px"></span></div>
+<div style="padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 14px">
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 32px; line-height: 1.1">Pulihkan akun</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3E3833">Jika kamu tidak bisa membuka email lama, tim CS akan membantu memverifikasi akunmu secara manual.</p>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+<li style="background: #FFFFFF; border-radius: 14px; padding: 14px; display: flex; gap: 12px"><b style="width: 28px; height: 28px; border-radius: 14px; background: #E7EEE8; color: #2F4A37; display: flex; align-items: center; justify-content: center; flex: none">1</b><span style="font-size: 14px; line-height: 1.5">Siapkan nomor pesanan terakhir dan nomor WhatsApp yang terdaftar.</span></li>
+<li style="background: #FFFFFF; border-radius: 14px; padding: 14px; display: flex; gap: 12px"><b style="width: 28px; height: 28px; border-radius: 14px; background: #E7EEE8; color: #2F4A37; display: flex; align-items: center; justify-content: center; flex: none">2</b><span style="font-size: 14px; line-height: 1.5">Hubungi CS. Kami tidak akan meminta kata sandi atau kode OTP.</span></li>
+<li style="background: #FFFFFF; border-radius: 14px; padding: 14px; display: flex; gap: 12px"><b style="width: 28px; height: 28px; border-radius: 14px; background: #E7EEE8; color: #2F4A37; display: flex; align-items: center; justify-content: center; flex: none">3</b><span style="font-size: 14px; line-height: 1.5">Setelah terverifikasi, CS memperbarui email akunmu dan kamu mengatur kata sandi baru.</span></li>
+</ol>
+<a href="#" style="height: 52px; border-radius: 999px; background: #4F6B57; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 600; text-decoration: none">Hubungi CS via WhatsApp</a>
+<span style="font-size: 12px; color: #6B625A; line-height: 1.5">Proses verifikasi manual adalah usulan desain; kebijakan akhir ditentukan pemilik bisnis dan Agent 02.</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

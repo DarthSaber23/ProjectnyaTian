@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS Publishing Flow</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 1700px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 16 · M1 (DEFERRED, ADDED WITH M2)</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">CMS publishing flow</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">How Marketing creates and publishes pages without a developer (journey J6). CMS = content management system. Applies to homepage sections, campaign and collection pages, blog articles, educational pages and product FAQs.</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="8">
+<div style="display: flex; gap: 8px; align-items: center"><div style="background: #FFFFFF; border: 2px solid #15171C; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px"><b>{{s.t}}</b><span style="font-size: 12px; color: #555B66">{{s.d}}</span></div><sc-if value="{{s.more}}" hint-placeholder-val="{{ true }}"><span style="color: #8A8F98" aria-hidden="true">→</span></sc-if></div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 24px">Editor layout (A11, wireframe)</h2>
+<div style="background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 16px; padding: 12px 20px; border-bottom: 1px solid #DADCE0; font-size: 14px"><span>← Konten</span><b>Flash Sale Akhir Pekan</b><span style="border: 1px solid #8A8F98; padding: 2px 8px; font-size: 12px">DRAF · disimpan 10:12</span><span style="margin-left: auto">Desktop | Mobile</span><span style="border: 1px solid #2B2F36; padding: 8px 12px">Pratinjau</span><span style="border: 1px solid #2B2F36; padding: 8px 12px">Simpan draf</span><span style="background: #2B2F36; color: #FFFFFF; padding: 8px 12px; font-weight: 600">Terbitkan ▾</span></div>
+<div style="display: grid; grid-template-columns: 260px minmax(0, 1fr) 320px; min-height: 520px">
+<div style="border-right: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<b>Blok halaman</b>
+<span style="border: 1px solid #BFC3C9; padding: 8px">⋮⋮ Hero split</span>
+<span style="border: 2px solid #2B2F36; padding: 7px; font-weight: 600">⋮⋮ Produk unggulan (3)</span>
+<span style="border: 2px solid #A4262C; padding: 7px">⋮⋮ Gambar + teks · 1 galat</span>
+<span style="border: 1px solid #BFC3C9; padding: 8px">⋮⋮ FAQ (4)</span>
+<span style="border: 1px solid #BFC3C9; padding: 8px">⋮⋮ Ajakan (CTA)</span>
+<span style="border: 1px dashed #8A8F98; padding: 8px; text-align: center">+ Tambah blok</span>
+<span style="color: #555B66">Seret untuk mengurutkan; ↑↓ via keyboard</span>
+</div>
+<div style="background: #F3F4F5; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="height: 140px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #555B66">Pratinjau: Hero split</div>
+<div style="height: 160px; background: #FFFFFF; border: 2px solid #2B2F36; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 12px; box-sizing: border-box"><div style="background: #E4E6E9"></div><div style="background: #E4E6E9"></div><div style="background: #E4E6E9"></div></div>
+<div style="height: 120px; background: #E4E6E9; border: 2px solid #A4262C; display: flex; align-items: center; justify-content: center; font-size: 12px">Gambar + teks</div>
+</div>
+<div style="border-left: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 10px; font-size: 13px">
+<div style="display: flex; gap: 12px"><b style="border-bottom: 2px solid #2B2F36">Blok</b><span>SEO</span><span>Jadwal</span></div>
+<label style="display: flex; flex-direction: column; gap: 4px">Judul blok<span style="border: 1px solid #BFC3C9; padding: 8px">Flash sale pilihan</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Sumber produk<span style="border: 1px solid #BFC3C9; padding: 8px">Promosi: FS-WEEKEND ▾</span></label>
+<span style="color: #555B66">Produk tampil otomatis selama promosi aktif; blok disembunyikan setelah 22 Okt 23:59.</span>
+<div style="border-top: 1px solid #DADCE0; padding-top: 10px; display: flex; flex-direction: column; gap: 4px"><b style="color: #A4262C">Perlu diperbaiki sebelum terbit (1)</b><span>Gambar + teks: teks alternatif gambar wajib diisi.</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Page states</h2>
+<div style="display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 8px 14px; font-size: 14px; line-height: 1.5">
+<b>Draf</b><span>Visible only in admin and preview.</span>
+<b>Terjadwal</b><span>Publishes automatically at the set time (Asia/Jakarta); can be cancelled back to Draf.</span>
+<b>Terbit</b><span>Live and in sitemap.xml (if indexable).</span>
+<b>Terbit · ada perubahan</b><span>Live version unchanged while edits sit in a draft revision; "Terbitkan perubahan" replaces it.</span>
+<b>Tidak terbit</b><span>Removed from the site; URL returns 404 or a chosen redirect; content kept.</span>
+</div>
+<span style="font-size: 13px; color: #555B66">Marketing, Admin and Owner may publish (D10). Every publish and unpublish is written to the audit log.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Validation before publish</h2>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Every block's required fields are filled; images have alternative text</li>
+<li>URL slug unique, lower case, hyphens only</li>
+<li>SEO title present (warning above 60 characters); meta description warning above 160</li>
+<li>Campaign page linked to a promotion shows a warning if the promotion is not active in the scheduled period</li>
+<li>Product blocks: hidden products are dropped with a warning, never shown as broken cards</li>
+<li>Blog article: author, publish date and at least one category</li>
+</ul>
+<span style="font-size: 13px; color: #555B66">Errors block publishing; warnings do not. The list links to the block that needs fixing.</span>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+var list = [
+["Buat halaman", "Pilih jenis: kampanye, koleksi, artikel, edukasi, FAQ"],
+["Tambah & urutkan blok", "Dari pustaka blok"],
+["Isi konten", "Teks, gambar, produk"],
+["SEO", "Judul, deskripsi, slug, OG"],
+["Pratinjau", "Desktop & mobile"],
+["Validasi", "Galat menghalangi terbit"],
+["Terbitkan / jadwalkan", "Asia/Jakarta"],
+["Ubah / tarik", "Revisi atau tidak terbit"]
+];
+return { steps: list.map(function (s, i) { return { t: s[0], d: s[1], more: i < list.length - 1 }; }) };
+}
+}
+</script>
+</body>
+</html>

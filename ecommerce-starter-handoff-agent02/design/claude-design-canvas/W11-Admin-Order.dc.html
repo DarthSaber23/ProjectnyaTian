@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Admin Order Detail</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1400px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · A07 · /admin/orders/ORD-261020-0009 · role Operations · 10:22 WIB, after Ops clicked "Proses" at 10:20 (W00 snapshot 10:16 = Dibayar) · "Kirim" dialog open (J5)</div>
+<div style="width: 1440px; height: 1000px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; position: relative; overflow: hidden">
+<div style="width: 220px; flex: none; background: #F3F4F5; padding: 20px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<div style="height: 32px; background: #E4E6E9; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px">[BRAND B] Admin</div>
+<span style="padding: 6px 10px">Dasbor</span><span style="padding: 12px 10px 4px; font-size: 11px; color: #5A606B">PENJUALAN</span><span style="padding: 8px 10px; background: #FFFFFF; font-weight: 600">Pesanan</span><span style="padding: 6px 10px">Pelanggan</span><span style="padding: 12px 10px 4px; font-size: 11px; color: #5A606B">KATALOG</span><span style="padding: 6px 10px">Produk</span><span style="padding: 6px 10px">Inventaris</span>
+</div>
+<div style="flex: 1; padding: 24px 32px; display: flex; flex-direction: column; gap: 20px">
+<div style="font-size: 13px; color: #5A606B">Pesanan / <b style="color: #15171C">ORD-261020-0009</b></div>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<div style="display: flex; gap: 12px; align-items: center"><b style="font-size: 24px; font-family: 'IBM Plex Mono', monospace">ORD-261020-0009</b><span style="border: 1px solid #2B2F36; padding: 3px 8px; font-size: 12px; font-weight: 600">PEMBAYARAN: DIBAYAR</span><span style="background: #2B2F36; color: #FFFFFF; padding: 3px 8px; font-size: 12px; font-weight: 600">PEMENUHAN: DIPROSES</span></div>
+<div style="display: flex; gap: 10px; font-size: 14px"><span style="border: 1px solid #2B2F36; padding: 10px 14px">Cetak label</span><span style="background: #2B2F36; color: #FFFFFF; padding: 10px 14px; font-weight: 600">Kirim</span><span style="padding: 10px 14px; color: #5A606B">Batalkan…</span></div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px; align-items: start; font-size: 14px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: 56px minmax(0, 1fr) 120px 60px 120px; gap: 10px; padding: 12px; align-items: center"><div style="width: 48px; height: 48px; background: #E4E6E9"></div><div style="display: flex; flex-direction: column"><b>Kabel USB-C ke USB-C 100W Braided</b><span style="font-size: 12px; color: #5A606B; font-family: 'IBM Plex Mono', monospace">B01-1M-BLK · 1 m · Hitam</span></div><span>Rp129.000</span><span>×2</span><b style="text-align: right">Rp258.000</b></div>
+<div style="border-top: 1px solid #DADCE0; padding: 12px; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between"><span>Subtotal</span><span>Rp258.000</span></div><div style="display: flex; justify-content: space-between"><span>Ongkir · Kurir A Reguler</span><span>Rp18.000</span></div><div style="display: flex; justify-content: space-between"><b>Total dibayar</b><b>Rp276.000</b></div></div>
+</div>
+<div style="border: 1px solid #DADCE0; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<b>Riwayat status</b>
+<sc-for list="{{hist}}" as="h" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 170px minmax(0, 1fr) 160px; gap: 10px; border-top: 1px solid #EEEFF1; padding-top: 6px; font-size: 13px"><span style="color: #5A606B">{{h.t}}</span><b>{{h.s}}</b><span style="color: #5A606B">{{h.a}}</span></div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="border: 1px solid #DADCE0; padding: 14px; display: flex; flex-direction: column; gap: 4px"><b>Pelanggan · C-0003</b><span>Citra W.</span><span style="color: #5A606B; font-family: 'IBM Plex Mono', monospace; font-size: 13px">c***@example.com · 0812****56</span><u style="font-size: 13px">Tampilkan kontak (dicatat di log)</u></div>
+<div style="border: 1px solid #DADCE0; padding: 14px; display: flex; flex-direction: column; gap: 4px"><b>Alamat pengiriman</b><span style="color: #5A606B">Citra W. · Jl. Anggrek No. 3, Kec. Tebet, Kota Jakarta Selatan, DKI Jakarta 12810</span></div>
+<div style="border: 1px solid #DADCE0; padding: 14px; display: flex; flex-direction: column; gap: 4px"><b>Pembayaran</b><span style="color: #5A606B">Virtual Account Bank B · Dibayar 20 Okt, 08:47 WIB · ref. SIM-PAY-20261020-0009</span></div>
+</div>
+</div>
+</div>
+<div style="position: absolute; left: 0; top: 0; width: 1440px; height: 1000px; background: rgba(21,23,28,0.45)"></div>
+<div style="position: absolute; left: 470px; top: 220px; width: 500px; background: #FFFFFF; padding: 24px; display: flex; flex-direction: column; gap: 14px; font-size: 14px">
+<div style="display: flex; justify-content: space-between"><b style="font-size: 18px">Kirim pesanan</b><span>✕</span></div>
+<label style="display: flex; flex-direction: column; gap: 4px">Kurir &amp; layanan (pilihan pelanggan)<span style="border: 1px solid #BFC3C9; padding: 9px; background: #F3F4F5">Kurir A · Reguler</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Nomor resi *<span style="border: 1px solid #BFC3C9; padding: 9px; color: #5A606B">contoh: SIM-KA-88213010</span></label>
+<label style="display: flex; flex-direction: column; gap: 4px">Tanggal serah ke kurir *<span style="border: 1px solid #BFC3C9; padding: 9px">20 Okt 2026 ▾</span></label>
+<span style="font-size: 13px; color: #5A606B">Status berubah menjadi Dikirim dan pelanggan melihat resi. Status Diterima hanya datang dari event kurir (simulasi).</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end"><span style="border: 1px solid #2B2F36; padding: 10px 16px">Batal</span><span style="background: #2B2F36; color: #FFFFFF; padding: 10px 16px; font-weight: 600">Tandai Dikirim</span></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · same order, actions pinned</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><span>←</span><b style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">ORD-261020-0009</b></div>
+<div style="padding: 12px 16px; display: flex; gap: 6px; font-size: 11px; font-weight: 600"><span style="border: 1px solid #2B2F36; padding: 3px 6px">DIBAYAR</span><span style="background: #2B2F36; color: #FFFFFF; padding: 3px 6px">DIPROSES</span></div>
+<div style="padding: 0 16px 12px; font-size: 13px; display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid #EEEFF1"><b>Kabel USB-C 100W · 1 m Hitam ×2</b><span style="color: #5A606B">Total dibayar Rp276.000 · VA Bank B</span></div>
+<div style="padding: 12px 16px; font-size: 13px; display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid #EEEFF1"><b>Kirim ke</b><span style="color: #5A606B">Citra W. · Kec. Tebet, Kota Jakarta Selatan 12810</span><span style="color: #5A606B; font-family: 'IBM Plex Mono', monospace">0812****56</span></div>
+<div style="padding: 12px 16px; font-size: 13px; display: flex; flex-direction: column; gap: 6px"><b>Riwayat</b>
+<sc-for list="{{hist}}" as="h" hint-placeholder-count="3"><div style="display: flex; flex-direction: column; border-left: 2px solid #DADCE0; padding-left: 10px"><b>{{h.s}}</b><span style="color: #5A606B">{{h.t}} · {{h.a}}</span></div></sc-for>
+</div>
+<div style="border-top: 2px solid #2B2F36; padding: 12px 16px; display: grid; grid-template-columns: 1fr 2fr; gap: 10px"><span style="border: 1px solid #2B2F36; padding: 12px; text-align: center; font-size: 14px">Label</span><span style="background: #2B2F36; color: #FFFFFF; padding: 12px; text-align: center; font-weight: 600; font-size: 14px">Kirim</span></div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+hist: [
+{ t: "20 Okt 2026, 10:20 WIB", s: "Diproses", a: "Operasional · Dewi O." },
+{ t: "20 Okt 2026, 08:47 WIB", s: "Dibayar", a: "Event gateway (mock)" },
+{ t: "20 Okt 2026, 08:41 WIB", s: "Pesanan dibuat", a: "Pelanggan" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

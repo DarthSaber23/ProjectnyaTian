@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Analytics</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 1900px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 62px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A15 · /admin/analytics · Owner (Andi S.) · 20 Okt 10:16 WIB</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex">
+<nav aria-label="Admin" style="width: 232px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; font-size: 14px">
+<div style="padding: 0 8px 18px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span></div>
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="14"><span style="{{n.st}}">{{n.t}}</span></sc-for>
+</nav>
+<main style="flex: 1; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600">Analitik</h1><span style="font-size: 13px; color: #4A5568">Semua waktu dalam WIB (Asia/Jakarta). Hari dihitung 00:00–23:59 menurut waktu pembayaran.</span></div>
+<div style="display: flex; gap: 8px; align-items: center">
+<div role="group" aria-label="Rentang cepat" style="display: flex; border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden; font-size: 13px"><sc-for list="{{presets}}" as="p" hint-placeholder-count="4"><button type="button" aria-pressed="{{p.on}}" style="{{p.st}}">{{p.t}}</button></sc-for></div>
+<button type="button" style="height: 40px; padding: 0 14px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600">14 Okt – 20 Okt 2026 ▾</button>
+</div>
+</div>
+<div style="display: flex; gap: 16px; align-items: center; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 10px 14px; font-size: 13px">
+<label style="display: flex; gap: 8px; align-items: center; color: #4A5568"><input type="checkbox" disabled> Bandingkan dengan 7 hari sebelumnya</label>
+<span style="color: #4A5568">Nonaktif: data demo hanya mencakup 14–20 Okt.</span>
+<span style="margin-left: auto; background: #FDF1DC; color: #8A5300; font-weight: 600; padding: 2px 8px; border-radius: 4px">Sesi = angka mock, bukan GA4</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{kpi}}" as="k" hint-placeholder-count="6"><div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #4A5568">{{k.l}}</span><b style="font-family: 'Space Grotesk', sans-serif; font-size: 22px">{{k.v}}</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #4A5568">{{k.f}}</span><a href="#defs" style="font-size: 12px">Definisi {{k.id}}</a></div></sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; align-items: start">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 16px">Pendapatan per hari</h2><span style="font-size: 12px; color: #4A5568">Bagan = kolom "Bersih"</span></div>
+<div aria-hidden="true" style="height: 140px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 14px; align-items: end; border-bottom: 1px solid #0E1726; padding: 0 8px"><sc-for list="{{days}}" as="d" hint-placeholder-count="7"><div style="{{d.bar}}"></div></sc-for></div>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<caption style="text-align: left; font-size: 12px; color: #4A5568; padding-bottom: 6px">Tabel data bagan (juga dibaca pembaca layar)</caption>
+<thead><tr style="background: #F2F4F7; color: #4A5568; font-size: 12px; text-align: left"><th scope="col" style="padding: 8px">Tanggal</th><th scope="col" style="padding: 8px; text-align: right">Pesanan dibayar</th><th scope="col" style="padding: 8px; text-align: right">Dibayar (kotor)</th><th scope="col" style="padding: 8px; text-align: right">Refund</th><th scope="col" style="padding: 8px; text-align: right">Bersih</th><th scope="col" style="padding: 8px">Pesanan</th></tr></thead>
+<tbody><sc-for list="{{days}}" as="d" hint-placeholder-count="7"><tr style="border-top: 1px solid #E3E7ED"><th scope="row" style="padding: 7px 8px; text-align: left; font-weight: 500">{{d.d}} Okt</th><td style="padding: 7px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{d.n}}</td><td style="padding: 7px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{d.g}}</td><td style="padding: 7px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{d.r}}</td><td style="padding: 7px 8px; text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600">{{d.net}}</td><td style="padding: 7px 8px; color: #4A5568; font-size: 12px">{{d.o}}</td></tr></sc-for></tbody>
+<tfoot><tr style="border-top: 2px solid #CBD2DC; font-weight: 600"><th scope="row" style="padding: 8px; text-align: left">Total</th><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">8</td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">2.334.000</td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">237.000</td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">2.097.000</td><td style="padding: 8px; font-weight: 400; font-size: 12px; color: #4A5568">= X01 dan X10</td></tr></tfoot>
+</table>
+</section>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<h2 style="margin: 0; font-size: 16px">Status pesanan dibuat (10)</h2>
+<sc-for list="{{status}}" as="s" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; gap: 4px; border-top: 1px solid #E3E7ED; padding-top: 8px"><span style="display: flex; justify-content: space-between"><span>{{s.l}}</span><b style="font-family: 'JetBrains Mono', monospace">{{s.v}}</b></span><div style="height: 8px; background: #F2F4F7; border-radius: 4px"><div style="{{s.bar}}"></div></div><span style="font-size: 12px; color: #4A5568">{{s.o}}</span></div></sc-for>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<h2 style="margin: 0; font-size: 16px">Pemakaian promosi</h2>
+<table style="width: 100%; border-collapse: collapse"><thead><tr style="color: #4A5568; font-size: 12px; text-align: left"><th scope="col" style="padding: 6px 0">Kode</th><th scope="col" style="padding: 6px 0; text-align: right">Dibayar</th><th scope="col" style="padding: 6px 0; text-align: right">Menunggu</th></tr></thead>
+<tbody><sc-for list="{{promos}}" as="p" hint-placeholder-count="5"><tr style="border-top: 1px solid #E3E7ED"><td style="padding: 6px 0; font-family: 'JetBrains Mono', monospace">{{p.c}}</td><td style="padding: 6px 0; text-align: right; font-family: 'JetBrains Mono', monospace">{{p.p}}</td><td style="padding: 6px 0; text-align: right; font-family: 'JetBrains Mono', monospace">{{p.w}}</td></tr></sc-for></tbody></table>
+<span style="font-size: 12px; color: #4A5568">Sama dengan kolom "Dipakai" di X07. Atribusi: sentuhan kampanye terakhir ≤ 7 hari (X01).</span>
+</section>
+</div>
+</div>
+
+<section id="defs" aria-labelledby="defs-h" style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+<h2 id="defs-h" style="margin: 0; font-size: 16px">Definisi metrik (ANALYTICS_METRICS.md)</h2>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<thead><tr style="background: #F2F4F7; color: #4A5568; font-size: 12px; text-align: left"><th scope="col" style="padding: 8px">ID</th><th scope="col" style="padding: 8px">Metrik</th><th scope="col" style="padding: 8px">Rumus</th><th scope="col" style="padding: 8px">Sumber</th><th scope="col" style="padding: 8px">Catatan</th></tr></thead>
+<tbody><sc-for list="{{defs}}" as="m" hint-placeholder-count="8"><tr style="border-top: 1px solid #E3E7ED; vertical-align: top"><td style="padding: 8px; font-family: 'JetBrains Mono', monospace">{{m.id}}</td><td style="padding: 8px; font-weight: 600">{{m.n}}</td><td style="padding: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px">{{m.f}}</td><td style="padding: 8px">{{m.s}}</td><td style="padding: 8px; color: #4A5568">{{m.c}}</td></tr></sc-for></tbody>
+</table>
+</section>
+</main>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · KPI + daftar harian</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column; font-size: 14px">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Menu" style="width: 44px; height: 44px; border: none; background: none; font-size: 20px">☰</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Analitik</b></div>
+<button type="button" style="margin: 12px 12px 0; min-height: 44px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; text-align: left; padding: 0 12px">7 hari terakhir · 14–20 Okt ▾</button>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px">
+<sc-for list="{{kpi}}" as="k" hint-placeholder-count="6"><div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #4A5568">{{k.l}}</span><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">{{k.v}}</b></div></sc-for>
+</div>
+<section style="margin: 0 12px; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 15px">Bersih per hari</h2>
+<sc-for list="{{days}}" as="d" hint-placeholder-count="7"><span style="display: flex; justify-content: space-between; border-top: 1px solid #E3E7ED; padding-top: 6px; font-size: 13px"><span>{{d.d}} Okt · {{d.n}} pesanan</span><b style="font-family: 'JetBrains Mono', monospace">{{d.net}}</b></span></sc-for>
+</section>
+<a href="#" style="margin: 12px; font-size: 13px">Lihat definisi metrik</a>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · lembar pilih rentang tanggal</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column; font-size: 14px; position: relative; min-height: 844px">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><span style="width: 44px"></span><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Analitik</b></div>
+<div aria-hidden="true" style="position: absolute; inset: 56px 0 0 0; background: rgba(14,23,38,0.55)"></div>
+<div role="dialog" aria-modal="true" aria-labelledby="dr-t" style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 12px 12px 0 0; padding: 20px 16px 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="dr-t" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Rentang tanggal</h2>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Pilih rentang</legend>
+<sc-for list="{{ranges}}" as="r" hint-placeholder-count="6"><label style="{{r.box}}"><span style="{{r.dot}}"></span><span style="display: flex; flex-direction: column"><span>{{r.t}}</span><span style="font-size: 12px; color: #4A5568">{{r.s}}</span></span></label></sc-for>
+</fieldset>
+<span style="font-size: 12px; color: #4A5568">Data demo hanya 14–20 Okt. Rentang di luar itu menampilkan keadaan kosong, bukan nol palsu.</span>
+<button type="button" style="min-height: 48px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 15px">Terapkan</button>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+var item = "min-height:40px;display:flex;align-items:center;padding:0 10px;border-radius:6px;";
+var sec = "font-size:11px;color:#4A5568;letter-spacing:0.06em;padding:14px 10px 4px;";
+function n(t, k) { return { t: t, st: k === "sec" ? sec : item + (k === "on" ? "background:#EAF0FD;color:#1747B5;font-weight:600" : "") }; }
+function day(d, n, g, r, net, h, o) { return { d: d, n: n, g: g, r: r, net: net, o: o, bar: "border-radius:3px 3px 0 0;background:#1F5AE0;height:" + Math.max(h, 2) + "px" }; }
+function st(l, v, pct, c, o) { return { l: l, v: v, o: o, bar: "height:8px;border-radius:4px;width:" + pct + "%;background:" + c }; }
+var pb = "height:38px;padding:0 12px;border:none;font-family:inherit;font-size:13px;";
+var radio = "width:16px;height:16px;border-radius:50%;border:2px solid #7D8796;box-sizing:border-box;flex:none";
+var radioOn = "width:16px;height:16px;border-radius:50%;border:5px solid #1F5AE0;box-sizing:border-box;flex:none";
+var box = "min-height:48px;display:flex;align-items:center;gap:10px;border:1px solid #CBD2DC;border-radius:6px;padding:4px 12px";
+var boxOn = "min-height:48px;display:flex;align-items:center;gap:10px;border:2px solid #1F5AE0;border-radius:6px;padding:3px 11px;background:#EAF0FD";
+return {
+nav: [n("Dasbor"), n("PENJUALAN", "sec"), n("Pesanan"), n("Pelanggan"), n("KATALOG", "sec"), n("Produk"), n("Kategori"), n("Inventaris"), n("MARKETING", "sec"), n("Promosi"), n("Konten"), n("LAINNYA", "sec"), n("Analitik", "on"), n("Laporan"), n("Pengaturan")],
+presets: [
+{ t: "Hari ini", on: "false", st: pb + "background:#FFFFFF;color:#0E1726" },
+{ t: "7 hari", on: "true", st: pb + "background:#1F5AE0;color:#FFFFFF;font-weight:600" },
+{ t: "30 hari", on: "false", st: pb + "background:#FFFFFF;color:#0E1726" },
+{ t: "Bulan ini", on: "false", st: pb + "background:#FFFFFF;color:#0E1726" }
+],
+kpi: [
+{ id: "M1", l: "Pendapatan bersih", v: "Rp2.097.000", f: "2.334.000 − 237.000" },
+{ id: "M2", l: "Pesanan dibayar", v: "8", f: "termasuk 1 direfund" },
+{ id: "M3", l: "Rata-rata nilai pesanan", v: "Rp262.125", f: "2.097.000 ÷ 8" },
+{ id: "M4", l: "Konversi", v: "0,65%", f: "8 ÷ 1.240 sesi (mock)" },
+{ id: "M5", l: "Refund", v: "Rp237.000", f: "1 pesanan (0008)" },
+{ id: "M7", l: "Pembeli berulang", v: "2 dari 6", f: "33,3% pembeli" }
+],
+days: [
+day("14", "3", "950.000", "0", "950.000", 140, "0001 · 0002 · 0003"),
+day("15", "0", "0", "0", "0", 0, "—"),
+day("16", "1", "87.000", "0", "87.000", 13, "0004"),
+day("17", "1", "567.000", "0", "567.000", 84, "0005"),
+day("18", "0", "0", "0", "0", 0, "0006 kedaluwarsa"),
+day("19", "2", "454.000", "237.000", "217.000", 32, "0007 · 0008 refund 16:40"),
+day("20", "1", "276.000", "0", "276.000", 41, "0009 · 0010 menunggu")
+],
+status: [
+st("Dibayar (termasuk 1 refund)", "8", 80, "#1E7A45", "0001–0005, 0007–0009"),
+st("Menunggu pembayaran", "1", 10, "#8A5300", "0010 · tidak dihitung sampai dibayar"),
+st("Kedaluwarsa", "1", 10, "#7D8796", "0006 · stok dikembalikan"),
+st("Tingkat pembayaran (M6)", "88,9%", 89, "#1F5AE0", "8 ÷ (8 dibayar + 1 kedaluwarsa)")
+],
+promos: [
+{ c: "Harga coret B01-1M", p: "2", w: "0" },
+{ c: "FS-WEEKEND", p: "0", w: "1" },
+{ c: "KABEL10", p: "0", w: "1" },
+{ c: "GRATISONGKIR", p: "0", w: "1" },
+{ c: "HEMAT50", p: "0", w: "0" }
+],
+defs: [
+{ id: "M1", n: "Pendapatan bersih", f: "Σ total pesanan dibayar − Σ refund", s: "Pesanan (W00)", c: "Dibayar menurut waktu bayar; refund menurut tanggal refund (D12). Total sudah termasuk PPN (D5) dan ongkir setelah voucher." },
+{ id: "M2", n: "Pesanan dibayar", f: "count(status pernah = Dibayar)", s: "Pesanan", c: "Pesanan yang lalu direfund tetap dihitung; menunggu dan kedaluwarsa tidak." },
+{ id: "M3", n: "Rata-rata nilai pesanan", f: "M1 ÷ M2", s: "Turunan", c: "Dibulatkan ke bawah ke Rupiah (D4)." },
+{ id: "M4", n: "Konversi", f: "M2 ÷ sesi", s: "Sesi: angka mock", c: "Produksi: sesi dari GA4 (Agent 02). Bukan klaim kinerja." },
+{ id: "M5", n: "Refund", f: "Σ nilai refund dicatat", s: "Pesanan", c: "Refund dicatat manual oleh admin (I8)." },
+{ id: "M6", n: "Tingkat pembayaran", f: "dibayar ÷ (dibayar + kedaluwarsa)", s: "Pesanan", c: "Pesanan masih menunggu dikeluarkan dari penyebut." },
+{ id: "M7", n: "Pembeli berulang", f: "pelanggan dgn ≥2 pesanan dibayar ÷ pelanggan dgn ≥1", s: "Pelanggan (X10)", c: "Sepanjang data, bukan per periode, sampai Owner memutuskan." },
+{ id: "M8", n: "Pemakaian promosi", f: "count(pesanan memakai kode) per status", s: "Promosi", c: "Atribusi sentuhan terakhir ≤ 7 hari." }
+],
+ranges: [
+{ t: "Hari ini", s: "20 Okt 00:00 – 10:16 · Rp276.000 · 1 pesanan", box: box, dot: radio },
+{ t: "Kemarin", s: "19 Okt · bersih Rp217.000", box: box, dot: radio },
+{ t: "7 hari terakhir", s: "14–20 Okt · Rp2.097.000", box: boxOn, dot: radioOn },
+{ t: "30 hari terakhir", s: "21 Sep – 20 Okt · data demo hanya 7 hari", box: box, dot: radio },
+{ t: "Bulan ini", s: "1–20 Okt · data demo hanya 7 hari", box: box, dot: radio },
+{ t: "Rentang khusus", s: "Pilih tanggal mulai dan akhir", box: box, dot: radio }
+]
+};
+}
+}
+</script>
+</body>
+</html>

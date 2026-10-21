@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Responsive Rules</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2000px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">M3-5 · RESPONSIVE RULES</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Responsive rules</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Breakpoints are min-width (mobile first). Validation widths from the brief: 360, 390, 768, 1280, 1440 px. No horizontal page scroll at any width; wide tables scroll inside their own box.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{bps}}" as="b" hint-placeholder-count="6">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500">{{b.k}}</span><b style="font-size: 18px">{{b.w}}</b><span style="font-size: 13px; color: #3B4049">{{b.g}}</span><span style="font-size: 13px; color: #555B66">{{b.d}}</span></div>
+</sc-for>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: 200px repeat(4, minmax(0, 1fr)); background: #15171C; color: #F6F6F3; font-size: 11px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 10px 12px">PATTERN</div><div style="padding: 10px 12px">&lt; 768 (PHONE)</div><div style="padding: 10px 12px">768–1023 (TABLET)</div><div style="padding: 10px 12px">1024–1279</div><div style="padding: 10px 12px">≥ 1280 (DESKTOP)</div>
+</div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="14">
+<div style="display: grid; grid-template-columns: 200px repeat(4, minmax(0, 1fr)); border-top: 1px solid #E6E7EA; font-size: 13px; line-height: 1.45">
+<div style="padding: 10px 12px; font-weight: 600">{{r.p}}</div><div style="padding: 10px 12px">{{r.a}}</div><div style="padding: 10px 12px">{{r.b}}</div><div style="padding: 10px 12px">{{r.c}}</div><div style="padding: 10px 12px">{{r.d}}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.55">
+<h2 style="margin: 0; font-size: 20px">360 px checks (smallest)</h2>
+<span>Product card titles wrap to 2 lines, then truncate with full title in the accessible name.</span>
+<span>Price + strikethrough may wrap under each other; never shrink below 14 px.</span>
+<span>Checkout bottom bar: total stacks above the button if both don't fit.</span>
+<span>Variant chips wrap; no horizontal scrolling inside the purchase area.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.55">
+<h2 style="margin: 0; font-size: 20px">Implementation notes (for M7)</h2>
+<span>Tailwind screens: sm 480, md 768, lg 1024, xl 1280, 2xl 1440.</span>
+<span>Brand composition config sets grid density and filter layout per breakpoint; shared components only react to container width where noted (product card, option cards).</span>
+<span>Sticky elements (header, purchase bar, checkout summary) never exceed 25% of viewport height.</span>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+function r(p, a, b, c, d) { return { p: p, a: a, b: b, c: c, d: d }; }
+return {
+bps: [
+{ k: "base", w: "0–479", g: "4 cols · gutter 16", d: "360 / 390 phones" },
+{ k: "sm", w: "480–767", g: "4 cols · gutter 16", d: "large phones" },
+{ k: "md", w: "768–1023", g: "8 cols · gutter 24", d: "tablets" },
+{ k: "lg", w: "1024–1279", g: "12 cols · gutter 24", d: "small laptops" },
+{ k: "xl", w: "1280–1439", g: "12 cols · gutter 24", d: "desktop" },
+{ k: "2xl", w: "≥ 1440", g: "12 cols · max 1280", d: "wide; content centred" }
+],
+rows: [
+r("Header & navigation", "Logo, icons, menu sheet; B: search bar always visible below", "Same as phone, wider search", "Full nav row; A: centred logo; B: mega-menu", "Same; mega-menu 4 columns"),
+r("Search", "Full-screen overlay with recent/popular", "Overlay", "Dropdown under field, 480 px wide", "Dropdown, 640 px"),
+r("Product grid", "A: 2 cols · B: 2 cols", "A: 2 · B: 3", "A: 3 · B: 3", "A: 3 · B: 4"),
+r("Filters", "Bottom sheet with live count button", "Bottom sheet", "A: top bar · B: sidebar 240 px", "A: top bar · B: sidebar 260 px"),
+r("Comparison", "2 columns, first pinned, swipe", "3 columns, swipe", "4 columns", "4 columns"),
+r("PDP layout", "Gallery swipe, stacked info, accordions", "Gallery + info stacked, 2-col specs", "Gallery 60 / info 40", "Thumbnails + gallery + info column"),
+r("Purchase action", "Sticky bottom bar", "Sticky bottom bar", "Inline, info column sticky", "Inline, info column sticky"),
+r("Cart", "Full page; drawer = bottom sheet", "Drawer 420 px", "Drawer 420 px", "Drawer 440 px"),
+r("Checkout", "Single column, summary collapsed at top, bottom bar", "Single column, summary below", "Form + 360 px summary", "Form + 420 px summary"),
+r("Dialogs", "Full-width bottom sheet", "Centred, 560 px", "Centred, 560 px", "Centred, 560 px"),
+r("Admin navigation", "Menu drawer", "Collapsed icon rail 72 px", "Sidebar 220 px", "Sidebar 220 px"),
+r("Admin tables", "Stacked cards (key fields), detail on tap", "Table in scroll box, first column pinned", "Full table", "Full table"),
+r("Footer", "Accordion groups", "2 columns", "4 columns", "4 columns"),
+r("Display type", "display.xl 34 px", "40 px", "48 px", "48 px")
+]
+};
+}
+}
+</script>
+</body>
+</html>

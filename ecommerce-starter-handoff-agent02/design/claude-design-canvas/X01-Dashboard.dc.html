@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1700px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A01 · /admin · Owner · 14–20 Okt 2026 · snapshot 10:16 WIB</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex">
+<nav aria-label="Admin" style="width: 232px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; font-size: 14px; min-height: 1300px">
+<div style="display: flex; gap: 10px; align-items: center; padding: 0 8px 18px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span><span style="font-size: 11px; color: #4A5568; border: 1px solid #CBD2DC; border-radius: 4px; padding: 1px 6px">Admin</span></div>
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="12"><span style="{{n.st}}"><span>{{n.t}}</span><span style="{{n.bSt}}">{{n.b}}</span></span></sc-for>
+</nav>
+<div style="flex: 1; display: flex; flex-direction: column">
+<div style="height: 64px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; gap: 16px; padding: 0 28px">
+<div style="width: 420px; height: 40px; border: 1.5px solid #CBD2DC; border-radius: 6px; display: flex; align-items: center; gap: 8px; padding: 0 12px; color: #4A5568; font-size: 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>Cari pesanan, SKU, produk… <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid #CBD2DC; border-radius: 4px; padding: 0 4px">/</span></div>
+<a href="#" style="margin-left: auto; font-size: 14px">Lihat toko ↗</a>
+<button type="button" aria-label="Notifikasi, 5 baru" style="position: relative; width: 40px; height: 40px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><span style="position: absolute; right: -6px; top: -6px; background: #C0262D; color: #FFFFFF; border-radius: 9px; font-size: 11px; font-weight: 700; padding: 1px 6px">5</span></button>
+<span style="display: flex; gap: 10px; align-items: center; font-size: 14px"><span style="width: 32px; height: 32px; border-radius: 16px; background: #EAF0FD; color: #1747B5; display: flex; align-items: center; justify-content: center; font-weight: 700">AS</span><span style="display: flex; flex-direction: column; line-height: 1.2"><b>Andi S.</b><span style="font-size: 12px; color: #4A5568">Owner</span></span></span>
+</div>
+<main style="padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600">Dasbor</h1><div style="display: flex; gap: 10px; font-size: 14px"><button type="button" style="height: 40px; padding: 0 14px; border: 1.5px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit">14 – 20 Okt 2026 ▾</button><span style="height: 40px; padding: 0 14px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; display: flex; align-items: center; color: #4A5568">Asia/Jakarta (WIB)</span></div></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{kpi}}" as="k" hint-placeholder-count="4"><div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #4A5568; display: flex; justify-content: space-between">{{k.l}} <button type="button" aria-label="Definisi metrik" style="border: none; background: none; color: #4A5568">ⓘ</button></span><b style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 600">{{k.v}}</b><span style="font-size: 12px; color: #4A5568; font-family: 'JetBrains Mono', monospace">{{k.f}}</span></div></sc-for>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 16px; align-items: start">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 16px; font-weight: 600">Pendapatan harian</h2><span style="font-size: 12px; color: #4A5568">Jumlah batang = Rp2.097.000</span></div>
+<div role="img" aria-label="Pendapatan harian 14 sampai 20 Oktober: 950 ribu, 0, 87 ribu, 567 ribu, 0, 217 ribu, 276 ribu" style="height: 240px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 18px; align-items: end; border-bottom: 1px solid #0E1726; padding: 0 12px">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 240px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px">{{b.v}}</span><div style="{{b.st}}"></div></div></sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 18px; padding: 0 12px; font-size: 12px; color: #4A5568; text-align: center"><sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><span>{{b.d}} Okt</span></sc-for></div>
+<span style="font-size: 12px; color: #4A5568">19 Okt: Rp237.000 dibayar lalu direfund penuh di hari yang sama (ORD-261019-0008), jadi tidak menambah pendapatan.</span>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Perlu tindakan</h2>
+<sc-for list="{{todo}}" as="t" hint-placeholder-count="4"><a href="#" style="display: flex; justify-content: space-between; align-items: center; min-height: 44px; border-top: 1px solid #E3E7ED; color: #0E1726; text-decoration: none"><span style="display: flex; gap: 10px; align-items: center"><span style="{{t.dot}}"></span>{{t.t}}</span><b style="font-family: 'JetBrains Mono', monospace">{{t.n}} ›</b></a></sc-for>
+<h2 style="margin: 10px 0 0; font-size: 16px; font-weight: 600">Stok menipis / habis</h2>
+<sc-for list="{{low}}" as="s" hint-placeholder-count="4"><div style="display: flex; justify-content: space-between; border-top: 1px solid #E3E7ED; padding-top: 8px; font-size: 13px"><span>{{s.n}}</span><span style="{{s.st}}">{{s.v}}</span></div></sc-for>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<div style="display: flex; justify-content: space-between"><h2 style="margin: 0; font-size: 16px; font-weight: 600">Produk terlaris</h2><span style="color: #4A5568">unit, pesanan dibayar tanpa refund</span></div>
+<sc-for list="{{top}}" as="t" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: 24px minmax(0, 1fr) 70px 110px; gap: 8px; border-top: 1px solid #E3E7ED; padding-top: 8px"><span style="color: #4A5568">{{t.r}}</span><span>{{t.n}}</span><span>{{t.u}}</span><b style="text-align: right; font-family: 'JetBrains Mono', monospace">{{t.v}}</b></div></sc-for>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<div style="display: flex; justify-content: space-between"><h2 style="margin: 0; font-size: 16px; font-weight: 600">Transaksi terbaru</h2><a href="#">Semua pesanan →</a></div>
+<sc-for list="{{recent}}" as="o" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: 150px minmax(0, 1fr) 110px; gap: 8px; border-top: 1px solid #E3E7ED; padding-top: 8px; align-items: center"><span style="font-family: 'JetBrains Mono', monospace">{{o.no}}</span><span style="{{o.st}}">{{o.s}}</span><b style="text-align: right; font-family: 'JetBrains Mono', monospace">{{o.t}}</b></div></sc-for>
+</section>
+</div>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 16px 20px; display: flex; gap: 28px; align-items: center; font-size: 13px"><b style="font-size: 15px">Kampanye aktif</b><span>FS-WEEKEND · 0 dibayar · 1 menunggu</span><span>KABEL10 · 0 dibayar · 1 menunggu</span><span style="margin-left: auto; color: #4A5568">Atribusi: sentuhan kampanye terakhir ≤ 7 hari (D12)</span></section>
+</main>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · menu in drawer, cards stacked</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Menu" style="width: 44px; height: 44px; border: none; background: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Dasbor</b><button type="button" style="margin-left: auto; margin-right: 8px; height: 36px; padding: 0 10px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 12px">14–20 Okt ▾</button></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px">
+<sc-for list="{{kpi}}" as="k" hint-placeholder-count="4"><div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #4A5568">{{k.l}}</span><b style="font-family: 'Space Grotesk', sans-serif; font-size: 19px">{{k.v}}</b></div></sc-for>
+</div>
+<div style="margin: 0 14px 14px; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<b>Perlu tindakan</b>
+<sc-for list="{{todo}}" as="t" hint-placeholder-count="4"><a href="#" style="display: flex; justify-content: space-between; align-items: center; min-height: 44px; border-top: 1px solid #E3E7ED; color: #0E1726; text-decoration: none"><span style="display: flex; gap: 8px; align-items: center"><span style="{{t.dot}}"></span>{{t.t}}</span><b>{{t.n}} ›</b></a></sc-for>
+</div>
+<div style="margin: 0 14px 14px; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px"><b style="font-size: 14px">Pendapatan harian</b><div style="height: 110px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; border-bottom: 1px solid #0E1726"><sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><div style="{{b.ms}}"></div></sc-for></div><div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; font-size: 10px; color: #4A5568; text-align: center"><sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><span>{{b.d}}</span></sc-for></div></div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+var item = "display:flex;justify-content:space-between;align-items:center;min-height:40px;padding:0 10px;border-radius:6px;";
+var sec = "font-size:11px;color:#4A5568;letter-spacing:0.06em;padding:14px 10px 4px;";
+var badge = "font-size:11px;font-weight:700;border-radius:9px;padding:1px 7px;";
+function n(t, b, kind) {
+if (kind === "sec") return { t: t, b: "", st: sec, bSt: "display:none" };
+var active = kind === "on";
+return { t: t, b: b, st: item + (active ? "background:#EAF0FD;color:#1747B5;font-weight:600" : ""), bSt: b ? badge + (kind === "warn" ? "background:#FDF1DC;color:#8A5300" : "background:#1F5AE0;color:#FFFFFF") : "display:none" };
+}
+function bar(d, v, h) { return { d: d, v: v, st: "width:100%;border-radius:4px 4px 0 0;background:#1F5AE0;height:" + Math.max(h, 2) + "px", ms: "border-radius:2px 2px 0 0;background:#1F5AE0;height:" + Math.max(Math.round(h / 2), 1) + "px" }; }
+var dot = function (c) { return "width:8px;height:8px;border-radius:4px;background:" + c; };
+var chip = "display:inline-flex;align-self:center;justify-self:start;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;";
+return {
+nav: [n("Dasbor", "", "on"), n("PENJUALAN", "", "sec"), n("Pesanan", "2", ""), n("Pelanggan", "", ""), n("KATALOG", "", "sec"), n("Produk", "", ""), n("Kategori", "", ""), n("Inventaris", "4", "warn"), n("MARKETING", "", "sec"), n("Promosi", "", ""), n("Konten", "", ""), n("LAINNYA", "", "sec"), n("Analitik", "", ""), n("Pengaturan", "", "")],
+kpi: [
+{ l: "Pendapatan", v: "Rp2.097.000", f: "2.334.000 − 237.000 refund" },
+{ l: "Pesanan dibayar", v: "8", f: "excl. kedaluwarsa & menunggu" },
+{ l: "Rata-rata nilai pesanan", v: "Rp262.125", f: "2.097.000 ÷ 8" },
+{ l: "Konversi", v: "0,65%", f: "8 ÷ 1.240 sesi (mock)" }
+],
+bars: [bar("14", "950rb", 200), bar("15", "0", 0), bar("16", "87rb", 18), bar("17", "567rb", 119), bar("18", "0", 0), bar("19", "217rb", 46), bar("20", "276rb", 58)],
+todo: [
+{ t: "Dibayar, siap diproses", n: "2", dot: dot("#1E7A45") },
+{ t: "Diproses, belum dikirim", n: "1", dot: dot("#1F5AE0") },
+{ t: "Menunggu pembayaran", n: "1", dot: dot("#8A5300") },
+{ t: "Update kurir terlambat", n: "1", dot: dot("#C0262D") }
+],
+low: [
+{ n: "Kabel HDMI 2.1 8K · 2 m", v: "Habis", st: "color:#C0262D;font-weight:600" },
+{ n: "Kabel USB-C 100W · 2 m Putih", v: "Habis", st: "color:#C0262D;font-weight:600" },
+{ n: "Hub USB-C 7-in-1", v: "Sisa 4", st: "color:#8A5300;font-weight:600" },
+{ n: "Kabel USB-C 100W · 2 m Hitam", v: "Sisa 7 (2 dicadangkan)", st: "color:#8A5300;font-weight:600" }
+],
+top: [
+{ r: "1", n: "Kabel USB-C ke USB-C 100W Braided", u: "3 unit", v: "Rp387.000" },
+{ r: "2", n: "Hub USB-C 7-in-1", u: "1 unit", v: "Rp549.000" },
+{ r: "3", n: "Charger GaN 65W 3 Port", u: "1 unit", v: "Rp399.000" },
+{ r: "4", n: "Adaptor USB-C ke HDMI 4K60", u: "1 unit", v: "Rp219.000" },
+{ r: "5", n: "Kabel DisplayPort 1.4 · 2 m", u: "1 unit", v: "Rp199.000" }
+],
+recent: [
+{ no: "ORD-261020-0010", s: "Menunggu pembayaran", st: chip + "background:#FDF1DC;color:#8A5300", t: "Rp587.250" },
+{ no: "ORD-261020-0009", s: "Dibayar", st: chip + "background:#E3F4EA;color:#1E7A45", t: "Rp276.000" },
+{ no: "ORD-261019-0008", s: "Dibatalkan · refund", st: chip + "background:#F2F4F7;color:#0E1726", t: "Rp237.000" },
+{ no: "ORD-261019-0007", s: "Dibayar", st: chip + "background:#E3F4EA;color:#1E7A45", t: "Rp217.000" },
+{ no: "ORD-261018-0006", s: "Dibatalkan · kedaluwarsa", st: chip + "background:#F2F4F7;color:#0E1726", t: "Rp237.000" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

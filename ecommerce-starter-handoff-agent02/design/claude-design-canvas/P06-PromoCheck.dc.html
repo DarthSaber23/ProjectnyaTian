@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Prototype Promotion Check</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #1F5AE0;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; background: #F5F6F8; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; overflow: hidden; position: relative; font-size: 14px">
+
+<nav aria-label="Admin" style="width: 220px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 18px 12px; display: flex; flex-direction: column; gap: 2px">
+<div style="padding: 0 8px 16px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span></div>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; color: #4A5568">Dasbor</span>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Promosi</span>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; color: #4A5568">Konten</span>
+<div style="margin-top: auto; border: 2px dashed #7D8796; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 6px; background: #F2F4F7">
+<b style="font-size: 11px; font-family: 'JetBrains Mono', monospace">PANEL UJI · peran</b>
+<sc-for list="{{roles}}" as="r" hint-placeholder-count="2"><button type="button" aria-pressed="{{r.on}}" onClick="{{r.pick}}" style="{{r.st}}">{{r.t}}</button></sc-for>
+<button type="button" onClick="{{resetAll}}" style="min-height: 36px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-size: 12px; font-weight: 600">Atur ulang</button>
+</div>
+</nav>
+
+<main style="flex: 1; min-width: 0; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px"><div style="display: flex; gap: 10px; align-items: center"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">CHARGER15</h1><span style="{{statusSt}}">{{status}}</span></div><span style="font-size: 12px; color: #4A5568; font-family: 'JetBrains Mono', monospace">{{who}} · 20 Okt 10:16 WIB</span></div>
+<sc-if value="{{readOnly}}" hint-placeholder-val="{{ false }}"><div role="status" style="background: #FDF1DC; color: #6B4100; border-radius: 6px; padding: 10px 12px; font-size: 13px; font-weight: 600">Peran Operasional tidak punya akses ke Promosi (matriks A17). Halaman ditampilkan hanya-baca untuk uji.</div></sc-if>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 16px; align-items: start">
+
+<section aria-labelledby="f-h" style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="f-h" style="margin: 0; font-size: 16px">Pengaturan</h2>
+<div style="display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 8px 10px; font-size: 13px"><span style="color: #4A5568">Jenis</span><span>Diskon persen per produk</span><span style="color: #4A5568">Target</span><span>Kategori Charger · 1 produk (Charger GaN 65W 3 Port, harga normal Rp399.000, stok 11)</span><span style="color: #4A5568">Berakhir</span><span>31 Okt 2026, 23:59 WIB</span></div>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; font-size: 13px; padding-bottom: 4px">Diskon</legend><div style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{pcts}}" as="p" hint-placeholder-count="5"><button type="button" aria-pressed="{{p.on}}" disabled="{{readOnly}}" onClick="{{p.pick}}" style="{{p.st}}">{{p.t}}</button></sc-for></div></fieldset>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; font-size: 13px; padding-bottom: 4px">Mulai</legend><div style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{starts}}" as="p" hint-placeholder-count="3"><button type="button" aria-pressed="{{p.on}}" disabled="{{readOnly}}" onClick="{{p.pick}}" style="{{p.st}}">{{p.t}}</button></sc-for></div></fieldset>
+<label style="display: flex; gap: 8px; align-items: center; font-size: 13px"><input type="checkbox" checked="{{allowVoucher}}" disabled="{{readOnly}}" onChange="{{toggleVoucher}}" style="width: 18px; height: 18px"> Boleh digabung dengan voucher pesanan (D3)</label>
+<label style="display: flex; gap: 8px; align-items: center; font-size: 13px"><input type="checkbox" checked="{{reviewed}}" disabled="{{readOnly}}" onChange="{{toggleReviewed}}" style="width: 18px; height: 18px"> Saya sudah meninjau hasil pengecekan konflik</label>
+<span role="alert" style="{{errSt}}">{{err}}</span>
+<div style="display: flex; gap: 8px; justify-content: flex-end"><button type="button" disabled="{{readOnly}}" onClick="{{saveDraft}}" style="min-height: 44px; padding: 0 14px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-weight: 600">Simpan draf</button><button type="button" disabled="{{readOnly}}" onClick="{{schedule}}" style="{{schedSt}}">Jadwalkan</button></div>
+</section>
+
+<section aria-labelledby="c-h" style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="c-h" style="margin: 0; font-size: 16px">Pengecekan konflik · Charger GaN 65W</h2>
+<span style="font-size: 12px; color: #4A5568">Aturan D3: per barang hanya 1 promo harga, yang terendah dipakai. Harga dibulatkan ke bawah (D4).</span>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<thead><tr style="background: #F2F4F7; color: #4A5568; font-size: 12px; text-align: left"><th scope="col" style="padding: 8px">Tanggal</th><th scope="col" style="padding: 8px; text-align: right">FS-WEEKEND</th><th scope="col" style="padding: 8px; text-align: right">CHARGER15</th><th scope="col" style="padding: 8px">Harga yang dipakai</th><th scope="col" style="padding: 8px">Voucher pesanan</th></tr></thead>
+<tbody><sc-for list="{{segs}}" as="g" hint-placeholder-count="3"><tr style="border-top: 1px solid #E3E7ED; vertical-align: top"><th scope="row" style="padding: 8px; text-align: left; font-weight: 500">{{g.d}}</th><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{g.fs}}</td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{g.c}}</td><td style="{{g.winSt}}">{{g.win}}</td><td style="padding: 8px; font-size: 12.5px">{{g.v}}</td></tr></sc-for></tbody>
+</table>
+<sc-for list="{{notes}}" as="n" hint-placeholder-count="2"><div style="{{n.st}}">{{n.t}}</div></sc-for>
+</section>
+</div>
+
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; gap: 6px"><h2 style="margin: 0; font-size: 15px">Log audit (sesi ini)</h2>
+<sc-if value="{{logEmpty}}" hint-placeholder-val="{{ true }}"><span style="font-size: 13px; color: #4A5568">Belum ada aksi. Draf terakhir: 20 Okt 10:12 · Rina M.</span></sc-if>
+<sc-for list="{{log}}" as="l" hint-placeholder-count="1"><span style="font-size: 13px; border-top: 1px solid #E3E7ED; padding-top: 4px"><span style="font-family: 'JetBrains Mono', monospace; color: #4A5568">{{l.t}} · {{l.code}}</span> · {{l.a}} · {{l.who}}</span></sc-for>
+</section>
+</main>
+
+<div aria-live="polite" style="{{toastSt}}">{{toast}}</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+var S = this.state || {};
+var self = this;
+var set = function (o) { self.setState(o); };
+function fmt(n) { return "Rp" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+var role = S.role || "mkt";
+var readOnly = role !== "mkt";
+var pct = S.pct || 15;
+var start = S.start || 21;
+var allowVoucher = S.allowVoucher !== false;
+var reviewed = !!S.reviewed;
+var status = S.status || "DRAF";
+var log = S.log || [];
+var BASE = 399000, FS = 299250;
+var cp = Math.floor(BASE * (100 - pct) / 100);
+var pill = "min-height:38px;padding:0 14px;border-radius:19px;font-size:13px;font-weight:600;";
+function pillSt(on) { return pill + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #7D8796;background:#FFFFFF;color:#0E1726"); }
+var reset = { reviewed: false, err: "" };
+var pcts = [10, 15, 20, 25, 30].map(function (p) { return { t: "−" + p + "% → " + fmt(Math.floor(BASE * (100 - p) / 100)), on: p === pct ? "true" : "false", st: pillSt(p === pct), pick: function () { set({ pct: p, reviewed: false, err: "", status: status === "TERJADWAL" ? "DRAF" : status }); } }; });
+var starts = [20, 21, 23].map(function (d) { return { t: d + " Okt 00:00", on: d === start ? "true" : "false", st: pillSt(d === start), pick: function () { set({ start: d, reviewed: false, err: "", status: status === "TERJADWAL" ? "DRAF" : status }); } }; });
+// segments
+var segs = []; var notes = [];
+function vtxt(isFlash) { if (isFlash) return "Tidak berlaku (harga flash sale)"; return allowVoucher ? "Berlaku (mis. HEMAT50 jika syarat terpenuhi)" : "Tidak berlaku (diatur di promo ini)"; }
+var win = "padding:8px;font-weight:600;";
+if (start <= 22) {
+var fsWins = FS <= cp; var tie = FS === cp;
+segs.push({ d: start + "–22 Okt", fs: fmt(FS), c: fmt(cp), win: fsWins ? fmt(FS) + " · FS-WEEKEND" + (tie ? " (sama; promo yang sudah aktif dipertahankan)" : "") : fmt(cp) + " · CHARGER15", winSt: win + (fsWins ? "color:#8A5300" : "color:#1E7A45"), v: vtxt(fsWins) });
+if (fsWins) notes.push({ t: "Tumpang tindih " + start + "–22 Okt: CHARGER15 tidak berpengaruh karena flash sale lebih murah. Pelanggan tidak melihat perubahan harga.", st: "background:#FDF1DC;color:#6B4100;border-radius:6px;padding:8px 10px;font-size:13px" });
+else notes.push({ t: "Peringatan: CHARGER15 (" + fmt(cp) + ") lebih murah dari flash sale (" + fmt(FS) + ") pada " + start + "–22 Okt. Harga flash sale tidak lagi dipakai, dan karena barang bukan harga flash sale, voucher pesanan " + (allowVoucher ? "menjadi berlaku." : "tetap tidak berlaku (diatur di promo ini)."), st: "background:#FDECEC;color:#7A1F1F;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:600" });
+}
+var from23 = Math.max(start, 23);
+segs.push({ d: from23 + "–31 Okt", fs: "—", c: fmt(cp), win: fmt(cp) + " · CHARGER15", winSt: win + "color:#1E7A45", v: vtxt(false) });
+if (start === 20) notes.push({ t: "Mulai 20 Okt 00:00 sudah lewat (sekarang 10:16). Promo baru dimulai saat dijadwalkan, bukan mundur.", st: "background:#FDF1DC;color:#6B4100;border-radius:6px;padding:8px 10px;font-size:13px" });
+notes.push({ t: "Promo lain di kategori Charger: hanya FS-WEEKEND. KABEL10 tidak menyentuh Charger.", st: "font-size:12.5px;color:#4A5568" });
+var stSt = "display:inline-flex;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;" + (status === "TERJADWAL" ? "background:#E3F4EA;color:#1E7A45" : "background:#F2F4F7;color:#4A5568");
+function entry(code, a) { return [{ t: "20 Okt 10:16", code: code, a: a, who: "Rina M. (Marketing)" }].concat(log); }
+var desc = "−" + pct + "% (" + fmt(cp) + "), mulai " + start + " Okt, voucher pesanan " + (allowVoucher ? "boleh" : "tidak");
+return {
+roles: [{ k: "mkt", t: "Marketing · Rina M." }, { k: "ops", t: "Operasional · Dewi O." }].map(function (r) { var on = r.k === role; return { t: r.t, on: on ? "true" : "false", pick: function () { set({ role: r.k }); }, st: "min-height:34px;text-align:left;padding:0 8px;border-radius:6px;font-size:12px;font-weight:600;" + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #CBD2DC;background:#FFFFFF;color:#0E1726") }; }),
+resetAll: function () { set({ role: "mkt", pct: 15, start: 21, allowVoucher: true, reviewed: false, status: "DRAF", log: [], err: "", toast: "" }); },
+readOnly: readOnly, who: readOnly ? "Dewi O. (Operasional)" : "Rina M. (Marketing)",
+status: status, statusSt: stSt, pcts: pcts, starts: starts,
+allowVoucher: allowVoucher, toggleVoucher: function () { set({ allowVoucher: !allowVoucher, reviewed: false }); },
+reviewed: reviewed, toggleReviewed: function () { set({ reviewed: !reviewed, err: "" }); },
+segs: segs, notes: notes,
+err: S.err || "", errSt: S.err ? "font-size:13px;font-weight:600;color:#C0262D" : "display:none",
+saveDraft: function () { set({ status: "DRAF", log: entry("PROMO_DRAFT_SAVED", "Draf CHARGER15 disimpan · " + desc), toast: "Draf disimpan." }); },
+schedule: function () { if (!reviewed) { set({ err: "Centang konfirmasi peninjauan konflik sebelum menjadwalkan." }); return; } if (start === 20) { set({ err: "Tanggal mulai sudah lewat. Pilih 21 atau 23 Okt." }); return; } set({ status: "TERJADWAL", err: "", log: entry("PROMO_SCHEDULED", "CHARGER15 dijadwalkan · " + desc), toast: "CHARGER15 dijadwalkan. Daftar promosi: Terjadwal 1, Draf 0." }); },
+schedSt: "min-height:44px;padding:0 16px;border:none;border-radius:6px;font-weight:600;" + (readOnly ? "background:#CBD2DC;color:#4A5568" : "background:#1F5AE0;color:#FFFFFF"),
+log: log, logEmpty: log.length === 0,
+toast: S.toast || "", toastSt: S.toast ? "position:absolute;left:50%;bottom:20px;transform:translateX(-50%);background:#0E1726;color:#FFFFFF;border-radius:6px;padding:10px 16px;font-size:13px" : "display:none"
+};
+}
+}
+</script>
+</body>
+</html>

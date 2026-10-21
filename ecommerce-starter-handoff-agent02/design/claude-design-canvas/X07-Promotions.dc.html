@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Promotions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1400px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A08 · /admin/promotions · Marketing · 20 Okt 10:16 WIB</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex">
+<nav aria-label="Admin" style="width: 232px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; font-size: 14px; min-height: 900px">
+<div style="padding: 0 8px 18px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span></div>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Dasbor</span><span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">KATALOG</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Produk</span><span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">MARKETING</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Promosi</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Konten</span><span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">LAINNYA</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Analitik</span>
+<span style="margin-top: auto; font-size: 12px; color: #4A5568; padding: 0 10px">Peran: Marketing · Pesanan &amp; Inventaris hanya-lihat atau disembunyikan</span>
+</nav>
+<main style="flex: 1; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600">Promosi</h1><button type="button" style="height: 40px; padding: 0 16px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">+ Buat promosi</button></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px 16px; display: flex; gap: 24px; font-size: 13px; align-items: center"><b style="font-size: 14px">Aturan penggabungan (D3)</b><span>Per barang: 1 promo harga (terendah dipakai)</span><span>Per pesanan: 1 voucher pesanan + 1 voucher ongkir</span><span>Voucher pesanan tidak berlaku untuk barang flash sale kecuali diizinkan</span></div>
+<div role="tablist" style="display: flex; gap: 22px; border-bottom: 1px solid #CBD2DC; font-size: 14px"><span role="tab" aria-selected="true" style="padding: 10px 0; font-weight: 600; border-bottom: 3px solid #1F5AE0">Semua 6</span><span role="tab" style="padding: 10px 0; color: #4A5568">Aktif 5</span><span role="tab" style="padding: 10px 0; color: #4A5568">Terjadwal 0</span><span role="tab" style="padding: 10px 0; color: #4A5568">Draf 1</span><span role="tab" style="padding: 10px 0; color: #4A5568">Berakhir 0</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; overflow: hidden">
+<table style="width: 100%; border-collapse: collapse; font-size: 13.5px">
+<thead><tr style="background: #F2F4F7; color: #4A5568; font-size: 12px; text-align: left"><th scope="col" style="padding: 10px 12px">Promosi</th><th scope="col" style="padding: 10px 8px">Jenis</th><th scope="col" style="padding: 10px 8px">Aturan</th><th scope="col" style="padding: 10px 8px">Periode (WIB)</th><th scope="col" style="padding: 10px 8px; text-align: right">Dipakai</th><th scope="col" style="padding: 10px 8px">Status</th></tr></thead>
+<tbody><sc-for list="{{rows}}" as="p" hint-placeholder-count="6"><tr style="border-top: 1px solid #E3E7ED"><td style="padding: 10px 12px"><a href="#" style="font-family: 'JetBrains Mono', monospace; font-weight: 500">{{p.code}}</a></td><td style="padding: 10px 8px">{{p.type}}</td><td style="padding: 10px 8px; color: #2D3748">{{p.rule}}</td><td style="padding: 10px 8px; color: #4A5568">{{p.period}}</td><td style="padding: 10px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{p.used}}</td><td style="padding: 10px 8px"><span style="{{p.stSt}}">{{p.st}}</span></td></tr></sc-for></tbody>
+</table>
+</div>
+<span style="font-size: 12px; color: #4A5568">"Dipakai" = pesanan dibayar / menunggu. Pemakaian yang menunggu tidak dihitung ke kinerja kampanye sampai dibayar.</span>
+</main>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · cards + pause action</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Menu" style="width: 44px; height: 44px; border: none; background: none; font-size: 20px">☰</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Promosi</b></div>
+<sc-for list="{{rows}}" as="p" hint-placeholder-count="6"><article style="margin: 10px 12px 0; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 13px"><span style="display: flex; justify-content: space-between"><b style="font-family: 'JetBrains Mono', monospace">{{p.code}}</b><span style="{{p.stSt}}">{{p.st}}</span></span><span>{{p.type}} · {{p.rule}}</span><span style="color: #4A5568">{{p.period}} · dipakai {{p.used}}</span></article></sc-for>
+<div style="height: 16px"></div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() {
+var chip = "display:inline-flex;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;";
+var act = chip + "background:#E3F4EA;color:#1E7A45";
+var draft = chip + "background:#F2F4F7;color:#4A5568";
+return {
+rows: [
+{ code: "FS-WEEKEND", type: "Flash sale", rule: "B03 −25% → Rp299.250", period: "20 Okt 00:00 – 22 Okt 23:59", used: "0 / 1", st: "Aktif", stSt: act },
+{ code: "Harga coret B01-1M", type: "Harga coret", rule: "Rp149.000 → Rp129.000", period: "Permanen", used: "2 / 0", st: "Aktif", stSt: act },
+{ code: "KABEL10", type: "Voucher pesanan", rule: "10% kategori Kabel, maks Rp30.000", period: "s/d 31 Okt 23:59", used: "0 / 1", st: "Aktif", stSt: act },
+{ code: "HEMAT50", type: "Voucher pesanan", rule: "Rp50.000, min Rp500.000 (excl. flash sale)", period: "Tanpa batas (demo)", used: "0 / 0", st: "Aktif", stSt: act },
+{ code: "GRATISONGKIR", type: "Voucher ongkir", rule: "maks Rp20.000, min Rp300.000", period: "Tanpa batas (demo)", used: "0 / 1", st: "Aktif", stSt: act },
+{ code: "CHARGER15", type: "Diskon persen", rule: "Kategori Charger −15%", period: "21 Okt – 31 Okt (rencana)", used: "—", st: "Draf", stSt: draft }
+]
+};
+}
+}
+</script>
+</body>
+</html>

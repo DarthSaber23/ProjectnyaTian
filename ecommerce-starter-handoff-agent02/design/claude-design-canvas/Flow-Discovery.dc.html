@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Product Discovery Flow</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 1500px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 14 · M1</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Product discovery flow</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">How visitors get from an entry point to a purchase decision. Every surface in column 2 can lead to every action in column 4 through the product detail page or a quick add.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1fr); align-items: stretch">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #555B66">1 · ENTRY</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Homepage sections (S01)</li>
+<li>Header menu / mega-menu</li>
+<li>Search box (S04)</li>
+<li>Campaign &amp; blog links (S36, S35)</li>
+<li>External: Google, social, ads, WhatsApp share → lands on any indexed page</li>
+<li>Wishlist &amp; recently viewed (S28)</li>
+</ul>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; font-size: 22px; color: #8A8F98" aria-hidden="true">→</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #555B66">2 · BROWSE</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Category listing + filters + sort (S02, S03)</li>
+<li>Search results (S05)</li>
+<li>Collection page (S37)</li>
+<li>Comparison (S08)</li>
+<li>Recommendation strips on PDP, cart and homepage</li>
+</ul>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; font-size: 22px; color: #8A8F98" aria-hidden="true">→</div>
+<div style="background: #FFFFFF; border: 2px solid #15171C; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #555B66">3 · EVALUATE (PDP)</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Variant → price, stock, images update</li>
+<li>Shipping estimate entry (postal code)</li>
+<li>Content blocks: benefits / ingredients (A), specs / compatibility (B)</li>
+<li>Ratings &amp; reviews (display, D8)</li>
+<li>FAQ</li>
+</ul>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; font-size: 22px; color: #8A8F98" aria-hidden="true">→</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #555B66">4 · ACT</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Add to cart → drawer (S09)</li>
+<li>Wishlist → login if guest (I6)</li>
+<li>Add to compare (max 4, same category — D2)</li>
+<li>Bulk inquiry (S32)</li>
+<li>Notify when back in stock — Future, shown disabled with label</li>
+</ul>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px 28px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 20px; font-weight: 700">Search pipeline (simulated, local dataset)</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px">
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px"><strong>Type</strong> ≥ 2 characters</div><span style="color: #8A8F98" aria-hidden="true">→</span>
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px"><strong>Wait</strong> 250 ms after last key</div><span style="color: #8A8F98" aria-hidden="true">→</span>
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px"><strong>Normalise</strong> lower case, remove symbols</div><span style="color: #8A8F98" aria-hidden="true">→</span>
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px"><strong>Synonyms</strong> "usb c" → "USB Type-C"</div><span style="color: #8A8F98" aria-hidden="true">→</span>
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px"><strong>Typo tolerance</strong> 1 edit (≥4 letters), 2 edits (≥8)</div><span style="color: #8A8F98" aria-hidden="true">→</span>
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px"><strong>Rank</strong> name &gt; synonym &gt; category &gt; attribute</div><span style="color: #8A8F98" aria-hidden="true">→</span>
+<div style="background: #F6F6F3; border: 1px solid #C9CCD2; padding: 8px 12px"><strong>Show</strong> ≤ 6 products, ≤ 3 categories</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; font-size: 14px; line-height: 1.5; color: #3B4049">
+<div><strong style="color: #15171C">Empty box focused:</strong> recent searches (stored on the device, clearable) and popular searches (editor-curated list).</div>
+<div><strong style="color: #15171C">Corrected query:</strong> results page says "Menampilkan hasil untuk "USB Type-C"" with a link to search the original words.</div>
+<div><strong style="color: #15171C">No results:</strong> spelling suggestion, popular categories, popular products, customer-service link. Failure: retry and browse categories.</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Recommendation rules (hybrid, explainable)</div>
+<div style="display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px 14px; font-size: 14px; line-height: 1.5">
+<strong>Pilihan Kami</strong><span>Editorial: collections and lists curated in the CMS. Labelled as curated.</span>
+<strong>Produk terkait</strong><span>Rule: same category, sharing ≥ 2 attribute values.</span>
+<strong>Sering dibeli bersama</strong><span>Rule: complementary pairs set by admin on the product (cleanser → moisturiser; cable → adapter).</span>
+<strong>Terakhir dilihat</strong><span>Rule: last 10 products viewed on this device.</span>
+<strong>Untuk Anda</strong><span>Rule: categories of wishlist and past orders, excluding items already bought. Logged-in only; hidden if personalisation is off in S29.</span>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Filter behaviour</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Filters come from the category's attribute set: skin type, concern, size (A); length, connector, wattage, colour (B); price and availability for both.</li>
+<li>Desktop: filters apply instantly. Mobile sheet: "Terapkan (24 produk)" button shows the live count.</li>
+<li>Active filters appear as removable chips with "Hapus semua".</li>
+<li>Options that would return 0 products are shown disabled with a count of 0, not hidden.</li>
+<li>Sort: Relevan, Terbaru, Terlaris, Harga terendah, Harga tertinggi.</li>
+</ul>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

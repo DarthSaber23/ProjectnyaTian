@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>M4 Overview and Progress</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 1500px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">AGENT 01 · MILESTONE M4 · CLAUDE DESIGN</div><h1 style="margin: 0; font-size: 52px; font-weight: 700">M4 — High-Fidelity Storefront</h1><div style="font-size: 18px; color: #3B4049">Delivered in three review batches; the milestone approval request comes after batch 3.</div></div>
+<div style="background: #FFF4E0; color: #7A4300; border: 1px solid #E8C48A; padding: 8px 14px; font-weight: 600; font-size: 15px">Status: Approved 20 Oct 2026</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start">
+<sc-for list="{{batches}}" as="b" hint-placeholder-count="3">
+<div style="{{b.box}}">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 20px">{{b.t}}</b><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px">{{b.st}}</span></div>
+<sc-for list="{{b.items}}" as="i" hint-placeholder-count="6"><div style="font-size: 14px; line-height: 1.5; border-top: 1px solid #E6E7EA; padding-top: 6px">{{i}}</div></sc-for>
+</div>
+</sc-for>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.55">
+<h2 style="margin: 0; font-size: 22px">Rules used in every high-fidelity board</h2>
+<span>Desktop 1440 and mobile 390 side by side; tokens from M3 only; all prices, stock and orders from the W00 dataset.</span>
+<span>Product images are drawn by the shared ProductArt placeholder component (board 30), clearly not photography; replaced per client.</span>
+<span>Simulated data (shipping rates, payment, courier events) stays labelled "simulasi".</span>
+<span>Brand names Halimun and Sambung are working names (unscreened).</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.55">
+<h2 style="margin: 0; font-size: 22px">Risks &amp; gaps</h2>
+<span>Boards were not rendered or screenshot-checked by the agent; overflow fixes happen on review or in M8 QA.</span>
+<span>Account, tracking and comparison are shown in Sambung only, catalog top-bar and auth in Halimun only; the other brand reuses the same structure with its tokens.</span>
+<span>Legal pages, CS hours, ingredient names and some FAQ answers are labelled placeholders for the client.</span>
+<span>Assumed for the prototype (needs owner/Agent 02 decision): 5-try login lockout, manual account recovery via CS, 30-minute reset link.</span>
+</div>
+<div style="background: #15171C; color: #F6F6F3; padding: 32px 36px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #B8BCC4">APPROVAL RECORD</div>
+<div style="font-size: 26px; font-weight: 600; line-height: 1.3">M4 approved by the product owner on 20 Oct 2026. Next: M5 — Admin &amp; CMS.</div>
+<div style="font-size: 16px; line-height: 1.6; color: #D5D8DD">21 high-fidelity boards cover all 43 storefront screens (S01–S43) in desktop and mobile, with states and tablet/360 checks. Silence is not treated as approval.</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+var done = "background:#FFFFFF;border:2px solid #0B6B63;padding:20px;display:flex;flex-direction:column;gap:8px";
+var next = "background:#FFFFFF;border:1px solid #DADCE0;padding:20px;display:flex;flex-direction:column;gap:8px";
+return {
+batches: [
+{ t: "Batch 1 · purchase path", st: "DELIVERED", box: done, items: ["H01 Homepage — Halimun (S01)", "H02 Homepage — Sambung (S01)", "H03 Catalog + filter sheet — Sambung (S02, S03)", "H04 Product detail — Sambung (S07)", "H05 Product detail — Halimun (S06)", "H06 Cart drawer, cart page, checkout 1 (S09, S10, S15, S16)", "H07 Checkout 2–3, QRIS pending, results (S17–S21)", "H08 Login, register, checkout redirect — Halimun (S11, S12)"] },
+{ t: "Batch 2 · discovery & account", st: "DELIVERED", box: done, items: ["H09 Search autocomplete, synonym results, recent/popular, no results (S04, S05)", "H10 Comparison desktop + mobile, differences, missing values (S08)", "H11 Catalog top-bar variant — Halimun (S02)", "H12 Account dashboard + order history (S23, S26); S22 confirmation is in H07", "H13 Order detail + tracking, overdue + exception (S27)", "H14 Profile, addresses, wishlist, preferences (S24, S25, S28, S29)", "H15 Forgot password, reset, account recovery — Halimun (S13, S14)"] },
+{ t: "Batch 3 · content & states", st: "DELIVERED", box: done, items: ["H16 Journal, article, about — Halimun (S30, S34, S35)", "H17 Contact, bulk inquiry, FAQ, shipping info — Sambung (S31, S32, S33, S38)", "H18 Campaign (Sambung) + collection (Halimun) landing (S36, S37)", "H19 Privacy (draft), returns (draft), 404, 503 (S39, S41–S43; S40 uses the S39 legal template)", "H20 State sheet: 5 patterns + coverage for every essential screen", "H21 Tablet 768 + phone 360 checks"] }
+]
+};
+}
+}
+</script>
+</body>
+</html>

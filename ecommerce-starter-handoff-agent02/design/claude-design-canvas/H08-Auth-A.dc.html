@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Halimun Login and Register</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#4F6B57}a:hover{color:#2F4A37}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 1500px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: Figtree, system-ui, sans-serif; color: #23201D; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S11 · /masuk?next=/checkout/pengiriman · guest pressed "Checkout" with 2 items</div>
+<div style="width: 1440px; height: 900px; background: #F7F4EF; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)">
+<div style="position: relative; overflow: hidden">
+<dc-import name="ProductArt" kind="jar" bg="#EFE6DC" fg="#FFFFFF" accent="#4F6B57" label="Ilustrasi produk halimun" hint-size="100%,900px"></dc-import>
+<span style="position: absolute; left: 48px; top: 40px; font-family: Newsreader, serif; font-size: 34px">halimun</span>
+<span style="position: absolute; left: 48px; bottom: 48px; right: 48px; font-family: Newsreader, serif; font-size: 34px; line-height: 1.2">Satu langkah lagi menuju rutinitasmu.</span>
+</div>
+<div style="padding: 72px 96px; display: flex; flex-direction: column; gap: 20px; justify-content: center">
+<div role="status" style="background: #E7EEE8; color: #2F4A37; border-radius: 16px; padding: 14px 18px; font-size: 15px; line-height: 1.5"><b>Masuk untuk melanjutkan checkout.</b> Keranjangmu (2 barang) tetap tersimpan dan akan digabung dengan akunmu.</div>
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 44px">Masuk</h1>
+<button type="button" style="height: 52px; border: 1.5px solid #8C8279; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600"><span style="width: 22px; height: 22px; border-radius: 11px; border: 1.5px solid #23201D; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700">G</span>Lanjutkan dengan Google</button>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B625A; text-align: center">PROTOTIPE: login Google disimulasikan</span>
+<div style="display: flex; align-items: center; gap: 14px; color: #6B625A; font-size: 14px"><span style="flex: 1; height: 1px; background: #D9CFC4"></span>atau dengan email<span style="flex: 1; height: 1px; background: #D9CFC4"></span></div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Email<input type="email" value="rina@example.com" autocomplete="email" style="height: 50px; border: 1.5px solid #8C8279; border-radius: 12px; padding: 0 16px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600"><span style="display: flex; justify-content: space-between">Kata sandi<a href="#" style="font-weight: 600">Lupa kata sandi?</a></span><span style="display: flex; align-items: center; height: 50px; border: 1.5px solid #2B5FA8; outline: 2px solid #2B5FA8; outline-offset: 1px; border-radius: 12px; padding: 0 8px 0 16px; background: #FFFFFF"><input type="password" value="password" autocomplete="current-password" style="flex: 1; border: none; outline: none; font-family: Figtree, sans-serif; font-size: 16px; background: transparent"><button type="button" style="height: 40px; border: none; background: none; font-family: Figtree, sans-serif; font-weight: 600; color: #4F6B57">Tampilkan</button></span></label>
+<button type="button" style="height: 54px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600">Masuk dan lanjut ke checkout</button>
+<span style="font-size: 15px; text-align: center">Belum punya akun? <a href="#" style="font-weight: 600">Daftar</a></span>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 32px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S12 register, validation</div>
+<div style="width: 390px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 4px 8px"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><span style="font-family: Newsreader, serif; font-size: 22px; margin: 0 auto 0 auto">halimun</span><span style="width: 44px"></span></div>
+<form style="padding: 12px 20px 24px; display: flex; flex-direction: column; gap: 14px">
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 34px">Buat akun</h1>
+<button type="button" style="height: 50px; border: 1.5px solid #8C8279; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-size: 15px; font-weight: 600">Daftar dengan Google</button>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Nama lengkap<input value="Rina Pratama" autocomplete="name" style="height: 48px; border: 1.5px solid #8C8279; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Email<input value="rina@example.com" aria-invalid="true" aria-describedby="em-err" style="height: 48px; border: 2px solid #A3302A; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"><span id="em-err" style="font-weight: 500; font-size: 13px; color: #A3302A">Email ini sudah terdaftar. <a href="#" style="color: #A3302A">Masuk</a> atau <a href="#" style="color: #A3302A">pulihkan akun</a>.</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">No. WhatsApp<input value="0812-0000-1234" inputmode="tel" style="height: 48px; border: 1.5px solid #8C8279; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"><span style="font-weight: 400; font-size: 13px; color: #6B625A">Untuk info pengiriman. Tidak dibagikan.</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Kata sandi<input type="password" value="pass" aria-describedby="pw-hint" style="height: 48px; border: 1.5px solid #8C8279; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"><span id="pw-hint" style="font-weight: 500; font-size: 13px; color: #8A5300">Minimal 8 karakter (sekarang 4)</span></label>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; min-height: 44px"><input type="checkbox" style="width: 20px; height: 20px; margin: 0"> Saya mau menerima tips dan promo lewat email (opsional, bisa diubah kapan saja)</label>
+<span style="font-size: 12px; color: #6B625A; line-height: 1.5">Dengan mendaftar, kamu menyetujui <a href="#">Syarat &amp; Ketentuan</a> dan <a href="#">Kebijakan Privasi</a>.</span>
+<button type="button" style="height: 52px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600">Buat akun</button>
+</form>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S11 login, wrong password</div>
+<div style="width: 390px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 4px 8px"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><span style="font-family: Newsreader, serif; font-size: 22px; margin: 0 auto">halimun</span><span style="width: 44px"></span></div>
+<div style="padding: 12px 20px 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #E7EEE8; color: #2F4A37; border-radius: 14px; padding: 12px 14px; font-size: 14px">Masuk untuk lanjut checkout. Keranjangmu (2 barang) aman.</div>
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 34px">Masuk</h1>
+<div role="alert" style="background: #F8E3E1; color: #A3302A; border-radius: 14px; padding: 12px 14px; font-size: 14px; display: flex; flex-direction: column; gap: 2px"><b>Email atau kata sandi belum cocok.</b><span>Periksa lagi, atau atur ulang kata sandi.</span></div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Email<input value="rina@example.com" style="height: 48px; border: 1.5px solid #8C8279; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Kata sandi<input type="password" value="salah123" aria-invalid="true" style="height: 48px; border: 2px solid #A3302A; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF"></label>
+<a href="#" style="font-size: 14px; font-weight: 600">Lupa kata sandi?</a>
+<button type="button" style="height: 52px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600">Masuk</button>
+<button type="button" style="height: 50px; border: 1.5px solid #8C8279; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-size: 15px; font-weight: 600">Lanjutkan dengan Google</button>
+<span style="font-size: 12px; color: #6B625A; line-height: 1.5">Setelah 5 percobaan gagal, akun dikunci 15 menit (perilaku prototipe; kebijakan produksi oleh Agent 02).</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

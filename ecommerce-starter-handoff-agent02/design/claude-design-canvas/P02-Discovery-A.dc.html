@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Prototype Discovery Halimun</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #2B5FA8;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F4EF; font-family: 'Figtree', system-ui, sans-serif; color: #23201D; display: flex; flex-direction: column; overflow: hidden; position: relative; font-size: 14px">
+
+<header style="height: 56px; flex: none; border-bottom: 1px solid #D9CFC4; display: flex; align-items: center; gap: 2px; padding: 0 6px; background: #F7F4EF">
+<sc-if value="{{hasBack}}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="Kembali" onClick="{{back}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 22px; color: #23201D">‹</button></sc-if>
+<button type="button" onClick="{{goHome}}" aria-label="Halimun, ke beranda" style="border: none; background: none; padding: 0 6px; height: 44px; font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500; color: #23201D; letter-spacing: 0.02em">halimun</button>
+<span style="margin-left: auto; font-size: 12px; color: #6B625A">{{who}}</span>
+<button type="button" onClick="{{goWish}}" aria-label="{{wishAria}}" style="position: relative; width: 44px; height: 44px; border: none; background: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#23201D" stroke-width="1.75" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><span style="{{wishBadge}}">{{wishCount}}</span></button>
+<button type="button" onClick="{{goCart}}" aria-label="{{cartAria}}" style="position: relative; width: 44px; height: 44px; border: none; background: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#23201D" stroke-width="1.75" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><span style="{{cartBadge}}">{{cartCount}}</span></button>
+</header>
+
+<main style="flex: 1; overflow-y: auto; min-height: 0">
+
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 18px; padding: 18px 16px">
+<div style="background: #EFE6DC; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; letter-spacing: 0.08em; color: #6B625A">MULAI DARI KEBUTUHAN KULITMU</span>
+<h1 style="margin: 0; font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; line-height: 1.15">Rutinitas sederhana, dipilih sesuai kebutuhan kulit</h1>
+<button type="button" onClick="{{goAll}}" style="align-self: flex-start; min-height: 44px; padding: 0 18px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-weight: 600">Lihat semua produk</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px"><h2 style="margin: 0; font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500">Pilih kebutuhan kulit</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px"><sc-for list="{{concerns}}" as="c" hint-placeholder-count="4"><button type="button" onClick="{{c.go}}" style="{{c.st}}"><span style="font-weight: 600; font-size: 15px">{{c.t}}</span><span style="font-size: 12px; color: #6B625A">{{c.n}} produk</span></button></sc-for></div>
+</div>
+<button type="button" onClick="{{openBundle}}" style="text-align: left; border: 1px solid #D9CFC4; border-radius: 16px; background: #FFFFFF; padding: 0; overflow: hidden; display: grid; grid-template-columns: 120px minmax(0, 1fr); color: #23201D">
+<dc-import name="ProductArt" kind="jar" bg="#E4DACE" fg="#23201D" accent="#4F6B57" label="Bundel Rutinitas Pagi" hint-size="120px,140px"></dc-import>
+<span style="padding: 14px; display: flex; flex-direction: column; gap: 4px"><span style="align-self: flex-start; background: #E7EEE8; color: #2F4A37; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px">Hemat Rp48.000</span><b style="font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500">Bundel Rutinitas Pagi</b><span style="font-size: 12px; color: #6B625A">Cleanser + Moisturizer + Sunscreen</span><span><b>Rp379.000</b> <s style="color: #6B625A">Rp427.000</s></span></span>
+</button>
+<button type="button" onClick="{{openSerum}}" style="text-align: left; border: none; border-radius: 16px; background: #8C3B2E; color: #FFFFFF; padding: 16px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; letter-spacing: 0.06em">PROMO B2G1-SERUM</span><b style="font-family: 'Newsreader', serif; font-size: 20px; font-weight: 500">Beli 2 Niacinamide Serum, gratis 1 Travel Cleanser</b><span style="font-size: 13px; text-decoration: underline">Lihat serum</span></button>
+<div style="border: 2px dashed #8C8279; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; background: #EFE6DC">
+<b style="font-size: 13px; font-family: 'IBM Plex Mono', monospace">PANEL UJI · bukan bagian dari toko</b>
+<span style="font-size: 13px">Status: {{loginState}}. Mulai sebagai tamu untuk menguji wishlist (perlu masuk, I6) dan penggabungan keranjang (D7).</span>
+<button type="button" onClick="{{resetAll}}" style="min-height: 44px; border: 1px solid #8C8279; border-radius: 999px; background: #FFFFFF; color: #23201D; font-weight: 600">Atur ulang prototipe (keluar, kosongkan)</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isPlp}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<h1 style="margin: 0; font-family: 'Newsreader', serif; font-size: 26px; font-weight: 500">{{plpTitle}}</h1>
+<div role="group" aria-label="Filter kebutuhan kulit" style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px"><sc-for list="{{chips}}" as="c" hint-placeholder-count="5"><button type="button" aria-pressed="{{c.on}}" onClick="{{c.go}}" style="{{c.st}}">{{c.t}} {{c.n}}</button></sc-for></div>
+<span aria-live="polite" style="font-size: 12px; color: #6B625A">{{plpCount}}</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{plp}}" as="p" hint-placeholder-count="4"><button type="button" onClick="{{p.open}}" style="text-align: left; border: 1px solid #D9CFC4; border-radius: 16px; background: #FFFFFF; padding: 0 0 12px; display: flex; flex-direction: column; gap: 4px; overflow: hidden; color: #23201D">
+<dc-import name="ProductArt" kind="{{p.kind}}" bg="{{p.bg}}" fg="#23201D" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,140px"></dc-import>
+<span style="{{p.badgeSt}}">{{p.badge}}</span>
+<span style="padding: 0 12px; font-size: 12px; color: #6B625A">{{p.cat}}</span>
+<span style="padding: 0 12px; font-size: 14px; font-weight: 600; line-height: 1.3">{{p.name}}</span>
+<span style="padding: 0 12px"><b>{{p.price}}</b> <s style="color: #6B625A; font-size: 12px">{{p.was}}</s></span>
+<span style="{{p.stockSt}}">{{p.stock}}</span>
+</button></sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isPdp}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 16px">
+<dc-import name="ProductArt" kind="{{pdp.kind}}" bg="{{pdp.bg}}" fg="#23201D" accent="{{pdp.ac}}" label="{{pdp.name}}" hint-size="100%,270px"></dc-import>
+<div style="padding: 0 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px"><div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #6B625A">{{pdp.cat}}</span><h1 style="margin: 0; font-family: 'Newsreader', serif; font-size: 26px; font-weight: 500; line-height: 1.15">{{pdp.name}}</h1></div>
+<button type="button" aria-pressed="{{pdp.wished}}" aria-label="{{pdp.wishLabel}}" onClick="{{pdp.toggleWish}}" style="{{pdp.wishSt}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="{{pdp.heartFill}}" stroke="#8C3B2E" stroke-width="1.75" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></button></div>
+<span style="font-size: 13px; color: #6B625A">{{pdp.sub}}</span>
+<div style="display: flex; gap: 10px; align-items: baseline"><b style="font-size: 22px">{{pdp.price}}</b><s style="color: #6B625A">{{pdp.was}}</s></div>
+<sc-if value="{{pdp.promo}}" hint-placeholder-val="{{ false }}"><div style="background: #F3E6E2; color: #6E2C22; border-radius: 12px; padding: 10px 12px; font-size: 13px">{{pdp.promoText}}</div></sc-if>
+<sc-if value="{{pdp.hasVariants}}" hint-placeholder-val="{{ false }}">
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; padding-bottom: 6px">Ukuran</legend>
+<div style="display: flex; gap: 8px"><sc-for list="{{pdp.variants}}" as="v" hint-placeholder-count="2"><button type="button" aria-pressed="{{v.on}}" onClick="{{v.pick}}" style="{{v.st}}">{{v.label}} · {{v.price}}</button></sc-for></div>
+</fieldset>
+</sc-if>
+<sc-if value="{{pdp.isBundle}}" hint-placeholder-val="{{ false }}">
+<div style="border: 1px solid #D9CFC4; border-radius: 16px; background: #FFFFFF; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; font-size: 13px"><b>Isi bundel</b>
+<span style="display: flex; justify-content: space-between"><span>Gentle Low-pH Cleanser 100 ml</span><span>Rp119.000</span></span>
+<span style="display: flex; justify-content: space-between"><span>Barrier Repair Moisturizer 50 ml</span><span>Rp169.000</span></span>
+<span style="display: flex; justify-content: space-between"><span>Daily Sunscreen Gel 50 ml</span><span>Rp139.000</span></span>
+<span style="display: flex; justify-content: space-between; border-top: 1px solid #D9CFC4; padding-top: 6px"><span>Jika dibeli terpisah</span><s>Rp427.000</s></span>
+<span style="display: flex; justify-content: space-between; font-weight: 700; color: #2F6B3F"><span>Harga bundel · hemat Rp48.000</span><span>Rp379.000</span></span>
+</div>
+</sc-if>
+<span style="{{pdp.stockSt}}">{{pdp.stock}}</span>
+<div style="display: flex; align-items: center; gap: 10px"><span style="font-weight: 600">Jumlah</span>
+<div style="display: flex; align-items: center; border: 1px solid #8C8279; border-radius: 999px"><button type="button" aria-label="Kurangi jumlah" disabled="{{pdp.decDis}}" onClick="{{pdp.dec}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">−</button><span aria-live="polite" style="min-width: 28px; text-align: center">{{pdp.qty}}</span><button type="button" aria-label="Tambah jumlah" disabled="{{pdp.incDis}}" onClick="{{pdp.inc}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">+</button></div>
+<span style="font-size: 12px; color: #6B625A">{{pdp.max}}</span></div>
+<span style="font-size: 12px; color: #6B625A">Harga sudah termasuk PPN. Ulasan tidak ditampilkan di prototipe.</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isCart}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<h1 style="margin: 0; font-family: 'Newsreader', serif; font-size: 26px; font-weight: 500">Keranjang</h1>
+<sc-if value="{{guestNote}}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; color: #6B625A; background: #EFE6DC; border-radius: 12px; padding: 8px 12px">Keranjang tamu disimpan di perangkat ini dan digabung ke akunmu saat masuk (D7).</span></sc-if>
+<sc-if value="{{cartEmpty}}" hint-placeholder-val="{{ false }}"><div style="border: 1px solid #D9CFC4; border-radius: 16px; background: #FFFFFF; padding: 22px 16px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start"><b>Keranjang masih kosong</b><button type="button" onClick="{{goAll}}" style="min-height: 44px; padding: 0 18px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-weight: 600">Lihat produk</button></div></sc-if>
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="2"><div style="display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; border-bottom: 1px solid #D9CFC4; padding-bottom: 12px">
+<dc-import name="ProductArt" kind="{{l.kind}}" bg="{{l.bg}}" fg="#23201D" accent="{{l.ac}}" label="{{l.name}}" hint-size="72px,72px"></dc-import>
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0"><b style="font-size: 14px">{{l.name}}</b><span style="font-size: 12px; color: #6B625A">{{l.sub}}</span><span style="{{l.noteSt}}">{{l.note}}</span>
+<sc-if value="{{l.editable}}" hint-placeholder-val="{{ true }}"><div style="display: flex; align-items: center; justify-content: space-between"><div style="display: flex; align-items: center; border: 1px solid #8C8279; border-radius: 999px"><button type="button" aria-label="Kurangi" disabled="{{l.decDis}}" onClick="{{l.dec}}" style="width: 40px; height: 40px; border: none; background: none">−</button><span style="min-width: 24px; text-align: center">{{l.qty}}</span><button type="button" aria-label="Tambah" disabled="{{l.incDis}}" onClick="{{l.inc}}" style="width: 40px; height: 40px; border: none; background: none">+</button></div><b>{{l.total}}</b></div>
+<button type="button" onClick="{{l.rm}}" style="align-self: flex-start; border: none; background: none; padding: 4px 0; color: #A3302A; font-size: 13px; text-decoration: underline">Hapus</button></sc-if>
+<sc-if value="{{l.free}}" hint-placeholder-val="{{ false }}"><span style="display: flex; justify-content: space-between"><span>{{l.qty}}×</span><span><s style="color: #6B625A; font-size: 12px">{{l.was}}</s> <b style="color: #2F6B3F">Rp0</b></span></span></sc-if>
+</div></div></sc-for>
+<sc-if value="{{nudge}}" hint-placeholder-val="{{ false }}"><div style="border: 1px dashed #8C3B2E; border-radius: 12px; padding: 10px 12px; font-size: 13px; color: #6E2C22; display: flex; justify-content: space-between; align-items: center; gap: 8px"><span>Tambah 1 Niacinamide Serum lagi untuk gratis 1 Travel Cleanser (B2G1-SERUM).</span><button type="button" onClick="{{addSerum}}" style="min-height: 40px; padding: 0 12px; border: 1px solid #8C3B2E; border-radius: 999px; background: #FFFFFF; color: #8C3B2E; font-weight: 600; white-space: nowrap">+1 serum</button></div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{isMerged}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<div style="background: #E7EEE8; color: #2F4A37; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b style="font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500">Masuk sebagai Rina Pratama</b><span>Keranjang tamu ({{cartCount}} barang) digabung ke akun. Akun demo tidak punya barang tersimpan sebelumnya (D7).</span></div>
+<span style="font-size: 13px; color: #6B625A">Checkout Halimun memakai alur 3 langkah yang sama dengan Sambung. Prototipe alur itu ada di P01.</span>
+<a href="P01-Purchase-B.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-weight: 600; text-decoration: none">Buka prototipe checkout (P01)</a>
+<button type="button" onClick="{{goCart}}" style="min-height: 44px; border: 1px solid #8C8279; border-radius: 999px; background: #FFFFFF; color: #23201D; font-weight: 600">Kembali ke keranjang</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isWish}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<h1 style="margin: 0; font-family: 'Newsreader', serif; font-size: 26px; font-weight: 500">Wishlist</h1>
+<sc-if value="{{wishEmpty}}" hint-placeholder-val="{{ false }}"><span style="color: #6B625A">Belum ada produk tersimpan. Ketuk ikon hati di halaman produk.</span></sc-if>
+<sc-for list="{{wishList}}" as="w" hint-placeholder-count="2"><div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; border-bottom: 1px solid #D9CFC4; padding-bottom: 10px; align-items: center">
+<dc-import name="ProductArt" kind="{{w.kind}}" bg="{{w.bg}}" fg="#23201D" accent="{{w.ac}}" label="{{w.name}}" hint-size="64px,64px"></dc-import>
+<div style="display: flex; flex-direction: column; gap: 4px"><b>{{w.name}}</b><span>{{w.price}}</span><div style="display: flex; gap: 12px"><button type="button" onClick="{{w.open}}" style="border: none; background: none; padding: 4px 0; color: #2F4A37; text-decoration: underline; font-size: 13px">Lihat produk</button><button type="button" onClick="{{w.rm}}" style="border: none; background: none; padding: 4px 0; color: #A3302A; text-decoration: underline; font-size: 13px">Hapus</button></div></div></div></sc-for>
+</div>
+</sc-if>
+
+</main>
+
+<sc-if value="{{hasBar}}" hint-placeholder-val="{{ false }}">
+<footer style="flex: none; border-top: 1px solid #D9CFC4; padding: 10px 16px 14px; display: flex; flex-direction: column; gap: 6px; background: #FFFFFF">
+<sc-if value="{{showSum}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 2px; font-size: 13px"><sc-for list="{{sum}}" as="r" hint-placeholder-count="3"><span style="{{r.st}}"><span>{{r.l}}</span><span>{{r.v}}</span></span></sc-for></div></sc-if>
+<button type="button" disabled="{{cta.dis}}" onClick="{{cta.go}}" style="{{cta.st}}">{{cta.t}}</button>
+</footer>
+</sc-if>
+
+<sc-if value="{{sheetOpen}}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" onClick="{{closeSheet}}" style="position: absolute; inset: 0; background: rgba(35,32,29,0.55)"></div>
+<div role="dialog" aria-modal="true" aria-labelledby="lg-t" style="position: absolute; left: 0; right: 0; bottom: 0; background: #F7F4EF; border-radius: 20px 20px 0 0; padding: 20px 16px 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center"><h2 id="lg-t" style="margin: 0; font-family: 'Newsreader', serif; font-size: 24px; font-weight: 500">Masuk</h2><button type="button" aria-label="Tutup" onClick="{{closeSheet}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 20px">✕</button></div>
+<span style="color: #6B625A">{{sheetWhy}}</span>
+<label style="display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 13px">Email<input type="email" value="rina@example.com" readonly style="height: 44px; border: 1px solid #8C8279; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 14px; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 13px">Kata sandi<input type="password" value="demo-demo" readonly aria-describedby="lg-err" style="height: 44px; border: 1px solid #8C8279; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 14px; background: #FFFFFF"></label>
+<span id="lg-err" role="alert" style="{{errSt}}">{{err}}</span>
+<button type="button" disabled="{{locked}}" onClick="{{doLogin}}" style="{{loginSt}}">Masuk</button>
+<button type="button" disabled="{{locked}}" onClick="{{doLogin}}" style="min-height: 44px; border: 1px solid #8C8279; border-radius: 999px; background: #FFFFFF; color: #23201D; font-weight: 600">Lanjut dengan Google (simulasi)</button>
+<div style="border: 2px dashed #8C8279; border-radius: 12px; padding: 8px 10px; display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 12px"><b style="font-family: 'IBM Plex Mono', monospace">PANEL UJI</b><button type="button" disabled="{{locked}}" onClick="{{wrongPw}}" style="min-height: 36px; padding: 0 10px; border: 1px solid #A3302A; border-radius: 999px; background: #FFFFFF; color: #A3302A; font-weight: 600">Simulasikan kata sandi salah</button></div>
+</div>
+</sc-if>
+
+<div aria-live="polite" style="{{toastSt}}">{{toast}}</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var S = this.state || {};
+var self = this;
+var set = function (o) { self.setState(o); };
+var screen = S.s || "home";
+var cart = S.cart || [];
+var wish = S.wish || [];
+var logged = !!S.logged;
+var fails = S.fails || 0;
+function fmt(n) { return "Rp" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+var P = [
+{ id: "A01", name: "Gentle Low-pH Cleanser", cat: "Pembersih", kind: "bottle", bg: "#EFE6DC", ac: "#4F6B57", needs: ["sensitif", "kering"], v: [{ id: "A01-100", label: "100 ml", price: 119000, was: 0 }, { id: "A01-200", label: "200 ml", price: 189000, was: 0 }] },
+{ id: "BND", name: "Bundel Rutinitas Pagi", cat: "Bundel", kind: "jar", bg: "#E4DACE", ac: "#4F6B57", needs: [], bundle: true, sub: "Cleanser 100 ml + Moisturizer + Sunscreen", v: [{ id: "BND-PAGI", label: "", price: 379000, was: 427000 }] },
+{ id: "A03", name: "Niacinamide Serum", cat: "Serum", kind: "dropper", bg: "#EADBD3", ac: "#8C3B2E", needs: ["kusam"], sub: "30 ml", b2g1: true, v: [{ id: "A03", label: "", price: 149000, was: 179000 }] },
+{ id: "A02", name: "Barrier Repair Moisturizer", cat: "Pelembap", kind: "jar", bg: "#DCE3DA", ac: "#4F6B57", needs: ["sensitif", "kering"], sub: "50 ml", v: [{ id: "A02", label: "", price: 169000, was: 0 }] },
+{ id: "A04", name: "Daily Sunscreen Gel", cat: "Perlindungan", kind: "tube", bg: "#E6E0D2", ac: "#23201D", needs: ["perlindungan"], sub: "50 ml", v: [{ id: "A04", label: "", price: 139000, was: 0 }] },
+{ id: "A05", name: "Travel Cleanser", cat: "Pembersih", kind: "bottle", bg: "#EFE6DC", ac: "#8C8279", needs: ["sensitif"], sub: "30 ml", v: [{ id: "A05", label: "", price: 45000, was: 0 }] }
+];
+var NEED = { all: "Semua produk", sensitif: "Kulit sensitif", kering: "Kulit kering", kusam: "Tampak kusam", perlindungan: "Perlindungan harian" };
+var LIMIT = 10;
+function prod(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return P[i]; return P[0]; }
+function vari(p, vid) { for (var i = 0; i < p.v.length; i++) if (p.v[i].id === vid) return p.v[i]; return p.v[0]; }
+function qtyOf(vid) { var q = 0; cart.forEach(function (l) { if (l.vid === vid) q += l.qty; }); return q; }
+// A04 stock (9) is shared by the sunscreen and the bundle
+function sunLeft() { return 9 - qtyOf("A04") - qtyOf("BND-PAGI"); }
+function cap(vid) { if (vid === "A04" || vid === "BND-PAGI") return sunLeft() + qtyOf(vid); return LIMIT; }
+function count(n) { return P.filter(function (p) { return n === "all" || p.needs.indexOf(n) >= 0; }).length; }
+var go = function (s) { return function () { set({ s: s, toast: "" }); }; };
+var goNeed = function (n) { return function () { set({ s: "plp", need: n, toast: "" }); }; };
+var openPdp = function (id) { return function () { set({ s: "pdp", pid: id, vid: prod(id).v[0].id, qty: 1, toast: "" }); }; };
+var need = S.need || "all";
+var pill = "min-height:38px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;";
+var chips = ["all", "sensitif", "kering", "kusam", "perlindungan"].map(function (n) { var on = n === need; return { t: n === "all" ? "Semua" : NEED[n], n: count(n), on: on ? "true" : "false", go: goNeed(n), st: pill + (on ? "border:2px solid #4F6B57;background:#E7EEE8;color:#2F4A37" : "border:1px solid #8C8279;background:#FFFFFF;color:#23201D") }; });
+var tileBg = { sensitif: "#E4DACE", kering: "#DCE3DA", kusam: "#EADBD3", perlindungan: "#E6E0D2" };
+var concerns = ["sensitif", "kering", "kusam", "perlindungan"].map(function (n) { return { t: NEED[n], n: count(n), go: goNeed(n), st: "min-height:84px;border:none;border-radius:16px;background:" + tileBg[n] + ";text-align:left;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;color:#23201D" }; });
+var bdg = "align-self:flex-start;margin:0 12px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;";
+function stockOf(p) { if (p.id === "A04" || p.id === "BND") { var s = 9; return { t: "Sisa " + s + (p.bundle ? " bundel" : ""), st: "color:#8A5300" }; } return { t: "Tersedia", st: "color:#2F6B3F" }; }
+var plp = P.filter(function (p) { return need === "all" || p.needs.indexOf(need) >= 0; }).map(function (p) {
+var min = Math.min.apply(null, p.v.map(function (v) { return v.price; })); var b = p.bundle ? "Hemat Rp48.000" : (p.b2g1 ? "Beli 2 gratis 1" : ""); var so = stockOf(p);
+return { name: p.name, cat: p.cat, kind: p.kind, bg: p.bg, ac: p.ac, price: (p.v.length > 1 ? "mulai " : "") + fmt(min), was: p.v[0].was ? fmt(p.v[0].was) : "", badge: b,
+badgeSt: b ? bdg + (p.b2g1 ? "background:#8C3B2E;color:#FFFFFF" : "background:#E7EEE8;color:#2F4A37") : "display:none", stock: so.t, stockSt: "padding:0 12px;font-size:12px;font-weight:600;" + so.st, open: openPdp(p.id) };
+});
+
+// wishlist (login required, I6)
+var openSheet = function (why, after) { set({ sheet: true, sheetWhy: why, after: after, err: "" }); };
+var toggleWishFor = function (id) { return function () {
+if (!logged) { openSheet("Masuk untuk menyimpan produk ke wishlist (I6).", { wish: id }); return; }
+var has = wish.indexOf(id) >= 0;
+set({ wish: has ? wish.filter(function (x) { return x !== id; }) : wish.concat([id]), toast: has ? "Dihapus dari wishlist" : "Disimpan ke wishlist" });
+}; };
+
+var pdp = {};
+if (screen === "pdp") {
+var pp = prod(S.pid || "A01"); var vv = vari(pp, S.vid); var c = cap(vv.id); var room = Math.max(0, c - qtyOf(vv.id)); var q = Math.min(S.qty || 1, Math.max(room, 1)); var wished = wish.indexOf(pp.id) >= 0;
+var vb = "min-height:44px;padding:0 14px;border-radius:999px;font-weight:600;";
+var lowStock = vv.id === "A04" || vv.id === "BND-PAGI";
+pdp = { name: pp.name, cat: pp.cat, kind: pp.kind, bg: pp.bg, ac: pp.ac, sub: pp.v.length > 1 ? "Pilih ukuran" : (pp.sub || ""), price: fmt(vv.price), was: vv.was ? fmt(vv.was) : "",
+hasVariants: pp.v.length > 1, isBundle: !!pp.bundle, promo: !!pp.b2g1, promoText: "B2G1-SERUM: setiap beli 2 serum, gratis 1 Travel Cleanser 30 ml (Rp45.000). Otomatis di keranjang.",
+variants: pp.v.map(function (x) { var on = x.id === vv.id; return { label: x.label, price: fmt(x.price), on: on ? "true" : "false", pick: function () { set({ vid: x.id, qty: 1 }); }, st: vb + (on ? "border:2px solid #4F6B57;background:#E7EEE8;color:#2F4A37" : "border:1px solid #8C8279;background:#FFFFFF;color:#23201D") }; }),
+stock: lowStock ? "Sisa " + sunLeft() + (pp.bundle ? " bundel" : "") + " · stok Sunscreen dipakai bersama bundel" : "Tersedia",
+stockSt: "font-size:13px;font-weight:600;color:" + (lowStock ? "#8A5300" : "#2F6B3F"),
+qty: String(q), decDis: q <= 1, incDis: q >= room, dec: function () { set({ qty: Math.max(1, q - 1) }); }, inc: function () { set({ qty: Math.min(room, q + 1) }); },
+max: room === 0 ? "Batas tercapai" : (lowStock ? "maks. " + room : "maks. " + room + " (batas prototipe)"), canAdd: room > 0,
+wished: wished ? "true" : "false", wishLabel: wished ? "Hapus dari wishlist" : "Simpan ke wishlist", heartFill: wished ? "#8C3B2E" : "none", toggleWish: toggleWishFor(pp.id),
+wishSt: "flex:none;width:48px;height:48px;border-radius:999px;border:1px solid #8C8279;background:" + (wished ? "#F3E6E2" : "#FFFFFF"),
+add: function () { var found = false; var c2 = cart.map(function (l) { if (l.vid === vv.id) { found = true; return { pid: l.pid, vid: l.vid, qty: l.qty + q }; } return l; }); if (!found) c2.push({ pid: pp.id, vid: vv.id, qty: q }); set({ cart: c2, qty: 1, toast: "Ditambahkan: " + q + "× " + pp.name + (vv.label ? " " + vv.label : "") }); } };
+}
+
+// cart
+var units = 0, sub = 0, serum = 0;
+var lines = cart.map(function (l, i) {
+var p = prod(l.pid); var v = vari(p, l.vid); units += l.qty; sub += v.price * l.qty; if (p.b2g1) serum += l.qty; var c = cap(v.id);
+var note = p.bundle ? "Hemat " + fmt(48000 * l.qty) + " dibanding beli terpisah" : (v.was ? "Dari " + fmt(v.was) : ((v.id === "A04") ? "Sisa " + sunLeft() + " setelah keranjang" : ""));
+return { name: p.name + (v.label ? " " + v.label : ""), sub: p.bundle ? p.sub : (p.sub || v.label), kind: p.kind, bg: p.bg, ac: p.ac, qty: String(l.qty), total: fmt(v.price * l.qty), note: note, noteSt: note ? "font-size:12px;color:#2F6B3F" : "display:none", editable: true, free: false,
+decDis: l.qty <= 1, incDis: l.qty >= c,
+dec: function () { set({ cart: cart.map(function (x, j) { return j === i ? { pid: x.pid, vid: x.vid, qty: Math.max(1, x.qty - 1) } : x; }) }); },
+inc: function () { set({ cart: cart.map(function (x, j) { return j === i ? { pid: x.pid, vid: x.vid, qty: Math.min(c, x.qty + 1) } : x; }) }); },
+rm: function () { set({ cart: cart.filter(function (x, j) { return j !== i; }), toast: "Barang dihapus" }); } };
+});
+var freeQty = Math.floor(serum / 2);
+if (freeQty > 0) { lines.push({ name: "Travel Cleanser 30 ml", sub: "Gratis · B2G1-SERUM", kind: "bottle", bg: "#EFE6DC", ac: "#8C8279", qty: String(freeQty), was: fmt(45000 * freeQty), note: "Otomatis dari promo", noteSt: "font-size:12px;color:#2F6B3F", editable: false, free: true }); }
+var row = "display:flex;justify-content:space-between";
+var sum = [{ l: "Subtotal (" + units + " barang)", v: fmt(sub), st: row }];
+if (freeQty) sum.push({ l: "B2G1-SERUM · " + freeQty + " Travel Cleanser gratis", v: "Rp0 (senilai " + fmt(45000 * freeQty) + ")", st: row + ";color:#2F6B3F" });
+sum.push({ l: "Ongkir", v: "dihitung saat checkout", st: row + ";color:#6B625A" });
+
+var doLogin = function () {
+var a = S.after || {}; var o = { logged: true, sheet: false, fails: 0, err: "" };
+if (a.wish) { o.wish = wish.indexOf(a.wish) >= 0 ? wish : wish.concat([a.wish]); o.toast = "Masuk berhasil · disimpan ke wishlist"; }
+if (a.checkout) { o.s = "merged"; o.toast = ""; }
+if (!a.wish && !a.checkout) o.toast = "Masuk berhasil";
+set(o);
+};
+var locked = fails >= 5;
+var ctaOn = "width:100%;min-height:48px;border:none;border-radius:999px;background:#4F6B57;color:#FFFFFF;font-size:15px;font-weight:600";
+var ctaOff = "width:100%;min-height:48px;border:none;border-radius:999px;background:#D9CFC4;color:#6B625A;font-size:15px;font-weight:600";
+var cta = { t: "", dis: false, go: function () {}, st: ctaOn };
+if (screen === "pdp") cta = { t: pdp.canAdd ? "Tambah ke keranjang · " + fmt(vari(prod(S.pid || "A01"), S.vid).price * Number(pdp.qty)) : "Batas stok tercapai", dis: !pdp.canAdd, go: pdp.add, st: pdp.canAdd ? ctaOn : ctaOff };
+if (screen === "cart") cta = { t: logged ? "Lanjut ke checkout" : "Masuk untuk checkout", dis: false, go: function () { if (logged) set({ s: "merged" }); else openSheet("Masuk untuk lanjut checkout. Keranjangmu (" + units + " barang) aman.", { checkout: true }); }, st: ctaOn };
+var hasBar = screen === "pdp" || (screen === "cart" && cart.length > 0);
+var backMap = { plp: "home", pdp: "plp", cart: "plp", wish: "home", merged: "cart" };
+var wishList = wish.map(function (id) { var p = prod(id); return { name: p.name, kind: p.kind, bg: p.bg, ac: p.ac, price: fmt(p.v[0].price), open: openPdp(id), rm: function () { set({ wish: wish.filter(function (x) { return x !== id; }), toast: "Dihapus dari wishlist" }); } }; });
+var badge = "position:absolute;top:4px;right:2px;min-width:18px;height:18px;border-radius:9px;color:#FFFFFF;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box;background:";
+
+return {
+isHome: screen === "home", isPlp: screen === "plp", isPdp: screen === "pdp", isCart: screen === "cart", isMerged: screen === "merged", isWish: screen === "wish",
+hasBack: !!backMap[screen], back: go(backMap[screen] || "home"), goHome: go("home"), goCart: go("cart"), goAll: goNeed("all"),
+goWish: function () { if (!logged) openSheet("Masuk untuk melihat wishlist (I6).", {}); else set({ s: "wish", toast: "" }); },
+openBundle: openPdp("BND"), openSerum: openPdp("A03"),
+who: logged ? "Hai, Rina" : "Tamu", loginState: logged ? "masuk sebagai Rina (demo)" : "tamu",
+cartCount: String(units), cartAria: "Keranjang, " + units + " barang", cartBadge: units ? badge + "#4F6B57" : "display:none",
+wishCount: String(wish.length), wishAria: "Wishlist, " + wish.length + " produk", wishBadge: wish.length ? badge + "#8C3B2E" : "display:none",
+concerns: concerns, chips: chips, plp: plp, plpTitle: NEED[need], plpCount: plp.length + " produk",
+pdp: pdp, lines: lines, cartEmpty: cart.length === 0, guestNote: !logged && cart.length > 0, nudge: serum % 2 === 1,
+addSerum: function () { set({ cart: cart.map(function (x) { return x.pid === "A03" ? { pid: x.pid, vid: x.vid, qty: x.qty + 1 } : x; }) }); },
+sum: sum, showSum: screen === "cart", cta: cta, hasBar: hasBar,
+wishList: wishList, wishEmpty: wish.length === 0,
+sheetOpen: !!S.sheet, sheetWhy: S.sheetWhy || "", closeSheet: function () { set({ sheet: false }); },
+doLogin: doLogin, locked: locked,
+wrongPw: function () { var f = fails + 1; set({ fails: f, err: f >= 5 ? "Terlalu banyak percobaan. Coba lagi dalam 15 menit atau atur ulang kata sandi." : "Email atau kata sandi salah. Sisa " + (5 - f) + " percobaan." }); },
+err: S.err || "", errSt: S.err ? "font-size:13px;font-weight:600;color:#A3302A" : "display:none",
+loginSt: locked ? ctaOff : ctaOn,
+resetAll: function () { set({ s: "home", cart: [], wish: [], logged: false, fails: 0, err: "", sheet: false, need: "all", toast: "" }); },
+toast: S.toast || "",
+toastSt: S.toast ? "position:absolute;left:12px;right:12px;bottom:" + (hasBar ? "150" : "16") + "px;background:#23201D;color:#FFFFFF;border-radius:12px;padding:10px 12px;font-size:13px" : "display:none"
+};
+}
+}
+</script>
+</body>
+</html>

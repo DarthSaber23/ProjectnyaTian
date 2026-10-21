@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Order Tracking</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1500px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · S27 · /akun/pesanan/ORD-261014-0003 · courier update overdue (journey J3)</div>
+<div style="width: 1440px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 24px; padding: 16px 40px; border-bottom: 1px solid #DADCE0">
+<div style="width: 120px; height: 36px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px">[BRAND B]</div>
+<div style="flex: 1; height: 40px; border: 1px solid #BFC3C9; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #5A606B">Cari kabel, adaptor, charger…</div>
+<div style="display: flex; gap: 20px; font-size: 14px"><span>Wishlist</span><span style="font-weight: 600">Rina</span><span>Keranjang (0)</span></div>
+</div>
+<div style="display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding: 32px 40px 40px">
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<b style="padding: 8px 0">Akun saya</b><span style="padding: 8px 0">Dasbor</span><span style="padding: 8px 0">Profil</span><span style="padding: 8px 0">Buku alamat</span><span style="padding: 8px 12px; background: #F3F4F5; font-weight: 600">Pesanan</span><span style="padding: 8px 0">Wishlist</span><span style="padding: 8px 0">Preferensi komunikasi</span><span style="padding: 8px 0; color: #5A606B">Keluar</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="font-size: 13px; color: #5A606B">Pesanan / <b style="color: #15171C">ORD-261014-0003</b></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 6px"><b style="font-size: 26px">Dalam Perjalanan</b><span style="font-size: 14px; color: #5A606B">Dipesan 14 Okt 2026, 09:12 WIB · Kurir A · Reguler · Resi SIM-KA-88213004 (simulasi)</span></div>
+<span style="border: 1px solid #2B2F36; padding: 10px 16px; font-weight: 600; font-size: 14px">Hubungi CS</span>
+</div>
+<div style="background: #F3F4F5; border-left: 0; padding: 14px 16px; font-size: 14px; display: flex; flex-direction: column; gap: 4px"><b>Belum ada pembaruan dari kurir sejak 15 Okt, 18:22 WIB</b><span style="color: #5A606B">Ini bisa terjadi saat paket transit antar kota. Kami tidak menampilkan perkiraan yang tidak berasal dari kurir. Hubungi CS jika belum ada perubahan.</span></div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 0; font-size: 14px">
+<b style="font-size: 17px; margin-bottom: 12px">Riwayat status</b>
+<sc-for list="{{tl}}" as="t" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="{{t.dot}}"></span><span style="flex: 1; width: 2px; background: #DADCE0; min-height: 36px"></span></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 16px"><b>{{t.s}}</b><span style="color: #5A606B; font-size: 13px">{{t.d}}</span></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; font-size: 14px">
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<b>Barang</b>
+<div style="display: flex; gap: 10px"><div style="width: 48px; height: 48px; background: #E4E6E9; flex: none"></div><span style="flex: 1">Adaptor USB-C ke HDMI 4K60 ×1</span><span>Rp219.000</span></div>
+<div style="display: flex; gap: 10px"><div style="width: 48px; height: 48px; background: #E4E6E9; flex: none"></div><span style="flex: 1">Kabel USB-C ke Lightning · 1 m ×1</span><span>Rp149.000</span></div>
+<div style="border-top: 1px solid #DADCE0; padding-top: 10px; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between"><span>Subtotal</span><span>Rp368.000</span></div><div style="display: flex; justify-content: space-between"><span>Ongkir</span><span>Rp18.000</span></div><div style="display: flex; justify-content: space-between"><b>Total</b><b>Rp386.000</b></div></div>
+</div>
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b>Pembayaran</b><span style="color: #5A606B">Virtual Account Bank A · Dibayar 14 Okt, 09:20 WIB</span></div>
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b>Alamat</b><span style="color: #5A606B">Rina Pratama · Jl. Melati No. 12, Kec. Coblong, Kota Bandung 40132</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · same order</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><span>←</span><b style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">ORD-261014-0003</b></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 20px">Dalam Perjalanan</b><span style="font-size: 13px; color: #5A606B">Kurir A · Reguler · SIM-KA-88213004 <u>Salin</u></span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; padding: 0 16px 12px; font-size: 10px; text-align: center">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="height: 6px; background: #2B2F36"></span>Dibayar</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="height: 6px; background: #2B2F36"></span>Diproses</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="height: 6px; background: #2B2F36"></span>Dikirim</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="height: 6px; background: #2B2F36"></span><b>Perjalanan</b></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="height: 6px; background: #DADCE0"></span>Diterima</div>
+</div>
+<div style="margin: 0 16px 16px; background: #F3F4F5; padding: 12px; font-size: 13px; display: flex; flex-direction: column; gap: 4px"><b>Belum ada pembaruan sejak 15 Okt, 18:22</b><span style="color: #5A606B">Hubungi CS jika belum ada perubahan.</span><u>Hubungi CS via WhatsApp</u></div>
+<div style="padding: 0 16px 8px; font-size: 13px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 14px">Riwayat</b>
+<sc-for list="{{tl}}" as="t" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; border-left: 2px solid #DADCE0; padding-left: 10px"><b>{{t.s}}</b><span style="color: #5A606B">{{t.d}}</span></div>
+</sc-for>
+</div>
+<div style="padding: 14px 16px; border-top: 1px solid #DADCE0; font-size: 13px; display: flex; justify-content: space-between"><span>2 barang · Total</span><b>Rp386.000</b></div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+var on = "width:14px;height:14px;border-radius:7px;background:#2B2F36";
+var cur = "width:14px;height:14px;border-radius:7px;background:#FFFFFF;border:3px solid #2B2F36;box-sizing:border-box";
+return {
+tl: [
+{ s: "Dalam perjalanan · Hub Jakarta (simulasi)", d: "15 Okt 2026, 18:22 WIB · event kurir", dot: cur },
+{ s: "Dikirim · resi dibuat", d: "15 Okt 2026, 10:40 WIB · oleh tim operasional", dot: on },
+{ s: "Diproses", d: "14 Okt 2026, 13:05 WIB · oleh tim operasional", dot: on },
+{ s: "Dibayar · Virtual Account", d: "14 Okt 2026, 09:20 WIB · event gateway", dot: on },
+{ s: "Pesanan dibuat", d: "14 Okt 2026, 09:12 WIB", dot: on }
+]
+};
+}
+}
+</script>
+</body>
+</html>

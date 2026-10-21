@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>M0 Overview and Approval</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 1900px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 40px">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; border-bottom: 2px solid #15171C; padding-bottom: 28px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">AGENT 01 · MODULAR E-COMMERCE STARTER · DOC v1.0</div>
+<h1 style="margin: 0; font-size: 56px; line-height: 1.05; font-weight: 700">M0 — Scope &amp; Design Brief</h1>
+<div style="font-size: 18px; color: #3B4049">Market: Indonesia · Audience: B2C (business-to-consumer) · Language: Bahasa Indonesia · Currency: IDR · Demo timezone: Asia/Jakarta (UTC+7)</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px">
+<div style="background: #E3F1EF; color: #0B4F49; border: 1px solid #9CCFC8; padding: 8px 14px; font-weight: 600; font-size: 15px">Status: Approved 20 Oct 2026</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #555B66">Issued 20 Oct 2026 · Prepared for: Product Owner</div>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 2px solid #0B6B63; padding: 28px 32px; display: flex; flex-direction: column; gap: 12px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #0B6B63; font-weight: 500">RESOLVED — DESIGN TOOL OF RECORD (D1)</div>
+<div style="font-size: 18px; line-height: 1.55">The product owner does not use Figma. Claude Design (this canvas) is the design tool of record for all milestones. No Figma file will be created.</div>
+<div style="font-size: 16px; line-height: 1.6; color: #3B4049">Consequences: the "Figma deliverable" in the master prompt is fulfilled by this Claude Design canvas, organised into one page per milestone. M6 becomes "Clickable Prototype (Claude Design)": artboards linked into playable journeys. Design tokens are additionally exported as JSON at M3 so the React prototype reads the same values.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 26px">1 · Project understanding</h2>
+<ol style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.6; display: flex; flex-direction: column; gap: 10px">
+<li>A reusable starter, forked per client and deployed to each client's own VPS (virtual private server). It is <strong>not</strong> a multi-tenant SaaS (software-as-a-service) product: each fork may change anything.</li>
+<li>Agent 01 designs and validates UI/UX (user interface / user experience) first; code starts only at M7, after visual approval.</li>
+<li>Two fictional showcase brands (healthy cosmetics; computer accessories) prove the starter can look and behave differently on shared commerce foundations.</li>
+<li>Scope covers the customer storefront, mandatory login before checkout, simulated payment and shipping, and an admin dashboard with a CMS (content management system) block editor.</li>
+<li>All data in the prototype is deterministic mock data from one source of truth; analytics must reconcile with it.</li>
+<li>Real integrations (payment gateways, OAuth, shipping APIs, backend, infrastructure) belong to later agents and are out of scope.</li>
+</ol>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 26px">2 · What "reusable starter" means here</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border: 1px solid #DADCE0; font-size: 15px; line-height: 1.5">
+<div style="padding: 12px 14px; background: #E3F1EF; font-weight: 600; color: #0B4F49">Shared foundations</div>
+<div style="padding: 12px 14px; background: #EEF0F4; font-weight: 600; color: #2E3440">Brand composition layer</div>
+<div style="padding: 12px 14px; border-top: 1px solid #DADCE0">Cart, auth, checkout, voucher, shipping, payment-status and order-history behaviour</div>
+<div style="padding: 12px 14px; border-top: 1px solid #DADCE0; border-left: 1px solid #DADCE0">Homepage section order, navigation pattern, product card variant, PDP section stack</div>
+<div style="padding: 12px 14px; border-top: 1px solid #DADCE0">Semantic design tokens (colour roles, type scale, spacing, radius)</div>
+<div style="padding: 12px 14px; border-top: 1px solid #DADCE0; border-left: 1px solid #DADCE0">Token values per brand, fonts, imagery, tone of voice</div>
+<div style="padding: 12px 14px; border-top: 1px solid #DADCE0">Typed product model with flexible attribute sets</div>
+<div style="padding: 12px 14px; border-top: 1px solid #DADCE0; border-left: 1px solid #DADCE0">Which attributes, filters and content blocks a category shows</div>
+</div>
+<div style="font-size: 14px; color: #555B66; line-height: 1.5">Rule: shared components read tokens only, never a brand's hard-coded values. Every shared component stays replaceable or overridable in a client fork. PDP = product detail page.</div>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-size: 26px">3 · M0 deliverables on this canvas</h2>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+<div style="border-top: 4px solid #0B6B63; padding-top: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #555B66">BOARD 01</div>
+<div style="font-size: 18px; font-weight: 600">Scope classification</div>
+<div style="font-size: 15px; color: #3B4049; line-height: 1.5">Essential, supporting and future features, plus explicit exclusions owned by Agents 02/03.</div>
+</div>
+<div style="border-top: 4px solid #0B6B63; padding-top: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #555B66">BOARD 02</div>
+<div style="font-size: 18px; font-weight: 600">Open decisions &amp; assumptions</div>
+<div style="font-size: 15px; color: #3B4049; line-height: 1.5">16 decisions, all approved; D1 changed to Claude Design.</div>
+</div>
+<div style="border-top: 4px solid #0B6B63; padding-top: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #555B66">BOARD 03</div>
+<div style="font-size: 18px; font-weight: 600">Initial screen inventory</div>
+<div style="font-size: 15px; color: #3B4049; line-height: 1.5">66 screens (43 storefront, 23 admin) with priority, target fidelity and required states.</div>
+</div>
+<div style="border-top: 4px solid #0B6B63; padding-top: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #555B66">BOARD 04</div>
+<div style="font-size: 18px; font-weight: 600">Workflow, risks &amp; acceptance</div>
+<div style="font-size: 15px; color: #3B4049; line-height: 1.5">Milestone plan M0–M8, design workflow, risk register and the M0 acceptance checklist.</div>
+</div>
+</div>
+<div style="font-size: 14px; color: #555B66; line-height: 1.5">Not produced in M0 (by design, per the milestone rules): wireframes, visual designs, React prototype, the 18 documentation files. The documentation set starts at M1; PROJECT_BRIEF.md, DESIGN_SCOPE.md and ASSUMPTIONS_AND_DECISIONS.md will be written from this approved M0 content.</div>
+</div>
+
+<div style="background: #15171C; color: #F6F6F3; padding: 36px 40px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #B8BCC4">APPROVAL RECORD</div>
+<div style="font-size: 28px; font-weight: 600; line-height: 1.3">M0 approved by the product owner on 20 Oct 2026.</div>
+<div style="font-size: 17px; line-height: 1.6; color: #D5D8DD">Change on approval: D1 — Claude Design replaces Figma as the design tool. All other decisions (D2–D16) approved as proposed. Next: M1 — Information Architecture.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

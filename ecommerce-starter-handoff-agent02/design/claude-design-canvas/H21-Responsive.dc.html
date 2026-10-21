@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Tablet and Small Phone Checks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2560px; min-height: 1700px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 40px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">TABLET 768 · SAMBUNG CATALOG · 3 cols, filters in sheet (&lt; 1024)</div>
+<div style="width: 768px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 14px; padding: 12px 24px; border-bottom: 1px solid #CBD2DC"><span style="font-size: 20px" aria-hidden="true">☰</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span><div style="flex: 1; height: 42px; border: 1.5px solid #7D8796; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; color: #4A5568; font-size: 14px">Cari kabel, adaptor…</div><span style="font-size: 14px">Keranjang 0</span></div>
+<div style="padding: 20px 24px 12px; display: flex; justify-content: space-between; align-items: flex-end"><div style="display: flex; flex-direction: column; gap: 2px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 600">Kabel</h1><span style="font-size: 13px; color: #4A5568">3 dari 5 produk</span></div><div style="display: flex; gap: 8px"><button type="button" style="height: 44px; padding: 0 16px; border: 1.5px solid #0E1726; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 600">Filter (1)</button><button type="button" style="height: 44px; padding: 0 16px; border: 1.5px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit">Terlaris ▾</button></div></div>
+<div style="padding: 0 24px 12px"><span style="background: #EAF0FD; color: #1747B5; border-radius: 4px; padding: 4px 8px; font-size: 13px; font-weight: 600">USB-C ✕</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 0 24px 24px">
+<sc-for list="{{items}}" as="p" hint-placeholder-count="3"><article style="border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden"><div style="height: 170px"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,170px"></dc-import></div><div style="padding: 12px; display: flex; flex-direction: column; gap: 4px"><b style="font-size: 14px; line-height: 1.3">{{p.name}}</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">{{p.spec}}</span><b>{{p.price}}</b><button type="button" style="margin-top: 4px; height: 44px; border: 1.5px solid #1F5AE0; color: #1F5AE0; background: #FFFFFF; border-radius: 6px; font-family: inherit; font-weight: 600; font-size: 13px">{{p.cta}}</button></div></article></sc-for>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">TABLET 768 · SAMBUNG CHECKOUT 1 · one column, summary below</div>
+<div style="width: 768px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 20px; padding: 14px 24px; border-bottom: 1px solid #CBD2DC"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span><span style="font-size: 14px"><b style="color: #1F5AE0">1 Pengiriman</b> — 2 Ringkasan — 3 Pembayaran</span></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<b style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Alamat pengiriman</b>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px"><div style="border: 2px solid #1F5AE0; background: #EAF0FD; border-radius: 6px; padding: 14px"><b>Rumah · Utama</b><br><span style="color: #2D3748">Jl. Melati No. 12, Kota Bandung 40132</span></div><div style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 14.5px"><b>Kantor</b><br><span style="color: #2D3748">Jl. Kenanga No. 8, Kota Bandung 40111</span></div></div>
+<b style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Layanan pengiriman <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568; font-weight: 400">SIMULASI</span></b>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px"><div style="border: 2px solid #1F5AE0; background: #EAF0FD; border-radius: 6px; padding: 12px 14px; display: flex; justify-content: space-between"><span>◉ <b>Kurir A · Reguler</b> · 2–3 hari</span><b>Rp18.000</b></div><div style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 12.5px 14.5px; display: flex; justify-content: space-between"><span>○ <b>Kurir B · Hemat</b> · 3–5 hari</span><b>Rp15.000</b></div><div style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 12.5px 14.5px; display: flex; justify-content: space-between"><span>○ <b>Kurir C · Kilat</b> · 1 hari</span><b>Rp27.000</b></div></div>
+<div style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 14px"><b>Ringkasan</b><div style="display: flex; justify-content: space-between"><span>Subtotal (3 barang)</span><span>Rp617.250</span></div><div style="display: flex; justify-content: space-between"><span>Ongkir</span><span>Rp18.000</span></div><div style="display: flex; justify-content: space-between; border-top: 2px solid #0E1726; padding-top: 8px"><b>Total sementara</b><b>Rp635.250</b></div></div>
+<button type="button" style="height: 50px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 16px">Lanjut ke Ringkasan</button>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">PHONE 360 · HALIMUN PDP</div>
+<div style="width: 360px; background: #F7F4EF; display: flex; flex-direction: column; font-family: Figtree, sans-serif; color: #23201D">
+<div style="height: 300px"><dc-import name="ProductArt" kind="bottle" bg="#EFE6DC" fg="#FFFFFF" accent="#4F6B57" label="Gentle Low-pH Cleanser" hint-size="100%,300px"></dc-import></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; color: #6B625A">Pembersih · ★ 4,8 (342)</span>
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 30px; line-height: 1.08">Gentle Low-pH Cleanser</h1>
+<b style="font-size: 20px">Rp119.000</b>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="height: 44px; padding: 0 18px; border: 2px solid #4F6B57; background: #E7EEE8; color: #2F4A37; border-radius: 999px; display: flex; align-items: center; font-weight: 600">100 ml</span><span style="height: 44px; padding: 0 18px; border: 1.5px solid #8C8279; background: #FFFFFF; border-radius: 999px; display: flex; align-items: center">200 ml · Rp189.000</span></div>
+<span style="font-size: 12px; color: #6B625A">360 px: variant chips wrap to a second line instead of scrolling.</span>
+</div>
+<div style="border-top: 1px solid #D9CFC4; background: #FFFFFF; padding: 10px 12px; display: flex; gap: 8px"><div style="display: inline-flex; align-items: center; border: 1.5px solid #8C8279; border-radius: 999px"><span style="width: 36px; text-align: center">−</span><b>1</b><span style="width: 36px; text-align: center">+</span></div><button type="button" style="flex: 1; height: 48px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-family: Figtree, sans-serif; font-weight: 600; font-size: 14px">Tambah · Rp119.000</button></div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">PHONE 360 · SAMBUNG CART BAR (stacked)</div>
+<div style="width: 360px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 10px; padding: 12px; border-bottom: 1px solid #E3E7ED"><div style="height: 64px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Kabel USB-C 100W" hint-size="64px,64px"></dc-import></div><div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px"><b style="line-height: 1.3">Kabel USB-C ke USB-C 100W Braided</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">2 m · Hitam</span><span style="display: flex; justify-content: space-between; align-items: center"><span style="border: 1.5px solid #7D8796; border-radius: 6px; display: inline-flex; align-items: center"><span style="width: 36px; height: 40px; display: flex; align-items: center; justify-content: center">−</span>2<span style="width: 36px; height: 40px; display: flex; align-items: center; justify-content: center">+</span></span><b>Rp318.000</b></span></div></div>
+<div style="padding: 12px; font-size: 12px; color: #4A5568">360 px: price and button no longer fit on one row, so the total stacks above the full-width button.</div>
+<div style="border-top: 1px solid #CBD2DC; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; justify-content: space-between; font-size: 14px"><span>Subtotal (3 barang)</span><b style="font-family: 'JetBrains Mono', monospace">Rp617.250</b></div><button type="button" style="height: 48px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 15px">Lanjut ke Checkout</button></div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2560,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+items: [
+{ name: "Kabel USB-A ke USB-C · 1 m", spec: "USB-A → USB-C", price: "Rp69.000", cta: "+ Keranjang", ac: "#7D8796" },
+{ name: "Kabel USB-C 100W Braided", spec: "1/2/3 m · 100W", price: "mulai Rp129.000", cta: "Pilih varian", ac: "#1F5AE0" },
+{ name: "Kabel USB-C ke Lightning · 1 m", spec: "USB-C → Lightning", price: "Rp149.000", cta: "+ Keranjang", ac: "#4A5568" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Prototype Admin Orders</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #1F5AE0;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; background: #F5F6F8; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; overflow: hidden; position: relative; font-size: 14px">
+
+<nav aria-label="Admin" style="width: 220px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 18px 12px; display: flex; flex-direction: column; gap: 2px">
+<div style="padding: 0 8px 16px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span></div>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; color: #4A5568">Dasbor</span>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Pesanan</span>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; color: #4A5568">Pelanggan</span>
+<div style="margin-top: auto; border: 2px dashed #7D8796; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 6px; background: #F2F4F7">
+<b style="font-size: 11px; font-family: 'JetBrains Mono', monospace">PANEL UJI · peran</b>
+<sc-for list="{{roles}}" as="r" hint-placeholder-count="3"><button type="button" aria-pressed="{{r.on}}" onClick="{{r.pick}}" style="{{r.st}}">{{r.t}}</button></sc-for>
+<button type="button" onClick="{{resetAll}}" style="min-height: 36px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-size: 12px; font-weight: 600">Atur ulang</button>
+</div>
+</nav>
+
+<main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 20px 24px; gap: 14px; overflow-y: auto">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">Pesanan</h1><span style="font-size: 12px; color: #4A5568; font-family: 'JetBrains Mono', monospace">Masuk sebagai {{actor}} · jam simulasi {{clock}} WIB</span></div>
+<div style="display: flex; gap: 14px; align-items: flex-start">
+
+<section aria-label="Daftar pesanan" style="width: 330px; flex: none; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; overflow: hidden">
+<div style="padding: 10px 12px; font-size: 13px; font-weight: 600; border-bottom: 1px solid #E3E7ED">{{listTitle}}</div>
+<sc-for list="{{rows}}" as="o" hint-placeholder-count="2"><button type="button" aria-current="{{o.cur}}" onClick="{{o.open}}" style="{{o.st}}"><span style="display: flex; justify-content: space-between; width: 100%"><b style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px">{{o.no}}</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px">{{o.total}}</span></span><span style="display: flex; gap: 6px; flex-wrap: wrap"><span style="{{o.payChip}}">{{o.pay}}</span><span style="{{o.fulChip}}">{{o.ful}}</span></span><span style="font-size: 12px; color: #4A5568">{{o.cust}} · {{o.date}}</span></button></sc-for>
+</section>
+
+<section aria-label="Detail pesanan" style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap"><div style="display: flex; gap: 8px; align-items: center"><b style="font-family: 'JetBrains Mono', monospace; font-size: 16px">{{od.no}}</b><span style="{{od.payChip}}">PEMBAYARAN: {{od.pay}}</span><span style="{{od.fulChip}}">PEMENUHAN: {{od.ful}}</span></div>
+<div style="display: flex; gap: 8px"><sc-for list="{{actions}}" as="a" hint-placeholder-count="2"><button type="button" disabled="{{a.dis}}" onClick="{{a.go}}" title="{{a.why}}" style="{{a.st}}">{{a.t}}</button></sc-for></div></div>
+<span role="status" style="{{whySt}}">{{why}}</span>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px"><thead><tr style="text-align: left; color: #4A5568; font-size: 12px; background: #F2F4F7"><th scope="col" style="padding: 6px 8px">Barang</th><th scope="col" style="padding: 6px 8px">SKU</th><th scope="col" style="padding: 6px 8px; text-align: right">Jumlah</th><th scope="col" style="padding: 6px 8px; text-align: right">Subtotal</th></tr></thead>
+<tbody><sc-for list="{{od.items}}" as="i" hint-placeholder-count="1"><tr style="border-top: 1px solid #E3E7ED"><td style="padding: 6px 8px">{{i.n}}</td><td style="padding: 6px 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px">{{i.sku}}</td><td style="padding: 6px 8px; text-align: right">×{{i.q}}</td><td style="padding: 6px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{i.sub}}</td></tr></sc-for>
+<tr style="border-top: 1px solid #E3E7ED"><td colspan="3" style="padding: 6px 8px">Ongkir · Kurir A Reguler</td><td style="padding: 6px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">Rp18.000</td></tr>
+<tr style="border-top: 2px solid #CBD2DC; font-weight: 700"><td colspan="3" style="padding: 6px 8px">Total dibayar</td><td style="padding: 6px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{od.total}}</td></tr>
+<sc-if value="{{od.hasRefund}}" hint-placeholder-val="{{ false }}"><tr style="color: #A3302A; font-weight: 600"><td colspan="3" style="padding: 6px 8px">Refund dicatat</td><td style="padding: 6px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">−{{od.refund}}</td></tr></sc-if>
+</tbody></table>
+<span style="font-size: 12px; color: #4A5568">{{od.payInfo}}</span>
+<sc-if value="{{od.hasResi}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px">Resi: <b style="font-family: 'JetBrains Mono', monospace">{{od.resi}}</b> · pelanggan sudah bisa melacak (simulasi)</span></sc-if>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; font-size: 13px">
+<b>Pelanggan · {{od.cid}}</b><span>{{od.cust}}</span>
+<span style="font-family: 'JetBrains Mono', monospace">{{contact.email}}<br>{{contact.phone}}</span>
+<span style="{{contact.noteSt}}">{{contact.note}}</span>
+<sc-if value="{{contact.canReveal}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{openReveal}}" style="align-self: flex-start; min-height: 40px; padding: 0 12px; border: 1px solid #1F5AE0; border-radius: 6px; background: #FFFFFF; color: #1747B5; font-weight: 600">Tampilkan kontak (dicatat di log)</button></sc-if>
+<sc-if value="{{contact.revealed}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{expire}}" style="align-self: flex-start; min-height: 36px; padding: 0 10px; border: 2px dashed #7D8796; border-radius: 6px; background: #F2F4F7; font-size: 12px; font-weight: 600">Panel uji: simulasikan 60 detik berlalu</button></sc-if>
+<span style="color: #4A5568">{{od.addr}}</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 13px"><b>Riwayat status</b>
+<sc-for list="{{od.hist}}" as="h" hint-placeholder-count="3"><div style="border-top: 1px solid #E3E7ED; padding-top: 5px; display: flex; flex-direction: column"><span style="font-weight: 600">{{h.s}}</span><span style="font-size: 12px; color: #4A5568">{{h.t}} · {{h.a}}</span></div></sc-for>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<aside aria-label="Log audit" style="width: 300px; flex: none; background: #FFFFFF; border-left: 1px solid #E3E7ED; padding: 18px 14px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto">
+<h2 style="margin: 0; font-size: 15px">Log audit (sesi ini)</h2>
+<span style="font-size: 12px; color: #4A5568">Hanya-tambah. Tiap aksi menyimpan pelaku, waktu, nilai lama → baru (ALCOA+).</span>
+<sc-if value="{{logEmpty}}" hint-placeholder-val="{{ true }}"><span style="font-size: 13px; color: #4A5568; border: 1px dashed #CBD2DC; border-radius: 6px; padding: 10px">Belum ada aksi di sesi ini.</span></sc-if>
+<sc-for list="{{log}}" as="l" hint-placeholder-count="2"><div style="border: 1px solid #E3E7ED; border-radius: 6px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; font-size: 12.5px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #4A5568">{{l.t}} · {{l.code}}</span><b>{{l.a}}</b><span>{{l.o}}</span><span style="color: #4A5568">{{l.who}}</span></div></sc-for>
+</aside>
+
+<sc-if value="{{dlgOpen}}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(14,23,38,0.5)"></div>
+<div role="dialog" aria-modal="true" aria-labelledby="dlg-t" style="position: absolute; left: 50%; top: 70px; transform: translateX(-50%); width: 520px; background: #FFFFFF; border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><h2 id="dlg-t" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">{{dlgTitle}}</h2><button type="button" aria-label="Tutup" onClick="{{closeDlg}}" style="width: 40px; height: 40px; border: none; background: none; font-size: 18px">✕</button></div>
+
+<sc-if value="{{isShipDlg}}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 13px">Kurir &amp; layanan (pilihan pelanggan): <b>Kurir A · Reguler</b></span>
+<label style="display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 13px">Nomor resi *<input type="text" value="{{resi}}" onChange="{{onResi}}" aria-invalid="{{resiInvalid}}" aria-describedby="resi-err" placeholder="contoh: SIM-KA-88213010" style="{{resiSt}}"></label>
+<span id="resi-err" role="alert" style="{{resiErrSt}}">{{resiErr}}</span>
+<button type="button" onClick="{{fillResi}}" style="align-self: flex-start; min-height: 36px; padding: 0 10px; border: 2px dashed #7D8796; border-radius: 6px; background: #F2F4F7; font-size: 12px; font-weight: 600">Panel uji: isi resi contoh</button>
+<span style="font-size: 12px; color: #4A5568">Tanggal serah ke kurir: 20 Okt 2026. Status jadi Dikirim dan pelanggan melihat resi. "Diterima" hanya dari event kurir (simulasi).</span>
+</sc-if>
+
+<sc-if value="{{isRefundDlg}}" hint-placeholder-val="{{ false }}">
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; font-size: 13px; padding-bottom: 4px">Jumlah refund *</legend>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{amtOpts}}" as="m" hint-placeholder-count="3"><button type="button" aria-pressed="{{m.on}}" onClick="{{m.pick}}" style="{{m.st}}">{{m.t}}</button></sc-for></div></fieldset>
+<sc-if value="{{customAmt}}" hint-placeholder-val="{{ false }}"><label style="display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 13px">Jumlah lain (Rupiah, tanpa titik)<input type="text" inputmode="numeric" value="{{amtText}}" onChange="{{onAmt}}" aria-describedby="amt-err" style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 10px; font-family: 'JetBrains Mono', monospace; font-size: 14px"></label></sc-if>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; font-size: 13px; padding-bottom: 4px">Alasan *</legend>
+<div style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{reasons}}" as="m" hint-placeholder-count="3"><button type="button" aria-pressed="{{m.on}}" onClick="{{m.pick}}" style="{{m.st}}">{{m.t}}</button></sc-for></div></fieldset>
+<label style="display: flex; gap: 8px; align-items: center; font-size: 13px"><input type="checkbox" checked="{{restock}}" onChange="{{toggleRestock}}" style="width: 18px; height: 18px"> Kembalikan stok ({{restockLbl}})</label>
+<span id="amt-err" role="alert" style="{{refErrSt}}">{{refErr}}</span>
+<div style="background: #F2F4F7; border-radius: 6px; padding: 10px 12px; font-size: 12.5px; display: flex; flex-direction: column; gap: 2px"><span>Dana dikembalikan ke metode bayar asal (simulasi, tanpa gateway).</span><span>{{refImpact}}</span></div>
+</sc-if>
+
+<sc-if value="{{isRevealDlg}}" hint-placeholder-val="{{ false }}">
+<span>Email dan telepon {{od.cust}} terlihat 60 detik lalu disamarkan lagi.</span>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; font-size: 13px; padding-bottom: 4px">Alasan (wajib)</legend>
+<sc-for list="{{revReasons}}" as="m" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{m.on}}" onClick="{{m.pick}}" style="{{m.st}}"><span style="{{m.dot}}"></span>{{m.t}}</button></sc-for></fieldset>
+<span role="alert" style="{{revErrSt}}">{{revErr}}</span>
+</sc-if>
+
+<div style="display: flex; justify-content: flex-end; gap: 8px"><button type="button" onClick="{{closeDlg}}" style="min-height: 44px; padding: 0 16px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-weight: 600">Batal</button><button type="button" onClick="{{confirmDlg}}" style="{{confirmSt}}">{{confirmT}}</button></div>
+</div>
+</sc-if>
+
+<div aria-live="polite" style="{{toastSt}}">{{toast}}</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+var S = this.state || {};
+var self = this;
+var set = function (o) { self.setState(o); };
+function fmt(n) { return "Rp" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+var TIMES = ["10:20", "10:22", "10:24", "10:26", "10:28", "10:30", "10:32", "10:34", "10:36", "10:38"];
+var tick = S.tick || 0;
+var now = TIMES[Math.min(tick, TIMES.length - 1)];
+var clock = tick === 0 ? "10:16" : TIMES[Math.min(tick - 1, TIMES.length - 1)];
+var role = S.role || "ops";
+var R = { ops: { t: "Operasional · Dewi O.", short: "Dewi O. (Operasional)" }, owner: { t: "Owner · Andi S.", short: "Andi S. (Owner)" }, cs: { t: "CS · akun demo", short: "akun CS demo" } };
+var base = {
+"0009": { no: "ORD-261020-0009", date: "20 Okt", cust: "Citra W.", cid: "C-0003", em: "c***@example.com", ph: "0812-****-3356", emF: "citra@example.com", phF: "0812-0000-3356", addr: "Jl. Anggrek No. 3, Kec. Tebet, Kota Jakarta Selatan, DKI Jakarta 12810",
+items: [{ n: "Kabel USB-C ke USB-C 100W Braided · 1 m Hitam", sku: "B01-1M-BLK", q: 2, p: 129000 }], total: 276000, payInfo: "Virtual Account Bank B · dibayar 20 Okt, 08:47 WIB · ref. SIM-PAY-20261020-0009",
+hist: [{ s: "Dibayar", t: "20 Okt 2026, 08:47 WIB", a: "Event gateway (mock)" }, { s: "Pesanan dibuat", t: "20 Okt 2026, 08:41 WIB", a: "Pelanggan" }] },
+"0007": { no: "ORD-261019-0007", date: "19 Okt", cust: "Budi H.", cid: "C-0002", em: "b***@example.com", ph: "0813-****-2201", emF: "budi@example.com", phF: "0813-0000-2201", addr: "Jl. Cempaka No. 21, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141",
+items: [{ n: "Kabel DisplayPort 1.4 · 2 m", sku: "B08", q: 1, p: 199000 }], total: 217000, payInfo: "QRIS · dibayar 19 Okt, 14:05 WIB · ref. SIM-PAY-20261019-0007",
+hist: [{ s: "Dibayar", t: "19 Okt 2026, 14:05 WIB", a: "Event gateway (mock)" }, { s: "Pesanan dibuat", t: "19 Okt 2026, 13:58 WIB", a: "Pelanggan" }] }
+};
+var st = S.st || { "0009": { ful: "new", resi: "", refund: 0, extra: [] }, "0007": { ful: "new", resi: "", refund: 0, extra: [] } };
+var log = S.log || [];
+var sel = S.sel || "0009";
+var FUL = { new: "PERLU DIPROSES", proc: "DIPROSES", ship: "DIKIRIM", cancel: "DIBATALKAN" };
+function payLabel(o, s) { return s.refund === 0 ? "DIBAYAR" : (s.refund >= o.total ? "DIREFUND" : "DIREFUND SEBAGIAN"); }
+var chip = "display:inline-flex;padding:2px 8px;border-radius:4px;font-size:11.5px;font-weight:700;";
+function payChip(l) { return chip + (l === "DIBAYAR" ? "background:#E3F4EA;color:#1E7A45" : "background:#FDECEC;color:#A3302A"); }
+function fulChip(f) { return chip + ({ new: "background:#FDF1DC;color:#8A5300", proc: "background:#EAF0FD;color:#1747B5", ship: "background:#E3F4EA;color:#1E7A45", cancel: "background:#F2F4F7;color:#0E1726" })[f]; }
+function upd(id, patch, entry, toast) {
+var st2 = {}; Object.keys(st).forEach(function (k) { st2[k] = st[k]; });
+var cur = st[id]; var n = { ful: cur.ful, resi: cur.resi, refund: cur.refund, extra: cur.extra.slice() };
+Object.keys(patch).forEach(function (k) { n[k] = patch[k]; });
+if (entry.hist) n.extra.unshift({ s: entry.hist, t: "20 Okt 2026, " + now + " WIB", a: R[role].t });
+st2[id] = n;
+set({ st: st2, tick: tick + 1, dlg: null, toast: toast, why: "", log: [{ t: "20 Okt " + now, code: entry.code, a: entry.a, o: base[id].no + (entry.o ? " · " + entry.o : ""), who: R[role].short }].concat(log) });
+}
+var o = base[sel]; var s = st[sel]; var pl = payLabel(o, s);
+var canFul = role === "ops" || role === "owner";
+var canRefund = role === "owner";
+var btn = "min-height:40px;padding:0 14px;border-radius:6px;font-weight:600;font-size:13px;";
+var pri = btn + "border:none;background:#1F5AE0;color:#FFFFFF";
+var sec = btn + "border:1px solid #7D8796;background:#FFFFFF;color:#0E1726";
+var off = btn + "border:1px dashed #CBD2DC;background:#F2F4F7;color:#4A5568";
+var actions = [];
+if (s.ful === "new") actions.push({ t: "Proses pesanan", dis: false, why: canFul ? "" : "Peran CS hanya dapat melihat pesanan.", st: canFul ? pri : off, go: function () { if (!canFul) { set({ why: "Peran CS hanya dapat melihat pesanan (matriks akses A17)." }); return; } upd(sel, { ful: "proc" }, { code: "ORDER_STATUS", a: "Status Perlu diproses → Diproses", hist: "Diproses" }, "Pesanan diproses."); } });
+if (s.ful === "proc") actions.push({ t: "Kirim…", dis: false, why: "", st: canFul ? pri : off, go: function () { if (!canFul) { set({ why: "Peran CS hanya dapat melihat pesanan (matriks akses A17)." }); return; } set({ dlg: "ship", resi: "", resiErr: "" }); } });
+if (s.refund < o.total && s.ful !== "ship") actions.push({ t: "Catat refund…", dis: false, why: "", st: canRefund ? sec : off, go: function () { if (!canRefund) { set({ why: "Refund hanya oleh Owner/Admin (I8, matriks A17). Masuk sebagai Owner di panel uji." }); return; } set({ dlg: "refund", amt: "full", amtText: "", reason: "", restock: true, refErr: "" }); } });
+if (s.ful === "ship") actions.push({ t: "Refund setelah dikirim: lewat retur (di luar prototipe)", dis: true, why: "", st: off, go: function () {} });
+
+// contact
+var rev = S.rev && S.rev[sel];
+var contact;
+if (role === "owner") contact = { email: o.emF, phone: o.phF, note: "Owner melihat kontak penuh (A17). Tidak perlu alasan.", noteSt: "font-size:12px;color:#4A5568", canReveal: false, revealed: false };
+else if (rev) contact = { email: o.emF, phone: o.phF, note: "Terbuka sampai 60 detik · alasan: " + rev, noteSt: "font-size:12px;color:#8A5300;font-weight:600", canReveal: false, revealed: true };
+else contact = { email: o.em, phone: o.ph, note: "Disamarkan untuk " + (role === "cs" ? "CS" : "Operasional") + ".", noteSt: "font-size:12px;color:#4A5568", canReveal: true, revealed: false };
+
+var rows = ["0009", "0007"].map(function (id) { var b = base[id]; var x = st[id]; var p = payLabel(b, x); var cur = id === sel;
+return { no: b.no, total: fmt(b.total), cust: b.cust, date: b.date, pay: p, ful: FUL[x.ful], payChip: payChip(p), fulChip: fulChip(x.ful), cur: cur ? "true" : "false", open: function () { set({ sel: id, why: "" }); },
+st: "width:100%;text-align:left;border:none;border-bottom:1px solid #E3E7ED;padding:10px 12px;display:flex;flex-direction:column;gap:5px;color:#0E1726;" + (cur ? "background:#F6F9FF;box-shadow:inset 3px 0 0 #1F5AE0" : "background:#FFFFFF") }; });
+var pending = ["0009", "0007"].filter(function (id) { return st[id].ful === "new"; }).length;
+
+// dialogs
+var dlg = S.dlg || null;
+var resi = S.resi || "";
+var resiErr = S.resiErr || "";
+var amtMode = S.amt || "full";
+var amtVal = amtMode === "full" ? o.total : (amtMode === "items" ? o.total - 18000 : parseInt(String(S.amtText || "").replace(/\D/g, ""), 10) || 0);
+var pill = "min-height:36px;padding:0 12px;border-radius:18px;font-size:13px;font-weight:600;";
+function pillSt(on) { return pill + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #7D8796;background:#FFFFFF;color:#0E1726"); }
+var amtOpts = [{ id: "full", t: "Penuh " + fmt(o.total) }, { id: "items", t: "Barang saja " + fmt(o.total - 18000) }, { id: "custom", t: "Jumlah lain" }].map(function (m) { return { t: m.t, on: m.id === amtMode ? "true" : "false", st: pillSt(m.id === amtMode), pick: function () { set({ amt: m.id, refErr: "" }); } }; });
+var reason = S.reason || "";
+var reasons = ["Pelanggan membatalkan", "Stok tidak tersedia", "Barang rusak"].map(function (t) { return { t: t, on: t === reason ? "true" : "false", st: pillSt(t === reason), pick: function () { set({ reason: t, refErr: "" }); } }; });
+var restock = S.restock !== false;
+var full = amtVal >= o.total;
+var revReason = S.revReason || "";
+var radio = "display:inline-block;width:16px;height:16px;border-radius:50%;border:2px solid #7D8796;box-sizing:border-box;flex:none";
+var radioOn = "display:inline-block;width:16px;height:16px;border-radius:50%;border:5px solid #1F5AE0;box-sizing:border-box;flex:none";
+var revReasons = ["Konfirmasi pengiriman pesanan", "Tindak lanjut tiket bantuan", "Verifikasi refund"].map(function (t) { var on = t === revReason; return { t: t, on: on ? "true" : "false", dot: on ? radioOn : radio, pick: function () { set({ revReason: t, revErr: "" }); },
+st: "min-height:44px;display:flex;align-items:center;gap:10px;padding:0 12px;border-radius:6px;font-size:14px;text-align:left;color:#0E1726;" + (on ? "border:2px solid #1F5AE0;background:#EAF0FD" : "border:1px solid #CBD2DC;background:#FFFFFF") }; });
+var confirmDlg = function () {
+if (dlg === "ship") {
+var r = resi.trim().toUpperCase();
+if (!r) { set({ resiErr: "Nomor resi wajib diisi." }); return; }
+if (!/^[A-Z0-9-]{8,30}$/.test(r)) { set({ resiErr: "Format resi tidak valid: 8–30 huruf/angka/tanda hubung." }); return; }
+upd(sel, { ful: "ship", resi: r }, { code: "ORDER_SHIPPED", a: "Status Diproses → Dikirim", o: "resi " + r, hist: "Dikirim · resi " + r }, "Pesanan ditandai Dikirim.");
+}
+if (dlg === "refund") {
+if (!reason) { set({ refErr: "Pilih alasan refund." }); return; }
+if (amtVal <= 0) { set({ refErr: "Isi jumlah refund lebih dari Rp0." }); return; }
+if (amtVal > o.total - s.refund) { set({ refErr: "Jumlah melebihi sisa yang bisa direfund (" + fmt(o.total - s.refund) + ")." }); return; }
+var nr = s.refund + amtVal; var willFull = nr >= o.total;
+upd(sel, { refund: nr, ful: willFull ? "cancel" : s.ful }, { code: "REFUND_RECORDED", a: "Refund " + (willFull ? "penuh" : "sebagian") + " " + fmt(amtVal) + " · " + reason + (restock && willFull ? " · stok +" + o.items[0].q + " " + o.items[0].sku : ""), hist: (willFull ? "Dibatalkan · refund penuh " : "Refund sebagian ") + fmt(amtVal) }, "Refund dicatat.");
+}
+if (dlg === "reveal") {
+if (!revReason) { set({ revErr: "Pilih alasan sebelum menampilkan kontak." }); return; }
+var rv = {}; Object.keys(S.rev || {}).forEach(function (k) { rv[k] = S.rev[k]; }); rv[sel] = revReason;
+set({ rev: rv, dlg: null, tick: tick + 1, revReason: "", toast: "Kontak ditampilkan · dicatat di log.", log: [{ t: "20 Okt " + now, code: "CONTACT_REVEAL", a: "Kontak pelanggan dibuka · " + revReason, o: o.cid + " (" + o.no + ")", who: R[role].short }].concat(log) });
+}
+};
+var hist = s.extra.concat(o.hist);
+return {
+roles: ["ops", "owner", "cs"].map(function (k) { var on = k === role; return { t: R[k].t, on: on ? "true" : "false", pick: function () { set({ role: k, why: "", dlg: null }); }, st: "min-height:34px;text-align:left;padding:0 8px;border-radius:6px;font-size:12px;font-weight:600;" + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #CBD2DC;background:#FFFFFF;color:#0E1726") }; }),
+resetAll: function () { set({ st: null, log: [], tick: 0, sel: "0009", role: "ops", rev: {}, dlg: null, toast: "", why: "" }); },
+actor: R[role].short, clock: clock, listTitle: "Perlu diproses: " + pending + " · dibayar 19–20 Okt", rows: rows,
+od: { no: o.no, cust: o.cust, cid: o.cid, addr: o.addr, payInfo: o.payInfo, total: fmt(o.total), pay: pl, ful: FUL[s.ful], payChip: payChip(pl), fulChip: fulChip(s.ful), hasResi: !!s.resi, resi: s.resi, hasRefund: s.refund > 0, refund: fmt(s.refund),
+items: o.items.map(function (i) { return { n: i.n, sku: i.sku, q: String(i.q), sub: fmt(i.p * i.q) }; }), hist: hist },
+actions: actions, why: S.why || "", whySt: S.why ? "font-size:13px;font-weight:600;color:#8A5300;background:#FDF1DC;border-radius:6px;padding:8px 10px" : "display:none",
+contact: contact, openReveal: function () { set({ dlg: "reveal", revReason: "", revErr: "" }); }, expire: function () { var rv = {}; Object.keys(S.rev || {}).forEach(function (k) { if (k !== sel) rv[k] = S.rev[k]; }); set({ rev: rv, toast: "Kontak disamarkan lagi." }); },
+log: log, logEmpty: log.length === 0,
+dlgOpen: !!dlg, isShipDlg: dlg === "ship", isRefundDlg: dlg === "refund", isRevealDlg: dlg === "reveal",
+dlgTitle: dlg === "ship" ? "Kirim pesanan " + o.no : (dlg === "refund" ? "Catat refund " + o.no : "Tampilkan kontak?"),
+closeDlg: function () { set({ dlg: null }); }, confirmDlg: confirmDlg,
+confirmT: dlg === "ship" ? "Tandai Dikirim" : (dlg === "refund" ? "Catat refund " + fmt(amtVal) : "Tampilkan"),
+confirmSt: "min-height:44px;padding:0 16px;border:none;border-radius:6px;font-weight:600;color:#FFFFFF;background:" + (dlg === "refund" ? "#A3302A" : "#1F5AE0"),
+resi: resi, onResi: function (e) { set({ resi: e && e.target ? e.target.value : "", resiErr: "" }); }, fillResi: function () { set({ resi: "SIM-KA-88213010", resiErr: "" }); },
+resiErr: resiErr, resiInvalid: resiErr ? "true" : "false", resiErrSt: resiErr ? "font-size:13px;font-weight:600;color:#C0262D" : "display:none",
+resiSt: "height:40px;border-radius:6px;padding:0 10px;font-family:'JetBrains Mono',monospace;font-size:14px;border:" + (resiErr ? "2px solid #C0262D" : "1.5px solid #7D8796"),
+amtOpts: amtOpts, customAmt: amtMode === "custom", amtText: S.amtText || "", onAmt: function (e) { set({ amtText: e && e.target ? e.target.value : "", refErr: "" }); },
+reasons: reasons, restock: restock, toggleRestock: function () { set({ restock: !restock }); }, restockLbl: o.items[0].q + "× " + o.items[0].sku + (full ? "" : " · hanya jika refund penuh"),
+refErr: S.refErr || "", refErrSt: S.refErr ? "font-size:13px;font-weight:600;color:#C0262D" : "display:none",
+refImpact: "Dampak laporan: pendapatan 20 Okt berkurang " + fmt(amtVal) + " (D12, menurut tanggal refund)." + (full ? " Pesanan jadi Dibatalkan." : ""),
+revReasons: revReasons, revErr: S.revErr || "", revErrSt: S.revErr ? "font-size:13px;font-weight:600;color:#C0262D" : "display:none",
+toast: S.toast || "", toastSt: S.toast ? "position:absolute;left:50%;bottom:20px;transform:translateX(-50%);background:#0E1726;color:#FFFFFF;border-radius:6px;padding:10px 16px;font-size:13px" : "display:none"
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Homepage Brand B</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1800px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · S01 · BRAND B (accessories): catalog-first, connector shortcuts, dense cards</div>
+<div style="width: 1440px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="background: #2B2F36; color: #FFFFFF; font-size: 13px; padding: 8px; text-align: center">Flash sale Charger GaN 65W −25% · berakhir 22 Okt 23:59 WIB · <u>Lihat</u></div>
+<div style="display: flex; align-items: center; gap: 24px; padding: 16px 40px; border-bottom: 1px solid #DADCE0">
+<div style="width: 120px; height: 36px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px">[BRAND B]</div>
+<div style="flex: 1; height: 40px; border: 1px solid #BFC3C9; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #5A606B">Cari kabel, adaptor, charger…</div>
+<div style="display: flex; gap: 20px; font-size: 14px"><span>Wishlist</span><span>Masuk</span><span style="font-weight: 600">Keranjang (0)</span></div>
+</div>
+<div style="display: flex; gap: 28px; padding: 12px 40px; border-bottom: 1px solid #DADCE0; font-size: 14px; font-weight: 500"><span>Kabel ▾</span><span>Adaptor &amp; Hub ▾</span><span>Charger ▾</span><span>Penyimpanan ▾</span><span>Aksesori Meja ▾</span><span style="margin-left: auto">Cari per Konektor ▾</span></div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; padding: 32px 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 36px; font-weight: 700; line-height: 1.15">[Headline] Kabel &amp; aksesori yang cocok dengan perangkatmu</div>
+<div style="font-size: 16px; color: #5A606B">[Subcopy] Pilih berdasarkan konektor, panjang, dan daya.</div>
+<div style="display: flex; gap: 12px"><span style="background: #2B2F36; color: #FFFFFF; padding: 12px 20px; font-size: 14px; font-weight: 600">Belanja Kabel</span><span style="border: 1px solid #2B2F36; padding: 12px 20px; font-size: 14px; font-weight: 600">Cari per Konektor</span></div>
+</div>
+<div style="height: 280px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">HERO IMAGE · CMS block "Hero split"</div>
+</div>
+
+<div style="padding: 0 40px 28px; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 20px; font-weight: 700">Cari per Konektor</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{conn}}" as="c" hint-placeholder-count="5">
+<div style="border: 1px solid #BFC3C9; padding: 16px; display: flex; flex-direction: column; gap: 8px; align-items: center"><div style="width: 56px; height: 56px; background: #E4E6E9"></div><span style="font-size: 14px; font-weight: 600">{{c.n}}</span><span style="font-size: 12px; color: #5A606B">{{c.k}}</span></div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin: 0 40px 28px; border: 2px dashed #8A8F98; padding: 20px; display: grid; grid-template-columns: 200px minmax(0, 1fr) 260px; gap: 24px; align-items: center">
+<div style="height: 160px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">IMG B03</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; background: #2B2F36; color: #FFFFFF; padding: 2px 8px; align-self: flex-start">FLASH SALE −25%</span>
+<span style="font-size: 20px; font-weight: 700">Charger GaN 65W 3 Port</span>
+<span style="font-size: 14px; color: #5A606B">USB-C ×2 · USB-A ×1 · ★ 4,9 (204)</span>
+<span style="display: flex; gap: 10px; align-items: baseline"><b style="font-size: 22px">Rp299.250</b><s style="color: #5A606B">Rp399.000</s></span>
+<span style="font-size: 13px; color: #5A606B">Sisa 11 · Tidak bisa digabung dengan voucher pesanan</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: stretch">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 22px; text-align: center; border: 1px solid #BFC3C9; padding: 10px">2h 13j 43m</div>
+<span style="background: #2B2F36; color: #FFFFFF; padding: 12px; font-size: 14px; font-weight: 600; text-align: center">+ Keranjang</span>
+</div>
+</div>
+
+<div style="padding: 0 40px 28px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 20px; font-weight: 700">Terlaris minggu ini</span><span style="font-size: 14px; text-decoration: underline">Lihat semua</span></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+<sc-for list="{{best}}" as="p" hint-placeholder-count="4">
+<div style="border: 1px solid #DADCE0; display: flex; flex-direction: column">
+<div style="height: 200px; background: #E4E6E9; display: flex; align-items: flex-start; justify-content: space-between; padding: 8px; box-sizing: border-box"><span style="font-size: 11px; font-weight: 700; background: #FFFFFF; padding: 2px 6px">{{p.badge}}</span><span style="font-size: 12px">♡</span></div>
+<div style="padding: 12px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; font-weight: 600; line-height: 1.3">{{p.name}}</span>
+<span style="font-size: 12px; color: #5A606B">{{p.spec}}</span>
+<span style="display: flex; gap: 8px; align-items: baseline"><b style="font-size: 16px">{{p.price}}</b><s style="font-size: 12px; color: #5A606B">{{p.was}}</s></span>
+<span style="font-size: 12px; color: #5A606B">★ {{p.rt}} · {{p.stock}}</span>
+<span style="margin-top: 6px; border: 1px solid #2B2F36; padding: 8px; font-size: 13px; font-weight: 600; text-align: center">+ Keranjang</span>
+<span style="font-size: 12px; color: #5A606B">☐ Bandingkan</span>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin: 0 40px 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+<div style="background: #F3F4F5; padding: 24px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 18px; font-weight: 700">Bingung pilih kabel?</span><span style="font-size: 14px; color: #5A606B">Panduan kompatibilitas: daya, kecepatan data, panjang.</span><span style="font-size: 14px; text-decoration: underline">Baca panduan → /blog/panduan-memilih-kabel-usb-c</span></div>
+<div style="background: #F3F4F5; padding: 24px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 18px; font-weight: 700">Butuh dalam jumlah banyak?</span><span style="font-size: 14px; color: #5A606B">Untuk kantor, sekolah, atau reseller.</span><span style="font-size: 14px; text-decoration: underline">Permintaan Pembelian Grosir → /grosir</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; padding: 16px 40px; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0; font-size: 13px; color: #5A606B">
+<span>Pengiriman ke seluruh Indonesia (estimasi di halaman produk)</span><span>QRIS · Virtual Account · E-wallet</span><span>Hubungi CS via WhatsApp</span>
+</div>
+
+<div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; padding: 28px 40px; background: #F3F4F5; font-size: 13px">
+<div style="display: flex; flex-direction: column; gap: 8px"><b>Dapatkan info promo</b><div style="display: flex; gap: 8px"><span style="flex: 1; border: 1px solid #BFC3C9; background: #FFFFFF; padding: 8px; color: #5A606B">Email</span><span style="background: #2B2F36; color: #FFFFFF; padding: 8px 12px">Daftar</span></div><span style="color: #5A606B">☐ Saya setuju menerima email promosi</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><b>Bantuan</b><span>Kontak</span><span>FAQ</span><span>Info pengiriman</span><span>Pengembalian</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><b>Perusahaan</b><span>Tentang</span><span>Blog</span><span>Pembelian grosir</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><b>Legal</b><span>Kebijakan privasi</span><span>Syarat &amp; ketentuan</span></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · search always visible</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="background: #2B2F36; color: #FFFFFF; font-size: 12px; padding: 6px 12px; text-align: center">Flash sale Charger GaN −25% · s/d 22 Okt</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px"><span style="font-size: 20px">☰</span><div style="width: 96px; height: 28px; background: #E4E6E9; font-family: 'IBM Plex Mono', monospace; font-size: 11px; display: flex; align-items: center; justify-content: center">[BRAND B]</div><span style="margin-left: auto; font-size: 13px">♡</span><span style="font-size: 13px">Akun</span><span style="font-size: 13px; font-weight: 600">Keranjang 0</span></div>
+<div style="margin: 0 16px 12px; height: 40px; border: 1px solid #BFC3C9; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: #5A606B">Cari kabel, adaptor…</div>
+<div style="display: flex; gap: 8px; padding: 0 16px 14px; overflow: hidden"><span style="border: 1px solid #BFC3C9; padding: 6px 12px; font-size: 13px; white-space: nowrap">USB-C</span><span style="border: 1px solid #BFC3C9; padding: 6px 12px; font-size: 13px; white-space: nowrap">Lightning</span><span style="border: 1px solid #BFC3C9; padding: 6px 12px; font-size: 13px; white-space: nowrap">HDMI</span><span style="border: 1px solid #BFC3C9; padding: 6px 12px; font-size: 13px; white-space: nowrap">DisplayPort</span><span style="border: 1px solid #BFC3C9; padding: 6px 12px; font-size: 13px; white-space: nowrap">USB-A →</span></div>
+<div style="height: 200px; background: #E4E6E9; margin: 0 16px; display: flex; align-items: flex-end; padding: 14px; box-sizing: border-box"><div style="display: flex; flex-direction: column; gap: 8px"><b style="font-size: 20px; line-height: 1.2">[Headline] Kabel yang cocok dengan perangkatmu</b><span style="background: #2B2F36; color: #FFFFFF; padding: 10px 14px; font-size: 13px; font-weight: 600; align-self: flex-start">Belanja Kabel</span></div></div>
+<div style="margin: 16px; border: 2px dashed #8A8F98; padding: 12px; display: flex; gap: 12px">
+<div style="width: 88px; height: 88px; background: #E4E6E9; flex: none"></div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px"><span style="font-size: 11px; font-weight: 700">FLASH SALE −25% · 2h 13j</span><b>Charger GaN 65W 3 Port</b><span><b>Rp299.250</b> <s style="color: #5A606B">Rp399.000</s></span><span style="color: #5A606B">Sisa 11</span></div>
+</div>
+<div style="padding: 0 16px; display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 17px">Terlaris</b><span style="font-size: 13px; text-decoration: underline">Semua</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 12px 16px 16px">
+<sc-for list="{{best}}" as="p" hint-placeholder-count="4">
+<div style="border: 1px solid #DADCE0; display: flex; flex-direction: column">
+<div style="height: 140px; background: #E4E6E9; padding: 6px; box-sizing: border-box"><span style="font-size: 10px; font-weight: 700; background: #FFFFFF; padding: 1px 4px">{{p.badge}}</span></div>
+<div style="padding: 8px; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 13px; font-weight: 600; line-height: 1.3">{{p.name}}</span>
+<span style="font-size: 11px; color: #5A606B">{{p.spec}}</span>
+<b style="font-size: 14px">{{p.price}}</b>
+<span style="font-size: 11px; color: #5A606B">★ {{p.rt}} · {{p.stock}}</span>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="margin: 0 16px 12px; background: #F3F4F5; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 4px"><b>Bingung pilih kabel?</b><u>Baca panduan kompatibilitas</u></div>
+<div style="margin: 0 16px 16px; background: #F3F4F5; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 4px"><b>Butuh dalam jumlah banyak?</b><u>Permintaan Pembelian Grosir</u></div>
+<div style="background: #F3F4F5; padding: 12px 16px; display: flex; flex-direction: column; font-size: 14px"><span style="padding: 10px 0; border-bottom: 1px solid #DADCE0">Bantuan ▾</span><span style="padding: 10px 0; border-bottom: 1px solid #DADCE0">Perusahaan ▾</span><span style="padding: 10px 0">Legal ▾</span></div>
+<div style="position: relative; height: 0"></div>
+<div style="padding: 10px 16px; border-top: 1px solid #DADCE0; font-size: 12px; color: #5A606B; text-align: right">Tombol mengambang: Hubungi CS (WhatsApp)</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+conn: [
+{ n: "USB-C", k: "6 produk" }, { n: "Lightning", k: "1 produk" }, { n: "HDMI", k: "2 produk" }, { n: "DisplayPort", k: "1 produk" }, { n: "USB-A", k: "2 produk" }
+],
+best: [
+{ name: "Kabel USB-A ke USB-C · 1 m", spec: "USB-A → USB-C · 3A", price: "Rp69.000", was: "", rt: "4,6 (312)", stock: "Tersedia", badge: "TERLARIS" },
+{ name: "Kabel USB-C ke USB-C 100W Braided", spec: "1 m / 2 m / 3 m · 100W", price: "mulai Rp129.000", was: "Rp149.000", rt: "4,8 (126)", stock: "3 varian", badge: "HARGA CORET" },
+{ name: "Charger GaN 65W 3 Port", spec: "USB-C ×2 · USB-A ×1", price: "Rp299.250", was: "Rp399.000", rt: "4,9 (204)", stock: "Sisa 11", badge: "FLASH SALE" },
+{ name: "Adaptor USB-C ke HDMI 4K60", spec: "USB-C → HDMI · 4K 60 Hz", price: "Rp219.000", was: "", rt: "4,7 (58)", stock: "Tersedia", badge: "BARU" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Sambung Catalog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E1726}a:hover{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 2000px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S02 · /kategori/kabel?konektor=usb-c&amp;urut=terlaris · signed in as Rina</div>
+<div style="width: 1440px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 28px; padding: 16px 48px; border-bottom: 1px solid #CBD2DC">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.02em">SAMBUNG<span style="color: #1F5AE0">/</span></span>
+<label style="flex: 1; height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; display: flex; align-items: center; gap: 10px; padding: 0 14px; color: #4A5568; font-size: 15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>Cari kabel, adaptor, charger…</label>
+<nav style="display: flex; gap: 22px; font-size: 14px; font-weight: 500; align-items: center"><a href="#" style="text-decoration: none">Wishlist</a><a href="#" style="text-decoration: none">Rina</a><a href="#" style="text-decoration: none">Keranjang <b style="background: #1F5AE0; color: #FFFFFF; border-radius: 4px; padding: 1px 7px">0</b></a></nav>
+</div>
+<nav style="display: flex; gap: 28px; padding: 12px 48px; border-bottom: 1px solid #CBD2DC; font-size: 14px; font-weight: 500"><a href="#" style="text-decoration: none; color: #1F5AE0; font-weight: 600">Kabel</a><a href="#" style="text-decoration: none">Adaptor &amp; Hub</a><a href="#" style="text-decoration: none">Charger</a><a href="#" style="text-decoration: none">Panduan</a></nav>
+<nav aria-label="Breadcrumb" style="padding: 20px 48px 0; font-size: 13px; color: #4A5568"><a href="#" style="color: #4A5568">Beranda</a> / <span aria-current="page" style="color: #0E1726; font-weight: 600">Kabel</span></nav>
+<div style="padding: 8px 48px 20px; display: flex; justify-content: space-between; align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 4px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 600">Kabel</h1><span style="font-size: 14px; color: #4A5568" role="status">3 dari 5 produk</span></div>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 14px">Urutkan<span style="border: 1.5px solid #7D8796; border-radius: 6px; height: 40px; display: flex; align-items: center; padding: 0 12px; min-width: 180px; justify-content: space-between">Terlaris <span>▾</span></span></label>
+</div>
+<div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px; padding: 0 48px 32px">
+<aside style="display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px"><b style="font-size: 16px">Filter</b><a href="#" style="font-size: 13px; color: #1F5AE0">Hapus semua</a></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 14px"><button type="button" style="background: #EAF0FD; color: #1747B5; border: 1.5px solid #1F5AE0; border-radius: 4px; padding: 5px 10px; font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 600">Konektor: USB-C ✕</button></div>
+<fieldset style="border: none; border-top: 1px solid #CBD2DC; margin: 0; padding: 14px 0; display: flex; flex-direction: column; gap: 2px"><legend style="font-weight: 600; padding: 0; margin-bottom: 6px">Konektor</legend>
+<sc-for list="{{fConn}}" as="f" hint-placeholder-count="5"><label style="{{f.row}}"><span style="{{f.box}}">{{f.mark}}</span><span style="flex: 1">{{f.n}}</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">{{f.c}}</span></label></sc-for>
+</fieldset>
+<fieldset style="border: none; border-top: 1px solid #CBD2DC; margin: 0; padding: 14px 0; display: flex; flex-direction: column; gap: 2px"><legend style="font-weight: 600; padding: 0; margin-bottom: 6px">Panjang</legend>
+<sc-for list="{{fLen}}" as="f" hint-placeholder-count="3"><label style="{{f.row}}"><span style="{{f.box}}">{{f.mark}}</span><span style="flex: 1">{{f.n}}</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">{{f.c}}</span></label></sc-for>
+</fieldset>
+<fieldset style="border: none; border-top: 1px solid #CBD2DC; margin: 0; padding: 14px 0; display: flex; flex-direction: column; gap: 2px"><legend style="font-weight: 600; padding: 0; margin-bottom: 6px">Daya maksimum</legend>
+<sc-for list="{{fPow}}" as="f" hint-placeholder-count="3"><label style="{{f.row}}"><span style="{{f.box}}">{{f.mark}}</span><span style="flex: 1">{{f.n}}</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">{{f.c}}</span></label></sc-for>
+</fieldset>
+<fieldset style="border: none; border-top: 1px solid #CBD2DC; margin: 0; padding: 14px 0; display: flex; flex-direction: column; gap: 8px"><legend style="font-weight: 600; padding: 0; margin-bottom: 6px">Harga</legend><div style="display: flex; gap: 8px"><label style="flex: 1; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #4A5568">Min<span style="border: 1.5px solid #7D8796; border-radius: 6px; height: 38px; display: flex; align-items: center; padding: 0 10px; color: #0E1726; font-size: 14px">Rp</span></label><label style="flex: 1; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #4A5568">Maks<span style="border: 1.5px solid #7D8796; border-radius: 6px; height: 38px; display: flex; align-items: center; padding: 0 10px; color: #0E1726; font-size: 14px">Rp</span></label></div></fieldset>
+<fieldset style="border: none; border-top: 1px solid #CBD2DC; margin: 0; padding: 14px 0"><legend style="font-weight: 600; padding: 0; margin-bottom: 6px">Ketersediaan</legend><label style="display: flex; gap: 10px; align-items: center; min-height: 40px"><span style="width: 20px; height: 20px; border: 1.5px solid #7D8796; border-radius: 4px; box-sizing: border-box"></span>Sembunyikan stok habis</label></fieldset>
+</aside>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-content: start">
+<sc-for list="{{items}}" as="p" hint-placeholder-count="3">
+<article style="border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 200px; position: relative"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,200px"></dc-import><span style="{{p.badgeSt}}">{{p.badge}}</span><button type="button" aria-label="Simpan ke wishlist" style="position: absolute; right: 8px; top: 8px; width: 40px; height: 40px; border-radius: 6px; border: 1px solid #CBD2DC; background: #FFFFFF; color: #0E1726"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></button></div>
+<div style="padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1">
+<a href="#" style="font-size: 15px; font-weight: 600; line-height: 1.3; text-decoration: none">{{p.name}}</a>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">{{p.spec}}</span>
+<div style="display: flex; gap: 8px; align-items: baseline"><b style="font-size: 18px">{{p.price}}</b><s style="font-size: 13px; color: #4A5568">{{p.was}}</s></div>
+<span style="font-size: 13px; color: #4A5568">★ {{p.rt}} · {{p.stock}}</span>
+<button type="button" style="margin-top: 6px; height: 40px; border: 1.5px solid #1F5AE0; color: #1F5AE0; background: #FFFFFF; border-radius: 6px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 14px">{{p.cta}}</button>
+<label style="display: flex; gap: 8px; align-items: center; font-size: 13px; min-height: 32px"><span style="{{p.cmpBox}}">{{p.cmpMark}}</span>Bandingkan</label>
+</div>
+</article>
+</sc-for>
+</div>
+</div>
+<div style="padding: 0 48px 28px 340px; font-size: 13px; color: #4A5568">Halaman 1 dari 1 · 24 produk per halaman</div>
+<div role="region" aria-label="Bandingkan produk" style="border-top: 2px solid #0E1726; background: #F2F4F7; padding: 14px 48px; display: flex; align-items: center; gap: 14px; font-size: 14px">
+<b>Bandingkan (2/4)</b>
+<span style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 8px 12px; display: flex; gap: 10px; align-items: center">Kabel USB-A ke USB-C · 1 m <button type="button" aria-label="Hapus dari perbandingan" style="border: none; background: none; font-size: 14px">✕</button></span>
+<span style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 6px; padding: 8px 12px; display: flex; gap: 10px; align-items: center">Kabel USB-C 100W Braided <button type="button" aria-label="Hapus dari perbandingan" style="border: none; background: none; font-size: 14px">✕</button></span>
+<span style="border: 1.5px dashed #7D8796; border-radius: 6px; padding: 8px 12px; color: #4A5568">+ 2 slot</span>
+<a href="#" style="margin-left: auto; background: #1F5AE0; color: #FFFFFF; border-radius: 6px; padding: 11px 18px; font-weight: 600; text-decoration: none">Bandingkan sekarang</a>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · listing</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 4px; padding: 4px 6px; border-bottom: 1px solid #CBD2DC"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; background: none; border: none; font-size: 18px">←</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Kabel</b><span style="margin-left: auto; font-size: 13px; padding-right: 10px">Keranjang 0</span></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #CBD2DC"><button type="button" style="height: 48px; border: none; border-right: 1px solid #CBD2DC; background: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600">Filter <span style="background: #1F5AE0; color: #FFFFFF; border-radius: 4px; padding: 0 6px">1</span></button><button type="button" style="height: 48px; border: none; background: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600">Urutkan: Terlaris</button></div>
+<div style="padding: 10px 12px; display: flex; gap: 8px; align-items: center; font-size: 13px; color: #4A5568">3 produk <span style="background: #EAF0FD; color: #1747B5; border-radius: 4px; padding: 3px 8px; font-weight: 600">USB-C ✕</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0 12px 16px">
+<sc-for list="{{items}}" as="p" hint-placeholder-count="3">
+<article style="border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column"><div style="height: 140px; position: relative"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,140px"></dc-import><span style="{{p.badgeSt}}">{{p.badge}}</span></div><div style="padding: 10px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; font-weight: 600; line-height: 1.3">{{p.name}}</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">{{p.spec}}</span><b style="font-size: 15px">{{p.price}}</b><span style="font-size: 12px; color: #4A5568">★ {{p.rt}}</span></div></article>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S03 filter sheet</div>
+<div role="dialog" aria-label="Filter" style="width: 390px; background: #FFFFFF; border-radius: 8px 8px 0 0; display: flex; flex-direction: column; box-shadow: 0 12px 32px rgba(14,23,38,0.18)">
+<div style="display: flex; justify-content: center; padding-top: 8px"><span style="width: 40px; height: 4px; border-radius: 2px; background: #CBD2DC"></span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 1px solid #CBD2DC"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Filter</b><button type="button" aria-label="Tutup" style="width: 44px; height: 44px; border: none; background: none; font-size: 16px">✕</button></div>
+<div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #CBD2DC"><b style="font-size: 14px">Konektor</b><div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px"><span style="background: #EAF0FD; color: #1747B5; border: 2px solid #1F5AE0; border-radius: 6px; padding: 7px 11px; font-weight: 600">USB-C · 3</span><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 7.5px 11.5px">Lightning · 1</span><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 7.5px 11.5px">HDMI · 1</span><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 7.5px 11.5px">DisplayPort · 1</span><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 7.5px 11.5px">USB-A · 1</span></div></div>
+<div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #CBD2DC"><b style="font-size: 14px">Panjang</b><div style="display: flex; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px"><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 7.5px 11.5px">1 m · 3</span><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 7.5px 11.5px">2 m · 1</span><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 7.5px 11.5px">3 m · 1</span></div></div>
+<button type="button" style="height: 52px; border: none; border-bottom: 1px solid #CBD2DC; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600">Daya maksimum <span>▾</span></button>
+<button type="button" style="height: 52px; border: none; border-bottom: 1px solid #CBD2DC; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600">Harga <span>▾</span></button>
+<button type="button" style="height: 52px; border: none; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600">Ketersediaan <span>▾</span></button>
+<div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; padding: 12px 16px; border-top: 1px solid #CBD2DC"><button type="button" style="height: 48px; border: 1.5px solid #0E1726; background: #FFFFFF; border-radius: 6px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 15px">Reset</button><button type="button" style="height: 48px; border: none; background: #1F5AE0; color: #FFFFFF; border-radius: 6px; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 15px">Terapkan (3 produk)</button></div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+var row = "display:flex;gap:10px;align-items:center;min-height:40px;";
+var on = "display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:4px;background:#1F5AE0;color:#FFFFFF;font-size:12px;box-sizing:border-box";
+var off = "display:inline-block;width:20px;height:20px;border-radius:4px;border:1.5px solid #7D8796;box-sizing:border-box";
+var dis = "display:inline-block;width:20px;height:20px;border-radius:4px;border:1.5px solid #CBD2DC;background:#EEF1F5;box-sizing:border-box";
+function f(n, c, state) { return { n: n, c: c, mark: state === "on" ? "✓" : "", box: state === "on" ? on : state === "dis" ? dis : off, row: row + (state === "dis" ? "color:#8A94A3" : "") }; }
+var badge = "position:absolute;left:8px;top:8px;font-size:11px;font-weight:700;padding:3px 7px;border-radius:4px;";
+return {
+fConn: [f("USB-C", "3", "on"), f("Lightning", "1", "off"), f("HDMI", "1", "off"), f("DisplayPort", "1", "off"), f("USB-A", "1", "off")],
+fLen: [f("1 m", "3", "off"), f("2 m", "1", "off"), f("3 m", "1", "off")],
+fPow: [f("100W", "1", "off"), f("60W", "0", "dis"), f("Tidak dicantumkan", "2", "off")],
+items: [
+{ name: "Kabel USB-A ke USB-C · 1 m", spec: "USB-A → USB-C · 3A · 1 m", price: "Rp69.000", was: "", rt: "4,6 (312)", stock: "Tersedia", badge: "TERLARIS", badgeSt: badge + "background:#0E1726;color:#FFFFFF", cta: "+ Keranjang", ac: "#7D8796", cmpBox: on, cmpMark: "✓" },
+{ name: "Kabel USB-C ke USB-C 100W Braided", spec: "USB-C ↔ USB-C · 100W · 1/2/3 m", price: "mulai Rp129.000", was: "Rp149.000", rt: "4,8 (126)", stock: "3 dari 4 varian", badge: "HARGA CORET", badgeSt: badge + "background:#EAF0FD;color:#1747B5", cta: "Pilih varian", ac: "#1F5AE0", cmpBox: on, cmpMark: "✓" },
+{ name: "Kabel USB-C ke Lightning · 1 m", spec: "USB-C → Lightning · 1 m", price: "Rp149.000", was: "", rt: "4,5 (88)", stock: "Tersedia", badge: "", badgeSt: "display:none", cta: "+ Keranjang", ac: "#4A5568", cmpBox: off, cmpMark: "" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Sambung Comparison</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E1726}a:hover{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1700px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S08 · /bandingkan?id=B01,B07,B05 · 3 of 4 · differences highlighted</div>
+<div style="width: 1440px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 28px; padding: 16px 48px; border-bottom: 1px solid #CBD2DC"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span><div style="flex: 1; height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; color: #4A5568; font-size: 15px">Cari kabel, adaptor, charger…</div><nav style="display: flex; gap: 22px; font-size: 14px; font-weight: 500"><span>Wishlist</span><span>Rina</span><span>Keranjang 0</span></nav></div>
+<div style="padding: 28px 48px 20px; display: flex; justify-content: space-between; align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 6px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 600">Bandingkan kabel</h1><span style="font-size: 14px; color: #4A5568">3 dari maks. 4 produk · kategori Kabel</span></div>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 14px; font-weight: 600"><span style="width: 44px; height: 24px; border-radius: 12px; background: #1F5AE0; position: relative; display: inline-block"><span style="position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 9px; background: #FFFFFF"></span></span>Sorot perbedaan</label>
+</div>
+<div style="padding: 0 48px 40px">
+<table style="width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 14px">
+<caption style="position: absolute; left: -9999px">Perbandingan 3 kabel</caption>
+<thead>
+<tr>
+<th scope="col" style="width: 220px; text-align: left; vertical-align: bottom; padding: 0 16px 16px 0; font-size: 13px; color: #4A5568; font-weight: 500">Atribut</th>
+<sc-for list="{{prods}}" as="p" hint-placeholder-count="3">
+<th scope="col" style="text-align: left; vertical-align: top; padding: 0 12px 16px; font-weight: 400"><div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 150px; border-radius: 6px; overflow: hidden; position: relative"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,150px"></dc-import><button type="button" aria-label="Hapus {{p.name}} dari perbandingan" style="position: absolute; right: 6px; top: 6px; width: 36px; height: 36px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF">✕</button></div><b style="font-size: 15px; line-height: 1.3">{{p.name}}</b><b style="font-size: 18px; font-family: 'JetBrains Mono', monospace">{{p.price}}</b><button type="button" style="height: 40px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600">{{p.cta}}</button></div></th>
+</sc-for>
+<th scope="col" style="text-align: left; vertical-align: top; padding: 0 12px 16px; font-weight: 400"><div style="height: 248px; border: 1.5px dashed #7D8796; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #4A5568; font-size: 14px"><span style="font-size: 26px">+</span>Tambah produk<br><span style="font-size: 12px">dari kategori Kabel</span></div></th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="9">
+<tr style="{{r.trSt}}">
+<th scope="row" style="text-align: left; padding: 12px 16px 12px 0; font-weight: 600">{{r.k}}<span style="{{r.flagSt}}">{{r.flag}}</span></th>
+<sc-for list="{{r.v}}" as="c" hint-placeholder-count="3"><td style="{{c.st}}">{{c.t}}</td></sc-for>
+<td style="padding: 12px; color: #8A94A3">—</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+<span style="display: block; margin-top: 12px; font-size: 13px; color: #4A5568">"Tidak dicantumkan" = data belum diisi admin untuk produk itu, bukan berarti tidak ada.</span>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · first product pinned, swipe others (L3)</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 4px 6px; border-bottom: 1px solid #CBD2DC"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Bandingkan (3)</b><button type="button" style="margin-left: auto; height: 44px; border: none; background: none; color: #1747B5; font-family: inherit; font-size: 13px; font-weight: 600; padding-right: 10px">Tampilan daftar</button></div>
+<label style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; font-size: 14px; font-weight: 600; border-bottom: 1px solid #CBD2DC">Sorot perbedaan<span style="width: 44px; height: 24px; border-radius: 12px; background: #1F5AE0; position: relative; display: inline-block"><span style="position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 9px; background: #FFFFFF"></span></span></label>
+<div style="display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #CBD2DC">
+<div style="padding: 12px; background: #F2F4F7; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid #CBD2DC"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #4A5568">DISEMATKAN</span><div style="height: 90px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#FFFFFF" fg="#1A2233" accent="#1F5AE0" label="Kabel USB-C 100W" hint-size="100%,90px"></dc-import></div><b style="font-size: 13px; line-height: 1.3">Kabel USB-C 100W · 2 m</b><b style="font-family: 'JetBrains Mono', monospace; font-size: 14px">Rp159.000</b></div>
+<div style="padding: 12px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #4A5568">2 / 3  ‹ geser ›</span><div style="height: 90px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#7D8796" label="Kabel USB-A ke USB-C" hint-size="100%,90px"></dc-import></div><b style="font-size: 13px; line-height: 1.3">Kabel USB-A ke USB-C · 1 m</b><b style="font-family: 'JetBrains Mono', monospace; font-size: 14px">Rp69.000</b></div>
+</div>
+<sc-for list="{{mrows}}" as="r" hint-placeholder-count="8">
+<div style="border-bottom: 1px solid #E3E7ED"><div style="padding: 8px 12px 0; font-size: 11px; font-weight: 600; color: #4A5568; letter-spacing: 0.02em">{{r.k}}</div><div style="display: grid; grid-template-columns: 1fr 1fr; font-size: 13px"><span style="{{r.a}}">{{r.va}}</span><span style="{{r.b}}">{{r.vb}}</span></div></div>
+</sc-for>
+<div style="display: flex; justify-content: center; gap: 6px; padding: 14px"><span style="width: 6px; height: 6px; border-radius: 3px; background: #CBD2DC"></span><span style="width: 18px; height: 6px; border-radius: 3px; background: #1F5AE0"></span><span style="width: 6px; height: 6px; border-radius: 3px; background: #CBD2DC"></span></div>
+<div style="margin: 0 12px 16px; background: #F2F4F7; border-radius: 6px; padding: 12px; font-size: 12px; color: #2D3748">State: maksimum 4 produk — tombol "Bandingkan" di kartu nonaktif dengan pesan "Hapus satu produk dulu".</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+var base = "padding:12px;border-top:1px solid #CBD2DC;";
+var diff = base + "background:#EAF0FD;";
+var miss = base + "color:#4A5568;font-style:italic;";
+function cell(t, isDiff) { var m = t === "Tidak dicantumkan"; return { t: t, st: m ? miss + (isDiff ? "background:#EAF0FD;" : "") : (isDiff ? diff : base) }; }
+function row(k, vals, isDiff) { return { k: k, flag: isDiff ? " · beda" : "", flagSt: isDiff ? "font-size:11px;color:#1747B5;font-weight:600" : "display:none", trSt: "", v: vals.map(function (v) { return cell(v, isDiff); }) }; }
+var mA = "padding:6px 12px 10px;background:#F2F4F7;border-right:1px solid #CBD2DC";
+var mB = "padding:6px 12px 10px";
+function m(k, a, b, d) { return { k: k, va: a, vb: b, a: mA + (d ? ";background:#EAF0FD;font-weight:600" : ""), b: mB + (d ? ";background:#EAF0FD;font-weight:600" : "") + (b === "Tidak dicantumkan" ? ";font-style:italic;color:#4A5568;font-weight:400" : "") }; }
+return {
+prods: [
+{ name: "Kabel USB-C ke USB-C 100W · 2 m", price: "Rp159.000", cta: "+ Keranjang", ac: "#1F5AE0" },
+{ name: "Kabel USB-A ke USB-C · 1 m", price: "Rp69.000", cta: "+ Keranjang", ac: "#7D8796" },
+{ name: "Kabel USB-C ke Lightning · 1 m", price: "Rp149.000", cta: "+ Keranjang", ac: "#4A5568" }
+],
+rows: [
+row("Konektor", ["USB-C ↔ USB-C", "USB-A → USB-C", "USB-C → Lightning"], true),
+row("Daya maksimum", ["100W", "Tidak dicantumkan", "Tidak dicantumkan"], true),
+row("Kecepatan data", ["USB 2.0 · 480 Mbps", "Tidak dicantumkan", "Tidak dicantumkan"], true),
+row("Output video", ["Tidak", "Tidak dicantumkan", "Tidak dicantumkan"], true),
+row("Panjang", ["2 m (juga 1 m, 3 m)", "1 m", "1 m"], true),
+row("Material", ["Nilon braided", "Tidak dicantumkan", "Tidak dicantumkan"], true),
+row("Rating", ["★ 4,8 (126)", "★ 4,6 (312)", "★ 4,5 (88)"], true),
+row("Ketersediaan", ["Sisa 7", "Tersedia", "Tersedia"], true),
+row("Harga sudah termasuk PPN", ["Ya", "Ya", "Ya"], false)
+],
+mrows: [
+m("KONEKTOR", "USB-C ↔ USB-C", "USB-A → USB-C", true),
+m("DAYA MAKSIMUM", "100W", "Tidak dicantumkan", true),
+m("KECEPATAN DATA", "USB 2.0 · 480 Mbps", "Tidak dicantumkan", true),
+m("PANJANG", "2 m", "1 m", true),
+m("MATERIAL", "Nilon braided", "Tidak dicantumkan", true),
+m("RATING", "★ 4,8 (126)", "★ 4,6 (312)", true),
+m("KETERSEDIAAN", "Sisa 7", "Tersedia", true)
+]
+};
+}
+}
+</script>
+</body>
+</html>

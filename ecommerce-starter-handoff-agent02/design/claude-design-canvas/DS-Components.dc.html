@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Component Library</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;family=Figtree:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="{{s.root}}">
+
+<div style="{{s.header}}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="{{s.label}}">M3-4 · COMPONENT LIBRARY · THEME: {{brandName}}</span>
+<span style="{{s.h1}}">Komponen bersama, dua tema</span>
+<span style="{{s.mutedText}}">Same component code, values from tokens only. Switch the theme with the artboard's Tweaks control (brand A / B). Names match the React components planned for M7.</span>
+</div>
+</div>
+
+<div style="{{s.section}}">
+<span style="{{s.label}}">01 BUTTON · 02 ICONBUTTON</span>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+<button type="button" style="{{s.btnPrimary}}">Tambah ke Keranjang</button>
+<button type="button" style="{{s.btnPrimaryFocus}}">Fokus (keyboard)</button>
+<button type="button" style="{{s.btnSecondary}}">Bandingkan</button>
+<button type="button" style="{{s.btnTertiary}}">Lihat semua</button>
+<button type="button" style="{{s.btnDanger}}">Batalkan pesanan</button>
+<button type="button" disabled style="{{s.btnDisabled}}">Habis</button>
+<button type="button" style="{{s.btnPrimary}}" aria-busy="true"><span style="{{s.spinner}}" aria-hidden="true"></span> Memproses…</button>
+<button type="button" aria-label="Tambah ke wishlist" style="{{s.iconBtn}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></button>
+</div>
+<span style="{{s.note}}">Variants: primary · secondary · tertiary · danger. States: default, hover (−8% lightness), focus ring, active, disabled with reason text nearby, loading (keeps width, aria-busy). Height {{t.h}}; touch area ≥ 44 px.</span>
+</div>
+
+<div style="{{s.grid2}}">
+<div style="{{s.section}}">
+<span style="{{s.label}}">03 TEXTFIELD · 04 SELECT · 05 SEARCHFIELD</span>
+<label style="{{s.field}}"><span style="{{s.fieldLabel}}">Nama penerima</span><span style="{{s.input}}">Rina Pratama</span></label>
+<label style="{{s.field}}"><span style="{{s.fieldLabel}}">Kode voucher</span><span style="{{s.inputFocus}}">KABEL10</span><span style="{{s.helper}}">Fokus: cincin 2 px warna focus</span></label>
+<label style="{{s.field}}"><span style="{{s.fieldLabel}}">No. WhatsApp *</span><span style="{{s.inputError}}">0812-00</span><span style="{{s.errorText}}">Nomor harus 10–13 digit, diawali 08 atau +62</span></label>
+<label style="{{s.field}}"><span style="{{s.fieldLabel}}">Provinsi</span><span style="{{s.input}}">Jawa Barat <span style="margin-left: auto">▾</span></span></label>
+<label style="{{s.field}}"><span style="{{s.fieldLabel}}">Kecamatan (nonaktif)</span><span style="{{s.inputDisabled}}">Pilih kota dulu</span></label>
+<div style="{{s.search}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span>usb c 2m</span><span style="margin-left: auto; font-size: 13px">✕</span></div>
+</div>
+<div style="{{s.section}}">
+<span style="{{s.label}}">06 CHECKBOX · 07 RADIO · 08 TABS</span>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="{{s.choiceRow}}"><span style="{{s.boxOn}}">✓</span>USB-C (3)</span>
+<span style="{{s.choiceRow}}"><span style="{{s.boxOff}}"></span>Lightning (1)</span>
+<span style="{{s.choiceRowDisabled}}"><span style="{{s.boxDisabled}}"></span>60W (0)</span>
+<span style="{{s.choiceRow}}"><span style="{{s.radioOn}}"><span style="{{s.radioDot}}"></span></span>Kurir A · Reguler</span>
+<span style="{{s.choiceRow}}"><span style="{{s.radioOff}}"></span>Kurir B · Hemat</span>
+</div>
+<div style="{{s.tabs}}"><span style="{{s.tabOn}}">Spesifikasi</span><span style="{{s.tabOff}}">Kompatibilitas</span><span style="{{s.tabOff}}">FAQ</span><span style="{{s.tabOff}}">Ulasan (126)</span></div>
+<span style="{{s.note}}">Checkbox and radio hit area 44 px tall row. Tabs use role="tablist", arrow keys move focus.</span>
+</div>
+</div>
+
+<div style="{{s.section}}">
+<span style="{{s.label}}">09 BADGE · 10 PRICE · 11 STATUSCHIP</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<span style="{{s.badgeAccent}}">Flash sale −25%</span><span style="{{s.badgeSoft}}">Harga coret</span><span style="{{s.badgeNeutral}}">Terlaris</span><span style="{{s.badgeWarn}}">Sisa 7</span><span style="{{s.badgeDanger}}">Habis</span><span style="{{s.badgeSoft}}">Bundel</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: baseline">
+<span style="{{s.price}}">Rp159.000</span>
+<span style="display: flex; gap: 10px; align-items: baseline"><span style="{{s.price}}">Rp129.000</span><s style="{{s.was}}">Rp149.000</s><span style="{{s.saving}}">Hemat Rp20.000</span></span>
+<span style="display: flex; gap: 10px; align-items: baseline"><span style="{{s.priceAccent}}">Rp299.250</span><s style="{{s.was}}">Rp399.000</s><span style="{{s.badgeAccent}}">−25%</span></span>
+<span style="{{s.priceFrom}}">mulai Rp129.000</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{statuses}}" as="c" hint-placeholder-count="8"><span style="{{c.st}}">{{c.t}}</span></sc-for>
+</div>
+<span style="{{s.note}}">Price always formats integer Rupiah as Rp1.234.567. Strikethrough only with a real previous price. Status chips pair colour with text, never colour alone.</span>
+</div>
+
+<div style="{{s.grid2}}">
+<div style="{{s.section}}">
+<span style="{{s.label}}">12 VARIANTSELECTOR · 13 QUANTITYSELECTOR</span>
+<span style="{{s.fieldLabel}}">Panjang: 2 m</span>
+<div style="display: flex; gap: 10px"><span style="{{s.optOff}}">1 m</span><span style="{{s.optOn}}">2 m</span><span style="{{s.optOff}}">3 m</span></div>
+<span style="{{s.fieldLabel}}">Warna: Hitam</span>
+<div style="display: flex; gap: 10px"><span style="{{s.optOn}}">Hitam</span><span style="{{s.optDisabled}}"><s>Putih</s> · Habis</span></div>
+<div style="display: flex; gap: 20px; align-items: center">
+<div style="{{s.qty}}"><span style="{{s.qtyBtnDisabled}}">−</span><span style="{{s.qtyVal}}">1</span><span style="{{s.qtyBtn}}">+</span></div>
+<div style="{{s.qty}}"><span style="{{s.qtyBtn}}">−</span><span style="{{s.qtyVal}}">7</span><span style="{{s.qtyBtnDisabled}}">+</span></div>
+<span style="{{s.warnText}}">Maks. 7 tersedia</span>
+</div>
+</div>
+<div style="{{s.section}}">
+<span style="{{s.label}}">14 SHIPPINGOPTIONCARD · 15 PAYMENTMETHODCARD</span>
+<div style="{{s.optCardOn}}"><span style="{{s.radioOn}}"><span style="{{s.radioDot}}"></span></span><span style="display: flex; flex-direction: column; flex: 1"><b>Kurir A · Reguler</b><span style="{{s.small}}">Estimasi 2–3 hari · simulasi</span></span><b>Rp18.000</b></div>
+<div style="{{s.optCardOff}}"><span style="{{s.radioOff}}"></span><span style="display: flex; flex-direction: column; flex: 1"><b>Kurir C · Kilat</b><span style="{{s.small}}">Estimasi 1 hari · simulasi</span></span><b>Rp27.000</b></div>
+<div style="{{s.optCardDisabled}}"><span style="{{s.radioDisabled}}"></span><span style="display: flex; flex-direction: column; flex: 1"><b>Kurir D · Same Day</b><span style="{{s.small}}">Tidak tersedia untuk alamat ini</span></span><b>—</b></div>
+<div style="{{s.optCardOn}}"><span style="{{s.radioOn}}"><span style="{{s.radioDot}}"></span></span><span style="{{s.logoBox}}">QRIS</span><span style="display: flex; flex-direction: column; flex: 1"><b>QRIS</b><span style="{{s.small}}">Bayar dalam 15 menit</span></span></div>
+</div>
+</div>
+
+<div style="{{s.section}}">
+<span style="{{s.label}}">16 PRODUCTCARD · VARIANT "EDITORIAL" (DEFAULT A) AND "COMPACT" (DEFAULT B) · 17 SKELETON</span>
+<div style="display: grid; grid-template-columns: 300px 260px 260px 260px; gap: 24px; align-items: start">
+<div style="{{s.cardEd}}">
+<div style="{{s.cardEdImg}}"><span style="{{s.badgeAccent}}">Beli 2 gratis 1</span></div>
+<span style="{{s.small}}">Serum</span>
+<span style="{{s.cardEdTitle}}">Niacinamide Serum 30 ml</span>
+<span style="display: flex; gap: 8px; align-items: baseline"><b>Rp149.000</b><s style="{{s.was}}">Rp179.000</s></span>
+<span style="{{s.small}}">★ 4,6 (156)</span>
+</div>
+<div style="{{s.cardCo}}">
+<div style="{{s.cardCoImg}}"><span style="{{s.badgeAccent}}">Flash −25%</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px; padding: 12px">
+<b style="font-size: 15px; line-height: 1.3">Charger GaN 65W 3 Port</b>
+<span style="{{s.spec}}">2× USB-C · 1× USB-A · 65W</span>
+<span style="display: flex; gap: 8px; align-items: baseline"><b style="font-size: 17px">Rp299.250</b><s style="{{s.was}}">Rp399.000</s></span>
+<span style="{{s.small}}">★ 4,9 (204) · Sisa 11</span>
+<span style="{{s.btnSecondarySm}}">+ Keranjang</span>
+</div>
+</div>
+<div style="{{s.cardCo}}">
+<div style="{{s.cardCoImgMuted}}"><span style="{{s.badgeDanger}}">Habis</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px; padding: 12px">
+<b style="font-size: 15px; line-height: 1.3">Kabel HDMI 2.1 8K · 2 m</b>
+<span style="{{s.spec}}">HDMI ↔ HDMI · 8K</span>
+<b style="font-size: 17px">Rp179.000</b>
+<span style="{{s.small}}">★ 4,7 (41)</span>
+<span style="{{s.btnDisabledSm}}">Stok habis</span>
+</div>
+</div>
+<div style="{{s.cardCo}}" aria-busy="true">
+<div style="{{s.skel}} height: 180px"></div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px"><div style="{{s.skel}} height: 14px; width: 90%"></div><div style="{{s.skel}} height: 12px; width: 60%"></div><div style="{{s.skel}} height: 16px; width: 40%"></div><div style="{{s.skel}} height: 36px"></div></div>
+</div>
+</div>
+<span style="{{s.note}}">Card variant is a prop (variant="editorial" | "compact"), not a brand switch: a client can use either with either theme. Skeleton respects reduced motion (static, no shimmer).</span>
+</div>
+
+<div style="{{s.grid2}}">
+<div style="{{s.section}}">
+<span style="{{s.label}}">18 ALERT · 19 TOAST</span>
+<div style="{{s.alertWarn}}"><b>Belum ada pembaruan dari kurir sejak 15 Okt, 18:22 WIB</b><span>Hubungi CS jika belum ada perubahan.</span></div>
+<div style="{{s.alertDanger}}"><b>HEMAT50 belum bisa dipakai</b><span>Min. belanja Rp500.000 di luar produk flash sale.</span></div>
+<div style="{{s.toast}}" role="status"><span>✓ Charger GaN 65W ditambahkan ke keranjang</span><u>Lihat</u></div>
+</div>
+<div style="{{s.section}}">
+<span style="{{s.label}}">20 DIALOG · 21 DRAWER (SHELL)</span>
+<div style="{{s.dialog}}" role="dialog" aria-label="Batalkan pesanan">
+<span style="{{s.h3}}">Batalkan pesanan ORD-261020-0010?</span>
+<span style="{{s.mutedText}}">Stok yang dicadangkan akan dilepas. Tindakan ini tidak bisa dibatalkan.</span>
+<div style="display: flex; gap: 10px; justify-content: flex-end"><span style="{{s.btnSecondary}}">Kembali</span><span style="{{s.btnDanger}}">Ya, batalkan</span></div>
+</div>
+<span style="{{s.note}}">Dialog: focus trapped, Esc closes, focus returns to the trigger. Drawer: same rules, slides from the right (desktop) or bottom (mobile sheet), 280 ms, no slide with reduced motion.</span>
+</div>
+</div>
+
+<div style="{{s.section}}">
+<span style="{{s.label}}">22 BREADCRUMB · 23 PAGINATION · 24 STEPINDICATOR · 25 EMPTYSTATE</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<span style="{{s.crumb}}">Beranda / Kabel / <b>Kabel USB-C 100W Braided</b></span>
+<div style="display: flex; gap: 6px"><span style="{{s.pageOff}}">‹</span><span style="{{s.pageOn}}">1</span><span style="{{s.pageOff}}">2</span><span style="{{s.pageOff}}">3</span><span style="{{s.pageOff}}">›</span></div>
+<div style="display: flex; gap: 10px; align-items: center"><span style="{{s.stepDone}}">✓</span><span>Pengiriman</span><span style="{{s.stepLine}}"></span><span style="{{s.stepOn}}">2</span><b>Ringkasan</b><span style="{{s.stepLine}}"></span><span style="{{s.stepOff}}">3</span><span style="{{s.mutedSpan}}">Pembayaran</span></div>
+</div>
+<div style="{{s.empty}}">
+<div style="{{s.emptyIcon}}" aria-hidden="true"></div>
+<span style="{{s.h3}}">Keranjangmu masih kosong</span>
+<span style="{{s.mutedText}}">Lihat produk terlaris atau lanjutkan dari yang terakhir kamu lihat.</span>
+<span style="{{s.btnPrimary}}">Mulai belanja</span>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"brand":{"editor":"enum","options":["A","B"],"default":"A"},"$preview":{"width":1600,"height":3400}}'>
+class Component extends DCLogic {
+renderVals() {
+var brand = this.props.brand === "B" ? "B" : "A";
+var T = {
+A: { bg: "#F7F4EF", surface: "#FFFFFF", alt: "#EFE6DC", text: "#23201D", muted: "#6B625A", border: "#D9CFC4", strong: "#8C8279", primary: "#4F6B57", onPrimary: "#FFFFFF", pSoft: "#E7EEE8", pInk: "#2F4A37", accent: "#8C3B2E", onAccent: "#FFFFFF", success: "#2F6B3F", sSoft: "#E5F0E7", warning: "#8A5300", wSoft: "#FBEFD9", danger: "#A3302A", dSoft: "#F8E3E1", focus: "#2B5FA8", ring: "#2B5FA8", dis: "#9A9188", disBg: "#EEE9E3", display: "Newsreader, serif", body: "Figtree, sans-serif", mono: "'IBM Plex Mono', monospace", rc: "999px", rCard: "16px", rSm: "8px", h: "44px", dw: 500, shadow: "0 2px 8px rgba(35,32,29,0.08)", cardBorder: "none", name: "A — HALIMUN (COSMETICS)" },
+B: { bg: "#FFFFFF", surface: "#FFFFFF", alt: "#F2F4F7", text: "#0E1726", muted: "#4A5568", border: "#CBD2DC", strong: "#7D8796", primary: "#1F5AE0", onPrimary: "#FFFFFF", pSoft: "#EAF0FD", pInk: "#1747B5", accent: "#F5A524", onAccent: "#0E1726", success: "#1E7A45", sSoft: "#E3F4EA", warning: "#8A5300", wSoft: "#FDF1DC", danger: "#C0262D", dSoft: "#FCE6E7", focus: "#1F5AE0", ring: "#0E1726", dis: "#8A94A3", disBg: "#EEF1F5", display: "'Space Grotesk', sans-serif", body: "'IBM Plex Sans', sans-serif", mono: "'JetBrains Mono', monospace", rc: "6px", rCard: "6px", rSm: "4px", h: "40px", dw: 600, shadow: "none", cardBorder: "1px solid #CBD2DC", name: "B — SAMBUNG (ACCESSORIES)" }
+}[brand];
+var btn = "display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:" + T.h + ";padding:0 20px;border-radius:" + T.rc + ";font-family:" + T.body + ";font-size:15px;font-weight:600;cursor:pointer;box-sizing:border-box;";
+var chip = "display:inline-flex;align-items:center;padding:4px 10px;border-radius:" + (brand === "A" ? "999px" : T.rSm) + ";font-size:12px;font-weight:600;font-family:" + T.body + ";";
+var inputBase = "display:flex;align-items:center;min-height:" + T.h + ";padding:0 14px;border-radius:" + (brand === "A" ? "12px" : T.rSm) + ";background:" + T.surface + ";font-size:15px;box-sizing:border-box;";
+var section = "background:" + T.surface + ";border:" + (brand === "A" ? "none" : "1px solid " + T.border) + ";border-radius:" + T.rCard + ";box-shadow:" + T.shadow + ";padding:28px;display:flex;flex-direction:column;gap:16px;";
+var box = "display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;box-sizing:border-box;border-radius:" + (brand === "A" ? "6px" : "4px") + ";font-size:14px;";
+var radio = "display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;box-sizing:border-box;border-radius:11px;flex:none;";
+var opt = "display:inline-flex;align-items:center;min-height:" + T.h + ";padding:0 16px;border-radius:" + T.rc + ";font-size:14px;box-sizing:border-box;";
+var optCard = "display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:" + (brand === "A" ? "16px" : T.rSm) + ";font-size:14px;";
+var qb = "display:inline-flex;align-items:center;justify-content:center;width:44px;height:" + T.h + ";font-size:18px;";
+var stat = function (bg, fg) { return chip + "background:" + bg + ";color:" + fg; };
+var s = {
+root: "width:1600px;min-height:3400px;box-sizing:border-box;padding:64px 72px;background:" + T.bg + ";color:" + T.text + ";font-family:" + T.body + ";display:flex;flex-direction:column;gap:28px",
+header: "border-bottom:1px solid " + T.border + ";padding-bottom:24px",
+label: "font-family:" + T.mono + ";font-size:12px;letter-spacing:0.06em;color:" + T.muted,
+h1: "font-family:" + T.display + ";font-size:48px;line-height:1.1;font-weight:" + T.dw,
+h3: "font-family:" + T.display + ";font-size:22px;line-height:1.3;font-weight:" + T.dw,
+mutedText: "font-size:15px;line-height:1.55;color:" + T.muted,
+mutedSpan: "color:" + T.muted,
+note: "font-size:13px;line-height:1.5;color:" + T.muted,
+section: section,
+grid2: "display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start",
+btnPrimary: btn + "background:" + T.primary + ";color:" + T.onPrimary + ";border:none",
+btnPrimaryFocus: btn + "background:" + T.primary + ";color:" + T.onPrimary + ";border:none;outline:2px solid " + T.ring + ";outline-offset:2px",
+btnSecondary: btn + "background:transparent;color:" + T.text + ";border:1.5px solid " + T.text,
+btnTertiary: btn + "background:transparent;color:" + T.primary + ";border:none;text-decoration:underline;padding:0 8px",
+btnDanger: btn + "background:" + T.danger + ";color:#FFFFFF;border:none",
+btnDisabled: btn + "background:" + T.disBg + ";color:" + T.dis + ";border:none;cursor:not-allowed",
+btnSecondarySm: btn + "min-height:40px;margin-top:6px;background:transparent;color:" + T.primary + ";border:1.5px solid " + T.primary + ";font-size:14px",
+btnDisabledSm: btn + "min-height:40px;margin-top:6px;background:" + T.disBg + ";color:" + T.dis + ";border:none;font-size:14px",
+spinner: "display:inline-block;width:14px;height:14px;border-radius:7px;border:2px solid rgba(255,255,255,0.4);border-top-color:#FFFFFF",
+iconBtn: "display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:" + (brand === "A" ? "22px" : T.rSm) + ";background:" + T.surface + ";color:" + T.text + ";border:1.5px solid " + T.strong + ";cursor:pointer",
+field: "display:flex;flex-direction:column;gap:6px",
+fieldLabel: "font-size:14px;font-weight:600",
+input: inputBase + "border:1.5px solid " + T.strong,
+inputFocus: inputBase + "border:1.5px solid " + T.focus + ";outline:2px solid " + T.focus + ";outline-offset:1px;font-family:" + T.mono,
+inputError: inputBase + "border:2px solid " + T.danger,
+inputDisabled: inputBase + "border:1.5px solid " + T.border + ";background:" + T.disBg + ";color:" + T.dis,
+helper: "font-size:13px;color:" + T.muted,
+errorText: "font-size:13px;color:" + T.danger + ";font-weight:500",
+warnText: "font-size:13px;color:" + T.warning + ";font-weight:600",
+search: inputBase + "gap:10px;border:1.5px solid " + T.strong + ";color:" + T.text + (brand === "A" ? ";border-radius:999px" : ""),
+choiceRow: "display:flex;align-items:center;gap:12px;min-height:44px;font-size:15px",
+choiceRowDisabled: "display:flex;align-items:center;gap:12px;min-height:44px;font-size:15px;color:" + T.dis,
+boxOn: box + "background:" + T.primary + ";color:" + T.onPrimary,
+boxOff: box + "border:1.5px solid " + T.strong + ";background:" + T.surface,
+boxDisabled: box + "border:1.5px solid " + T.border + ";background:" + T.disBg,
+radioOn: radio + "border:2px solid " + T.primary,
+radioDot: "display:block;width:10px;height:10px;border-radius:5px;background:" + T.primary,
+radioOff: radio + "border:1.5px solid " + T.strong,
+radioDisabled: radio + "border:1.5px solid " + T.border + ";background:" + T.disBg,
+tabs: "display:flex;gap:24px;border-bottom:1px solid " + T.border + ";font-size:15px",
+tabOn: "padding:10px 0;font-weight:600;border-bottom:3px solid " + T.primary + ";color:" + T.text,
+tabOff: "padding:10px 0;color:" + T.muted,
+badgeAccent: chip + "background:" + T.accent + ";color:" + T.onAccent,
+badgeSoft: chip + "background:" + T.pSoft + ";color:" + T.pInk,
+badgeNeutral: chip + "background:" + T.alt + ";color:" + T.text,
+badgeWarn: chip + "background:" + T.wSoft + ";color:" + T.warning,
+badgeDanger: chip + "background:" + T.dSoft + ";color:" + T.danger,
+price: "font-size:24px;font-weight:700",
+priceAccent: "font-size:24px;font-weight:700;color:" + (brand === "A" ? T.accent : T.text),
+priceFrom: "font-size:18px;font-weight:600",
+was: "font-size:14px;color:" + T.muted,
+saving: "font-size:13px;font-weight:600;color:" + T.success,
+optOn: opt + "border:2px solid " + T.primary + ";background:" + T.pSoft + ";color:" + T.pInk + ";font-weight:600",
+optOff: opt + "border:1.5px solid " + T.strong + ";background:" + T.surface,
+optDisabled: opt + "border:1.5px dashed " + T.border + ";background:" + T.surface + ";color:" + T.muted,
+qty: "display:inline-flex;align-items:center;border:1.5px solid " + T.strong + ";border-radius:" + T.rc + ";overflow:hidden",
+qtyBtn: qb + "color:" + T.text,
+qtyBtnDisabled: qb + "color:" + T.dis,
+qtyVal: "min-width:36px;text-align:center;font-weight:600;font-family:" + (brand === "B" ? T.mono : T.body),
+optCardOn: optCard + "border:2px solid " + T.primary + ";background:" + T.pSoft,
+optCardOff: optCard + "border:1.5px solid " + T.strong,
+optCardDisabled: optCard + "border:1.5px dashed " + T.border + ";color:" + T.muted,
+logoBox: "display:inline-flex;align-items:center;justify-content:center;width:52px;height:32px;border-radius:4px;background:" + T.alt + ";font-size:11px;font-weight:700",
+small: "font-size:13px;color:" + T.muted,
+spec: "font-family:" + T.mono + ";font-size:12px;color:" + T.muted,
+cardEd: "display:flex;flex-direction:column;gap:8px;font-size:15px",
+cardEdImg: "height:320px;border-radius:" + T.rCard + ";background:" + T.alt + ";padding:12px;box-sizing:border-box",
+cardEdTitle: "font-family:" + T.display + ";font-size:22px;line-height:1.2;font-weight:" + T.dw,
+cardCo: "display:flex;flex-direction:column;border:1px solid " + T.border + ";border-radius:" + T.rCard + ";overflow:hidden;background:" + T.surface,
+cardCoImg: "height:180px;background:" + T.alt + ";padding:10px;box-sizing:border-box",
+cardCoImgMuted: "height:180px;background:" + T.disBg + ";padding:10px;box-sizing:border-box",
+skel: "border-radius:" + T.rSm + ";background:" + T.alt + ";",
+alertWarn: "display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:" + T.rSm + ";background:" + T.wSoft + ";color:" + T.warning + ";font-size:14px",
+alertDanger: "display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:" + T.rSm + ";background:" + T.dSoft + ";color:" + T.danger + ";font-size:14px",
+toast: "display:flex;justify-content:space-between;gap:16px;padding:14px 18px;border-radius:" + (brand === "A" ? "16px" : T.rSm) + ";background:" + T.text + ";color:#FFFFFF;font-size:14px;box-shadow:0 12px 32px rgba(14,23,38,0.18)",
+dialog: "display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:" + (brand === "A" ? "24px" : "8px") + ";background:" + T.surface + ";border:1px solid " + T.border + ";box-shadow:0 12px 32px rgba(14,23,38,0.18)",
+crumb: "font-size:14px;color:" + T.muted,
+pageOn: "display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:" + (brand === "A" ? "22px" : T.rSm) + ";background:" + T.primary + ";color:" + T.onPrimary + ";font-weight:600",
+pageOff: "display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:" + (brand === "A" ? "22px" : T.rSm) + ";border:1px solid " + T.border,
+stepDone: radio + "width:28px;height:28px;border-radius:14px;background:" + T.success + ";color:#FFFFFF;font-size:13px",
+stepOn: radio + "width:28px;height:28px;border-radius:14px;background:" + T.primary + ";color:" + T.onPrimary + ";font-size:13px;font-weight:600",
+stepOff: radio + "width:28px;height:28px;border-radius:14px;border:1.5px solid " + T.strong + ";color:" + T.muted + ";font-size:13px",
+stepLine: "display:inline-block;width:40px;height:2px;background:" + T.border,
+empty: "display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:28px;border-radius:" + T.rCard + ";background:" + T.alt,
+emptyIcon: "width:72px;height:72px;border-radius:36px;background:" + T.surface
+};
+return {
+brandName: T.name,
+t: T,
+s: s,
+statuses: [
+{ t: "Menunggu Pembayaran", st: stat(T.wSoft, T.warning) },
+{ t: "Dibayar", st: stat(T.sSoft, T.success) },
+{ t: "Diproses", st: stat(T.pSoft, T.pInk) },
+{ t: "Dikirim", st: stat(T.pSoft, T.pInk) },
+{ t: "Dalam Perjalanan", st: stat(T.pSoft, T.pInk) },
+{ t: "Diterima", st: stat(T.sSoft, T.success) },
+{ t: "Dibatalkan", st: stat(T.alt, T.text) },
+{ t: "Gagal Kirim", st: stat(T.dSoft, T.danger) }
+]
+};
+}
+}
+</script>
+</body>
+</html>

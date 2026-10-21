@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Prototype Purchase Sambung</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #1F5AE0;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #FFFFFF; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; flex-direction: column; overflow: hidden; position: relative; font-size: 14px">
+
+<header style="height: 56px; flex: none; border-bottom: 1px solid #CBD2DC; display: flex; align-items: center; gap: 4px; padding: 0 6px">
+<sc-if value="{{hasBack}}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="Kembali" onClick="{{back}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 22px">‹</button></sc-if>
+<button type="button" onClick="{{goHome}}" aria-label="SAMBUNG, ke beranda" style="border: none; background: none; padding: 0 6px; height: 44px; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: #0E1726">SAMBUNG<span style="color: #1F5AE0">/</span></button>
+<span style="margin-left: auto; font-size: 12px; color: #4A5568">Hai, Rina</span>
+<button type="button" onClick="{{goCart}}" aria-label="{{cartAria}}" style="position: relative; width: 44px; height: 44px; border: none; background: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E1726" stroke-width="1.75" aria-hidden="true"><path d="M3 4h2l2.4 11h11.2L21 8H6.2"></path><circle cx="9" cy="19.5" r="1.4"></circle><circle cx="17" cy="19.5" r="1.4"></circle></svg><span style="{{badgeSt}}">{{cartCount}}</span></button>
+</header>
+
+<sc-if value="{{showStepper}}" hint-placeholder-val="{{ false }}">
+<ol aria-label="Langkah checkout" style="list-style: none; margin: 0; padding: 10px 16px; display: flex; gap: 8px; border-bottom: 1px solid #E3E7ED; flex: none; font-size: 12px">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3"><li aria-current="{{st.cur}}" style="{{st.st}}"><span style="{{st.num}}">{{st.n}}</span>{{st.t}}</li></sc-for>
+</ol>
+</sc-if>
+
+<main style="flex: 1; overflow-y: auto; min-height: 0">
+
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 16px">
+<button type="button" onClick="{{openFlash}}" style="text-align: left; border: none; border-radius: 6px; background: #0E1726; color: #FFFFFF; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+<span style="align-self: flex-start; background: #F5A524; color: #0E1726; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.04em">FLASH SALE · 20–22 OKT</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Charger GaN 65W 3 Port</span>
+<span><b style="font-family: 'JetBrains Mono', monospace; font-size: 16px">Rp299.250</b> <s style="color: #CBD2DC">Rp399.000</s> · sisa 11</span>
+<span style="font-size: 13px; text-decoration: underline">Lihat produk</span>
+</button>
+<div style="display: flex; flex-direction: column; gap: 8px"><h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px">Kategori</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px"><sc-for list="{{homeCats}}" as="c" hint-placeholder-count="4"><button type="button" onClick="{{c.go}}" style="min-height: 56px; border: 1px solid #CBD2DC; border-radius: 6px; background: #F2F4F7; text-align: left; padding: 0 14px; font-size: 14px; font-weight: 600; color: #0E1726">{{c.t}} <span style="font-weight: 400; color: #4A5568">({{c.n}})</span></button></sc-for></div>
+<button type="button" onClick="{{goAll}}" style="min-height: 44px; border: 1px solid #1F5AE0; border-radius: 6px; background: #FFFFFF; color: #1747B5; font-weight: 600">Semua produk (8)</button>
+</div>
+<div style="border: 2px dashed #7D8796; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; background: #F2F4F7">
+<b style="font-size: 13px; font-family: 'JetBrains Mono', monospace">PANEL UJI · bukan bagian dari toko</b>
+<span style="font-size: 13px">Skenario baku W00: 2× Kabel USB-C 100W 2 m Hitam + 1× Charger GaN 65W.</span>
+<button type="button" onClick="{{fillDemo}}" style="min-height: 44px; border: none; border-radius: 6px; background: #4A5568; color: #FFFFFF; font-weight: 600">Isi keranjang skenario baku</button>
+<button type="button" onClick="{{resetAll}}" style="min-height: 40px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; color: #0E1726; font-weight: 600">Atur ulang prototipe</button>
+</div>
+<span style="font-size: 12px; color: #4A5568">Waktu simulasi: Selasa, 20 Okt 2026 · 10:15 WIB. Harga sudah termasuk PPN.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isPlp}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">{{plpTitle}}</h1>
+<div role="group" aria-label="Filter kategori" style="display: flex; gap: 6px; flex-wrap: wrap"><sc-for list="{{chips}}" as="c" hint-placeholder-count="5"><button type="button" aria-pressed="{{c.on}}" onClick="{{c.go}}" style="{{c.st}}">{{c.t}} {{c.n}}</button></sc-for></div>
+<span aria-live="polite" style="font-size: 12px; color: #4A5568">{{plpCount}}</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{plp}}" as="p" hint-placeholder-count="4"><button type="button" onClick="{{p.open}}" style="text-align: left; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; padding: 0 0 10px; display: flex; flex-direction: column; gap: 4px; overflow: hidden; color: #0E1726">
+<dc-import name="ProductArt" kind="{{p.kind}}" bg="{{p.bg}}" fg="#1A2233" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,130px"></dc-import>
+<span style="{{p.badgeSt}}">{{p.badge}}</span>
+<span style="padding: 0 10px; font-size: 13px; font-weight: 600; line-height: 1.3">{{p.name}}</span>
+<span style="padding: 0 10px; font-family: 'JetBrains Mono', monospace; font-weight: 500">{{p.price}}</span>
+<span style="padding: 0 10px; font-size: 12px; color: #4A5568"><s>{{p.was}}</s></span>
+<span style="{{p.stockSt}}">{{p.stock}}</span>
+</button></sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isPdp}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 0 0 16px">
+<dc-import name="ProductArt" kind="{{pdp.kind}}" bg="{{pdp.bg}}" fg="#1A2233" accent="{{pdp.ac}}" label="{{pdp.name}}" hint-size="100%,260px"></dc-import>
+<div style="padding: 0 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="{{pdp.badgeSt}}">{{pdp.badge}}</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; line-height: 1.25">{{pdp.name}}</h1>
+<span style="font-size: 13px; color: #4A5568">{{pdp.spec}}</span>
+<div style="display: flex; gap: 10px; align-items: baseline"><b style="font-family: 'JetBrains Mono', monospace; font-size: 22px">{{pdp.price}}</b><s style="color: #4A5568">{{pdp.was}}</s></div>
+<sc-if value="{{pdp.hasVariants}}" hint-placeholder-val="{{ false }}">
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; padding-bottom: 6px">Panjang &amp; warna</legend>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px"><sc-for list="{{pdp.variants}}" as="v" hint-placeholder-count="4"><button type="button" aria-pressed="{{v.on}}" disabled="{{v.dis}}" onClick="{{v.pick}}" style="{{v.st}}"><span style="font-weight: 600">{{v.label}}</span><span style="font-size: 12px">{{v.sub}}</span></button></sc-for></div>
+</fieldset>
+</sc-if>
+<span style="{{pdp.stockSt}}">{{pdp.stock}}</span>
+<div style="display: flex; align-items: center; gap: 10px"><span style="font-weight: 600">Jumlah</span>
+<div style="display: flex; align-items: center; border: 1px solid #7D8796; border-radius: 6px"><button type="button" aria-label="Kurangi jumlah" disabled="{{pdp.decDis}}" onClick="{{pdp.dec}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">−</button><span aria-live="polite" style="min-width: 32px; text-align: center; font-family: 'JetBrains Mono', monospace">{{pdp.qty}}</span><button type="button" aria-label="Tambah jumlah" disabled="{{pdp.incDis}}" onClick="{{pdp.inc}}" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">+</button></div>
+<span style="font-size: 12px; color: #4A5568">{{pdp.max}}</span></div>
+<span style="font-size: 12px; color: #4A5568">Harga sudah termasuk PPN. Ulasan tidak ditampilkan di prototipe.</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isCart}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Keranjang ({{cartCount}})</h1>
+<sc-if value="{{cartEmpty}}" hint-placeholder-val="{{ false }}">
+<div style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 24px 16px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start"><b>Keranjang masih kosong</b><span style="color: #4A5568">Mulai dari kategori atau isi skenario baku dari panel uji di beranda.</span><button type="button" onClick="{{goAll}}" style="min-height: 44px; padding: 0 16px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-weight: 600">Lihat produk</button></div>
+</sc-if>
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="2"><div style="display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; border-bottom: 1px solid #E3E7ED; padding-bottom: 12px">
+<dc-import name="ProductArt" kind="{{l.kind}}" bg="{{l.bg}}" fg="#1A2233" accent="{{l.ac}}" label="{{l.name}}" hint-size="72px,72px"></dc-import>
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0"><b style="font-size: 13px">{{l.name}}</b><span style="font-size: 12px; color: #4A5568">{{l.vlabel}}</span><span style="font-size: 12px; color: #8A5300">{{l.note}}</span>
+<div style="display: flex; align-items: center; justify-content: space-between"><div style="display: flex; align-items: center; border: 1px solid #7D8796; border-radius: 6px"><button type="button" aria-label="Kurangi" disabled="{{l.decDis}}" onClick="{{l.dec}}" style="width: 40px; height: 40px; border: none; background: none">−</button><span style="min-width: 24px; text-align: center; font-family: 'JetBrains Mono', monospace">{{l.qty}}</span><button type="button" aria-label="Tambah" disabled="{{l.incDis}}" onClick="{{l.inc}}" style="width: 40px; height: 40px; border: none; background: none">+</button></div><b style="font-family: 'JetBrains Mono', monospace">{{l.total}}</b></div>
+<button type="button" onClick="{{l.rm}}" style="align-self: flex-start; border: none; background: none; padding: 4px 0; color: #C0262D; font-size: 13px; text-decoration: underline">Hapus</button>
+</div></div></sc-for>
+<sc-if value="{{cartFull}}" hint-placeholder-val="{{ true }}">
+<section aria-labelledby="vh" style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px">
+<h2 id="vh" style="margin: 0; font-size: 15px">Voucher</h2>
+<span style="font-size: 12px; color: #4A5568">Maks. 1 voucher pesanan + 1 voucher ongkir. Voucher pesanan tidak berlaku untuk barang flash sale.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{vchips}}" as="v" hint-placeholder-count="4"><button type="button" aria-pressed="{{v.on}}" onClick="{{v.apply}}" style="{{v.st}}">{{v.code}}</button></sc-for></div>
+<sc-for list="{{applied}}" as="a" hint-placeholder-count="1"><div style="{{a.box}}"><span style="display: flex; flex-direction: column"><b style="font-family: 'JetBrains Mono', monospace">{{a.code}}</b><span style="font-size: 12px">{{a.msg}}</span></span><button type="button" aria-label="Lepas voucher {{a.code}}" onClick="{{a.rm}}" style="border: none; background: none; font-size: 13px; text-decoration: underline; color: #0E1726; min-height: 40px">Lepas</button></div></sc-for>
+<span role="status" style="{{vmsgSt}}">{{vmsg}}</span>
+</section>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{isShip}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 16px">
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px"><legend style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; padding-bottom: 8px">Alamat pengiriman</legend>
+<sc-for list="{{addrs}}" as="a" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{a.on}}" onClick="{{a.pick}}" style="{{a.box}}"><span style="{{a.radio}}"><span style="{{a.dot}}"></span></span><span style="display: flex; flex-direction: column; gap: 2px; text-align: left"><b>{{a.label}}</b><span style="font-size: 13px">Rina Pratama · 0812-0000-1234</span><span style="font-size: 12px; color: #4A5568">{{a.line}}</span></span></button></sc-for>
+</fieldset>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px"><legend style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; padding-bottom: 8px">Kurir <span style="font-size: 12px; font-weight: 600; background: #FDF1DC; color: #8A5300; padding: 2px 6px; border-radius: 4px; font-family: 'IBM Plex Sans', sans-serif">SIMULASI</span></legend>
+<sc-for list="{{kurirs}}" as="k" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{k.on}}" disabled="{{k.dis}}" onClick="{{k.pick}}" style="{{k.box}}"><span style="{{k.radio}}"><span style="{{k.dot}}"></span></span><span style="display: flex; flex-direction: column; gap: 2px; text-align: left; flex: 1"><b>{{k.svc}}</b><span style="font-size: 12px; color: #4A5568">{{k.eta}}</span></span><b style="font-family: 'JetBrains Mono', monospace">{{k.cost}}</b></button></sc-for>
+</fieldset>
+<span style="font-size: 12px; color: #4A5568">Tarif contoh tidak berubah antar alamat (penyederhanaan prototipe).</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isReview}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Periksa pesanan</h1>
+<section style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 6px"><b>Barang ({{cartCount}})</b><sc-for list="{{lines}}" as="l" hint-placeholder-count="2"><span style="display: flex; justify-content: space-between; gap: 8px; font-size: 13px"><span>{{l.qty}}× {{l.name}}<span style="display: block; font-size: 12px; color: #4A5568">{{l.vlabel}}</span></span><span style="font-family: 'JetBrains Mono', monospace">{{l.total}}</span></span></sc-for></section>
+<section style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 4px; font-size: 13px"><span style="display: flex; justify-content: space-between"><b>Dikirim ke</b><button type="button" onClick="{{goShip}}" style="border: none; background: none; color: #1747B5; text-decoration: underline; font-size: 13px">Ubah</button></span><span>{{addrSel.label}} · Rina Pratama</span><span style="color: #4A5568">{{addrSel.line}}</span><span>{{kurirSel.svc}} · {{kurirSel.eta}}</span></section>
+<span style="font-size: 12px; color: #4A5568">Harga dan stok dicek ulang saat "Buat pesanan" (I4).</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isPayStep}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px"><legend style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; padding-bottom: 8px">Metode pembayaran <span style="font-size: 12px; font-weight: 600; background: #FDF1DC; color: #8A5300; padding: 2px 6px; border-radius: 4px; font-family: 'IBM Plex Sans', sans-serif">SIMULASI</span></legend>
+<sc-for list="{{pms}}" as="m" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{m.on}}" onClick="{{m.pick}}" style="{{m.box}}"><span style="{{m.radio}}"><span style="{{m.dot}}"></span></span><span style="display: flex; flex-direction: column; gap: 2px; text-align: left"><b>{{m.t}}</b><span style="font-size: 12px; color: #4A5568">{{m.s}}</span></span></button></sc-for>
+</fieldset>
+<span style="font-size: 12px; color: #4A5568">Setelah "Buat pesanan", stok dicadangkan sampai batas bayar (D6).</span>
+</div>
+</sc-if>
+
+<sc-if value="{{isPayPage}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">/pembayaran/{{order.no}}</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Selesaikan pembayaran</h1>
+<div style="background: #FDF1DC; border-radius: 6px; padding: 10px 12px; color: #6B4100; font-size: 13px"><b>Bayar sebelum {{order.exp}}</b> · stok dicadangkan sampai saat itu.</div>
+<div style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 8px; align-items: center">
+<span style="font-size: 13px">{{order.pmName}}</span>
+<b style="font-family: 'JetBrains Mono', monospace; font-size: 24px">{{order.total}}</b>
+<sc-if value="{{order.isQr}}" hint-placeholder-val="{{ true }}"><div role="img" aria-label="Kode QR simulasi untuk pembayaran {{order.total}}" style="width: 168px; height: 168px; border: 2px dashed #7D8796; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 12px; color: #4A5568; background: repeating-linear-gradient(45deg, #F2F4F7 0 8px, #FFFFFF 8px 16px)">QR SIMULASI<br>tidak dapat dipindai</div></sc-if>
+<sc-if value="{{order.isVa}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', monospace; font-size: 18px">8808 0000 0000 {{order.seq}}</span><span style="font-size: 12px; color: #4A5568">Nomor VA Bank A (fiktif)</span></sc-if>
+<sc-if value="{{order.isEw}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; text-align: center">Notifikasi dikirim ke aplikasi e-wallet (simulasi).</span></sc-if>
+</div>
+<span role="status" style="{{payMsgSt}}">{{payMsg}}</span>
+<div style="border: 2px dashed #7D8796; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #F2F4F7">
+<b style="font-size: 13px; font-family: 'JetBrains Mono', monospace">PANEL SIMULASI GATEWAY</b>
+<button type="button" onClick="{{simPaid}}" style="min-height: 44px; border: none; border-radius: 6px; background: #1E7A45; color: #FFFFFF; font-weight: 600">Simulasikan pembayaran berhasil</button>
+<button type="button" onClick="{{simFail}}" style="min-height: 44px; border: 1px solid #C0262D; border-radius: 6px; background: #FFFFFF; color: #C0262D; font-weight: 600">Simulasikan pembayaran gagal</button>
+<button type="button" onClick="{{simExpire}}" style="min-height: 44px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; color: #0E1726; font-weight: 600">Simulasikan kedaluwarsa</button>
+</div>
+<sc-for list="{{order.lines}}" as="l" hint-placeholder-count="2"><span style="display: flex; justify-content: space-between; font-size: 12px; color: #4A5568"><span>{{l.qty}}× {{l.name}}</span><span>{{l.total}}</span></span></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<div style="background: #E3F4EA; border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 4px; color: #14532D"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Pembayaran diterima</b><span>{{order.no}} · dibayar 20 Okt 10:21 WIB (simulasi)</span></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; border: 1px solid #CBD2DC; border-radius: 6px">
+<li style="padding: 10px 12px; display: flex; justify-content: space-between"><span><b>Pesanan dibuat</b></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">10:15</span></li>
+<li style="padding: 10px 12px; border-top: 1px solid #E3E7ED; display: flex; justify-content: space-between"><span><b>Dibayar</b> · {{order.pmName}}</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">10:21</span></li>
+<li style="padding: 10px 12px; border-top: 1px solid #E3E7ED; color: #4A5568">Diproses penjual · menunggu</li>
+<li style="padding: 10px 12px; border-top: 1px solid #E3E7ED; color: #4A5568">Dikirim · no. resi muncul di sini</li>
+</ol>
+<section style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 4px; font-size: 13px"><sc-for list="{{order.sum}}" as="r" hint-placeholder-count="5"><span style="{{r.st}}"><span>{{r.l}}</span><span style="font-family: 'JetBrains Mono', monospace">{{r.v}}</span></span></sc-for></section>
+<span style="font-size: 12px; color: #4A5568">Pelacakan tersedia di Akun → Pesanan (I7). Notifikasi email/WhatsApp transaksional terkirim (simulasi).</span>
+<a href="H13-Tracking-B.dc.html" style="font-size: 13px">Lihat desain halaman pelacakan (H13)</a>
+<button type="button" onClick="{{resetAll}}" style="min-height: 44px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-weight: 600">Atur ulang prototipe</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isExpired}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px">
+<div style="background: #F2F4F7; border: 1px solid #CBD2DC; border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 4px"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Pesanan kedaluwarsa</b><span>{{order.no}} tidak dibayar sampai {{order.exp}}. Stok yang dicadangkan sudah dikembalikan. Tidak ada dana yang ditarik.</span></div>
+<button type="button" onClick="{{restore}}" style="min-height: 48px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-weight: 600">Masukkan lagi ke keranjang</button>
+<span style="font-size: 12px; color: #4A5568">Harga dicek ulang; voucher perlu dipasang lagi.</span>
+</div>
+</sc-if>
+
+</main>
+
+<sc-if value="{{hasBar}}" hint-placeholder-val="{{ false }}">
+<footer style="flex: none; border-top: 1px solid #CBD2DC; padding: 10px 16px 14px; display: flex; flex-direction: column; gap: 6px; background: #FFFFFF">
+<sc-if value="{{showSum}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 2px; font-size: 13px"><sc-for list="{{sum}}" as="r" hint-placeholder-count="4"><span style="{{r.st}}"><span>{{r.l}}</span><span style="font-family: 'JetBrains Mono', monospace">{{r.v}}</span></span></sc-for></div></sc-if>
+<button type="button" disabled="{{cta.dis}}" onClick="{{cta.go}}" style="{{cta.st}}">{{cta.t}}</button>
+</footer>
+</sc-if>
+
+<div aria-live="polite" style="{{toastSt}}"><span>{{toast}}</span><sc-if value="{{toastCart}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{goCart}}" style="border: none; background: none; color: #FFFFFF; text-decoration: underline; font-weight: 600; min-height: 36px">Lihat keranjang</button></sc-if></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var S = this.state || {};
+var self = this;
+var set = function (o) { self.setState(o); };
+var screen = S.s || "home";
+var cart = S.cart || [];
+var res = S.res || {};
+var seq = S.seq || 10;
+function fmt(n) { return "Rp" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+function neg(n) { return "−" + fmt(n); }
+var P = [
+{ id: "B07", name: "Kabel USB-A ke USB-C · 1 m", spec: "USB-A → USB-C · 3A · 1 m", kind: "cable", cat: "kabel", bg: "#F2F4F7", ac: "#7D8796", v: [{ id: "B07", label: "", price: 69000, was: 0, base: 120 }] },
+{ id: "B01", name: "Kabel USB-C ke USB-C 100W Braided", spec: "USB-C ↔ USB-C · 100W · 1/2/3 m", kind: "cable", cat: "kabel", bg: "#F2F4F7", ac: "#1F5AE0", v: [
+{ id: "B01-1M-BLK", label: "1 m · Hitam", price: 129000, was: 149000, base: 42 },
+{ id: "B01-2M-BLK", label: "2 m · Hitam", price: 159000, was: 0, base: 7 },
+{ id: "B01-2M-WHT", label: "2 m · Putih", price: 159000, was: 0, base: 0 },
+{ id: "B01-3M-BLK", label: "3 m · Hitam", price: 189000, was: 0, base: 15 }] },
+{ id: "B05", name: "Kabel USB-C ke Lightning · 1 m", spec: "USB-C → Lightning · 1 m", kind: "cable", cat: "kabel", bg: "#F2F4F7", ac: "#4A5568", v: [{ id: "B05", label: "", price: 149000, was: 0, base: 30 }] },
+{ id: "B03", name: "Charger GaN 65W 3 Port", spec: "2× USB-C + 1× USB-A · 65W total", kind: "charger", cat: "charger", bg: "#FDF1DC", ac: "#F5A524", flash: true, v: [{ id: "B03", label: "", price: 299250, was: 399000, base: 11 }] },
+{ id: "B02", name: "Adaptor USB-C ke HDMI 4K60", spec: "USB-C → HDMI · 4K 60Hz", kind: "adapter", cat: "adaptor", bg: "#F2F4F7", ac: "#1F5AE0", v: [{ id: "B02", label: "", price: 219000, was: 0, base: 23 }] },
+{ id: "B04", name: "Hub USB-C 7-in-1", spec: "HDMI · 3× USB-A · SD · microSD · PD", kind: "hub", cat: "hub", bg: "#F2F4F7", ac: "#1F5AE0", v: [{ id: "B04", label: "", price: 549000, was: 0, base: 4 }] },
+{ id: "B06", name: "Kabel HDMI 2.1 8K · 2 m", spec: "HDMI 2.1 · 8K60 / 4K120 · 2 m", kind: "cable", cat: "kabel", bg: "#F2F4F7", ac: "#C0262D", v: [{ id: "B06", label: "", price: 179000, was: 0, base: 0 }] },
+{ id: "B08", name: "Kabel DisplayPort 1.4 · 2 m", spec: "DP 1.4 · 8K60 · 2 m", kind: "cable", cat: "kabel", bg: "#F2F4F7", ac: "#4A5568", v: [{ id: "B08", label: "", price: 199000, was: 0, base: 18 }] }
+];
+function prod(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return P[i]; return P[0]; }
+function vari(p, vid) { for (var i = 0; i < p.v.length; i++) if (p.v[i].id === vid) return p.v[i]; return p.v[0]; }
+function av(v) { return Math.max(0, v.base - (res[v.id] || 0)); }
+function inCart(vid) { var q = 0; cart.forEach(function (l) { if (l.vid === vid) q += l.qty; }); return q; }
+var go = function (s) { return function () { set({ s: s, toast: "", payMsg: "" }); }; };
+var CAT = { all: "Semua produk", kabel: "Kabel", charger: "Charger", adaptor: "Adaptor", hub: "Hub" };
+function count(c) { return P.filter(function (p) { return c === "all" || p.cat === c; }).length; }
+var openPdp = function (id) { return function () { var p = prod(id); var first = p.v.filter(function (v) { return av(v) > 0; })[0] || p.v[0]; set({ s: "pdp", pid: id, vid: first.id, qty: 1, toast: "" }); }; };
+var goCat = function (c) { return function () { set({ s: "plp", cat: c, toast: "" }); }; };
+
+var chip = "min-height:36px;padding:0 12px;border-radius:18px;font-size:13px;font-weight:600;";
+var cat = S.cat || "all";
+var chips = ["all", "kabel", "charger", "adaptor", "hub"].map(function (c) { var on = c === cat; return { t: c === "all" ? "Semua" : CAT[c], n: count(c), on: on ? "true" : "false", go: goCat(c), st: chip + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px solid #7D8796;background:#FFFFFF;color:#0E1726") }; });
+var badge = "align-self:flex-start;margin:0 10px;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;";
+var plp = P.filter(function (p) { return cat === "all" || p.cat === cat; }).map(function (p) {
+var prices = p.v.map(function (v) { return v.price; }); var min = Math.min.apply(null, prices);
+var tot = 0, inStock = 0; p.v.forEach(function (v) { tot += av(v); if (av(v) > 0) inStock++; });
+var stock = tot === 0 ? "Stok habis" : (p.v.length > 1 ? inStock + " dari " + p.v.length + " varian" : (tot <= 10 ? "Sisa " + tot : "Tersedia"));
+var b = p.flash ? "FLASH SALE" : (p.v[0].was ? "HARGA CORET" : "");
+return { name: p.name, kind: p.kind, bg: p.bg, ac: p.ac, price: (p.v.length > 1 ? "mulai " : "") + fmt(min), was: p.v[0].was ? fmt(p.v[0].was) : "", stock: stock,
+stockSt: "padding:0 10px;font-size:12px;font-weight:600;color:" + (tot === 0 ? "#C0262D" : (tot <= 10 && p.v.length === 1 ? "#8A5300" : "#1E7A45")),
+badge: b, badgeSt: b ? badge + (p.flash ? "background:#F5A524;color:#0E1726" : "background:#EAF0FD;color:#1747B5") : "display:none", open: openPdp(p.id) };
+});
+
+// PDP
+var pdp = {};
+if (screen === "pdp") {
+var pp = prod(S.pid || "B01"); var vv = vari(pp, S.vid); var a = av(vv); var room = Math.max(0, a - inCart(vv.id)); var q = Math.min(S.qty || 1, Math.max(room, 1));
+var vbtn = "min-height:52px;border-radius:6px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:4px 10px;";
+pdp = { name: pp.name, spec: pp.spec, kind: pp.kind, bg: pp.bg, ac: pp.ac, price: fmt(vv.price), was: vv.was ? fmt(vv.was) : "", hasVariants: pp.v.length > 1,
+badge: pp.flash ? "FLASH SALE · berakhir 22 Okt 23:59" : (vv.was ? "HARGA CORET" : ""), badgeSt: pp.flash ? "align-self:flex-start;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;background:#F5A524;color:#0E1726" : (vv.was ? "align-self:flex-start;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;background:#EAF0FD;color:#1747B5" : "display:none"),
+variants: pp.v.map(function (x) { var on = x.id === vv.id; var dis = av(x) === 0; return { label: x.label, sub: dis ? "Habis" : fmt(x.price), on: on ? "true" : "false", dis: dis, pick: function () { set({ vid: x.id, qty: 1 }); },
+st: vbtn + (dis ? "border:1.5px dashed #CBD2DC;background:#F2F4F7;color:#4A5568;text-decoration:line-through" : (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1.5px solid #7D8796;background:#FFFFFF;color:#0E1726")) }; }),
+stock: a === 0 ? "Stok habis" : (a <= 10 ? "Sisa " + a + " · segera habis" : "Stok tersedia"),
+stockSt: "font-size:13px;font-weight:600;color:" + (a === 0 ? "#C0262D" : (a <= 10 ? "#8A5300" : "#1E7A45")),
+qty: String(q), decDis: q <= 1, incDis: q >= room, dec: function () { set({ qty: Math.max(1, q - 1) }); }, inc: function () { set({ qty: Math.min(room, q + 1) }); },
+max: room === 0 ? (a === 0 ? "" : "Semua stok sudah di keranjang") : "maks. " + room,
+canAdd: room > 0,
+add: function () {
+var c2 = cart.slice(); var found = false;
+c2 = c2.map(function (l) { if (l.vid === vv.id) { found = true; return { pid: l.pid, vid: l.vid, qty: l.qty + q }; } return l; });
+if (!found) c2.push({ pid: pp.id, vid: vv.id, qty: q });
+set({ cart: c2, qty: 1, toast: "Ditambahkan: " + q + "× " + pp.name + (vv.label ? " (" + vv.label + ")" : ""), toastCart: true });
+} };
+}
+
+// cart lines + totals
+var lines = cart.map(function (l, i) {
+var p = prod(l.pid); var v = vari(p, l.vid); var a = av(v);
+return { name: p.name, kind: p.kind, bg: p.bg, ac: p.ac, qty: String(l.qty), total: fmt(v.price * l.qty),
+vlabel: (v.label ? v.label + " · " : "") + fmt(v.price) + (v.was ? " (dari " + fmt(v.was) + ")" : ""),
+note: p.flash ? "Harga flash sale s/d 22 Okt · tidak dapat voucher pesanan" : (a <= 10 ? "Sisa " + a : ""),
+decDis: l.qty <= 1, incDis: l.qty >= a,
+dec: function () { set({ cart: cart.map(function (x, j) { return j === i ? { pid: x.pid, vid: x.vid, qty: Math.max(1, x.qty - 1) } : x; }) }); },
+inc: function () { set({ cart: cart.map(function (x, j) { return j === i ? { pid: x.pid, vid: x.vid, qty: Math.min(a, x.qty + 1) } : x; }) }); },
+rm: function () { set({ cart: cart.filter(function (x, j) { return j !== i; }), toast: "Barang dihapus dari keranjang", toastCart: false }); } };
+});
+var units = 0, sub = 0, cableUnitsDisc = 0, nonFlash = 0;
+cart.forEach(function (l) { var p = prod(l.pid); var v = vari(p, l.vid); units += l.qty; sub += v.price * l.qty; if (!p.flash) nonFlash += v.price * l.qty; if (p.cat === "kabel" && !p.flash) cableUnitsDisc += Math.floor(v.price * 0.1) * l.qty; });
+var ov = S.ov || null, sv = S.sv || null;
+var od = 0, odMsg = "", odOk = false;
+if (ov === "KABEL10") { if (cableUnitsDisc > 0) { od = Math.min(cableUnitsDisc, 30000); odOk = true; odMsg = "10% kategori Kabel" + (cableUnitsDisc > 30000 ? " (" + fmt(cableUnitsDisc) + ", dibatasi maks Rp30.000)" : "") + " · " + neg(od); } else odMsg = "Tidak berlaku: tidak ada barang kategori Kabel."; }
+if (ov === "HEMAT50") { if (nonFlash >= 500000) { od = 50000; odOk = true; odMsg = "Potongan " + neg(50000); } else odMsg = "Belum memenuhi: min. Rp500.000 di luar barang flash sale (saat ini " + fmt(nonFlash) + ", kurang " + fmt(500000 - nonFlash) + ")."; }
+var K = [
+{ id: "A", svc: "Kurir A · Reguler", eta: "Estimasi 2–3 hari", cost: 18000 },
+{ id: "B", svc: "Kurir B · Hemat", eta: "Estimasi 3–5 hari", cost: 15000 },
+{ id: "C", svc: "Kurir C · Kilat", eta: "Estimasi 1 hari", cost: 27000 },
+{ id: "D", svc: "Kurir D · Same Day", eta: "Tidak tersedia untuk alamat ini", cost: -1 }
+];
+var kid = S.kurir || "A"; var kSel = K.filter(function (k) { return k.id === kid; })[0];
+var ship = kSel.cost;
+var sd = 0, sdMsg = "", sdOk = false;
+if (sv === "GRATISONGKIR") { if (sub >= 300000) { sdOk = true; sd = Math.min(ship, 20000); sdMsg = "Gratis ongkir maks Rp20.000" + (screen === "cart" ? " · dihitung setelah pilih kurir" : " · " + neg(sd)); } else sdMsg = "Belum memenuhi: min. belanja Rp300.000 (kurang " + fmt(300000 - sub) + ")."; }
+var total = sub - od + ship - sd;
+
+var vchip = "min-height:36px;padding:0 12px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;";
+var vchips = ["KABEL10", "HEMAT50", "GRATISONGKIR", "DISKON99"].map(function (c) { var on = c === ov || c === sv; return { code: c, on: on ? "true" : "false",
+st: vchip + (on ? "border:2px solid #1F5AE0;background:#EAF0FD;color:#1747B5" : "border:1px dashed #7D8796;background:#FFFFFF;color:#0E1726"),
+apply: function () {
+if (c === "DISKON99") { set({ vmsg: "Kode DISKON99 tidak ditemukan atau sudah berakhir.", vErr: true }); return; }
+if (c === "GRATISONGKIR") { set({ sv: c, vmsg: "GRATISONGKIR dipasang.", vErr: false }); return; }
+set({ ov: c, vmsg: (ov && ov !== c) ? c + " menggantikan " + ov + " (hanya 1 voucher pesanan, D3)." : c + " dipasang.", vErr: false });
+} }; });
+var okBox = "display:flex;justify-content:space-between;align-items:center;gap:8px;border-radius:6px;padding:6px 10px;background:#E3F4EA;color:#14532D";
+var badBox = "display:flex;justify-content:space-between;align-items:center;gap:8px;border-radius:6px;padding:6px 10px;background:#FDF1DC;color:#6B4100";
+var applied = [];
+if (ov) applied.push({ code: ov, msg: odMsg, box: odOk ? okBox : badBox, rm: function () { set({ ov: null, vmsg: ov + " dilepas.", vErr: false }); } });
+if (sv) applied.push({ code: sv, msg: sdMsg, box: sdOk ? okBox : badBox, rm: function () { set({ sv: null, vmsg: sv + " dilepas.", vErr: false }); } });
+
+var rowSt = "display:flex;justify-content:space-between";
+var sumRows = [{ l: "Subtotal (" + units + " barang)", v: fmt(sub), st: rowSt }];
+if (ov) sumRows.push({ l: "Voucher " + ov, v: odOk ? neg(od) : "tidak berlaku", st: rowSt + ";color:" + (odOk ? "#1E7A45" : "#8A5300") });
+if (screen === "cart") sumRows.push({ l: "Ongkir", v: "dihitung di langkah 1", st: rowSt + ";color:#4A5568" });
+else { sumRows.push({ l: "Ongkir " + kSel.svc.split(" · ")[0], v: fmt(ship), st: rowSt }); if (sv) sumRows.push({ l: "Voucher " + sv, v: sdOk ? neg(sd) : "tidak berlaku", st: rowSt + ";color:" + (sdOk ? "#1E7A45" : "#8A5300") }); sumRows.push({ l: "Total (termasuk PPN)", v: fmt(total), st: rowSt + ";font-weight:700;font-size:15px;border-top:1px solid #E3E7ED;padding-top:4px;margin-top:2px" }); }
+
+// radios
+var selB = "width:100%;display:flex;gap:12px;align-items:center;padding:12px 14px;border:2px solid #1F5AE0;background:#EAF0FD;border-radius:6px;color:#0E1726";
+var norB = "width:100%;display:flex;gap:12px;align-items:center;padding:12.5px 14.5px;border:1.5px solid #7D8796;background:#FFFFFF;border-radius:6px;color:#0E1726";
+var disB = "width:100%;display:flex;gap:12px;align-items:center;padding:12.5px 14.5px;border:1.5px dashed #CBD2DC;background:#FFFFFF;border-radius:6px;color:#4A5568";
+var rOn = "display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:11px;border:2px solid #1F5AE0;box-sizing:border-box;flex:none";
+var rOff = "display:inline-flex;width:22px;height:22px;border-radius:11px;border:1.5px solid #7D8796;box-sizing:border-box;flex:none";
+var dot = "display:block;width:10px;height:10px;border-radius:5px;background:#1F5AE0";
+function radio(on, dis) { return { box: dis ? disB : (on ? selB : norB), radio: on ? rOn : rOff, dot: on ? dot : "display:none", on: on ? "true" : "false" }; }
+var A = [
+{ id: "rumah", label: "Rumah (utama)", line: "Jl. Melati No. 12, RT 03/RW 05, Kec. Coblong, Kota Bandung, Jawa Barat 40132" },
+{ id: "kantor", label: "Kantor", line: "Jl. Kenanga No. 8, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40111" }
+];
+var aid = S.addr || "rumah"; var aSel = A.filter(function (x) { return x.id === aid; })[0];
+var addrs = A.map(function (x) { var r = radio(x.id === aid, false); r.label = x.label; r.line = x.line; r.pick = function () { set({ addr: x.id }); }; return r; });
+var kurirs = K.map(function (k) { var dis = k.cost < 0; var r = radio(k.id === kid, dis); r.svc = k.svc; r.eta = k.eta; r.cost = dis ? "—" : fmt(k.cost); r.dis = dis; r.pick = function () { set({ kurir: k.id }); }; return r; });
+var PM = [
+{ id: "qris", t: "QRIS", s: "Bayar dalam 15 menit", exp: "10:30 WIB" },
+{ id: "ew", t: "E-wallet", s: "Bayar dalam 15 menit", exp: "10:30 WIB" },
+{ id: "va", t: "Virtual account Bank A", s: "Bayar dalam 24 jam", exp: "21 Okt 10:15 WIB" }
+];
+var pmid = S.pm || "qris";
+var pms = PM.map(function (m) { var r = radio(m.id === pmid, false); r.t = m.t; r.s = m.s; r.pick = function () { set({ pm: m.id }); }; return r; });
+
+// order
+var placeOrder = function () {
+var m = PM.filter(function (x) { return x.id === pmid; })[0];
+var r2 = {}; Object.keys(res).forEach(function (k) { r2[k] = res[k]; });
+cart.forEach(function (l) { r2[l.vid] = (r2[l.vid] || 0) + l.qty; });
+var ss = String(seq); while (ss.length < 4) ss = "0" + ss;
+set({ s: "paypage", res: r2, seq: seq + 1, payMsg: "",
+order: { no: "ORD-261020-" + ss, seq: ss, total: fmt(total), exp: m.exp, pmName: m.t, isQr: pmid === "qris", isVa: pmid === "va", isEw: pmid === "ew", cart: cart,
+lines: lines.map(function (l) { return { qty: l.qty, name: l.name, total: l.total }; }), sum: sumRows },
+cart: [], ov: null, sv: null, vmsg: "" });
+};
+var order = S.order || { lines: [], sum: [] };
+var release = function () { var r2 = {}; Object.keys(res).forEach(function (k) { r2[k] = res[k]; }); (order.cart || []).forEach(function (l) { r2[l.vid] = Math.max(0, (r2[l.vid] || 0) - l.qty); }); return r2; };
+
+// CTA + bar
+var ctaOn = "width:100%;min-height:48px;border:none;border-radius:6px;background:#1F5AE0;color:#FFFFFF;font-size:15px;font-weight:600";
+var ctaOff = "width:100%;min-height:48px;border:none;border-radius:6px;background:#CBD2DC;color:#4A5568;font-size:15px;font-weight:600";
+var cta = { t: "", dis: false, go: function () {}, st: ctaOn };
+if (screen === "pdp") cta = { t: pdp.canAdd ? "+ Keranjang · " + fmt(vari(prod(S.pid || "B01"), S.vid).price * Number(pdp.qty)) : "Stok habis", dis: !pdp.canAdd, go: pdp.add, st: pdp.canAdd ? ctaOn : ctaOff };
+if (screen === "cart") cta = { t: "Lanjut ke pengiriman", dis: cart.length === 0, go: go("ship"), st: cart.length ? ctaOn : ctaOff };
+if (screen === "ship") cta = { t: "Lanjut ke ringkasan · " + fmt(total), dis: false, go: go("review"), st: ctaOn };
+if (screen === "review") cta = { t: "Lanjut ke pembayaran", dis: false, go: go("paystep"), st: ctaOn };
+if (screen === "paystep") cta = { t: "Buat pesanan · " + fmt(total), dis: false, go: placeOrder, st: ctaOn };
+var hasBar = ["pdp", "cart", "ship", "review", "paystep"].indexOf(screen) >= 0 && !(screen === "cart" && cart.length === 0);
+var stepIdx = { ship: 0, review: 1, paystep: 2, paypage: 2 }[screen];
+var steps = ["Pengiriman", "Ringkasan", "Pembayaran"].map(function (t, i) { var cur = i === stepIdx; var done = i < stepIdx;
+return { n: done ? "✓" : String(i + 1), t: t, cur: cur ? "step" : "false", st: "display:flex;align-items:center;gap:6px;flex:1;font-weight:" + (cur ? "700" : "500") + ";color:" + (cur || done ? "#0E1726" : "#4A5568"),
+num: "display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:11px;font-size:12px;font-weight:700;" + (cur ? "background:#1F5AE0;color:#FFFFFF" : (done ? "background:#1E7A45;color:#FFFFFF" : "border:1.5px solid #7D8796;color:#4A5568")) }; });
+var backMap = { plp: "home", pdp: "plp", cart: "plp", ship: "cart", review: "ship", paystep: "review" };
+
+return {
+isHome: screen === "home", isPlp: screen === "plp", isPdp: screen === "pdp", isCart: screen === "cart", isShip: screen === "ship", isReview: screen === "review", isPayStep: screen === "paystep", isPayPage: screen === "paypage", isDone: screen === "done", isExpired: screen === "expired",
+hasBack: !!backMap[screen], back: go(backMap[screen] || "home"), goHome: go("home"), goCart: go("cart"), goShip: go("ship"), goAll: goCat("all"), openFlash: openPdp("B03"),
+cartCount: String(units), cartAria: "Keranjang, " + units + " barang",
+badgeSt: units ? "position:absolute;top:4px;right:2px;min-width:18px;height:18px;border-radius:9px;background:#1F5AE0;color:#FFFFFF;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box" : "display:none",
+homeCats: ["kabel", "charger", "adaptor", "hub"].map(function (c) { return { t: CAT[c], n: count(c), go: goCat(c) }; }),
+chips: chips, plp: plp, plpTitle: CAT[cat], plpCount: plp.length + " produk",
+pdp: pdp, lines: lines, cartEmpty: cart.length === 0, cartFull: cart.length > 0,
+vchips: vchips, applied: applied, vmsg: S.vmsg || "", vmsgSt: S.vmsg ? "font-size:13px;font-weight:600;color:" + (S.vErr ? "#C0262D" : "#1E7A45") : "display:none",
+sum: sumRows, showSum: screen !== "pdp", cta: cta, hasBar: hasBar, showStepper: stepIdx !== undefined, steps: steps,
+addrs: addrs, kurirs: kurirs, addrSel: aSel, kurirSel: kSel, pms: pms, order: order,
+payMsg: S.payMsg || "", payMsgSt: S.payMsg ? "font-size:13px;font-weight:600;color:#C0262D;background:#FDECEC;padding:8px 10px;border-radius:6px" : "display:none",
+simPaid: function () { set({ s: "done", payMsg: "" }); },
+simFail: function () { set({ payMsg: "Pembayaran gagal (simulasi). Pesanan tetap menunggu sampai " + order.exp + ". Coba lagi atau ganti metode." }); },
+simExpire: function () { set({ s: "expired", res: release(), payMsg: "" }); },
+restore: function () { set({ s: "cart", cart: order.cart || [], order: null, toast: "" }); },
+fillDemo: function () { set({ s: "cart", cart: [{ pid: "B01", vid: "B01-2M-BLK", qty: 2 }, { pid: "B03", vid: "B03", qty: 1 }], ov: null, sv: null, vmsg: "", toast: "" }); },
+resetAll: function () { set({ s: "home", cart: [], res: {}, seq: 10, ov: null, sv: null, vmsg: "", addr: "rumah", kurir: "A", pm: "qris", order: null, toast: "", payMsg: "", cat: "all" }); },
+toast: S.toast || "", toastCart: !!S.toastCart && screen !== "cart",
+toastSt: S.toast ? "position:absolute;left:12px;right:12px;bottom:" + (hasBar ? "150" : "16") + "px;background:#0E1726;color:#FFFFFF;border-radius:6px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px" : "display:none"
+};
+}
+}
+</script>
+</body>
+</html>

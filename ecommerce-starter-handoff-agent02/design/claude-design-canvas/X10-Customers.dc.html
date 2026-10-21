@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Customers</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 1500px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 62px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A13 · /admin/customers · CS (akun demo) · 20 Okt 10:16 WIB</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex">
+<nav aria-label="Admin" style="width: 232px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; font-size: 14px; min-height: 980px">
+<div style="padding: 0 8px 18px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span></div>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Dasbor</span><span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">PENJUALAN</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Pesanan</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Pelanggan</span>
+<span style="margin-top: auto; font-size: 12px; color: #4A5568; padding: 0 10px">Peran: CS · kontak disamarkan; membuka kontak wajib alasan dan dicatat di log audit</span>
+</nav>
+<main style="flex: 1; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600">Pelanggan</h1><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px"><button type="button" disabled aria-describedby="exp-why" style="height: 40px; padding: 0 16px; border: 1px solid #CBD2DC; border-radius: 6px; background: #F2F4F7; color: #4A5568; font-family: inherit; font-weight: 600">Ekspor CSV</button><span id="exp-why" style="font-size: 12px; color: #4A5568">Ekspor hanya untuk Owner/Admin (D10)</span></span></div>
+<div style="display: flex; gap: 12px; align-items: center"><label style="flex: 1; display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">Cari pelanggan<input type="search" placeholder="Nama atau no. pelanggan (C-0001)" style="height: 40px; border: 1px solid #7D8796; border-radius: 6px; padding: 0 12px; font-family: inherit; font-size: 14px"></label><span style="font-size: 12px; color: #4A5568; max-width: 320px; align-self: flex-end; padding-bottom: 4px">Pencarian berdasarkan email/telepon dinonaktifkan untuk peran CS agar kontak tidak bisa ditebak.</span></div>
+<div role="tablist" aria-label="Segmen" style="display: flex; gap: 22px; border-bottom: 1px solid #CBD2DC; font-size: 14px"><span role="tab" aria-selected="true" style="padding: 10px 0; font-weight: 600; border-bottom: 3px solid #1F5AE0">Semua 7</span><span role="tab" style="padding: 10px 0; color: #4A5568">Pembeli berulang 2</span><span role="tab" style="padding: 10px 0; color: #4A5568">Belum pernah bayar 1</span><span role="tab" style="padding: 10px 0; color: #4A5568">Ada refund 1</span><span role="tab" style="padding: 10px 0; color: #4A5568">Menunggu bayar 1</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; overflow: hidden">
+<table style="width: 100%; border-collapse: collapse; font-size: 13.5px">
+<caption style="text-align: left; padding: 10px 12px; font-size: 12px; color: #4A5568; caption-side: top">7 pelanggan · data demo (W00) · diurutkan menurut no. pelanggan</caption>
+<thead><tr style="background: #F2F4F7; color: #4A5568; font-size: 12px; text-align: left"><th scope="col" style="padding: 10px 12px">Pelanggan</th><th scope="col" style="padding: 10px 8px">Kontak</th><th scope="col" style="padding: 10px 8px; text-align: right">Dibayar</th><th scope="col" style="padding: 10px 8px; text-align: right">Total bersih</th><th scope="col" style="padding: 10px 8px">Pesanan (no.)</th><th scope="col" style="padding: 10px 8px">Email promo / Info pesanan WA</th><th scope="col" style="padding: 10px 8px">Segmen</th></tr></thead>
+<tbody><sc-for list="{{rows}}" as="c" hint-placeholder-count="7"><tr style="{{c.rowSt}}"><td style="padding: 10px 12px"><a href="#" style="font-weight: 600">{{c.name}}</a><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">{{c.id}}</div></td><td style="padding: 10px 8px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #2D3748">{{c.email}}<div>{{c.phone}}</div></td><td style="padding: 10px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{c.paid}}</td><td style="padding: 10px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{c.net}}</td><td style="padding: 10px 8px; color: #2D3748">{{c.orders}}</td><td style="padding: 10px 8px">{{c.consent}}</td><td style="padding: 10px 8px"><span style="{{c.segSt}}">{{c.seg}}</span></td></tr></sc-for></tbody>
+<tfoot><tr style="border-top: 2px solid #CBD2DC; background: #F2F4F7; font-weight: 600"><td style="padding: 10px 12px" colspan="2">Total</td><td style="padding: 10px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">8</td><td style="padding: 10px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">Rp2.097.000</td><td style="padding: 10px 8px; font-weight: 400; font-size: 12px; color: #4A5568" colspan="3">= Pendapatan bersih dasbor X01 (D12: dibayar − refund). 8 pesanan dibayar termasuk 0008 yang direfund penuh.</td></tr></tfoot>
+</table>
+</div>
+<div style="display: flex; gap: 16px; font-size: 12px; color: #4A5568"><span>"Total bersih" = jumlah pesanan dibayar − refund. Pesanan menunggu bayar (0010) dan kedaluwarsa (0006) tidak dihitung.</span><span>Izin selain C-0001 adalah data demo untuk menguji filter.</span></div>
+</main>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · A14 · profil C-0001</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column; font-size: 14px">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Kembali ke daftar pelanggan" style="width: 44px; height: 44px; border: none; background: none; font-size: 20px">‹</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Profil pelanggan</b></div>
+<section style="margin: 12px 12px 0; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Rina Pratama</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">C-0001 · akun email (bukan Google)</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px">r***@example.com<br>0812-****-1234</span>
+<button type="button" style="align-self: flex-start; min-height: 44px; padding: 0 14px; border: 1px solid #1F5AE0; border-radius: 6px; background: #FFFFFF; color: #1747B5; font-family: inherit; font-weight: 600">Tampilkan kontak (dicatat di log)</button>
+</section>
+<section style="margin: 10px 12px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 10px 12px"><div style="font-size: 12px; color: #4A5568">Pesanan dibayar</div><b style="font-family: 'JetBrains Mono', monospace; font-size: 16px">1</b></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 10px 12px"><div style="font-size: 12px; color: #4A5568">Total bersih</div><b style="font-family: 'JetBrains Mono', monospace; font-size: 16px">Rp386.000</b></div>
+</section>
+<section aria-labelledby="po" style="margin: 10px 12px 0; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px">
+<h2 id="po" style="margin: 0; font-size: 15px">Pesanan (2)</h2>
+<sc-for list="{{profOrders}}" as="o" hint-placeholder-count="2"><div style="display: flex; flex-direction: column; gap: 2px; border-top: 1px solid #E3E7ED; padding-top: 8px"><span style="display: flex; justify-content: space-between"><a href="#" style="font-family: 'JetBrains Mono', monospace; font-weight: 500">{{o.no}}</a><span style="{{o.stSt}}">{{o.st}}</span></span><span style="font-family: 'JetBrains Mono', monospace">{{o.total}}</span><span style="font-size: 12px; color: #4A5568">{{o.note}}</span></div></sc-for>
+</section>
+<section aria-labelledby="pc" style="margin: 10px 12px 0; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="pc" style="margin: 0; font-size: 15px">Izin komunikasi</h2>
+<sc-for list="{{consents}}" as="k" hint-placeholder-count="3"><span style="display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid #E3E7ED; padding-top: 6px"><span>{{k.label}}<div style="font-size: 12px; color: #4A5568">{{k.src}}</div></span><b style="{{k.valSt}}">{{k.val}}</b></span></sc-for>
+<span style="font-size: 12px; color: #4A5568">Hanya pelanggan yang dapat mengubah izin. CS hanya melihat.</span>
+</section>
+<section aria-labelledby="pa" style="margin: 10px 12px 0; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="pa" style="margin: 0; font-size: 15px">Alamat (2)</h2>
+<span style="border-top: 1px solid #E3E7ED; padding-top: 6px">Rumah · utama<div style="font-size: 12px; color: #4A5568">Jalan disamarkan · Kota Bandung 40132</div></span>
+<span style="border-top: 1px solid #E3E7ED; padding-top: 6px">Kantor<div style="font-size: 12px; color: #4A5568">Alamat lengkap disamarkan</div></span>
+</section>
+<section aria-labelledby="pw" style="margin: 10px 12px 0; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="pw" style="margin: 0; font-size: 15px">Wishlist (2)</h2>
+<span style="display: flex; justify-content: space-between; border-top: 1px solid #E3E7ED; padding-top: 6px"><span>B04 Hub USB-C 7-in-1</span><span style="font-size: 12px; color: #8A5300; font-weight: 600">Sisa 4</span></span>
+<span style="display: flex; justify-content: space-between; border-top: 1px solid #E3E7ED; padding-top: 6px"><span>B06 Kabel HDMI 2.1</span><span style="font-size: 12px; color: #C0262D; font-weight: 600">Stok habis</span></span>
+</section>
+<div style="margin: 12px; display: flex; flex-direction: column; gap: 8px">
+<button type="button" style="min-height: 48px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 15px">Buat tiket bantuan</button>
+<span style="font-size: 12px; color: #4A5568">Permintaan hapus/ekspor data pribadi diteruskan ke Owner (tidak tersedia untuk CS).</span>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · buka kontak · dialog alasan</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column; font-size: 14px; position: relative; min-height: 844px">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><span style="width: 44px"></span><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Profil pelanggan</b></div>
+<div aria-hidden="true" style="position: absolute; inset: 56px 0 0 0; background: rgba(14,23,38,0.55)"></div>
+<div role="dialog" aria-modal="true" aria-labelledby="rv-t" style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 12px 12px 0 0; padding: 20px 16px 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="rv-t" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Tampilkan kontak Rina Pratama?</h2>
+<span style="color: #2D3748">Email dan nomor WhatsApp akan terlihat selama 60 detik lalu disamarkan lagi.</span>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px"><legend style="font-weight: 600; padding: 0 0 6px">Alasan (wajib)</legend>
+<sc-for list="{{reasons}}" as="r" hint-placeholder-count="3"><label style="min-height: 44px; display: flex; align-items: center; gap: 10px; border: 1px solid #CBD2DC; border-radius: 6px; padding: 0 12px"><span style="{{r.dot}}"></span>{{r.label}}</label></sc-for>
+</fieldset>
+<div style="background: #F2F4F7; border-radius: 6px; padding: 10px 12px; font-size: 12.5px; color: #2D3748; font-family: 'JetBrains Mono', monospace">Log audit: CONTACT_REVEAL · C-0001 · akun CS demo · alasan · 20 Okt 10:16 WIB</div>
+<div style="display: flex; gap: 8px"><button type="button" style="flex: 1; min-height: 48px; border: 1px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 600">Batal</button><button type="button" style="flex: 1; min-height: 48px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">Tampilkan</button></div>
+<span style="font-size: 12px; color: #4A5568">Durasi 60 detik dan daftar alasan adalah usulan; perlu keputusan Owner/DPO.</span>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+var chip = "display:inline-flex;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;";
+var rep = chip + "background:#EAF0FD;color:#1747B5";
+var none = chip + "background:#FDECEC;color:#A3302A";
+var refd = chip + "background:#FFF3DC;color:#8A5300";
+var plain = chip + "background:#F2F4F7;color:#4A5568";
+var row = "border-top:1px solid #E3E7ED";
+var sel = "border-top:1px solid #E3E7ED;background:#F6F9FF;box-shadow:inset 3px 0 0 #1F5AE0";
+var on = "color:#1E7A45";
+var off = "color:#4A5568";
+var radio = "width:16px;height:16px;border-radius:50%;border:2px solid #7D8796;box-sizing:border-box;flex:none";
+var radioOn = "width:16px;height:16px;border-radius:50%;border:5px solid #1F5AE0;box-sizing:border-box;flex:none";
+return {
+rows: [
+{ id: "C-0001", name: "Rina Pratama", email: "r***@example.com", phone: "0812-****-1234", paid: "1", net: "Rp386.000", orders: "0003 · 0010 menunggu", consent: "Tidak / Ya", seg: "Menunggu bayar", segSt: plain, rowSt: sel },
+{ id: "C-0002", name: "Budi H.", email: "b***@example.com", phone: "0813-****-2201", paid: "2", net: "Rp364.000", orders: "0001 · 0007", consent: "Ya / Tidak", seg: "Pembeli berulang", segSt: rep, rowSt: row },
+{ id: "C-0003", name: "Citra W.", email: "c***@example.com", phone: "0812-****-3356", paid: "2", net: "Rp693.000", orders: "0002 · 0009", consent: "Ya / Ya", seg: "Pembeli berulang", segSt: rep, rowSt: row },
+{ id: "C-0004", name: "Dimas A.", email: "d***@example.com", phone: "0817-****-4403", paid: "1", net: "Rp87.000", orders: "0004", consent: "Tidak / Tidak", seg: "—", segSt: "", rowSt: row },
+{ id: "C-0005", name: "Eka P.", email: "e***@example.com", phone: "0819-****-5504", paid: "1", net: "Rp567.000", orders: "0005", consent: "Ya / Tidak", seg: "—", segSt: "", rowSt: row },
+{ id: "C-0006", name: "Fajar N.", email: "f***@example.com", phone: "0821-****-6605", paid: "0", net: "Rp0", orders: "0006 kedaluwarsa", consent: "Tidak / Tidak", seg: "Belum pernah bayar", segSt: none, rowSt: row },
+{ id: "C-0007", name: "Gita L.", email: "g***@example.com", phone: "0822-****-7706", paid: "1", net: "Rp0", orders: "0008 refund penuh", consent: "Tidak / Ya", seg: "Ada refund", segSt: refd, rowSt: row }
+],
+profOrders: [
+{ no: "0010", st: "Menunggu bayar", stSt: plain, total: "Rp587.250", note: "QRIS berlaku s/d 10:30 WIB · tidak dihitung ke total bersih" },
+{ no: "0003", st: "Dikirim", stSt: rep, total: "Rp386.000", note: "Pembaruan kurir terlambat (simulasi) · lihat X03" }
+],
+consents: [
+{ label: "Email promosi", src: "Dimatikan pelanggan, 20 Okt", val: "Tidak", valSt: off },
+{ label: "Info pesanan via WhatsApp", src: "Diizinkan pelanggan, 14 Okt", val: "Ya", valSt: on },
+{ label: "Rekomendasi pribadi", src: "Diizinkan pelanggan, 14 Okt", val: "Ya", valSt: on }
+],
+reasons: [
+{ label: "Konfirmasi pengiriman pesanan", dot: radioOn },
+{ label: "Tindak lanjut tiket bantuan", dot: radio },
+{ label: "Verifikasi refund", dot: radio }
+]
+};
+}
+}
+</script>
+</body>
+</html>

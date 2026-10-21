@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>State Sheet</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 1600px; min-height: 2300px; box-sizing: border-box; padding: 56px 64px; background: #F6F6F3; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 8px; border-bottom: 2px solid #0E1726; padding-bottom: 20px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5568">H20 · M4 · STATE SHEET</div>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 600">Loading, empty, error, unavailable</h1>
+<div style="font-size: 16px; color: #2D3748; line-height: 1.5">Five reusable state patterns (shown in Sambung tokens; Halimun uses the same structure with its own tokens), then where each essential screen shows each state. Cell values point to the board that draws it, or to the pattern used.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px" aria-busy="true">
+<b style="font-size: 14px">P1 · Loading</b>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px"><div style="height: 70px; border-radius: 4px; background: #E3E7ED"></div><div style="height: 70px; border-radius: 4px; background: #E3E7ED"></div><div style="height: 10px; border-radius: 4px; background: #E3E7ED"></div><div style="height: 10px; border-radius: 4px; background: #E3E7ED"></div></div>
+<span style="font-size: 12px; color: #4A5568">Skeleton in final layout; no shimmer with reduced motion; announced via aria-busy; spinner only inside buttons.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 14px">P2 · Empty</b>
+<div style="background: #F2F4F7; border-radius: 6px; padding: 14px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center"><span style="width: 36px; height: 36px; border-radius: 18px; background: #FFFFFF"></span><b style="font-size: 13px">Keranjangmu kosong</b><span style="font-size: 12px; background: #1F5AE0; color: #FFFFFF; border-radius: 4px; padding: 4px 8px">Mulai belanja</span></div>
+<span style="font-size: 12px; color: #4A5568">Heading, one sentence, one action. Never a blank area.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 14px">P3 · Recoverable error</b>
+<div style="background: #FCE6E7; border: 1.5px solid #C0262D; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #7A1A1E"><b style="color: #C0262D">Tarif belum bisa dimuat</b><span>Coba lagi atau hubungi CS.</span><span style="align-self: flex-start; background: #0E1726; color: #FFFFFF; border-radius: 4px; padding: 4px 8px">Coba lagi</span></div>
+<span style="font-size: 12px; color: #4A5568">role="alert"; says what happened and what to do; user input is kept.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 14px">P4 · Unavailable option</b>
+<div style="border: 1.5px dashed #CBD2DC; border-radius: 6px; padding: 12px; font-size: 12px; color: #4A5568; display: flex; flex-direction: column; gap: 4px"><b style="color: #0E1726"><s>Putih</s> · Habis</b><span>Kurir D · Tidak tersedia untuk alamat ini</span></div>
+<span style="font-size: 12px; color: #4A5568">Stays visible with the reason; disabled; skipped by arrow keys in radio groups.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 14px">P5 · Success / changed</b>
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="background: #E3F4EA; color: #1E7A45; border-radius: 6px; padding: 10px; font-size: 12px; font-weight: 600">✓ Perubahan disimpan</div><div style="background: #FDF1DC; color: #8A5300; border-radius: 6px; padding: 10px; font-size: 12px; font-weight: 600">1 harga berubah sejak ditambahkan</div></div>
+<span style="font-size: 12px; color: #4A5568">role="status"; toasts 5 s and pausable; changes in price/stock always explained.</span>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #CBD2DC">
+<div style="display: grid; grid-template-columns: 220px repeat(5, minmax(0, 1fr)); background: #0E1726; color: #FFFFFF; font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em">
+<div style="padding: 10px 12px">SCREEN</div><div style="padding: 10px 12px">LOADING</div><div style="padding: 10px 12px">EMPTY</div><div style="padding: 10px 12px">ERROR</div><div style="padding: 10px 12px">UNAVAILABLE</div><div style="padding: 10px 12px">SUCCESS / CHANGED</div>
+</div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="20">
+<div style="display: grid; grid-template-columns: 220px repeat(5, minmax(0, 1fr)); border-top: 1px solid #E3E7ED; font-size: 12.5px; line-height: 1.4">
+<div style="padding: 8px 12px; font-weight: 600">{{r.s}}</div><div style="padding: 8px 12px">{{r.l}}</div><div style="padding: 8px 12px">{{r.e}}</div><div style="padding: 8px 12px">{{r.x}}</div><div style="padding: 8px 12px">{{r.u}}</div><div style="padding: 8px 12px">{{r.ok}}</div>
+</div>
+</sc-for>
+</div>
+<span style="font-size: 13px; color: #4A5568">"P1"…"P5" = pattern applied in M7 without a separate board. "—" = state does not apply. Board IDs (H03, H06…) = drawn explicitly.</span>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":2300}}'>
+class Component extends DCLogic {
+renderVals() {
+function r(s, l, e, x, u, ok) { return { s: s, l: l, e: e, x: x, u: u, ok: ok }; }
+return {
+rows: [
+r("S01 Homepage", "P1 per section", "Empty campaign slot hidden", "Section fails → hidden, page stays", "—", "—"),
+r("S02/S03 Catalog + filters", "P1 grid", "P2 \"Tidak ada produk\" + reset filters", "P3 + retry", "Zero-count filter disabled (H03)", "Live count on filter sheet (H03)"),
+r("S04/S05 Search", "P1 suggestions", "No results (H09)", "Search failed (H09)", "—", "Synonym notice (H09)"),
+r("S06/S07 Product detail", "P1 gallery + info", "—", "P3 + retry", "Variant sold out, low stock (H04)", "Added toast + drawer (H06)"),
+r("S08 Comparison", "P1 table", "Empty slot (H10)", "P3", "Max 4 reached (H10)", "—"),
+r("S09/S10 Cart", "P1 lines", "P2 empty cart", "P3", "Line sold out (W05)", "Price changed, qty capped (W05)"),
+r("S11–S14 Auth", "Button loading", "—", "Wrong password, email used (H08)", "Locked 15 min (prototype)", "Email sent, link expired (H15)"),
+r("S15/S16 Checkout 1", "Quote loading P1", "No saved address → form", "Quote failed (H06)", "Courier not available (H06)", "Address change invalidates (H06)"),
+r("S17/S18 Checkout 2", "Voucher check button", "—", "Voucher invalid (H07)", "—", "Voucher applied (H07)"),
+r("S19 Payment method", "Button loading", "—", "Stock/price changed at order (flow board 15)", "Future method disabled (H07)", "—"),
+r("S20/S21 Payment", "Status check loading", "—", "Failed (H07)", "Expired (H07)", "Paid (H07)"),
+r("S22 Confirmation", "—", "—", "—", "—", "H07"),
+r("S23 Account", "P1 cards", "No active orders → P2", "P3", "—", "—"),
+r("S24 Profile", "Button loading", "Birth date empty (H14)", "Field validation (W06 pattern)", "—", "Saved (H14)"),
+r("S25 Addresses", "P1", "P2 + add address", "P3", "—", "Delete confirm (H14)"),
+r("S26 Order history", "P1 list", "Empty tab (H12)", "P3", "—", "—"),
+r("S27 Order detail", "P1", "No tracking ref yet (text)", "P3", "Update overdue (H13)", "Delivery exception (H13)"),
+r("S28 Wishlist", "P1", "P2 (H14 note)", "P3", "Item sold out (H14)", "Moved to cart toast P5"),
+r("S29 Preferences", "Switch pending", "—", "Save failed P3", "—", "Saved P5"),
+r("S42/S43 System", "—", "—", "503 (H19)", "404 (H19)", "—")
+]
+};
+}
+}
+</script>
+</body>
+</html>

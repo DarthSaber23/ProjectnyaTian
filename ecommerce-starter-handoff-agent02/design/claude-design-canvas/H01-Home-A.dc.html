@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Halimun Homepage</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#23201D}a:hover{color:#4F6B57}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 2400px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: Figtree, system-ui, sans-serif; color: #23201D; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S01 · HALIMUN (BRAND A) · data W00</div>
+<div style="width: 1440px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="background: #23201D; color: #F7F4EF; font-size: 14px; padding: 10px; text-align: center">Bundel Rutinitas Pagi — hemat Rp48.000 · <a href="#" style="color: #F7F4EF; text-decoration: underline">Lihat bundel</a></div>
+<div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 22px 56px; border-bottom: 1px solid #D9CFC4">
+<nav style="display: flex; gap: 30px; font-size: 15px; font-weight: 500"><a href="#" style="text-decoration: none">Kebutuhan Kulit</a><a href="#" style="text-decoration: none">Koleksi</a><a href="#" style="text-decoration: none">Bundel</a><a href="#" style="text-decoration: none">Jurnal</a></nav>
+<span style="font-family: Newsreader, serif; font-size: 34px; letter-spacing: -0.01em">halimun</span>
+<div style="display: flex; gap: 22px; justify-content: flex-end; align-items: center; font-size: 15px">
+<button type="button" aria-label="Cari" style="background: none; border: none; padding: 10px; cursor: pointer; color: #23201D"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<a href="#" style="text-decoration: none">Masuk</a>
+<a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 6px; font-weight: 600"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 7h12l-1 13H7z"></path><path d="M9 7a3 3 0 0 1 6 0"></path></svg>Keranjang (0)</a>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); height: 620px">
+<div style="background: #EFE6DC; padding: 0 72px; display: flex; flex-direction: column; justify-content: center; gap: 26px">
+<span style="font-size: 14px; font-weight: 600; color: #4F6B57">Bundel Rutinitas Pagi · 3 langkah</span>
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 64px; line-height: 1.04; letter-spacing: -0.015em">Rutinitas sederhana untuk kulit yang terasa nyaman</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3E3833; max-width: 460px">Bersihkan, lembapkan, lindungi. Tiga produk yang dipilih untuk dipakai setiap pagi.</p>
+<div style="display: flex; gap: 14px">
+<a href="#" style="background: #4F6B57; color: #FFFFFF; border-radius: 999px; padding: 16px 28px; font-weight: 600; text-decoration: none">Lihat bundel · Rp379.000</a>
+<a href="#" style="border: 1.5px solid #23201D; border-radius: 999px; padding: 15px 26px; font-weight: 600; text-decoration: none">Temukan rutinitasmu</a>
+</div>
+</div>
+<div style="background: #D9CFC4; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: 0; padding: 0 40px 60px">
+<div style="height: 360px"><dc-import name="ProductArt" kind="bottle" bg="#D9CFC4" fg="#FFFFFF" accent="#4F6B57" label="Gentle Low-pH Cleanser" hint-size="100%,360px"></dc-import></div>
+<div style="height: 300px"><dc-import name="ProductArt" kind="jar" bg="#D9CFC4" fg="#F7F4EF" accent="#8C3B2E" label="Barrier Repair Moisturizer" hint-size="100%,300px"></dc-import></div>
+<div style="height: 340px"><dc-import name="ProductArt" kind="tube" bg="#D9CFC4" fg="#FFFFFF" accent="#23201D" label="Daily Sunscreen Gel" hint-size="100%,340px"></dc-import></div>
+</div>
+</div>
+
+<section style="padding: 80px 56px 64px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 40px">Belanja berdasarkan kebutuhan kulit</h2><a href="#" style="font-size: 15px; font-weight: 600">Semua produk</a></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
+<sc-for list="{{concerns}}" as="c" hint-placeholder-count="4">
+<a href="#" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+<div style="height: 260px; border-radius: 16px; overflow: hidden"><dc-import name="ProductArt" kind="{{c.art}}" bg="{{c.bg}}" fg="#FFFFFF" accent="#4F6B57" label="{{c.n}}" hint-size="100%,260px"></dc-import></div>
+<span style="font-family: Newsreader, serif; font-size: 24px">{{c.n}}</span>
+<span style="font-size: 14px; color: #6B625A">{{c.k}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section style="margin: 0 56px 72px; background: #FFFFFF; border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr)">
+<div style="background: #EFE6DC; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; padding: 40px 32px; height: 420px; box-sizing: border-box">
+<div style="height: 300px"><dc-import name="ProductArt" kind="bottle" bg="#EFE6DC" fg="#FFFFFF" accent="#4F6B57" label="Cleanser 100 ml" hint-size="100%,300px"></dc-import></div>
+<div style="height: 240px"><dc-import name="ProductArt" kind="jar" bg="#EFE6DC" fg="#FFFFFF" accent="#4F6B57" label="Moisturizer 50 ml" hint-size="100%,240px"></dc-import></div>
+<div style="height: 280px"><dc-import name="ProductArt" kind="tube" bg="#EFE6DC" fg="#FFFFFF" accent="#4F6B57" label="Sunscreen Gel 50 ml" hint-size="100%,280px"></dc-import></div>
+</div>
+<div style="padding: 56px; display: flex; flex-direction: column; gap: 18px; justify-content: center">
+<span style="align-self: flex-start; background: #E7EEE8; color: #2F4A37; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600">Bundel · hemat Rp48.000</span>
+<h2 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 40px; line-height: 1.1">Bundel Rutinitas Pagi</h2>
+<ol style="margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: #3E3833"><li>Gentle Low-pH Cleanser 100 ml</li><li>Barrier Repair Moisturizer 50 ml</li><li>Daily Sunscreen Gel 50 ml</li></ol>
+<div style="display: flex; gap: 12px; align-items: baseline"><b style="font-size: 28px">Rp379.000</b><s style="font-size: 17px; color: #6B625A">Rp427.000</s></div>
+<span style="font-size: 14px; color: #8A5300; font-weight: 600">Sisa 9 bundel</span>
+<button type="button" style="align-self: flex-start; background: #4F6B57; color: #FFFFFF; border: none; border-radius: 999px; padding: 16px 30px; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600; cursor: pointer">Tambah bundel ke keranjang</button>
+</div>
+</section>
+
+<section style="padding: 0 56px 72px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 40px">Pilihan Kami</h2><span style="font-size: 14px; color: #6B625A">Dikurasi tim halimun</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
+<sc-for list="{{picks}}" as="p" hint-placeholder-count="3">
+<article style="display: flex; flex-direction: column; gap: 10px">
+<div style="height: 380px; border-radius: 16px; overflow: hidden; position: relative">
+<dc-import name="ProductArt" kind="{{p.art}}" bg="#EFE6DC" fg="#FFFFFF" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,380px"></dc-import>
+<span style="{{p.badgeSt}}">{{p.badge}}</span>
+<button type="button" aria-label="Simpan ke wishlist" style="position: absolute; right: 14px; top: 14px; width: 44px; height: 44px; border-radius: 22px; border: none; background: #FFFFFF; color: #23201D; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></button>
+</div>
+<span style="font-size: 14px; color: #6B625A">{{p.cat}}</span>
+<a href="#" style="font-family: Newsreader, serif; font-size: 26px; line-height: 1.15; text-decoration: none">{{p.name}}</a>
+<span style="font-size: 15px; color: #3E3833">{{p.benefit}}</span>
+<div style="display: flex; gap: 10px; align-items: baseline"><b style="font-size: 18px">{{p.price}}</b><s style="font-size: 15px; color: #6B625A">{{p.was}}</s><span style="font-size: 14px; color: #6B625A">★ {{p.rt}}</span></div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section style="margin: 0 56px 72px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 14px; justify-content: center; padding-right: 24px"><h2 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 36px; line-height: 1.1">Kenali bahan di produkmu</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3E3833">Penjelasan singkat tentang bahan utama dan cara memakainya bersama.</p></div>
+<a href="#" style="background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 10px; text-decoration: none"><span style="font-family: Newsreader, serif; font-size: 28px">Niacinamide</span><span style="font-size: 15px; line-height: 1.6; color: #3E3833">Apa itu, kapan dipakai, dan urutan pakai dengan pelembap.</span><span style="font-size: 14px; font-weight: 600; color: #4F6B57">Baca · Niacinamide Serum →</span></a>
+<a href="#" style="background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 10px; text-decoration: none"><span style="font-family: Newsreader, serif; font-size: 28px">Ceramide</span><span style="font-size: 15px; line-height: 1.6; color: #3E3833">Peran ceramide pada lapisan terluar kulit, dijelaskan sederhana.</span><span style="font-size: 14px; font-weight: 600; color: #4F6B57">Baca · Barrier Repair Moisturizer →</span></a>
+</section>
+
+<section style="background: #EFE6DC; padding: 64px 56px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 36px">Kata pembeli</h2><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B625A">DATA DEMO · pembelian terverifikasi (D8)</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<sc-for list="{{reviews}}" as="r" hint-placeholder-count="3">
+<figure style="margin: 0; background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px"><span aria-label="{{r.aria}}" style="color: #8C3B2E; letter-spacing: 2px">{{r.stars}}</span><blockquote style="margin: 0; font-family: Newsreader, serif; font-size: 20px; line-height: 1.4">{{r.q}}</blockquote><figcaption style="font-size: 13px; color: #6B625A">{{r.by}}</figcaption></figure>
+</sc-for>
+</div>
+</section>
+
+<section style="padding: 64px 56px; display: grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 56px; align-items: center; border-bottom: 1px solid #D9CFC4">
+<div style="display: flex; flex-direction: column; gap: 10px"><h2 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 34px">Tips perawatan &amp; promo, sebulan dua kali</h2><span style="font-size: 15px; color: #6B625A">Bisa berhenti kapan saja dari tautan di email.</span></div>
+<form style="display: flex; flex-direction: column; gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Email<span style="display: flex; gap: 8px"><input type="email" placeholder="nama@email.com" style="flex: 1; height: 48px; border: 1.5px solid #8C8279; border-radius: 999px; padding: 0 18px; font-family: Figtree, sans-serif; font-size: 15px; background: #FFFFFF"><button type="button" style="background: #23201D; color: #F7F4EF; border: none; border-radius: 999px; padding: 0 22px; font-family: Figtree, sans-serif; font-weight: 600; font-size: 15px">Daftar</button></span></label>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 13px; color: #3E3833"><input type="checkbox"> Saya setuju menerima email promosi dari halimun.</label>
+</form>
+</section>
+<footer style="padding: 40px 56px 48px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; font-size: 14px; color: #3E3833">
+<div style="display: flex; flex-direction: column; gap: 10px"><span style="font-family: Newsreader, serif; font-size: 28px; color: #23201D">halimun</span><span>Perawatan kulit yang tenang dan jujur.</span><a href="#" style="font-weight: 600">Hubungi CS via WhatsApp</a></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><b style="color: #23201D">Bantuan</b><a href="#">Kontak</a><a href="#">FAQ</a><a href="#">Info pengiriman</a><a href="#">Pengembalian</a></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><b style="color: #23201D">Tentang</b><a href="#">Cerita kami</a><a href="#">Jurnal</a><a href="#">Pembelian grosir</a></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><b style="color: #23201D">Legal</b><a href="#">Kebijakan privasi</a><a href="#">Syarat &amp; ketentuan</a><span style="font-size: 12px; color: #6B625A">Harga sudah termasuk PPN</span></div>
+</footer>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390</div>
+<div style="width: 390px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="background: #23201D; color: #F7F4EF; font-size: 12px; padding: 8px 12px; text-align: center">Bundel Rutinitas Pagi — hemat Rp48.000</div>
+<div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 6px 8px; border-bottom: 1px solid #D9CFC4">
+<button type="button" aria-label="Menu" style="width: 44px; height: 44px; background: none; border: none; color: #23201D"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+<span style="font-family: Newsreader, serif; font-size: 26px">halimun</span>
+<div style="display: flex; justify-content: flex-end"><button type="button" aria-label="Cari" style="width: 44px; height: 44px; background: none; border: none; color: #23201D"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button><button type="button" aria-label="Keranjang, 0 barang" style="width: 44px; height: 44px; background: none; border: none; color: #23201D"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 7h12l-1 13H7z"></path><path d="M9 7a3 3 0 0 1 6 0"></path></svg></button></div>
+</div>
+<div style="height: 280px"><dc-import name="ProductArt" kind="bottle" bg="#D9CFC4" fg="#FFFFFF" accent="#4F6B57" label="Gentle Low-pH Cleanser" hint-size="100%,280px"></dc-import></div>
+<div style="background: #EFE6DC; padding: 24px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 13px; font-weight: 600; color: #4F6B57">Bundel Rutinitas Pagi · 3 langkah</span>
+<span style="font-family: Newsreader, serif; font-size: 34px; line-height: 1.08">Rutinitas sederhana untuk kulit yang terasa nyaman</span>
+<a href="#" style="background: #4F6B57; color: #FFFFFF; border-radius: 999px; padding: 15px; text-align: center; font-weight: 600; text-decoration: none">Lihat bundel · Rp379.000</a>
+</div>
+<div style="padding: 28px 20px 12px; font-family: Newsreader, serif; font-size: 26px">Kebutuhan kulit</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 20px 28px">
+<sc-for list="{{concerns}}" as="c" hint-placeholder-count="4">
+<a href="#" style="display: flex; flex-direction: column; gap: 8px; text-decoration: none"><div style="height: 140px; border-radius: 14px; overflow: hidden"><dc-import name="ProductArt" kind="{{c.art}}" bg="{{c.bg}}" fg="#FFFFFF" accent="#4F6B57" label="{{c.n}}" hint-size="100%,140px"></dc-import></div><span style="font-size: 15px; font-weight: 600">{{c.n}}</span></a>
+</sc-for>
+</div>
+<div style="padding: 0 20px 12px; display: flex; justify-content: space-between; align-items: baseline"><span style="font-family: Newsreader, serif; font-size: 26px">Pilihan Kami</span><span style="font-size: 12px; color: #6B625A">Dikurasi</span></div>
+<div style="display: flex; gap: 14px; padding: 0 20px 28px; overflow: hidden">
+<sc-for list="{{picks}}" as="p" hint-placeholder-count="3">
+<div style="flex: none; width: 200px; display: flex; flex-direction: column; gap: 6px"><div style="height: 240px; border-radius: 14px; overflow: hidden"><dc-import name="ProductArt" kind="{{p.art}}" bg="#EFE6DC" fg="#FFFFFF" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,240px"></dc-import></div><span style="font-family: Newsreader, serif; font-size: 19px; line-height: 1.2">{{p.name}}</span><b style="font-size: 15px">{{p.price}}</b></div>
+</sc-for>
+</div>
+<div style="margin: 0 20px 28px; background: #FFFFFF; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #2F4A37">Bundel · hemat Rp48.000</span><span style="font-family: Newsreader, serif; font-size: 24px">Bundel Rutinitas Pagi</span><span><b style="font-size: 18px">Rp379.000</b> <s style="color: #6B625A">Rp427.000</s></span><button type="button" style="background: #4F6B57; color: #FFFFFF; border: none; border-radius: 999px; padding: 14px; font-family: Figtree, sans-serif; font-weight: 600; font-size: 15px">Tambah bundel</button></div>
+<div style="border-top: 1px solid #D9CFC4; display: flex; flex-direction: column; font-size: 15px; font-weight: 600"><span style="padding: 16px 20px; border-bottom: 1px solid #D9CFC4; display: flex; justify-content: space-between">Bantuan <span aria-hidden="true">+</span></span><span style="padding: 16px 20px; border-bottom: 1px solid #D9CFC4; display: flex; justify-content: space-between">Tentang <span aria-hidden="true">+</span></span><span style="padding: 16px 20px; display: flex; justify-content: space-between">Legal <span aria-hidden="true">+</span></span></div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":2400}}'>
+class Component extends DCLogic {
+renderVals() {
+var badge = "position:absolute;left:14px;top:14px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;";
+return {
+concerns: [
+{ n: "Kulit sensitif", k: "3 produk", art: "bottle", bg: "#E4DACE" },
+{ n: "Kulit kering", k: "2 produk", art: "jar", bg: "#DCE3DA" },
+{ n: "Tampak kusam", k: "1 produk", art: "dropper", bg: "#EADBD3" },
+{ n: "Perlindungan harian", k: "1 produk", art: "tube", bg: "#E6E0D2" }
+],
+picks: [
+{ cat: "Pembersih", name: "Gentle Low-pH Cleanser", benefit: "100 ml / 200 ml · lembut untuk pagi dan malam", price: "mulai Rp119.000", was: "", rt: "4,8 (342)", art: "bottle", ac: "#4F6B57", badge: "Terlaris", badgeSt: badge + "background:#FFFFFF;color:#23201D" },
+{ cat: "Serum", name: "Niacinamide Serum 30 ml", benefit: "Beli 2, gratis Travel Cleanser 30 ml", price: "Rp149.000", was: "Rp179.000", rt: "4,6 (156)", art: "dropper", ac: "#8C3B2E", badge: "Beli 2 gratis 1", badgeSt: badge + "background:#8C3B2E;color:#FFFFFF" },
+{ cat: "Pelembap", name: "Barrier Repair Moisturizer", benefit: "50 ml · bagian dari Bundel Rutinitas Pagi", price: "Rp169.000", was: "", rt: "4,7 (190)", art: "jar", ac: "#4F6B57", badge: "Bundel", badgeSt: badge + "background:#E7EEE8;color:#2F4A37" }
+],
+reviews: [
+{ stars: "★★★★★", aria: "5 dari 5 bintang", q: "[Contoh ulasan dari data demo — teks asli diambil dari ulasan terverifikasi.]", by: "Pembeli D. · Gentle Low-pH Cleanser" },
+{ stars: "★★★★★", aria: "5 dari 5 bintang", q: "[Contoh ulasan dari data demo — teks asli diambil dari ulasan terverifikasi.]", by: "Pembeli S. · Bundel Rutinitas Pagi" },
+{ stars: "★★★★☆", aria: "4 dari 5 bintang", q: "[Contoh ulasan dari data demo — teks asli diambil dari ulasan terverifikasi.]", by: "Pembeli A. · Niacinamide Serum" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

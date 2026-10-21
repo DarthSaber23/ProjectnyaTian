@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// One row per fork. Brand id is configuration (halimun / sambung), not a tenant platform.
+model Store {
+  id         String      @id
+  name       String
+  timezone   String      @default("Asia/Jakarta")
+  currency   String      @default("IDR")
+  categories Category[]
+  products   Product[]
+  promotions Promotion[]
+}
+
+model Category {
+  id       String    @id
+  storeId  String
+  store    Store     @relation(fields: [storeId], references: [id])
+  name     String
+  slug     String
+  products Product[]
+}
+
+model Product {
+  id         String    @id
+  storeId    String
+  store      Store     @relation(fields: [storeId], references: [id])
+  categoryId String
+  category   Category  @relation(fields: [categoryId], references: [id])
+  slug       String
+  name       String
+  spec       String?
+  tags       String[]
+  art        Json
+  specs      Json?
+  components Json?
+  variants   Variant[]
+
+  @@unique([storeId, slug])
+}
+
+model Variant {
+  sku       String  @id
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  label     String
+  price     Int
+  compareAt Int?
+  onHand    Int
+  reserved  Int
+  attrs     Json?
+}
+
+model Promotion {
+  id      String @id @default(cuid())
+  storeId String
+  store   Store  @relation(fields: [storeId], references: [id])
+  code    String
+  kind    String
+  rule    Json
+
+  @@unique([storeId, code])
+}
+
+model OrderSequence {
+  id   String @id
+  last Int
+}
+
+model OrderRecord {
+  number     String @id
+  storeId    String
+  customerId String
+  payload    Json
+}
+
+model IdempotencyRecord {
+  key         String @id
+  orderNumber String
+}
+
+model CustomerAccount {
+  id             String  @id
+  name           String
+  email          String  @unique
+  phone          String
+  passwordHash   String
+  failedAttempts Int     @default(0)
+  lockedUntil    String?
+}
+
+model StaffAccount {
+  id             String  @id
+  name           String
+  email          String  @unique
+  role           String
+  passwordHash   String
+  failedAttempts Int     @default(0)
+  lockedUntil    String?
+}
+
+model SessionToken {
+  tokenHash String @id
+  kind      String
+  subjectId String
+  expiresAt String
+}
+
+model AuditRecord {
+  id     String @id @default(cuid())
+  at     String
+  actor  String
+  code   String
+  action String
+  object String
+  before Json?
+  after  Json?
+}
+
+model WishlistItem {
+  id         String @id @default(cuid())
+  customerId String
+  productId  String
+
+  @@unique([customerId, productId])
+}
+
+model AddressRecord {
+  id         String  @id @default(cuid())
+  customerId String
+  label      String?
+  recipient  String
+  phone      String
+  province   String
+  city       String
+  district   String
+  postalCode String
+  detail     String
+  kelurahan  String?
+  note       String?
+}
+
+model ConsentState {
+  customerId  String  @id
+  emailPromo  Boolean @default(false)
+  waOrderInfo Boolean @default(false)
+}
+
+model NotificationOutbox {
+  id         String @id @default(cuid())
+  customerId String
+  channel    String
+  purpose    String
+  body       String
+  status     String
+  createdAt  String
+}
+
+model RevealGrant {
+  id          String @id @default(cuid())
+  staffId     String
+  customerId  String
+  orderNumber String
+  until       String
+  reason      String
+  at          String
+}

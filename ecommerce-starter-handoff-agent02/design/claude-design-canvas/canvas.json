@@ -1,0 +1,803 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Brand-A.dc.html": {
+      "h": 2600,
+      "page": "m3",
+      "title": "22 · Brand A Direction (Halimun, working name)",
+      "w": 1600,
+      "x": 3040,
+      "y": 0
+    },
+    "Brand-B.dc.html": {
+      "h": 2600,
+      "page": "m3",
+      "title": "23 · Brand B Direction (Sambung, working name)",
+      "w": 1600,
+      "x": 4720,
+      "y": 0
+    },
+    "DS-Components.dc.html": {
+      "h": 3400,
+      "page": "m3",
+      "title": "24 · Component Library (Tweaks: brand)",
+      "w": 1600,
+      "x": 6400,
+      "y": 0
+    },
+    "DS-Responsive.dc.html": {
+      "h": 2000,
+      "page": "m3",
+      "title": "25 · Responsive Rules",
+      "w": 1440,
+      "x": 8080,
+      "y": 0
+    },
+    "DS-Tokens.dc.html": {
+      "h": 2700,
+      "page": "m3",
+      "title": "21 · Tokens & Foundations",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Decisions.dc.html": {
+      "h": 2500,
+      "page": "m0",
+      "title": "02 · Decisions & Assumptions",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "Flow-CMS.dc.html": {
+      "h": 1700,
+      "page": "m1",
+      "title": "16 · CMS Publishing Flow",
+      "w": 1440,
+      "x": 9280,
+      "y": 0
+    },
+    "Flow-Checkout.dc.html": {
+      "h": 1880,
+      "page": "m1",
+      "title": "15 · Checkout Journey",
+      "w": 1600,
+      "x": 7600,
+      "y": 0
+    },
+    "Flow-Discovery.dc.html": {
+      "h": 1500,
+      "page": "m1",
+      "title": "14 · Product Discovery Flow",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "H01-Home-A.dc.html": {
+      "h": 2400,
+      "page": "m4",
+      "title": "H01 · Homepage — Halimun (S01)",
+      "w": 2040,
+      "x": 1920,
+      "y": 0
+    },
+    "H02-Home-B.dc.html": {
+      "h": 2400,
+      "page": "m4",
+      "title": "H02 · Homepage — Sambung (S01)",
+      "w": 2040,
+      "x": 4040,
+      "y": 0
+    },
+    "H03-Catalog-B.dc.html": {
+      "h": 2000,
+      "page": "m4",
+      "title": "H03 · Catalog + Filters — Sambung (S02, S03)",
+      "w": 2040,
+      "x": 6160,
+      "y": 0
+    },
+    "H04-PDP-B.dc.html": {
+      "h": 2400,
+      "page": "m4",
+      "title": "H04 · Product Detail — Sambung (S07)",
+      "w": 2040,
+      "x": 0,
+      "y": 2520
+    },
+    "H05-PDP-A.dc.html": {
+      "h": 2400,
+      "page": "m4",
+      "title": "H05 · Product Detail — Halimun (S06)",
+      "w": 2040,
+      "x": 2120,
+      "y": 2520
+    },
+    "H06-Cart-Ship.dc.html": {
+      "h": 2000,
+      "page": "m4",
+      "title": "H06 · Cart + Checkout 1 — Sambung (S09, S10, S15, S16)",
+      "w": 2440,
+      "x": 4240,
+      "y": 2520
+    },
+    "H07-Review-Pay.dc.html": {
+      "h": 2100,
+      "page": "m4",
+      "title": "H07 · Checkout 2–3 + QRIS — Sambung (S17–S21)",
+      "w": 2440,
+      "x": 6760,
+      "y": 2520
+    },
+    "H08-Auth-A.dc.html": {
+      "h": 1500,
+      "page": "m4",
+      "title": "H08 · Login & Register — Halimun (S11, S12)",
+      "w": 2440,
+      "x": 0,
+      "y": 5040
+    },
+    "H09-Search-B.dc.html": {
+      "h": 1900,
+      "page": "m4",
+      "title": "H09 · Search — Sambung (S04, S05)",
+      "w": 2440,
+      "x": 2520,
+      "y": 5040
+    },
+    "H10-Compare-B.dc.html": {
+      "h": 1700,
+      "page": "m4",
+      "title": "H10 · Comparison — Sambung (S08)",
+      "w": 2040,
+      "x": 5040,
+      "y": 5040
+    },
+    "H11-Catalog-A.dc.html": {
+      "h": 2000,
+      "page": "m4",
+      "title": "H11 · Catalog top-bar — Halimun (S02)",
+      "w": 2040,
+      "x": 0,
+      "y": 7060
+    },
+    "H12-Account-B.dc.html": {
+      "h": 1700,
+      "page": "m4",
+      "title": "H12 · Account dashboard + orders — Sambung (S23, S26)",
+      "w": 2440,
+      "x": 2120,
+      "y": 7060
+    },
+    "H13-Tracking-B.dc.html": {
+      "h": 1700,
+      "page": "m4",
+      "title": "H13 · Order detail + tracking — Sambung (S27)",
+      "w": 2040,
+      "x": 4640,
+      "y": 7060
+    },
+    "H14-Profile-B.dc.html": {
+      "h": 1900,
+      "page": "m4",
+      "title": "H14 · Profile, addresses, wishlist, preferences (S24, S25, S28, S29)",
+      "w": 2440,
+      "x": 0,
+      "y": 9180
+    },
+    "H15-Recovery-A.dc.html": {
+      "h": 1300,
+      "page": "m4",
+      "title": "H15 · Forgot password & recovery — Halimun (S13, S14)",
+      "w": 2440,
+      "x": 2520,
+      "y": 9180
+    },
+    "H16-Content-A.dc.html": {
+      "h": 2300,
+      "page": "m4",
+      "title": "H16 · Journal, article, about — Halimun (S30, S34, S35)",
+      "w": 2440,
+      "x": 0,
+      "y": 11300
+    },
+    "H17-Support-B.dc.html": {
+      "h": 1900,
+      "page": "m4",
+      "title": "H17 · Contact, bulk inquiry, FAQ, shipping info — Sambung (S31, S32, S33, S38)",
+      "w": 2440,
+      "x": 2520,
+      "y": 11300
+    },
+    "H18-Landing.dc.html": {
+      "h": 2000,
+      "page": "m4",
+      "title": "H18 · Campaign (Sambung) + collection (Halimun) landing (S36, S37)",
+      "w": 2040,
+      "x": 5040,
+      "y": 11300
+    },
+    "H19-Policy-System.dc.html": {
+      "h": 1500,
+      "page": "m4",
+      "title": "H19 · Policies, 404, error (S39–S43)",
+      "w": 2440,
+      "x": 0,
+      "y": 13720
+    },
+    "H20-States.dc.html": {
+      "h": 2300,
+      "page": "m4",
+      "title": "H20 · State sheet (loading, empty, error, unavailable)",
+      "w": 1600,
+      "x": 2520,
+      "y": 13720
+    },
+    "H21-Responsive.dc.html": {
+      "h": 1700,
+      "page": "m4",
+      "title": "H21 · Tablet 768 + small phone 360 checks",
+      "w": 2560,
+      "x": 4200,
+      "y": 13720
+    },
+    "IA-Admin.dc.html": {
+      "h": 2100,
+      "page": "m1",
+      "title": "12 · Admin Sitemap & Roles",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "IA-Storefront.dc.html": {
+      "h": 2400,
+      "page": "m1",
+      "title": "11 · Storefront Sitemap",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Inventory.dc.html": {
+      "h": 3400,
+      "page": "m0",
+      "title": "03 · Initial Screen Inventory",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Journeys.dc.html": {
+      "h": 2300,
+      "page": "m1",
+      "title": "13 · Key User Journeys",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "M1-Overview.dc.html": {
+      "h": 1700,
+      "page": "m1",
+      "title": "10 · M1 Overview & Approval",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "M2-Overview.dc.html": {
+      "h": 1500,
+      "page": "m2",
+      "title": "W13 · M2 Overview & Approval",
+      "w": 1440,
+      "x": 10000,
+      "y": 0
+    },
+    "M3-Overview.dc.html": {
+      "h": 1700,
+      "page": "m3",
+      "title": "20 · M3 Overview & Approval",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "M4-Overview.dc.html": {
+      "h": 1500,
+      "page": "m4",
+      "title": "31 · M4 Overview & Progress",
+      "w": 1440,
+      "x": 400,
+      "y": 0
+    },
+    "M5-Overview.dc.html": {
+      "h": 1500,
+      "page": "m5",
+      "title": "40 · M5 Overview & Progress",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "M6-Overview.dc.html": {
+      "h": 2500,
+      "page": "m6",
+      "title": "M6 · Overview + test scenarios",
+      "w": 1440,
+      "x": -55,
+      "y": -67
+    },
+    "Main.dc.html": {
+      "h": 1900,
+      "page": "m0",
+      "title": "00 · M0 Overview & Approval",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "P01-Purchase-B.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "m6",
+      "title": "P01 · Sambung purchase flow (interactive)",
+      "w": 390,
+      "x": 1520,
+      "y": 0
+    },
+    "ProductArt.dc.html": {
+      "h": 320,
+      "page": "m4",
+      "title": "30 · ProductArt (placeholder illustration component)",
+      "w": 320,
+      "x": 0,
+      "y": 0
+    },
+    "Scope.dc.html": {
+      "h": 1900,
+      "page": "m0",
+      "title": "01 · Scope Classification",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "States.dc.html": {
+      "h": 3600,
+      "page": "m1",
+      "title": "17 · Order, Payment, Shipment & Stock States",
+      "w": 1440,
+      "x": 10800,
+      "y": 0
+    },
+    "W00-Data.dc.html": {
+      "h": 2400,
+      "page": "m2",
+      "title": "W00 · Mock Dataset (single source)",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "W01-Home-B.dc.html": {
+      "h": 1800,
+      "page": "m2",
+      "title": "W01 · Homepage — Brand B (S01)",
+      "w": 2040,
+      "x": 1520,
+      "y": 0
+    },
+    "W02-Home-A.dc.html": {
+      "h": 1800,
+      "page": "m2",
+      "title": "W02 · Homepage — Brand A (S01)",
+      "w": 2040,
+      "x": 3640,
+      "y": 0
+    },
+    "W03-Catalog.dc.html": {
+      "h": 1600,
+      "page": "m2",
+      "title": "W03 · Catalog + Filters (S02, S03)",
+      "w": 2040,
+      "x": 5760,
+      "y": 0
+    },
+    "W04-PDP.dc.html": {
+      "h": 1960,
+      "page": "m2",
+      "title": "W04 · Product Detail — Brand B (S07)",
+      "w": 2040,
+      "x": 0,
+      "y": 2520
+    },
+    "W05-Cart.dc.html": {
+      "h": 1400,
+      "page": "m2",
+      "title": "W05 · Cart Drawer + Cart Page (S09, S10)",
+      "w": 2040,
+      "x": 2120,
+      "y": 2520
+    },
+    "W06-Checkout-Ship.dc.html": {
+      "h": 1640,
+      "page": "m2",
+      "title": "W06 · Checkout 1 · Pengiriman (S15, S16)",
+      "w": 2040,
+      "x": 4240,
+      "y": 2520
+    },
+    "W07-Checkout-Review.dc.html": {
+      "h": 1500,
+      "page": "m2",
+      "title": "W07 · Checkout 2 · Ringkasan (S17, S18)",
+      "w": 2040,
+      "x": 6360,
+      "y": 2520
+    },
+    "W08-Payment.dc.html": {
+      "h": 1400,
+      "page": "m2",
+      "title": "W08 · Checkout 3 + QRIS Pending (S19, S20)",
+      "w": 2040,
+      "x": 0,
+      "y": 4540
+    },
+    "W09-Tracking.dc.html": {
+      "h": 1500,
+      "page": "m2",
+      "title": "W09 · Order Detail + Tracking (S27)",
+      "w": 2040,
+      "x": 2120,
+      "y": 4540
+    },
+    "W10-Admin-Dash.dc.html": {
+      "h": 1500,
+      "page": "m2",
+      "title": "W10 · Admin Dashboard (A01)",
+      "w": 2040,
+      "x": 4240,
+      "y": 4540
+    },
+    "W11-Admin-Order.dc.html": {
+      "h": 1400,
+      "page": "m2",
+      "title": "W11 · Admin Order Detail (A07)",
+      "w": 2040,
+      "x": 6360,
+      "y": 4540
+    },
+    "W12-Alternatives.dc.html": {
+      "h": 2900,
+      "page": "m2",
+      "title": "W12 · Layout Alternatives & Choices",
+      "w": 2040,
+      "x": 7880,
+      "y": 0
+    },
+    "Workflow.dc.html": {
+      "h": 2500,
+      "page": "m0",
+      "title": "04 · Workflow, Risks & M0 Acceptance",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "X01-Dashboard.dc.html": {
+      "h": 1700,
+      "page": "m5",
+      "title": "X01 · Dashboard (A01)",
+      "w": 2040,
+      "x": 1520,
+      "y": 0
+    },
+    "X02-Orders.dc.html": {
+      "h": 1500,
+      "page": "m5",
+      "title": "X02 · Order list (A06)",
+      "w": 2040,
+      "x": 3640,
+      "y": 0
+    },
+    "X03-OrderDetail.dc.html": {
+      "h": 1600,
+      "page": "m5",
+      "title": "X03 · Order detail + refund (A07)",
+      "w": 2040,
+      "x": 5760,
+      "y": 0
+    },
+    "X04-Products.dc.html": {
+      "h": 1500,
+      "page": "m5",
+      "title": "X04 · Products + categories (A02, A04)",
+      "w": 2040,
+      "x": 0,
+      "y": 1820
+    },
+    "X05-ProductEdit.dc.html": {
+      "h": 2200,
+      "page": "m5",
+      "title": "X05 · Product edit + SEO panel (A03, A12)",
+      "w": 2040,
+      "x": 2120,
+      "y": 1820
+    },
+    "X06-Inventory.dc.html": {
+      "h": 1500,
+      "page": "m5",
+      "title": "X06 · Inventory + adjustment (A05)",
+      "w": 2040,
+      "x": 4240,
+      "y": 1820
+    },
+    "X07-Promotions.dc.html": {
+      "h": 1400,
+      "page": "m5",
+      "title": "X07 · Promotions list (A08)",
+      "w": 2040,
+      "x": 0,
+      "y": 4140
+    },
+    "X08-PromoEdit.dc.html": {
+      "h": 1800,
+      "page": "m5",
+      "title": "X08 · Promotion editor + conflict check (A09)",
+      "w": 2040,
+      "x": 2120,
+      "y": 4140
+    },
+    "X09-Content.dc.html": {
+      "h": 1700,
+      "page": "m5",
+      "title": "X09 · Content list + block editor + SEO (A10, A11, A12)",
+      "w": 2440,
+      "x": 4240,
+      "y": 4140
+    },
+    "X10-Customers.dc.html": {
+      "h": 1500,
+      "page": "m5",
+      "title": "X10 · Customers + profile (A13, A14)",
+      "w": 2440,
+      "x": 6760,
+      "y": 4140
+    },
+    "X11-Analytics.dc.html": {
+      "h": 1900,
+      "page": "m5",
+      "title": "X11 · Analytics + metric definitions (A15)",
+      "w": 2440,
+      "x": 0,
+      "y": 6100
+    },
+    "X12-Wireframes.dc.html": {
+      "h": 1560,
+      "page": "m5",
+      "title": "X12 · Wireframes A16–A23 (reports, users, settings, audit, login)",
+      "w": 3072,
+      "x": 2520,
+      "y": 6100
+    },
+    "P02-Discovery-A.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "m6",
+      "title": "P02 · Halimun discovery, wishlist, sign-in (interactive)",
+      "w": 390,
+      "x": 1990,
+      "y": 0
+    },
+    "P03-SearchCompare-B.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "m6",
+      "title": "P03 · Sambung search + compare (interactive)",
+      "w": 390,
+      "x": 2460,
+      "y": 0
+    },
+    "P04-Account-B.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "m6",
+      "title": "P04 · Sambung account, tracking, consent (interactive)",
+      "w": 390,
+      "x": 2930,
+      "y": 0
+    },
+    "P05-AdminOps.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "m6",
+      "title": "P05 · Admin orders: process, ship, refund, contact reveal (interactive)",
+      "w": 1440,
+      "x": 3400,
+      "y": 0
+    },
+    "P06-PromoCheck.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "m6",
+      "title": "P06 · Admin promotion conflict check (interactive)",
+      "w": 1440,
+      "x": 4920,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-20T03:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "page": "m6",
+    "view": "canvas"
+  },
+  "notes": {
+    "m0title": {
+      "kind": "title1",
+      "maxW": 7520,
+      "page": "m0",
+      "text": "M0 — Scope & Design Brief · APPROVED 20 Oct 2026",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "m1title": {
+      "kind": "title1",
+      "maxW": 8000,
+      "page": "m1",
+      "text": "M1 — Information Architecture · APPROVED 20 Oct 2026",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "m2title": {
+      "kind": "title1",
+      "maxW": 8000,
+      "page": "m2",
+      "text": "M2 — Wireframes · APPROVED 20 Oct 2026 (with gap fixes)",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "m3title": {
+      "kind": "title1",
+      "maxW": 8000,
+      "page": "m3",
+      "text": "M3 — Visual Direction & Design System · APPROVED 20 Oct 2026",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "m4title": {
+      "kind": "title1",
+      "maxW": 8000,
+      "page": "m4",
+      "text": "M4 — High-Fidelity Storefront · APPROVED 20 Oct 2026",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "m5title": {
+      "kind": "title1",
+      "maxW": 7800,
+      "page": "m5",
+      "text": "M5 — Admin & CMS · approved 20 Okt 2026 (X01–X12)",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "m6title": {
+      "kind": "title1",
+      "maxW": 6400,
+      "page": "m6",
+      "text": "M6 — Clickable prototype · APPROVED 20 Oct 2026 · press Play on P01–P06",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Scope.dc.html",
+    "Decisions.dc.html",
+    "Inventory.dc.html",
+    "Workflow.dc.html",
+    "M1-Overview.dc.html",
+    "IA-Storefront.dc.html",
+    "IA-Admin.dc.html",
+    "Journeys.dc.html",
+    "Flow-Discovery.dc.html",
+    "Flow-Checkout.dc.html",
+    "Flow-CMS.dc.html",
+    "States.dc.html",
+    "W00-Data.dc.html",
+    "W01-Home-B.dc.html",
+    "W02-Home-A.dc.html",
+    "W03-Catalog.dc.html",
+    "W12-Alternatives.dc.html",
+    "M2-Overview.dc.html",
+    "W04-PDP.dc.html",
+    "W05-Cart.dc.html",
+    "W06-Checkout-Ship.dc.html",
+    "W07-Checkout-Review.dc.html",
+    "W08-Payment.dc.html",
+    "W09-Tracking.dc.html",
+    "W10-Admin-Dash.dc.html",
+    "W11-Admin-Order.dc.html",
+    "M3-Overview.dc.html",
+    "DS-Tokens.dc.html",
+    "Brand-A.dc.html",
+    "Brand-B.dc.html",
+    "DS-Components.dc.html",
+    "DS-Responsive.dc.html",
+    "ProductArt.dc.html",
+    "M4-Overview.dc.html",
+    "H01-Home-A.dc.html",
+    "H02-Home-B.dc.html",
+    "H03-Catalog-B.dc.html",
+    "H04-PDP-B.dc.html",
+    "H05-PDP-A.dc.html",
+    "H06-Cart-Ship.dc.html",
+    "H07-Review-Pay.dc.html",
+    "H08-Auth-A.dc.html",
+    "H09-Search-B.dc.html",
+    "H10-Compare-B.dc.html",
+    "H11-Catalog-A.dc.html",
+    "H12-Account-B.dc.html",
+    "H13-Tracking-B.dc.html",
+    "H14-Profile-B.dc.html",
+    "H15-Recovery-A.dc.html",
+    "H16-Content-A.dc.html",
+    "H17-Support-B.dc.html",
+    "H18-Landing.dc.html",
+    "H19-Policy-System.dc.html",
+    "H20-States.dc.html",
+    "H21-Responsive.dc.html",
+    "M5-Overview.dc.html",
+    "X01-Dashboard.dc.html",
+    "X02-Orders.dc.html",
+    "X03-OrderDetail.dc.html",
+    "X04-Products.dc.html",
+    "X05-ProductEdit.dc.html",
+    "X06-Inventory.dc.html",
+    "X07-Promotions.dc.html",
+    "X08-PromoEdit.dc.html",
+    "X09-Content.dc.html",
+    "X10-Customers.dc.html",
+    "X11-Analytics.dc.html",
+    "X12-Wireframes.dc.html",
+    "M6-Overview.dc.html",
+    "P01-Purchase-B.dc.html",
+    "P02-Discovery-A.dc.html",
+    "P03-SearchCompare-B.dc.html",
+    "P04-Account-B.dc.html",
+    "P05-AdminOps.dc.html",
+    "P06-PromoCheck.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "m0",
+      "name": "M0 — Scope & Brief"
+    },
+    {
+      "id": "m1",
+      "name": "M1 — Information Architecture"
+    },
+    {
+      "id": "m2",
+      "name": "M2 — Wireframes"
+    },
+    {
+      "id": "m3",
+      "name": "M3 — Visual Direction & Design System"
+    },
+    {
+      "id": "m4",
+      "name": "M4 — High-Fidelity Storefront"
+    },
+    {
+      "id": "m5",
+      "name": "M5 — Admin & CMS"
+    },
+    {
+      "id": "m6",
+      "name": "M6 — Clickable Prototype"
+    }
+  ],
+  "title": "Agent 01 — E-Commerce Starter"
+}

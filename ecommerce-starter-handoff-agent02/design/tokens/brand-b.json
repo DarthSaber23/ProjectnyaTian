@@ -1,0 +1,20 @@
+{
+  "$meta": { "brand": "B", "workingName": "Sambung (unscreened)", "version": "0.3.0-m3", "source": "Claude Design canvas, board M3-1" },
+  "color": {
+    "bg": "#FFFFFF", "surface": "#FFFFFF", "surface-alt": "#F2F4F7",
+    "text": "#0E1726", "text-muted": "#4A5568", "text-disabled": "#8A94A3",
+    "border": "#CBD2DC", "border-strong": "#7D8796",
+    "primary": "#1F5AE0", "on-primary": "#FFFFFF", "primary-soft": "#EAF0FD", "primary-ink": "#1747B5",
+    "accent": "#F5A524", "on-accent": "#0E1726",
+    "success": "#1E7A45", "success-soft": "#E3F4EA",
+    "warning": "#8A5300", "warning-soft": "#FDF1DC",
+    "danger": "#C0262D", "danger-soft": "#FCE6E7",
+    "focus": "#1F5AE0", "focus-ring-on-primary": "#0E1726",
+    "disabled-bg": "#EEF1F5"
+  },
+  "font": { "display": "Space Grotesk, system-ui, sans-serif", "body": "IBM Plex Sans, system-ui, sans-serif", "mono": "JetBrains Mono, monospace", "display-weight": 600 },
+  "radius": { "sm": "4px", "md": "6px", "lg": "8px", "control": "6px" },
+  "shadow": { "card": "none", "overlay": "0 12px 32px rgba(14,23,38,0.18)" },
+  "size": { "control-h": "40px", "touch-min": "44px" },
+  "composition": { "productCard": "compact", "filterLayout": "sidebar", "gridCols": { "base": 2, "md": 3, "lg": 3, "xl": 4 } }
+}

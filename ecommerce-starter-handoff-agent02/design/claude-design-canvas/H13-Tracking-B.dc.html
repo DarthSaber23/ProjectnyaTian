@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Sambung Order Tracking</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E1726}a:hover{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1700px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S27 · /akun/pesanan/ORD-261014-0003 · courier update overdue (&gt; 72 h)</div>
+<div style="width: 1440px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 28px; padding: 16px 48px; border-bottom: 1px solid #CBD2DC"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span><div style="flex: 1; height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; color: #4A5568; font-size: 15px">Cari kabel, adaptor, charger…</div><nav style="display: flex; gap: 22px; font-size: 14px; font-weight: 500"><span>Wishlist</span><b>Rina</b><span>Keranjang 0</span></nav></div>
+<div style="display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; padding: 32px 48px 56px">
+<nav aria-label="Akun" style="display: flex; flex-direction: column; gap: 2px; font-size: 15px"><a href="#" style="padding: 10px 14px; text-decoration: none">Dasbor</a><span aria-current="page" style="padding: 10px 14px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Pesanan</span><a href="#" style="padding: 10px 14px; text-decoration: none">Profil</a><a href="#" style="padding: 10px 14px; text-decoration: none">Buku alamat</a><a href="#" style="padding: 10px 14px; text-decoration: none">Wishlist</a><a href="#" style="padding: 10px 14px; text-decoration: none">Preferensi komunikasi</a></nav>
+<div style="display: flex; flex-direction: column; gap: 24px">
+<nav aria-label="Breadcrumb" style="font-size: 13px; color: #4A5568"><a href="#" style="color: #4A5568">Pesanan</a> / <span aria-current="page" style="color: #0E1726; font-family: 'JetBrains Mono', monospace">ORD-261014-0003</span></nav>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 600">Dalam Perjalanan</h1><span style="font-size: 14px; color: #2D3748">Dipesan 14 Okt 2026, 09:12 WIB · Kurir A Reguler · resi <span style="font-family: 'JetBrains Mono', monospace">SIM-KA-88213004</span> <button type="button" style="border: none; background: none; color: #1747B5; text-decoration: underline; font-family: inherit; font-size: 13px">Salin</button></span></div>
+<a href="#" style="height: 44px; padding: 0 18px; border: 1.5px solid #0E1726; border-radius: 6px; display: flex; align-items: center; font-weight: 600; text-decoration: none">Hubungi CS via WhatsApp</a>
+</div>
+<ol aria-label="Progres pesanan" style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; font-size: 13px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="5"><li style="display: flex; flex-direction: column; gap: 6px"><span style="{{s.bar}}"></span><span style="{{s.lbl}}">{{s.t}}</span></li></sc-for>
+</ol>
+<div role="status" style="background: #FDF1DC; color: #8A5300; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 14px"><b>Belum ada pembaruan dari kurir sejak 15 Okt, 18:22 WIB</b><span style="color: #5C3A00">Paket mungkin sedang transit antar kota. Kami hanya menampilkan informasi dari kurir dan tidak membuat perkiraan sendiri. Jika belum ada perubahan, hubungi CS.</span></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: start">
+<section style="display: flex; flex-direction: column"><h2 style="margin: 0 0 14px; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Riwayat status</h2>
+<sc-for list="{{tl}}" as="t" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px"><div style="display: flex; flex-direction: column; align-items: center"><span style="{{t.dot}}"></span><span style="flex: 1; width: 2px; background: #CBD2DC; min-height: 34px"></span></div><div style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 18px; font-size: 14px"><b>{{t.s}}</b><span style="color: #4A5568; font-size: 13px">{{t.d}}</span></div></div></sc-for>
+</section>
+<div style="display: flex; flex-direction: column; gap: 16px; font-size: 14px">
+<div style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<b>Barang</b>
+<div style="display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 10px; align-items: center"><div style="height: 52px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="adapter" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Adaptor HDMI" hint-size="52px,52px"></dc-import></div><span>Adaptor USB-C ke HDMI 4K60 ×1</span><span style="font-family: 'JetBrains Mono', monospace">Rp219.000</span></div>
+<div style="display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 10px; align-items: center"><div style="height: 52px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#4A5568" label="Kabel Lightning" hint-size="52px,52px"></dc-import></div><span>Kabel USB-C ke Lightning · 1 m ×1</span><span style="font-family: 'JetBrains Mono', monospace">Rp149.000</span></div>
+<div style="border-top: 1px solid #CBD2DC; padding-top: 10px; display: flex; flex-direction: column; gap: 4px"><div style="display: flex; justify-content: space-between"><span>Subtotal</span><span style="font-family: 'JetBrains Mono', monospace">Rp368.000</span></div><div style="display: flex; justify-content: space-between"><span>Ongkir</span><span style="font-family: 'JetBrains Mono', monospace">Rp18.000</span></div><div style="display: flex; justify-content: space-between"><b>Total</b><b style="font-family: 'JetBrains Mono', monospace">Rp386.000</b></div></div>
+</div>
+<div style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b>Pembayaran</b><span style="color: #2D3748">Virtual Account Bank A · dibayar 14 Okt, 09:20 WIB</span></div>
+<div style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 4px"><b>Alamat</b><span style="color: #2D3748">Rina Pratama · Jl. Melati No. 12, Kec. Coblong, Kota Bandung 40132</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · same order</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 4px 6px; border-bottom: 1px solid #CBD2DC"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><b style="font-family: 'JetBrains Mono', monospace; font-size: 14px">ORD-261014-0003</b></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 6px"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 24px">Dalam Perjalanan</b><span style="font-size: 13px; color: #2D3748">Kurir A Reguler · <span style="font-family: 'JetBrains Mono', monospace">SIM-KA-88213004</span></span></div>
+<ol style="margin: 0; padding: 0 16px 12px; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; font-size: 10px; text-align: center"><sc-for list="{{steps}}" as="s" hint-placeholder-count="5"><li style="display: flex; flex-direction: column; gap: 4px"><span style="{{s.bar}}"></span><span style="{{s.lbl}}">{{s.m}}</span></li></sc-for></ol>
+<div role="status" style="margin: 0 16px 16px; background: #FDF1DC; color: #8A5300; border-radius: 6px; padding: 12px; font-size: 13px; display: flex; flex-direction: column; gap: 4px"><b>Belum ada pembaruan sejak 15 Okt, 18:22</b><a href="#" style="color: #8A5300; font-weight: 600">Hubungi CS via WhatsApp</a></div>
+<div style="padding: 0 16px 12px; display: flex; flex-direction: column; gap: 12px; font-size: 13px"><b style="font-size: 14px">Riwayat</b><sc-for list="{{tl}}" as="t" hint-placeholder-count="5"><div style="display: flex; flex-direction: column; border-left: 2px solid #CBD2DC; padding-left: 12px"><b>{{t.s}}</b><span style="color: #4A5568">{{t.d}}</span></div></sc-for></div>
+<div style="border-top: 1px solid #CBD2DC; padding: 14px 16px; display: flex; justify-content: space-between; font-size: 14px"><span>2 barang</span><b style="font-family: 'JetBrains Mono', monospace">Rp386.000</b></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">STATE · delivery exception (shipment.exception)</div>
+<div style="width: 390px; background: #FFFFFF; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box">
+<span style="align-self: flex-start; background: #FCE6E7; color: #C0262D; border-radius: 4px; padding: 3px 8px; font-size: 12px; font-weight: 600">Gagal Kirim</span>
+<b style="font-size: 15px">Kurir tidak berhasil mengantar</b>
+<span style="font-size: 13px; color: #2D3748; line-height: 1.5">Alasan dari kurir: "[teks alasan dari event kurir]". Kurir akan mencoba lagi, atau kamu bisa menghubungi CS untuk mengubah jadwal.</span>
+<a href="#" style="height: 44px; border-radius: 6px; background: #0E1726; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 600; text-decoration: none">Hubungi CS</a>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+var on = "display:block;height:6px;border-radius:3px;background:#1F5AE0";
+var off = "display:block;height:6px;border-radius:3px;background:#E3E7ED";
+var lOn = "font-weight:600";
+var lOff = "color:#4A5568";
+var dOn = "width:14px;height:14px;border-radius:7px;background:#1F5AE0;box-sizing:border-box";
+var dCur = "width:14px;height:14px;border-radius:7px;background:#FFFFFF;border:3px solid #1F5AE0;box-sizing:border-box";
+return {
+steps: [
+{ t: "Dibayar", m: "Dibayar", bar: on, lbl: lOn },
+{ t: "Diproses", m: "Diproses", bar: on, lbl: lOn },
+{ t: "Dikirim", m: "Dikirim", bar: on, lbl: lOn },
+{ t: "Dalam Perjalanan", m: "Jalan", bar: on, lbl: lOn },
+{ t: "Diterima", m: "Diterima", bar: off, lbl: lOff }
+],
+tl: [
+{ s: "Dalam perjalanan · Hub Jakarta (simulasi)", d: "15 Okt 2026, 18:22 WIB · dari kurir", dot: dCur },
+{ s: "Dikirim · resi dibuat", d: "15 Okt 2026, 10:40 WIB", dot: dOn },
+{ s: "Diproses", d: "14 Okt 2026, 13:05 WIB", dot: dOn },
+{ s: "Dibayar · Virtual Account", d: "14 Okt 2026, 09:20 WIB", dot: dOn },
+{ s: "Pesanan dibuat", d: "14 Okt 2026, 09:12 WIB", dot: dOn }
+]
+};
+}
+}
+</script>
+</body>
+</html>

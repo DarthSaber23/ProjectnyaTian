@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Payment</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1400px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · S19 · /checkout/pembayaran · order is created on "Buat Pesanan" (I4)</div>
+<div style="width: 1440px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 18px 40px; border-bottom: 1px solid #DADCE0; gap: 40px">
+<div style="width: 120px; height: 36px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px">[BRAND B]</div>
+<div style="display: flex; gap: 12px; align-items: center; font-size: 14px"><span>✓ 1 Pengiriman</span><span style="color: #8A8F98">—</span><span>✓ 2 Ringkasan</span><span style="color: #8A8F98">—</span><b style="border-bottom: 3px solid #2B2F36; padding-bottom: 4px">3 Pembayaran</b></div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 40px; padding: 32px 40px 40px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<b style="font-size: 20px">Metode pembayaran</b>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">SIMULASI · tidak ada transaksi nyata · penyedia (Midtrans / Duitku) diputuskan nanti</span>
+<div style="border: 2px solid #2B2F36; padding: 16px; display: flex; gap: 14px; align-items: center"><span>◉</span><div style="width: 48px; height: 32px; background: #E4E6E9"></div><div style="flex: 1; display: flex; flex-direction: column"><b>QRIS</b><span style="font-size: 13px; color: #5A606B">Scan dari aplikasi bank atau e-wallet · batas bayar 15 menit</span></div></div>
+<div style="border: 1px solid #BFC3C9; padding: 17px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; gap: 14px; align-items: center"><span>○</span><div style="width: 48px; height: 32px; background: #E4E6E9"></div><div style="flex: 1; display: flex; flex-direction: column"><b>Virtual Account</b><span style="font-size: 13px; color: #5A606B">Transfer ke nomor VA · batas bayar 24 jam</span></div></div><div style="display: flex; gap: 8px; padding-left: 92px; font-size: 13px"><span style="border: 1px solid #BFC3C9; padding: 6px 10px">Bank A</span><span style="border: 1px solid #BFC3C9; padding: 6px 10px">Bank B</span><span style="border: 1px solid #BFC3C9; padding: 6px 10px">Bank C</span></div></div>
+<div style="border: 1px solid #BFC3C9; padding: 17px; display: flex; gap: 14px; align-items: center"><span>○</span><div style="width: 48px; height: 32px; background: #E4E6E9"></div><div style="flex: 1; display: flex; flex-direction: column"><b>E-wallet</b><span style="font-size: 13px; color: #5A606B">Diarahkan ke aplikasi e-wallet · batas bayar 15 menit</span></div></div>
+<div style="border: 1px dashed #BFC3C9; padding: 17px; display: flex; gap: 14px; align-items: center; color: #8A8F98"><span>○</span><div style="flex: 1; display: flex; flex-direction: column"><b>Kartu kredit / paylater</b><span style="font-size: 13px">Segera hadir — fitur masa depan</span></div></div>
+</div>
+<div style="border: 1px solid #DADCE0; padding: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<b style="font-size: 17px">Total pembayaran</b>
+<div style="display: flex; justify-content: space-between"><span>Subtotal</span><span>Rp617.250</span></div>
+<div style="display: flex; justify-content: space-between"><span>Voucher</span><span>−Rp30.000</span></div>
+<div style="display: flex; justify-content: space-between"><span>Ongkir − voucher ongkir</span><span>Rp0</span></div>
+<div style="border-top: 2px solid #2B2F36; padding-top: 12px; display: flex; justify-content: space-between; font-size: 18px"><b>Total</b><b>Rp587.250</b></div>
+<span style="font-size: 12px; color: #5A606B">Dengan menekan tombol, Anda menyetujui <u>Syarat &amp; Ketentuan</u>. Stok dicek ulang saat pesanan dibuat.</span>
+<span style="margin-top: 8px; background: #2B2F36; color: #FFFFFF; padding: 13px; text-align: center; font-weight: 600">Buat Pesanan · Rp587.250</span>
+</div>
+</div>
+
+<div style="margin: 0 40px 40px; display: flex; flex-direction: column; gap: 12px">
+<b style="font-size: 17px">Result states (S21) — reached only through the mock gateway event</b>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; font-size: 13px">
+<div style="border: 2px solid #2B2F36; padding: 16px; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 15px">✓ Dibayar</b><span style="color: #5A606B">ORD-261020-0010 · Rp587.250 · 10:21 WIB</span><u>Lihat pesanan</u></div>
+<div style="border: 1px solid #BFC3C9; padding: 16px; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 15px">Pembayaran gagal</b><span style="color: #5A606B">Pesanan tetap menunggu sampai 10:30 WIB.</span><u>Coba lagi · Ganti metode</u></div>
+<div style="border: 1px solid #BFC3C9; padding: 16px; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 15px">Kedaluwarsa</b><span style="color: #5A606B">Pesanan dibatalkan, stok dilepas.</span><u>Pesan ulang (isi keranjang dipulihkan)</u></div>
+<div style="border: 1px solid #BFC3C9; padding: 16px; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 15px">Dibatalkan</b><span style="color: #5A606B">Dibatalkan oleh pelanggan sebelum dibayar.</span><u>Belanja lagi</u></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · S20 /pembayaran/ORD-261020-0010 · pending</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><b>Pembayaran</b><span style="margin-left: auto; font-size: 12px; font-family: 'IBM Plex Mono', monospace">ORD-261020-0010</span></div>
+<div style="margin: 16px; background: #F3F4F5; padding: 12px; text-align: center; display: flex; flex-direction: column; gap: 2px"><b>Menunggu pembayaran</b><span style="font-size: 13px">Bayar sebelum <b>10:30 WIB</b> · sisa 13:52</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 16px 16px">
+<div style="width: 220px; height: 220px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">QRIS (SIMULASI)</div>
+<span style="font-size: 13px; color: #5A606B">Total</span>
+<b style="font-size: 26px">Rp587.250</b>
+<u style="font-size: 13px">Unduh QR</u>
+</div>
+<div style="padding: 0 16px 16px; font-size: 13px; display: flex; flex-direction: column; gap: 6px"><b>Cara bayar</b><span style="color: #5A606B">1. Buka aplikasi bank / e-wallet · 2. Pilih Scan QRIS · 3. Periksa nominal · 4. Konfirmasi</span></div>
+<div style="padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="background: #2B2F36; color: #FFFFFF; padding: 13px; text-align: center; font-weight: 600; font-size: 14px">Cek status pembayaran</span>
+<span style="border: 1px solid #2B2F36; padding: 12px; text-align: center; font-weight: 600; font-size: 14px">Ganti metode pembayaran</span>
+<u style="text-align: center; font-size: 13px">Batalkan pesanan</u>
+</div>
+<div style="margin: 0 16px 16px; border: 2px dashed #8A8F98; padding: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 12px">
+<b style="font-family: 'IBM Plex Mono', monospace">PROTOTYPE ONLY · mock gateway event</b>
+<div style="display: flex; gap: 6px"><span style="border: 1px solid #5A606B; padding: 6px 8px">payment.paid</span><span style="border: 1px solid #5A606B; padding: 6px 8px">payment.failed</span><span style="border: 1px solid #5A606B; padding: 6px 8px">payment.expired</span></div>
+<span style="color: #5A606B">Not shown to customers; replaces the real webhook in the demo.</span>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

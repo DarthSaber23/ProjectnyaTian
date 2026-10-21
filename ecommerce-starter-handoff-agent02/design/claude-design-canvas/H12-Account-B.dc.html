@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Sambung Account</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E1726}a:hover{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 1700px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S23 · /akun · 20 Okt 10:25 WIB (after ORD-261020-0010 was paid)</div>
+<div style="width: 1440px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 28px; padding: 16px 48px; border-bottom: 1px solid #CBD2DC"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span><div style="flex: 1; height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; color: #4A5568; font-size: 15px">Cari kabel, adaptor, charger…</div><nav style="display: flex; gap: 22px; font-size: 14px; font-weight: 500"><span>Wishlist</span><b>Rina</b><span>Keranjang 0</span></nav></div>
+<div style="display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; padding: 36px 48px 56px">
+<nav aria-label="Akun" style="display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span style="padding: 10px 14px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600" aria-current="page">Dasbor</span>
+<a href="#" style="padding: 10px 14px; text-decoration: none">Pesanan</a><a href="#" style="padding: 10px 14px; text-decoration: none">Profil</a><a href="#" style="padding: 10px 14px; text-decoration: none">Buku alamat</a><a href="#" style="padding: 10px 14px; text-decoration: none">Wishlist</a><a href="#" style="padding: 10px 14px; text-decoration: none">Preferensi komunikasi</a>
+<a href="#" style="padding: 10px 14px; text-decoration: none; color: #4A5568; margin-top: 12px; border-top: 1px solid #CBD2DC">Keluar</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 600">Halo, Rina</h1><span style="font-size: 14px; color: #4A5568">rina@example.com · pelanggan sejak 2026</span></div>
+<section style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Pesanan aktif (2)</h2><a href="#" style="font-size: 14px; color: #1F5AE0; font-weight: 600">Semua pesanan →</a></div>
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="2">
+<article style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; gap: 12px; align-items: center"><b style="font-family: 'JetBrains Mono', monospace; font-size: 15px">{{o.no}}</b><span style="{{o.chipSt}}">{{o.status}}</span></div>
+<span style="font-size: 14px; color: #2D3748">{{o.items}}</span>
+<span style="{{o.noteSt}}">{{o.note}}</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px"><b style="font-family: 'JetBrains Mono', monospace; font-size: 17px">{{o.total}}</b><a href="#" style="height: 40px; padding: 0 16px; border: 1.5px solid #1F5AE0; color: #1F5AE0; border-radius: 6px; display: flex; align-items: center; font-weight: 600; font-size: 14px; text-decoration: none">{{o.cta}}</a></div>
+</article>
+</sc-for>
+</section>
+<section style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<a href="#" style="background: #F2F4F7; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 6px; text-decoration: none"><b style="font-size: 16px">Buku alamat</b><span style="font-size: 14px; color: #4A5568">2 alamat · utama: Rumah, Kota Bandung</span></a>
+<a href="#" style="background: #F2F4F7; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 6px; text-decoration: none"><b style="font-size: 16px">Wishlist</b><span style="font-size: 14px; color: #4A5568">2 produk · 1 habis</span></a>
+<a href="#" style="background: #F2F4F7; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 6px; text-decoration: none"><b style="font-size: 16px">Preferensi komunikasi</b><span style="font-size: 14px; color: #4A5568">Email promo: mati · info pesanan WhatsApp: aktif</span></a>
+</section>
+<section style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Untuk kamu</h2><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">ATURAN: KATEGORI DARI PESANAN &amp; WISHLIST · BISA DIMATIKAN DI PREFERENSI</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{recs}}" as="p" hint-placeholder-count="3"><article style="border: 1px solid #CBD2DC; border-radius: 6px; display: grid; grid-template-columns: 100px minmax(0, 1fr); overflow: hidden"><div style="height: 100px"><dc-import name="ProductArt" kind="{{p.art}}" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="{{p.name}}" hint-size="100%,100px"></dc-import></div><div style="padding: 12px; display: flex; flex-direction: column; gap: 4px; justify-content: center"><b style="font-size: 14px">{{p.name}}</b><span style="font-size: 13px; font-family: 'JetBrains Mono', monospace">{{p.price}}</span><span style="font-size: 12px; color: #4A5568">{{p.why}}</span></div></article></sc-for>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 32px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S23 dashboard</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="padding: 16px; border-bottom: 1px solid #CBD2DC; display: flex; flex-direction: column; gap: 2px"><b style="font-family: 'Space Grotesk', sans-serif; font-size: 24px">Halo, Rina</b><span style="font-size: 13px; color: #4A5568">rina@example.com</span></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 15px">Pesanan aktif</b>
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="2"><a href="#" style="border: 1px solid #CBD2DC; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px; text-decoration: none"><span style="display: flex; justify-content: space-between; align-items: center"><b style="font-family: 'JetBrains Mono', monospace; font-size: 13px">{{o.no}}</b><span style="{{o.chipSt}}">{{o.status}}</span></span><span style="font-size: 13px; color: #2D3748">{{o.itemsShort}}</span><span style="{{o.noteSt}}">{{o.note}}</span></a></sc-for>
+</div>
+<nav style="border-top: 1px solid #CBD2DC; display: flex; flex-direction: column; font-size: 15px">
+<sc-for list="{{menu}}" as="m" hint-placeholder-count="6"><a href="#" style="min-height: 52px; padding: 0 16px; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; justify-content: space-between; text-decoration: none">{{m.t}}<span style="color: #4A5568; font-size: 13px">{{m.d}} ›</span></a></sc-for>
+<a href="#" style="min-height: 52px; padding: 0 16px; display: flex; align-items: center; color: #C0262D; text-decoration: none">Keluar</a>
+</nav>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S26 /akun/pesanan · status tabs</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; padding: 4px 6px; border-bottom: 1px solid #CBD2DC"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Pesanan saya</b></div>
+<div role="tablist" style="display: flex; gap: 18px; padding: 0 16px; border-bottom: 1px solid #CBD2DC; font-size: 14px; overflow: hidden; white-space: nowrap"><span role="tab" aria-selected="true" style="padding: 12px 0; font-weight: 600; border-bottom: 3px solid #1F5AE0">Semua (2)</span><span role="tab" style="padding: 12px 0; color: #4A5568">Belum bayar (0)</span><span role="tab" style="padding: 12px 0; color: #4A5568">Diproses (1)</span><span role="tab" style="padding: 12px 0; color: #4A5568">Dikirim (1)</span></div>
+<div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="2">
+<article style="border: 1px solid #CBD2DC; border-radius: 8px; overflow: hidden">
+<div style="padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; background: #F2F4F7"><span style="display: flex; flex-direction: column"><b style="font-family: 'JetBrains Mono', monospace; font-size: 13px">{{o.no}}</b><span style="font-size: 12px; color: #4A5568">{{o.date}}</span></span><span style="{{o.chipSt}}">{{o.status}}</span></div>
+<div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; font-size: 13px"><span>{{o.items}}</span><span style="display: flex; justify-content: space-between"><span style="color: #4A5568">Total</span><b style="font-family: 'JetBrains Mono', monospace">{{o.total}}</b></span><span style="{{o.noteSt}}">{{o.note}}</span></div>
+<a href="#" style="display: flex; justify-content: center; align-items: center; height: 46px; border-top: 1px solid #CBD2DC; color: #1F5AE0; font-weight: 600; font-size: 14px; text-decoration: none">{{o.cta}}</a>
+</article>
+</sc-for>
+<div style="border: 1.5px dashed #CBD2DC; border-radius: 8px; padding: 18px; text-align: center; font-size: 13px; color: #4A5568">Empty-tab state (e.g. "Belum bayar"): "Tidak ada pesanan yang menunggu pembayaran." + Mulai belanja</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+var chip = "display:inline-flex;padding:3px 8px;border-radius:4px;font-size:12px;font-weight:600;";
+return {
+orders: [
+{ no: "ORD-261020-0010", date: "20 Okt 2026", status: "Dibayar", chipSt: chip + "background:#E3F4EA;color:#1E7A45", items: "Kabel USB-C 100W · 2 m ×2, Charger GaN 65W ×1", itemsShort: "3 barang · Rp587.250", total: "Rp587.250", note: "Menunggu diproses tim kami", noteSt: "font-size:13px;color:#4A5568", cta: "Lihat detail" },
+{ no: "ORD-261014-0003", date: "14 Okt 2026", status: "Dalam Perjalanan", chipSt: chip + "background:#EAF0FD;color:#1747B5", items: "Adaptor USB-C ke HDMI ×1, Kabel USB-C ke Lightning ×1", itemsShort: "2 barang · Rp386.000", total: "Rp386.000", note: "Belum ada pembaruan kurir sejak 15 Okt 18:22", noteSt: "font-size:13px;color:#8A5300;font-weight:600", cta: "Lacak pesanan" }
+],
+recs: [
+{ name: "Hub USB-C 7-in-1", price: "Rp549.000", why: "Ada di wishlist kamu · sisa 4", art: "hub" },
+{ name: "Kabel USB-A ke USB-C · 1 m", price: "Rp69.000", why: "Kategori Kabel dari pesananmu", art: "cable" },
+{ name: "Kabel DisplayPort 1.4 · 2 m", price: "Rp199.000", why: "Kategori yang sering kamu lihat", art: "cable" }
+],
+menu: [
+{ t: "Pesanan", d: "2" }, { t: "Profil", d: "" }, { t: "Buku alamat", d: "2" }, { t: "Wishlist", d: "2" }, { t: "Preferensi komunikasi", d: "" }, { t: "Bantuan", d: "" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

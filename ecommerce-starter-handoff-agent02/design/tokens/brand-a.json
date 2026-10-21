@@ -1,0 +1,20 @@
+{
+  "$meta": { "brand": "A", "workingName": "Halimun (unscreened)", "version": "0.3.0-m3", "source": "Claude Design canvas, board M3-1" },
+  "color": {
+    "bg": "#F7F4EF", "surface": "#FFFFFF", "surface-alt": "#EFE6DC",
+    "text": "#23201D", "text-muted": "#6B625A", "text-disabled": "#9A9188",
+    "border": "#D9CFC4", "border-strong": "#8C8279",
+    "primary": "#4F6B57", "on-primary": "#FFFFFF", "primary-soft": "#E7EEE8", "primary-ink": "#2F4A37",
+    "accent": "#8C3B2E", "on-accent": "#FFFFFF",
+    "success": "#2F6B3F", "success-soft": "#E5F0E7",
+    "warning": "#8A5300", "warning-soft": "#FBEFD9",
+    "danger": "#A3302A", "danger-soft": "#F8E3E1",
+    "focus": "#2B5FA8", "focus-ring-on-primary": "#2B5FA8",
+    "disabled-bg": "#EEE9E3"
+  },
+  "font": { "display": "Newsreader, Georgia, serif", "body": "Figtree, system-ui, sans-serif", "mono": "IBM Plex Mono, monospace", "display-weight": 500 },
+  "radius": { "sm": "8px", "md": "16px", "lg": "24px", "control": "999px" },
+  "shadow": { "card": "0 2px 8px rgba(35,32,29,0.08)", "overlay": "0 12px 32px rgba(14,23,38,0.18)" },
+  "size": { "control-h": "44px", "touch-min": "44px" },
+  "composition": { "productCard": "editorial", "filterLayout": "topbar", "gridCols": { "base": 2, "md": 2, "lg": 3, "xl": 3 } }
+}

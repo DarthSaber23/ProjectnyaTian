@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Order List</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1500px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A06 · /admin/orders · Operations (Dewi O.) · 2 rows selected</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex">
+<nav aria-label="Admin" style="width: 232px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; font-size: 14px; min-height: 1100px">
+<div style="padding: 0 8px 18px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span> <span style="font-size: 11px; color: #4A5568; border: 1px solid #CBD2DC; border-radius: 4px; padding: 1px 6px">Admin</span></div>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Dasbor</span>
+<span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">PENJUALAN</span>
+<span style="min-height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 0 10px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Pesanan <b style="font-size: 11px; background: #1F5AE0; color: #FFFFFF; border-radius: 9px; padding: 1px 7px">2</b></span>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Pelanggan</span>
+<span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">KATALOG</span>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Produk</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Kategori</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Inventaris</span>
+<span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">LAINNYA</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Analitik</span>
+<span style="margin-top: auto; font-size: 12px; color: #4A5568; padding: 0 10px">Peran: Operasional · menu Marketing &amp; Pengaturan disembunyikan</span>
+</nav>
+<main style="flex: 1; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600">Pesanan</h1><button type="button" style="height: 40px; padding: 0 14px; border: 1.5px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit">Ekspor CSV</button></div>
+<div role="tablist" style="display: flex; gap: 22px; border-bottom: 1px solid #CBD2DC; font-size: 14px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="7"><span role="tab" aria-selected="{{t.sel}}" style="{{t.st}}">{{t.t}} <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px">{{t.n}}</span></span></sc-for>
+</div>
+<div style="display: flex; gap: 10px; align-items: center">
+<div style="width: 360px; height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; background: #FFFFFF; display: flex; align-items: center; padding: 0 12px; color: #4A5568; font-size: 14px">Cari nomor pesanan atau nama…</div>
+<button type="button" style="height: 40px; padding: 0 12px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 13px">Tanggal: 14–20 Okt ▾</button>
+<button type="button" style="height: 40px; padding: 0 12px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 13px">Pembayaran ▾</button>
+<button type="button" style="height: 40px; padding: 0 12px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 13px">Kurir ▾</button>
+</div>
+<div role="region" aria-label="Aksi massal" style="background: #0E1726; color: #FFFFFF; border-radius: 6px; padding: 10px 14px; display: flex; align-items: center; gap: 14px; font-size: 14px"><b>2 dipilih</b><button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">Proses 2 pesanan</button><button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #7D8796; border-radius: 6px; background: transparent; color: #FFFFFF; font-family: inherit">Cetak label</button><span style="margin-left: auto; font-size: 12px; color: #CBD2DC">Hanya pesanan berstatus Dibayar yang bisa diproses</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; overflow: hidden">
+<table style="width: 100%; border-collapse: collapse; font-size: 13.5px">
+<thead><tr style="background: #F2F4F7; text-align: left; color: #4A5568; font-size: 12px"><th scope="col" style="padding: 10px 12px; width: 36px"><span aria-label="Pilih semua" style="display: inline-block; width: 18px; height: 18px; border: 1.5px solid #7D8796; border-radius: 4px"></span></th><th scope="col" style="padding: 10px 8px">Pesanan</th><th scope="col" style="padding: 10px 8px">Tanggal</th><th scope="col" style="padding: 10px 8px">Pelanggan</th><th scope="col" style="padding: 10px 8px; text-align: right">Total</th><th scope="col" style="padding: 10px 8px">Pembayaran</th><th scope="col" style="padding: 10px 8px">Pemenuhan</th><th scope="col" style="padding: 10px 8px">Kurir</th></tr></thead>
+<tbody>
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="10"><tr style="{{o.rowSt}}"><td style="padding: 10px 12px"><span style="{{o.box}}">{{o.mark}}</span></td><td style="padding: 10px 8px; font-family: 'JetBrains Mono', monospace"><a href="#">{{o.no}}</a></td><td style="padding: 10px 8px; color: #4A5568">{{o.d}}</td><td style="padding: 10px 8px">{{o.c}}</td><td style="padding: 10px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{o.t}}</td><td style="padding: 10px 8px"><span style="{{o.paySt}}">{{o.pay}}</span></td><td style="padding: 10px 8px"><span style="{{o.fulSt}}">{{o.ful}}</span></td><td style="padding: 10px 8px; color: #4A5568">{{o.k}}</td></tr></sc-for>
+</tbody>
+</table>
+<div style="padding: 12px 16px; border-top: 1px solid #E3E7ED; display: flex; justify-content: space-between; font-size: 13px; color: #4A5568"><span>10 pesanan · 14–20 Okt 2026</span><span>Halaman 1 dari 1</span></div>
+</div>
+</main>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · stacked cards, tab "Perlu diproses"</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Menu" style="width: 44px; height: 44px; border: none; background: none; font-size: 20px">☰</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Pesanan</b></div>
+<div style="display: flex; gap: 8px; padding: 12px; overflow: hidden; white-space: nowrap"><span style="flex: none; background: #0E1726; color: #FFFFFF; border-radius: 6px; padding: 8px 12px; font-size: 13px">Perlu diproses 2</span><span style="flex: none; border: 1px solid #CBD2DC; background: #FFFFFF; border-radius: 6px; padding: 8px 12px; font-size: 13px">Menunggu bayar 1</span><span style="flex: none; border: 1px solid #CBD2DC; background: #FFFFFF; border-radius: 6px; padding: 8px 12px; font-size: 13px">Semua 10</span></div>
+<sc-for list="{{todo}}" as="o" hint-placeholder-count="2"><article style="margin: 0 12px 10px; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px; font-size: 13px"><span style="display: flex; justify-content: space-between"><b style="font-family: 'JetBrains Mono', monospace">{{o.no}}</b><span style="{{o.paySt}}">{{o.pay}}</span></span><span>{{o.c}} · {{o.d}}</span><span style="display: flex; justify-content: space-between; align-items: center"><b style="font-family: 'JetBrains Mono', monospace; font-size: 15px">{{o.t}}</b><button type="button" style="height: 40px; padding: 0 14px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">Proses</button></span></article></sc-for>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+var chip = "display:inline-flex;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;";
+var C = {
+paid: chip + "background:#E3F4EA;color:#1E7A45", pend: chip + "background:#FDF1DC;color:#8A5300", exp: chip + "background:#F2F4F7;color:#4A5568", ref: chip + "background:#FCE6E7;color:#C0262D",
+del: chip + "background:#E3F4EA;color:#1E7A45", tr: chip + "background:#EAF0FD;color:#1747B5", proc: chip + "background:#EAF0FD;color:#1747B5", wait: chip + "background:#FDF1DC;color:#8A5300", can: chip + "background:#F2F4F7;color:#4A5568", none: chip + "background:#FFFFFF;color:#4A5568;border:1px dashed #CBD2DC"
+};
+var on = "display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:4px;background:#1F5AE0;color:#FFFFFF;font-size:11px";
+var off = "display:inline-block;width:18px;height:18px;border:1.5px solid #7D8796;border-radius:4px;box-sizing:border-box";
+function o(no, d, c, t, pay, pk, ful, fk, k, sel) { return { no: no, d: d, c: c, t: t, pay: pay, paySt: C[pk], ful: ful, fulSt: C[fk], k: k, box: sel ? on : off, mark: sel ? "✓" : "", rowSt: "border-top:1px solid #E3E7ED;" + (sel ? "background:#F5F8FF" : "") }; }
+var orders = [
+o("ORD-261020-0010", "20 Okt 10:15", "Rina P.", "Rp587.250", "Menunggu", "pend", "Menunggu bayar", "wait", "Kurir A Reguler", false),
+o("ORD-261020-0009", "20 Okt 08:41", "Citra W.", "Rp276.000", "Dibayar", "paid", "Perlu diproses", "none", "Kurir A Reguler", true),
+o("ORD-261019-0008", "19 Okt", "Gita L.", "Rp237.000", "Refund penuh", "ref", "Dibatalkan", "can", "—", false),
+o("ORD-261019-0007", "19 Okt", "Budi H.", "Rp217.000", "Dibayar", "paid", "Perlu diproses", "none", "Kurir A Reguler", true),
+o("ORD-261018-0006", "18 Okt", "Fajar N.", "Rp237.000", "Kedaluwarsa", "exp", "Dibatalkan", "can", "—", false),
+o("ORD-261017-0005", "17 Okt", "Eka P.", "Rp567.000", "Dibayar", "paid", "Diproses", "proc", "Kurir A Reguler", false),
+o("ORD-261016-0004", "16 Okt", "Dimas A.", "Rp87.000", "Dibayar", "paid", "Diterima", "del", "Kurir A Reguler", false),
+o("ORD-261014-0003", "14 Okt", "Rina P.", "Rp386.000", "Dibayar", "paid", "Dalam perjalanan · terlambat", "tr", "Kurir A Reguler", false),
+o("ORD-261014-0002", "14 Okt", "Citra W.", "Rp417.000", "Dibayar", "paid", "Diterima", "del", "Kurir A Reguler", false),
+o("ORD-261014-0001", "14 Okt", "Budi H.", "Rp147.000", "Dibayar", "paid", "Diterima", "del", "Kurir A Reguler", false)
+];
+function tab(t, n, sel) { return { t: t, n: n, sel: sel ? "true" : "false", st: "padding:10px 0;" + (sel ? "font-weight:600;border-bottom:3px solid #1F5AE0" : "color:#4A5568") }; }
+return {
+tabs: [tab("Semua", "10", true), tab("Perlu diproses", "2", false), tab("Menunggu bayar", "1", false), tab("Diproses", "1", false), tab("Dikirim", "1", false), tab("Selesai", "3", false), tab("Dibatalkan", "2", false)],
+orders: orders,
+todo: [orders[1], orders[3]]
+};
+}
+}
+</script>
+</body>
+</html>

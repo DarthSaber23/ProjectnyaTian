@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mock Dataset</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2400px; box-sizing: border-box; padding: 64px 72px; background: #FFFFFF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 28px">
+
+<div style="display: flex; flex-direction: column; gap: 8px; border-bottom: 2px solid #15171C; padding-bottom: 20px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #555B66">W00 · M2 · SINGLE SOURCE OF TRUTH FOR EVERY WIREFRAME</div>
+<h1 style="margin: 0; font-size: 40px; font-weight: 700">Mock dataset — snapshot 20 Okt 2026, 10:16 WIB</h1>
+<div style="font-size: 15px; color: #3B4049; line-height: 1.5">All people, addresses, couriers and codes are fictional. Amounts are integer Rupiah (D4: percentage discounts floored to Rp1). Snapshot is taken just after order ORD-261020-0010 was created, so its items are already reserved. Shipping rates are simulated.</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Brand B — Accessories · products &amp; stock</h2>
+<div style="border: 1px solid #DADCE0; font-size: 13px">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 2.2fr) 90px 90px 120px 70px 70px 70px 80px; background: #15171C; color: #F6F6F3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.05em">
+<div style="padding: 8px 10px">SKU</div><div style="padding: 8px 10px">PRODUCT / VARIANT</div><div style="padding: 8px 10px">PRICE</div><div style="padding: 8px 10px">WAS</div><div style="padding: 8px 10px">ACTIVE PROMO</div><div style="padding: 8px 10px">ON HAND</div><div style="padding: 8px 10px">RESERVED</div><div style="padding: 8px 10px">AVAIL.</div><div style="padding: 8px 10px">RATING</div>
+</div>
+<sc-for list="{{pb}}" as="p" hint-placeholder-count="11">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 2.2fr) 90px 90px 120px 70px 70px 70px 80px; border-top: 1px solid #EEEFF1">
+<div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; color: #555B66">{{p.sku}}</div><div style="padding: 7px 10px; font-weight: 600">{{p.name}}</div><div style="padding: 7px 10px">{{p.price}}</div><div style="padding: 7px 10px; color: #555B66">{{p.was}}</div><div style="padding: 7px 10px">{{p.promo}}</div><div style="padding: 7px 10px">{{p.oh}}</div><div style="padding: 7px 10px">{{p.res}}</div><div style="padding: 7px 10px; font-weight: 600">{{p.av}}</div><div style="padding: 7px 10px; color: #555B66">{{p.rt}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Brand A — Cosmetics · products</h2>
+<div style="border: 1px solid #DADCE0; font-size: 13px">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 2.2fr) 90px 90px minmax(0, 1.4fr) 80px 80px; background: #15171C; color: #F6F6F3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.05em">
+<div style="padding: 8px 10px">SKU</div><div style="padding: 8px 10px">PRODUCT / VARIANT</div><div style="padding: 8px 10px">PRICE</div><div style="padding: 8px 10px">WAS</div><div style="padding: 8px 10px">PROMO</div><div style="padding: 8px 10px">AVAIL.</div><div style="padding: 8px 10px">RATING</div>
+</div>
+<sc-for list="{{pa}}" as="p" hint-placeholder-count="7">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 2.2fr) 90px 90px minmax(0, 1.4fr) 80px 80px; border-top: 1px solid #EEEFF1">
+<div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; color: #555B66">{{p.sku}}</div><div style="padding: 7px 10px; font-weight: 600">{{p.name}}</div><div style="padding: 7px 10px">{{p.price}}</div><div style="padding: 7px 10px; color: #555B66">{{p.was}}</div><div style="padding: 7px 10px">{{p.promo}}</div><div style="padding: 7px 10px; font-weight: 600">{{p.av}}</div><div style="padding: 7px 10px; color: #555B66">{{p.rt}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Promotions</h2>
+<div style="border: 1px solid #DADCE0; font-size: 13px">
+<sc-for list="{{promos}}" as="p" hint-placeholder-count="7">
+<div style="display: grid; grid-template-columns: 130px minmax(0, 1fr); border-top: 1px solid #EEEFF1">
+<div style="padding: 8px 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500">{{p.code}}</div><div style="padding: 8px 10px; line-height: 1.45">{{p.rule}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Customer &amp; shipping (simulated)</h2>
+<div style="border: 1px solid #DADCE0; padding: 12px 14px; font-size: 13px; line-height: 1.55">
+<div><strong>C-0001 Rina Pratama</strong> · rina@example.com · WA 0812-0000-1234</div>
+<div>Rumah (utama): Jl. Melati No. 12, RT 03/RW 05, Kec. Coblong, Kota Bandung, Jawa Barat 40132</div>
+<div>Kantor: Jl. Kenanga No. 8, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40111</div>
+</div>
+<div style="border: 1px solid #DADCE0; font-size: 13px">
+<sc-for list="{{ship}}" as="s" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: minmax(0, 1.4fr) 90px 100px minmax(0, 1fr); border-top: 1px solid #EEEFF1">
+<div style="padding: 8px 10px; font-weight: 600">{{s.svc}}</div><div style="padding: 8px 10px">{{s.cost}}</div><div style="padding: 8px 10px">{{s.eta}}</div><div style="padding: 8px 10px; color: #555B66">{{s.note}}</div>
+</div>
+</sc-for>
+</div>
+<div style="font-size: 12px; color: #555B66">Quote for 1 kg (parcel 310 g, rounded up) from Jakarta Barat to Kota Bandung. Changing address, items or quantity invalidates the quote.</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Checkout calculation · ORD-261020-0010</h2>
+<div style="border: 2px solid #15171C; font-size: 14px">
+<sc-for list="{{calc}}" as="c" hint-placeholder-count="8">
+<div style="{{c.row}}"><span>{{c.k}}</span><span style="font-family: 'IBM Plex Mono', monospace">{{c.v}}</span></div>
+</sc-for>
+</div>
+<div style="font-size: 12px; color: #555B66; line-height: 1.5">HEMAT50 is rejected: min. Rp500.000 excluding flash-sale items; eligible subtotal is Rp318.000. KABEL10: 10% × Rp318.000 = Rp31.800, capped at Rp30.000. Flash-sale saving (Rp99.750) is already in the unit price and shown as information only.</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Dashboard metrics · 14–20 Okt 2026 (D12)</h2>
+<div style="border: 2px solid #15171C; font-size: 14px">
+<sc-for list="{{kpi}}" as="c" hint-placeholder-count="7">
+<div style="{{c.row}}"><span>{{c.k}}</span><span style="font-family: 'IBM Plex Mono', monospace">{{c.v}}</span></div>
+</sc-for>
+</div>
+<div style="font-size: 12px; color: #555B66; line-height: 1.5">Daily revenue: 14 Okt 950.000 · 15 Okt 0 · 16 Okt 87.000 · 17 Okt 567.000 · 18 Okt 0 · 19 Okt 217.000 (237.000 paid − 237.000 refunded + 217.000) · 20 Okt 276.000 → total 2.097.000. Top product by units: B01 (3 units, Rp387.000).</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px">Orders · Brand B store · 14–20 Okt 2026</h2>
+<div style="border: 1px solid #DADCE0; font-size: 13px">
+<div style="display: grid; grid-template-columns: 170px 80px 80px minmax(0, 2fr) 110px 170px minmax(0, 1fr); background: #15171C; color: #F6F6F3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.05em">
+<div style="padding: 8px 10px">ORDER</div><div style="padding: 8px 10px">DATE</div><div style="padding: 8px 10px">CUST.</div><div style="padding: 8px 10px">ITEMS (+ ONGKIR)</div><div style="padding: 8px 10px">TOTAL</div><div style="padding: 8px 10px">STATUS</div><div style="padding: 8px 10px">PAYMENT</div>
+</div>
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="10">
+<div style="display: grid; grid-template-columns: 170px 80px 80px minmax(0, 2fr) 110px 170px minmax(0, 1fr); border-top: 1px solid #EEEFF1">
+<div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace">{{o.no}}</div><div style="padding: 7px 10px">{{o.d}}</div><div style="padding: 7px 10px; color: #555B66">{{o.c}}</div><div style="padding: 7px 10px">{{o.items}}</div><div style="padding: 7px 10px; font-weight: 600">{{o.total}}</div><div style="padding: 7px 10px">{{o.st}}</div><div style="padding: 7px 10px; color: #555B66">{{o.pay}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+renderVals() {
+var R = "display:flex;justify-content:space-between;padding:8px 14px;border-top:1px solid #EEEFF1";
+var T = "display:flex;justify-content:space-between;padding:10px 14px;border-top:2px solid #15171C;font-weight:700;background:#F6F6F3";
+function b(sku, name, price, was, promo, oh, res, av, rt) { return { sku: sku, name: name, price: price, was: was, promo: promo, oh: oh, res: res, av: av, rt: rt }; }
+return {
+pb: [
+b("B01-1M-BLK", "Kabel USB-C ke USB-C 100W Braided · 1 m · Hitam", "129.000", "149.000", "Harga coret", "42", "0", "42", "4,8 (126)"),
+b("B01-2M-BLK", "Kabel USB-C ke USB-C 100W Braided · 2 m · Hitam", "159.000", "—", "—", "9", "2", "7 (low)", "4,8 (126)"),
+b("B01-2M-WHT", "Kabel USB-C ke USB-C 100W Braided · 2 m · Putih", "159.000", "—", "—", "0", "0", "0 (habis)", "4,8 (126)"),
+b("B01-3M-BLK", "Kabel USB-C ke USB-C 100W Braided · 3 m · Hitam", "189.000", "—", "—", "15", "0", "15", "4,8 (126)"),
+b("B02", "Adaptor USB-C ke HDMI 4K60", "219.000", "—", "—", "23", "0", "23", "4,7 (58)"),
+b("B03", "Charger GaN 65W 3 Port", "299.250", "399.000", "Flash sale −25%", "12", "1", "11", "4,9 (204)"),
+b("B04", "Hub USB-C 7-in-1", "549.000", "—", "—", "4", "0", "4 (low)", "4,6 (37)"),
+b("B05", "Kabel USB-C ke Lightning · 1 m", "149.000", "—", "—", "30", "0", "30", "4,5 (88)"),
+b("B06", "Kabel HDMI 2.1 8K · 2 m", "179.000", "—", "—", "0", "0", "0 (habis)", "4,7 (41)"),
+b("B07", "Kabel USB-A ke USB-C · 1 m", "69.000", "—", "—", "120", "0", "120", "4,6 (312)"),
+b("B08", "Kabel DisplayPort 1.4 · 2 m", "199.000", "—", "—", "18", "0", "18", "4,8 (22)")
+],
+pa: [
+{ sku: "A01-100", name: "Gentle Low-pH Cleanser · 100 ml", price: "119.000", was: "—", promo: "Bundel Rutinitas Pagi", av: "64", rt: "4,8 (342)" },
+{ sku: "A01-200", name: "Gentle Low-pH Cleanser · 200 ml", price: "189.000", was: "—", promo: "—", av: "21", rt: "4,8 (342)" },
+{ sku: "A02", name: "Barrier Repair Moisturizer · 50 ml", price: "169.000", was: "—", promo: "Bundel Rutinitas Pagi", av: "38", rt: "4,7 (190)" },
+{ sku: "A03", name: "Niacinamide Serum · 30 ml", price: "149.000", was: "179.000", promo: "Harga coret · Beli 2 gratis A05", av: "45", rt: "4,6 (156)" },
+{ sku: "A04", name: "Daily Sunscreen Gel · 50 ml", price: "139.000", was: "—", promo: "Bundel Rutinitas Pagi", av: "9 (low)", rt: "4,7 (98)" },
+{ sku: "A05", name: "Travel Cleanser · 30 ml", price: "45.000", was: "—", promo: "Hadiah Beli X Gratis Y", av: "80", rt: "4,8 (40)" },
+{ sku: "BND-PAGI", name: "Bundel Rutinitas Pagi (A01-100 + A02 + A04)", price: "379.000", was: "427.000", promo: "Bundel, hemat 48.000", av: "9", rt: "—" }
+],
+promos: [
+{ code: "FS-WEEKEND", rule: "Flash sale 25% on B03. 20 Okt 00:00 – 22 Okt 23:59 WIB. floor(399.000 × 0,75) = 299.250. Excluded from order vouchers." },
+{ code: "Harga coret", rule: "Permanent markdown: B01 1 m (149.000 → 129.000), A03 (179.000 → 149.000)." },
+{ code: "KABEL10", rule: "Order voucher: 10% off items in category Kabel, max Rp30.000, no minimum. Valid until 31 Okt." },
+{ code: "HEMAT50", rule: "Order voucher: Rp50.000 off, min. Rp500.000 excluding flash-sale items." },
+{ code: "GRATISONGKIR", rule: "Shipping voucher: up to Rp20.000 off shipping, min. Rp300.000." },
+{ code: "BND-PAGI", rule: "Bundle (Brand A): A01-100 + A02 + A04 for 379.000 instead of 427.000." },
+{ code: "B2G1-SERUM", rule: "Buy X Get Y (Brand A): buy 2 × A03, get 1 × A05 free." }
+],
+ship: [
+{ svc: "Kurir A · Reguler", cost: "18.000", eta: "2–3 hari", note: "Selected in ORD-0010" },
+{ svc: "Kurir B · Hemat", cost: "15.000", eta: "3–5 hari", note: "" },
+{ svc: "Kurir C · Kilat", cost: "27.000", eta: "1 hari", note: "" },
+{ svc: "Kurir D · Same Day", cost: "—", eta: "—", note: "Tidak tersedia untuk alamat ini" }
+],
+calc: [
+{ k: "B01-2M-BLK × 2 @ 159.000", v: "318.000", row: R },
+{ k: "B03 × 1 @ 299.250 (flash sale)", v: "299.250", row: R },
+{ k: "Subtotal (3 barang)", v: "617.250", row: R },
+{ k: "Voucher KABEL10", v: "−30.000", row: R },
+{ k: "Ongkir Kurir A · Reguler", v: "18.000", row: R },
+{ k: "Voucher GRATISONGKIR", v: "−18.000", row: R },
+{ k: "Total bayar (QRIS, s/d 10:30 WIB)", v: "587.250", row: T }
+],
+kpi: [
+{ k: "Paid orders (excl. 0006 expired, 0010 pending)", v: "8", row: R },
+{ k: "Gross paid amount", v: "2.334.000", row: R },
+{ k: "Refunds recorded (ORD-0008)", v: "−237.000", row: R },
+{ k: "Revenue", v: "2.097.000", row: T },
+{ k: "AOV = 2.097.000 ÷ 8", v: "262.125", row: R },
+{ k: "Sessions (mock) / purchase sessions", v: "1.240 / 8", row: R },
+{ k: "Conversion = 8 ÷ 1.240", v: "0,65%", row: R }
+],
+orders: [
+{ no: "ORD-261014-0001", d: "14 Okt", c: "C-0002", items: "B01-1M-BLK ×1 (129.000) + 18.000", total: "147.000", st: "Diterima", pay: "QRIS · Dibayar" },
+{ no: "ORD-261014-0002", d: "14 Okt", c: "C-0003", items: "B03 ×1 (399.000, before flash sale) + 18.000", total: "417.000", st: "Diterima", pay: "VA · Dibayar" },
+{ no: "ORD-261014-0003", d: "14 Okt", c: "C-0001", items: "B02 ×1 (219.000), B05 ×1 (149.000) + 18.000", total: "386.000", st: "Dalam Perjalanan", pay: "VA · Dibayar" },
+{ no: "ORD-261016-0004", d: "16 Okt", c: "C-0004", items: "B07 ×1 (69.000) + 18.000", total: "87.000", st: "Diterima", pay: "E-wallet · Dibayar" },
+{ no: "ORD-261017-0005", d: "17 Okt", c: "C-0005", items: "B04 ×1 (549.000) + 18.000", total: "567.000", st: "Diproses", pay: "VA · Dibayar" },
+{ no: "ORD-261018-0006", d: "18 Okt", c: "C-0006", items: "B02 ×1 (219.000) + 18.000", total: "237.000", st: "Dibatalkan", pay: "QRIS · Kedaluwarsa" },
+{ no: "ORD-261019-0007", d: "19 Okt", c: "C-0002", items: "B08 ×1 (199.000) + 18.000", total: "217.000", st: "Dibayar", pay: "QRIS · Dibayar" },
+{ no: "ORD-261019-0008", d: "19 Okt", c: "C-0007", items: "B02 ×1 (219.000) + 18.000", total: "237.000", st: "Dibatalkan", pay: "E-wallet · Refund penuh" },
+{ no: "ORD-261020-0009", d: "20 Okt", c: "C-0003", items: "B01-1M-BLK ×2 (258.000) + 18.000", total: "276.000", st: "Dibayar", pay: "VA · Dibayar" },
+{ no: "ORD-261020-0010", d: "20 Okt", c: "C-0001", items: "B01-2M-BLK ×2, B03 ×1 + 18.000 − vouchers", total: "587.250", st: "Menunggu Pembayaran", pay: "QRIS · Pending" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Homepage Brand A</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1800px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · S01 · BRAND A (cosmetics): editorial, concern-led, fewer and larger products</div>
+<div style="width: 1440px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="background: #F3F4F5; font-size: 13px; padding: 8px; text-align: center">Bundel Rutinitas Pagi hemat Rp48.000 · <u>Lihat bundel</u></div>
+<div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 20px 56px; border-bottom: 1px solid #DADCE0">
+<div style="display: flex; gap: 24px; font-size: 14px"><span>Kebutuhan Kulit ▾</span><span>Koleksi</span><span>Bundel</span><span>Jurnal</span></div>
+<div style="width: 160px; height: 40px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px">[BRAND A]</div>
+<div style="display: flex; gap: 20px; justify-content: flex-end; font-size: 14px"><span>Cari</span><span>Masuk</span><span>Wishlist</span><span style="font-weight: 600">Keranjang (0)</span></div>
+</div>
+
+<div style="height: 460px; background: #E4E6E9; display: flex; align-items: flex-end; padding: 56px; box-sizing: border-box">
+<div style="width: 520px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">CMS block "Hero full-bleed + story"</span>
+<span style="font-size: 32px; font-weight: 700; line-height: 1.2">[Headline] Rutinitas sederhana untuk kulit yang terasa nyaman</span>
+<span style="font-size: 15px; color: #5A606B">[Subcopy — benefit wording only, no medical claims]</span>
+<span style="background: #2B2F36; color: #FFFFFF; padding: 12px 20px; font-size: 14px; font-weight: 600; align-self: flex-start">Temukan rutinitasmu</span>
+</div>
+</div>
+
+<div style="padding: 40px 56px; display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 24px; font-weight: 700; text-align: center">Belanja berdasarkan kebutuhan kulit</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+<sc-for list="{{concerns}}" as="c" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 10px"><div style="height: 220px; background: #E4E6E9"></div><b style="font-size: 16px">{{c.n}}</b><span style="font-size: 13px; color: #5A606B">{{c.k}}</span></div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin: 0 56px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: #F3F4F5">
+<div style="height: 360px; background: #E4E6E9; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">IMG BUNDEL · 3 produk</div>
+<div style="padding: 40px; display: flex; flex-direction: column; gap: 12px; justify-content: center">
+<span style="font-size: 12px; font-weight: 700; border: 1px solid #2B2F36; padding: 2px 8px; align-self: flex-start">BUNDEL · HEMAT Rp48.000</span>
+<span style="font-size: 26px; font-weight: 700">Bundel Rutinitas Pagi</span>
+<span style="font-size: 14px; color: #5A606B">Gentle Low-pH Cleanser 100 ml · Barrier Repair Moisturizer 50 ml · Daily Sunscreen Gel 50 ml</span>
+<span style="display: flex; gap: 10px; align-items: baseline"><b style="font-size: 24px">Rp379.000</b><s style="color: #5A606B">Rp427.000</s></span>
+<span style="font-size: 13px; color: #5A606B">Sisa 9 bundel (dibatasi stok Daily Sunscreen Gel)</span>
+<span style="background: #2B2F36; color: #FFFFFF; padding: 12px 20px; font-size: 14px; font-weight: 600; align-self: flex-start">+ Keranjang</span>
+</div>
+</div>
+
+<div style="padding: 0 56px 40px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 24px; font-weight: 700">Pilihan Kami</span><span style="font-size: 12px; font-family: 'IBM Plex Mono', monospace; color: #5A606B">EDITORIAL · dikurasi tim</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px">
+<sc-for list="{{picks}}" as="p" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="height: 300px; background: #E4E6E9; padding: 10px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: flex-start"><span style="font-size: 11px; font-weight: 700; background: #FFFFFF; padding: 2px 6px">{{p.badge}}</span><span>♡</span></div>
+<span style="font-size: 12px; color: #5A606B">{{p.cat}}</span>
+<b style="font-size: 17px">{{p.name}}</b>
+<span style="font-size: 14px; color: #5A606B">{{p.benefit}}</span>
+<span style="display: flex; gap: 8px; align-items: baseline"><b>{{p.price}}</b><s style="font-size: 13px; color: #5A606B">{{p.was}}</s><span style="font-size: 12px; color: #5A606B">· ★ {{p.rt}}</span></span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin: 0 56px 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<div style="grid-column: span 1; display: flex; flex-direction: column; gap: 10px; justify-content: center"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A606B">CMS block "Edukasi bahan"</span><b style="font-size: 22px">Kenali bahan di produkmu</b><span style="font-size: 14px; color: #5A606B">[Short educational intro, reviewed for claims]</span></div>
+<div style="border: 1px solid #DADCE0; padding: 20px; display: flex; flex-direction: column; gap: 6px"><b>Niacinamide</b><span style="font-size: 13px; color: #5A606B">[Apa itu · cara pakai · produk terkait: Niacinamide Serum]</span></div>
+<div style="border: 1px solid #DADCE0; padding: 20px; display: flex; flex-direction: column; gap: 6px"><b>Ceramide</b><span style="font-size: 13px; color: #5A606B">[Apa itu · cara pakai · produk terkait: Barrier Repair Moisturizer]</span></div>
+</div>
+
+<div style="background: #F3F4F5; padding: 40px 56px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 22px">Kata mereka</b><span style="font-size: 12px; font-family: 'IBM Plex Mono', monospace; color: #5A606B">DATA DEMO · hanya ulasan pembelian terverifikasi (D8)</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<div style="background: #FFFFFF; padding: 20px; font-size: 14px; display: flex; flex-direction: column; gap: 8px"><span>★★★★★</span><span style="color: #5A606B">[Teks ulasan contoh dari data demo]</span><span style="font-size: 12px">— Pembeli D., Gentle Low-pH Cleanser</span></div>
+<div style="background: #FFFFFF; padding: 20px; font-size: 14px; display: flex; flex-direction: column; gap: 8px"><span>★★★★★</span><span style="color: #5A606B">[Teks ulasan contoh dari data demo]</span><span style="font-size: 12px">— Pembeli S., Bundel Rutinitas Pagi</span></div>
+<div style="background: #FFFFFF; padding: 20px; font-size: 14px; display: flex; flex-direction: column; gap: 8px"><span>★★★★☆</span><span style="color: #5A606B">[Teks ulasan contoh dari data demo]</span><span style="font-size: 12px">— Pembeli A., Niacinamide Serum</span></div>
+</div>
+</div>
+
+<div style="padding: 40px 56px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<div style="grid-column: span 3; display: flex; justify-content: space-between"><b style="font-size: 22px">Dari Jurnal</b><u style="font-size: 14px">Semua artikel</u></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 180px; background: #E4E6E9"></div><b>Urutan skincare pagi untuk pemula</b><span style="font-size: 13px; color: #5A606B">5 menit baca</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 180px; background: #E4E6E9"></div><b>Cara membaca label bahan</b><span style="font-size: 13px; color: #5A606B">7 menit baca</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="height: 180px; background: #E4E6E9"></div><b>Memilih pembersih untuk kulit sensitif</b><span style="font-size: 13px; color: #5A606B">4 menit baca</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 24px; padding: 28px 56px; background: #F3F4F5; font-size: 13px">
+<div style="display: flex; flex-direction: column; gap: 8px"><b>Tips &amp; promo ke email</b><div style="display: flex; gap: 8px"><span style="flex: 1; border: 1px solid #BFC3C9; background: #FFFFFF; padding: 8px; color: #5A606B">Email</span><span style="background: #2B2F36; color: #FFFFFF; padding: 8px 12px">Daftar</span></div><span style="color: #5A606B">☐ Saya setuju menerima email promosi</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><b>Bantuan</b><span>Kontak</span><span>FAQ</span><span>Info pengiriman</span><span>Pengembalian</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><b>Tentang</b><span>Cerita kami</span><span>Jurnal</span><span>Pembelian grosir</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><b>Legal</b><span>Kebijakan privasi</span><span>Syarat &amp; ketentuan</span></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · search behind icon, concern tiles first</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="background: #F3F4F5; font-size: 12px; padding: 6px 12px; text-align: center">Bundel Rutinitas Pagi hemat Rp48.000</div>
+<div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><span style="font-size: 20px">☰</span><div style="width: 110px; height: 30px; background: #E4E6E9; font-family: 'IBM Plex Mono', monospace; font-size: 11px; display: flex; align-items: center; justify-content: center">[BRAND A]</div><span style="text-align: right; font-size: 13px">Cari · Keranjang 0</span></div>
+<div style="height: 360px; background: #E4E6E9; display: flex; align-items: flex-end; padding: 16px; box-sizing: border-box"><div style="background: #FFFFFF; padding: 16px; display: flex; flex-direction: column; gap: 8px"><b style="font-size: 20px; line-height: 1.25">[Headline] Rutinitas sederhana untuk kulit yang terasa nyaman</b><span style="background: #2B2F36; color: #FFFFFF; padding: 10px 14px; font-size: 13px; font-weight: 600; align-self: flex-start">Temukan rutinitasmu</span></div></div>
+<div style="padding: 20px 16px 8px"><b style="font-size: 17px">Kebutuhan kulit</b></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 16px 20px">
+<sc-for list="{{concerns}}" as="c" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 120px; background: #E4E6E9"></div><b style="font-size: 14px">{{c.n}}</b></div>
+</sc-for>
+</div>
+<div style="margin: 0 16px 20px; background: #F3F4F5; display: flex; flex-direction: column">
+<div style="height: 180px; background: #E4E6E9"></div>
+<div style="padding: 14px; display: flex; flex-direction: column; gap: 6px; font-size: 14px"><span style="font-size: 11px; font-weight: 700">BUNDEL · HEMAT Rp48.000</span><b style="font-size: 17px">Bundel Rutinitas Pagi</b><span><b>Rp379.000</b> <s style="color: #5A606B">Rp427.000</s></span><span style="background: #2B2F36; color: #FFFFFF; padding: 10px; text-align: center; font-weight: 600">+ Keranjang</span></div>
+</div>
+<div style="padding: 0 16px 8px; display: flex; justify-content: space-between"><b style="font-size: 17px">Pilihan Kami</b><span style="font-size: 11px; color: #5A606B">EDITORIAL</span></div>
+<div style="display: flex; gap: 12px; padding: 0 16px 20px; overflow: hidden">
+<sc-for list="{{picks}}" as="p" hint-placeholder-count="3">
+<div style="flex: none; width: 160px; display: flex; flex-direction: column; gap: 4px"><div style="height: 180px; background: #E4E6E9"></div><b style="font-size: 13px">{{p.name}}</b><span style="font-size: 13px">{{p.price}}</span></div>
+</sc-for>
+</div>
+<div style="margin: 0 16px 20px; border: 1px solid #DADCE0; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 4px"><b>Kenali bahan di produkmu</b><span style="color: #5A606B">Niacinamide · Ceramide →</span></div>
+<div style="background: #F3F4F5; padding: 12px 16px; display: flex; flex-direction: column; font-size: 14px"><span style="padding: 10px 0; border-bottom: 1px solid #DADCE0">Bantuan ▾</span><span style="padding: 10px 0; border-bottom: 1px solid #DADCE0">Tentang ▾</span><span style="padding: 10px 0">Legal ▾</span></div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+concerns: [
+{ n: "Kulit sensitif", k: "3 produk" }, { n: "Kulit kering", k: "2 produk" }, { n: "Tampak kusam", k: "1 produk" }, { n: "Perlindungan harian", k: "1 produk" }
+],
+picks: [
+{ cat: "Pembersih", name: "Gentle Low-pH Cleanser", benefit: "100 ml / 200 ml", price: "mulai Rp119.000", was: "", rt: "4,8 (342)", badge: "TERLARIS" },
+{ cat: "Serum", name: "Niacinamide Serum 30 ml", benefit: "Beli 2 gratis Travel Cleanser", price: "Rp149.000", was: "Rp179.000", rt: "4,6 (156)", badge: "BELI 2 GRATIS 1" },
+{ cat: "Pelembap", name: "Barrier Repair Moisturizer 50 ml", benefit: "Bagian dari Bundel Rutinitas Pagi", price: "Rp169.000", was: "", rt: "4,7 (190)", badge: "BUNDEL" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

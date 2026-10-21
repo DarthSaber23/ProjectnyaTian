@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Halimun Catalog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#23201D}a:hover{color:#4F6B57}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 2000px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: Figtree, system-ui, sans-serif; color: #23201D; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S02 · /kategori/perawatan-wajah · filterLayout "topbar" (L4) · "Kebutuhan" menu open</div>
+<div style="width: 1440px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 22px 56px; border-bottom: 1px solid #D9CFC4">
+<nav style="display: flex; gap: 30px; font-size: 15px; font-weight: 500"><a href="#" style="text-decoration: none">Kebutuhan Kulit</a><a href="#" style="text-decoration: none">Koleksi</a><a href="#" style="text-decoration: none">Bundel</a><a href="#" style="text-decoration: none">Jurnal</a></nav>
+<span style="font-family: Newsreader, serif; font-size: 34px">halimun</span>
+<div style="display: flex; gap: 22px; justify-content: flex-end; font-size: 15px"><a href="#" style="text-decoration: none">Cari</a><a href="#" style="text-decoration: none">Masuk</a><a href="#" style="text-decoration: none; font-weight: 600">Keranjang (0)</a></div>
+</div>
+<div style="padding: 48px 56px 28px; display: flex; flex-direction: column; gap: 12px">
+<nav aria-label="Breadcrumb" style="font-size: 13px; color: #6B625A"><a href="#" style="color: #6B625A">Beranda</a> / <span aria-current="page" style="color: #23201D">Perawatan Wajah</span></nav>
+<h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 56px">Perawatan Wajah</h1>
+<p style="margin: 0; font-size: 17px; color: #3E3833; max-width: 640px; line-height: 1.6">Pembersih, serum, pelembap, dan perlindungan harian. Pilih berdasarkan kebutuhan kulitmu.</p>
+</div>
+<div style="padding: 0 56px 24px; display: flex; gap: 10px; align-items: center; position: relative; border-bottom: 1px solid #D9CFC4">
+<button type="button" style="height: 44px; padding: 0 18px; border: 1.5px solid #8C8279; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-size: 15px">Jenis kulit ▾</button>
+<button type="button" aria-expanded="true" style="height: 44px; padding: 0 18px; border: 2px solid #4F6B57; border-radius: 999px; background: #E7EEE8; color: #2F4A37; font-family: Figtree, sans-serif; font-size: 15px; font-weight: 600">Kebutuhan ▴</button>
+<button type="button" style="height: 44px; padding: 0 18px; border: 1.5px solid #8C8279; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-size: 15px">Harga ▾</button>
+<span style="margin-left: auto; font-size: 14px; color: #6B625A" role="status">6 produk</span>
+<button type="button" style="height: 44px; padding: 0 18px; border: 1.5px solid #8C8279; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-size: 15px">Urutkan: Terlaris ▾</button>
+<div role="menu" style="position: absolute; left: 196px; top: 56px; width: 300px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 12px 32px rgba(14,23,38,0.18); padding: 12px; display: flex; flex-direction: column; gap: 2px; z-index: 2">
+<sc-for list="{{needs}}" as="n" hint-placeholder-count="4"><label style="display: flex; gap: 12px; align-items: center; min-height: 44px; padding: 0 10px; border-radius: 10px; font-size: 15px"><span style="width: 20px; height: 20px; border: 1.5px solid #8C8279; border-radius: 6px; box-sizing: border-box"></span><span style="flex: 1">{{n.n}}</span><span style="color: #6B625A">{{n.c}}</span></label></sc-for>
+<div style="display: flex; gap: 8px; padding: 8px 4px 2px"><button type="button" style="flex: 1; height: 42px; border: 1.5px solid #23201D; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-weight: 600">Reset</button><button type="button" style="flex: 1; height: 42px; border: none; border-radius: 999px; background: #4F6B57; color: #FFFFFF; font-family: Figtree, sans-serif; font-weight: 600">Terapkan</button></div>
+</div>
+</div>
+<div style="padding: 36px 56px 64px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px">
+<sc-for list="{{items}}" as="p" hint-placeholder-count="6">
+<article style="display: flex; flex-direction: column; gap: 10px">
+<div style="height: 380px; border-radius: 16px; overflow: hidden; position: relative"><dc-import name="ProductArt" kind="{{p.art}}" bg="{{p.bg}}" fg="#FFFFFF" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,380px"></dc-import><span style="{{p.badgeSt}}">{{p.badge}}</span></div>
+<span style="font-size: 14px; color: #6B625A">{{p.cat}}</span>
+<a href="#" style="font-family: Newsreader, serif; font-size: 26px; line-height: 1.15; text-decoration: none">{{p.name}}</a>
+<span style="font-size: 15px; color: #3E3833">{{p.sub}}</span>
+<div style="display: flex; gap: 10px; align-items: baseline"><b style="font-size: 18px">{{p.price}}</b><s style="font-size: 15px; color: #6B625A">{{p.was}}</s><span style="font-size: 14px; color: #6B625A">{{p.rt}}</span></div>
+<span style="{{p.stockSt}}">{{p.stock}}</span>
+</article>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · 2 columns, filter sheet</div>
+<div style="width: 390px; background: #F7F4EF; display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 6px 8px; border-bottom: 1px solid #D9CFC4"><button type="button" aria-label="Menu" style="width: 44px; height: 44px; background: none; border: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button><span style="font-family: Newsreader, serif; font-size: 26px">halimun</span><span style="text-align: right; font-size: 13px; padding-right: 8px">Keranjang 0</span></div>
+<div style="padding: 24px 20px 14px; display: flex; flex-direction: column; gap: 6px"><h1 style="margin: 0; font-family: Newsreader, serif; font-weight: 400; font-size: 36px">Perawatan Wajah</h1><span style="font-size: 14px; color: #6B625A">6 produk</span></div>
+<div style="display: flex; gap: 8px; padding: 0 20px 18px; overflow: hidden"><button type="button" style="flex: none; height: 44px; padding: 0 16px; border: 1.5px solid #23201D; border-radius: 999px; background: #FFFFFF; font-family: Figtree, sans-serif; font-weight: 600">Filter</button><span style="flex: none; height: 44px; padding: 0 16px; border: 1.5px solid #8C8279; border-radius: 999px; display: flex; align-items: center; font-size: 14px">Kulit sensitif</span><span style="flex: none; height: 44px; padding: 0 16px; border: 1.5px solid #8C8279; border-radius: 999px; display: flex; align-items: center; font-size: 14px">Kulit kering</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; padding: 0 20px 28px">
+<sc-for list="{{items}}" as="p" hint-placeholder-count="6">
+<article style="display: flex; flex-direction: column; gap: 6px"><div style="height: 200px; border-radius: 14px; overflow: hidden; position: relative"><dc-import name="ProductArt" kind="{{p.art}}" bg="{{p.bg}}" fg="#FFFFFF" accent="{{p.ac}}" label="{{p.name}}" hint-size="100%,200px"></dc-import><span style="{{p.badgeSt}}">{{p.badge}}</span></div><span style="font-family: Newsreader, serif; font-size: 18px; line-height: 1.2">{{p.name}}</span><span style="display: flex; gap: 6px; align-items: baseline"><b style="font-size: 15px">{{p.price}}</b><s style="font-size: 12px; color: #6B625A">{{p.was}}</s></span></article>
+</sc-for>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+var badge = "position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;";
+var none = "display:none";
+var ok = "font-size:13px;color:#2F6B3F;font-weight:600";
+var low = "font-size:13px;color:#8A5300;font-weight:600";
+return {
+needs: [{ n: "Kulit sensitif", c: "3" }, { n: "Kulit kering", c: "2" }, { n: "Tampak kusam", c: "1" }, { n: "Perlindungan harian", c: "1" }],
+items: [
+{ cat: "Pembersih", name: "Gentle Low-pH Cleanser", sub: "100 ml / 200 ml", price: "mulai Rp119.000", was: "", rt: "★ 4,8 (342)", art: "bottle", bg: "#EFE6DC", ac: "#4F6B57", badge: "Terlaris", badgeSt: badge + "background:#FFFFFF;color:#23201D", stock: "Tersedia", stockSt: ok },
+{ cat: "Bundel", name: "Bundel Rutinitas Pagi", sub: "Cleanser + Moisturizer + Sunscreen", price: "Rp379.000", was: "Rp427.000", rt: "", art: "jar", bg: "#E4DACE", ac: "#4F6B57", badge: "Hemat Rp48.000", badgeSt: badge + "background:#E7EEE8;color:#2F4A37", stock: "Sisa 9 bundel", stockSt: low },
+{ cat: "Serum", name: "Niacinamide Serum", sub: "30 ml · beli 2 gratis Travel Cleanser", price: "Rp149.000", was: "Rp179.000", rt: "★ 4,6 (156)", art: "dropper", bg: "#EADBD3", ac: "#8C3B2E", badge: "Beli 2 gratis 1", badgeSt: badge + "background:#8C3B2E;color:#FFFFFF", stock: "Tersedia", stockSt: ok },
+{ cat: "Pelembap", name: "Barrier Repair Moisturizer", sub: "50 ml", price: "Rp169.000", was: "", rt: "★ 4,7 (190)", art: "jar", bg: "#DCE3DA", ac: "#4F6B57", badge: "", badgeSt: none, stock: "Tersedia", stockSt: ok },
+{ cat: "Perlindungan", name: "Daily Sunscreen Gel", sub: "50 ml", price: "Rp139.000", was: "", rt: "★ 4,7 (98)", art: "tube", bg: "#E6E0D2", ac: "#23201D", badge: "", badgeSt: none, stock: "Sisa 9", stockSt: low },
+{ cat: "Pembersih", name: "Travel Cleanser", sub: "30 ml", price: "Rp45.000", was: "", rt: "★ 4,8 (40)", art: "bottle", bg: "#EFE6DC", ac: "#8C8279", badge: "", badgeSt: none, stock: "Tersedia", stockSt: ok }
+]
+};
+}
+}
+</script>
+</body>
+</html>

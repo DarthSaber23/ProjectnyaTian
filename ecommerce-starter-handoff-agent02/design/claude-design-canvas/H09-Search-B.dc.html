@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Sambung Search</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0E1726}a:hover{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 1900px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S04 autocomplete · typing "usb c"</div>
+<div style="width: 1440px; height: 700px; background: #FFFFFF; position: relative; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 28px; padding: 16px 48px; border-bottom: 1px solid #CBD2DC">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span>
+<div role="combobox" aria-expanded="true" aria-owns="ac-list" style="flex: 1; height: 44px; border: 2px solid #1F5AE0; outline: 2px solid #1F5AE0; outline-offset: 1px; border-radius: 6px; display: flex; align-items: center; gap: 10px; padding: 0 14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span style="font-size: 15px">usb c<span style="display: inline-block; width: 1px; height: 18px; background: #0E1726; vertical-align: middle; margin-left: 1px"></span></span><button type="button" aria-label="Hapus" style="margin-left: auto; border: none; background: none; font-size: 14px">✕</button></div>
+<nav style="display: flex; gap: 22px; font-size: 14px; font-weight: 500"><span>Wishlist</span><span>Rina</span><span>Keranjang <b style="background: #1F5AE0; color: #FFFFFF; border-radius: 4px; padding: 1px 7px">0</b></span></nav>
+</div>
+<div style="position: absolute; inset: 77px 0 0 0; background: rgba(14,23,38,0.35)"></div>
+<div id="ac-list" role="listbox" style="position: absolute; left: 250px; top: 70px; width: 820px; background: #FFFFFF; border: 1px solid #CBD2DC; border-radius: 8px; box-shadow: 0 12px 32px rgba(14,23,38,0.18); display: grid; grid-template-columns: 260px minmax(0, 1fr)">
+<div style="border-right: 1px solid #E3E7ED; padding: 16px; display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<span style="font-size: 12px; color: #4A5568; padding: 4px 8px">Menampilkan hasil untuk</span>
+<span style="padding: 4px 8px; font-weight: 600"><b style="color: #1747B5">USB Type-C</b> <span style="font-weight: 400; color: #4A5568">(dari "usb c")</span></span>
+<span style="font-size: 12px; color: #4A5568; padding: 12px 8px 4px">Kategori</span>
+<span role="option" style="padding: 10px 8px; border-radius: 4px; background: #EAF0FD">Kabel · USB-C <span style="color: #4A5568">(3)</span></span>
+<span role="option" style="padding: 10px 8px">Adaptor &amp; Hub · USB-C <span style="color: #4A5568">(2)</span></span>
+<span style="font-size: 12px; color: #4A5568; padding: 12px 8px 4px">Pencarian populer</span>
+<span role="option" style="padding: 8px">kabel usb c 2m</span>
+<span role="option" style="padding: 8px">charger 65w</span>
+</div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; color: #4A5568; padding: 4px 8px">Produk (5 dari 6)</span>
+<sc-for list="{{sugg}}" as="p" hint-placeholder-count="5">
+<div role="option" style="display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 8px; border-radius: 4px"><div style="height: 52px; border-radius: 4px; overflow: hidden"><dc-import name="ProductArt" kind="{{p.art}}" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="{{p.name}}" hint-size="52px,52px"></dc-import></div><span style="display: flex; flex-direction: column; font-size: 14px"><span><b>{{p.hl}}</b>{{p.rest}}</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">{{p.spec}}</span></span><b style="font-size: 14px; font-family: 'JetBrains Mono', monospace">{{p.price}}</b></div>
+</sc-for>
+<a href="#" style="margin-top: 6px; padding: 10px 8px; border-top: 1px solid #E3E7ED; color: #1F5AE0; font-weight: 600; font-size: 14px; text-decoration: none">Lihat semua 6 hasil untuk "USB Type-C" →</a>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · S05 · /cari?q=usb+c+2m · synonym + length detected</div>
+<div style="width: 1440px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 28px; padding: 16px 48px; border-bottom: 1px solid #CBD2DC"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span><div style="flex: 1; height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; display: flex; align-items: center; padding: 0 14px; font-size: 15px">usb c 2m</div><nav style="display: flex; gap: 22px; font-size: 14px; font-weight: 500"><span>Wishlist</span><span>Rina</span><span>Keranjang 0</span></nav></div>
+<div style="padding: 28px 48px 16px; display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 600">Hasil untuk "usb c 2m"</h1>
+<span role="status" style="font-size: 14px; color: #2D3748">Menampilkan <b>USB Type-C</b> dengan panjang <b>2 m</b> · 1 produk cocok · <a href="#" style="color: #1747B5">Cari kata persis "usb c 2m"</a></span>
+<div style="display: flex; gap: 8px; margin-top: 6px"><span style="background: #EAF0FD; color: #1747B5; border: 1.5px solid #1F5AE0; border-radius: 4px; padding: 5px 10px; font-size: 13px; font-weight: 600">Konektor: USB-C ✕</span><span style="background: #EAF0FD; color: #1747B5; border: 1.5px solid #1F5AE0; border-radius: 4px; padding: 5px 10px; font-size: 13px; font-weight: 600">Panjang: 2 m ✕</span></div>
+</div>
+<div style="padding: 8px 48px 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<article style="border: 2px solid #1F5AE0; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column"><div style="height: 200px; position: relative"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Kabel USB-C 100W 2 m" hint-size="100%,200px"></dc-import><span style="position: absolute; left: 8px; top: 8px; background: #1F5AE0; color: #FFFFFF; border-radius: 4px; padding: 3px 7px; font-size: 11px; font-weight: 700">COCOK PERSIS</span></div><div style="padding: 14px; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 15px">Kabel USB-C ke USB-C 100W Braided</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">2 m · Hitam (Putih habis)</span><b style="font-size: 18px">Rp159.000</b><span style="font-size: 13px; color: #8A5300; font-weight: 600">Sisa 7</span><button type="button" style="height: 40px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600">+ Keranjang · 2 m Hitam</button></div></article>
+<div style="grid-column: span 3; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 14px; font-weight: 600">USB-C lainnya (panjang berbeda)</span><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px"><sc-for list="{{others}}" as="p" hint-placeholder-count="3"><article style="border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden"><div style="height: 140px"><dc-import name="ProductArt" kind="{{p.art}}" bg="#F2F4F7" fg="#1A2233" accent="#7D8796" label="{{p.name}}" hint-size="100%,140px"></dc-import></div><div style="padding: 12px; display: flex; flex-direction: column; gap: 4px"><b style="font-size: 14px">{{p.name}}</b><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">{{p.spec}}</span><b>{{p.price}}</b></div></article></sc-for></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 32px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S04 empty focus: recent + popular</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column; min-height: 760px">
+<div style="display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-bottom: 1px solid #CBD2DC"><div style="flex: 1; height: 44px; border: 2px solid #1F5AE0; border-radius: 6px; display: flex; align-items: center; gap: 8px; padding: 0 12px; color: #4A5568; font-size: 15px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>Cari produk</div><button type="button" style="height: 44px; border: none; background: none; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; color: #1F5AE0">Batal</button></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between"><b style="font-size: 14px">Pencarian terakhir</b><button type="button" style="border: none; background: none; color: #1747B5; font-family: inherit; font-size: 13px">Hapus semua</button></div>
+<span style="display: flex; justify-content: space-between; min-height: 40px; align-items: center; font-size: 15px">charger gan <span aria-hidden="true" style="color: #4A5568">✕</span></span>
+<span style="display: flex; justify-content: space-between; min-height: 40px; align-items: center; font-size: 15px">hdmi <span aria-hidden="true" style="color: #4A5568">✕</span></span>
+<span style="font-size: 12px; color: #4A5568">Disimpan di perangkat ini saja.</span>
+<b style="font-size: 14px; margin-top: 10px">Populer</b>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 9px 12px; font-size: 14px">kabel usb c 2m</span><span style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 9px 12px; font-size: 14px">charger 65w</span><span style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 9px 12px; font-size: 14px">hub usb c</span></div>
+<b style="font-size: 14px; margin-top: 10px">Terakhir dilihat</b>
+<div style="display: flex; gap: 10px"><div style="width: 110px; display: flex; flex-direction: column; gap: 4px"><div style="height: 90px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Kabel USB-C 100W" hint-size="100%,90px"></dc-import></div><span style="font-size: 12px">Kabel USB-C 100W</span></div><div style="width: 110px; display: flex; flex-direction: column; gap: 4px"><div style="height: 90px; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="charger" bg="#FDF1DC" fg="#0E1726" accent="#F5A524" label="Charger GaN 65W" hint-size="100%,90px"></dc-import></div><span style="font-size: 12px">Charger GaN 65W</span></div></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · S05 no results + typo suggestion</div>
+<div style="width: 390px; background: #FFFFFF; display: flex; flex-direction: column; min-height: 760px">
+<div style="display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-bottom: 1px solid #CBD2DC"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><div style="flex: 1; height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; font-size: 15px">kabel thunderbolt</div></div>
+<div style="padding: 28px 20px; display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center">
+<span aria-hidden="true" style="width: 72px; height: 72px; border-radius: 36px; background: #F2F4F7; display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="1.75"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></span>
+<b style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Belum ada "kabel thunderbolt"</b>
+<span style="font-size: 14px; color: #2D3748; line-height: 1.5">Kami belum menjual kabel Thunderbolt. Kabel USB-C 100W bisa dipakai untuk pengisian daya, tetapi bukan untuk transfer data cepat.</span>
+</div>
+<div style="padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 14px">Coba kategori ini</b>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 9px 12px; font-size: 14px">Kabel · USB-C</span><span style="border: 1px solid #CBD2DC; border-radius: 6px; padding: 9px 12px; font-size: 14px">Adaptor &amp; Hub</span></div>
+<div style="background: #F2F4F7; border-radius: 6px; padding: 14px; font-size: 14px; display: flex; flex-direction: column; gap: 4px; margin-top: 8px"><b>Butuh produk tertentu?</b><a href="#" style="color: #1F5AE0; font-weight: 600">Tanya CS via WhatsApp →</a></div>
+<div style="border: 1.5px solid #C0262D; background: #FCE6E7; border-radius: 6px; padding: 12px; font-size: 13px; color: #7A1A1E; margin-top: 8px"><b style="color: #C0262D">State: search failed</b> · "Pencarian sedang bermasalah." + Coba lagi + browse categories</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+sugg: [
+{ hl: "USB-C", rest: " ke USB-C 100W Braided", spec: "1 / 2 / 3 m · 100W", price: "mulai Rp129.000", art: "cable", name: "Kabel USB-C 100W" },
+{ hl: "", rest: "Kabel USB-A ke USB-C · 1 m", spec: "USB-A → USB-C", price: "Rp69.000", art: "cable", name: "Kabel USB-A ke USB-C" },
+{ hl: "", rest: "Kabel USB-C ke Lightning · 1 m", spec: "USB-C → Lightning", price: "Rp149.000", art: "cable", name: "Kabel USB-C ke Lightning" },
+{ hl: "", rest: "Adaptor USB-C ke HDMI 4K60", spec: "USB-C → HDMI", price: "Rp219.000", art: "adapter", name: "Adaptor USB-C ke HDMI" },
+{ hl: "", rest: "Hub USB-C 7-in-1", spec: "USB-C · 7 port", price: "Rp549.000", art: "hub", name: "Hub USB-C 7-in-1" }
+],
+others: [
+{ name: "Kabel USB-A ke USB-C · 1 m", spec: "USB-A → USB-C · 1 m", price: "Rp69.000", art: "cable" },
+{ name: "Kabel USB-C ke Lightning · 1 m", spec: "USB-C → Lightning · 1 m", price: "Rp149.000", art: "cable" },
+{ name: "Kabel USB-C 100W · 1 m / 3 m", spec: "varian lain dari produk yang sama", price: "Rp129.000 / Rp189.000", art: "cable" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Content Editor</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2440px; min-height: 1700px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A11 + A12 · /admin/content/flash-sale-akhir-pekan/edit · live page with unpublished changes · SEO tab</div>
+<div style="width: 1440px; height: 1000px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 60px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; gap: 14px; padding: 0 20px; font-size: 14px"><a href="#">← Konten</a><b>Flash sale akhir pekan</b><span style="background: #EAF0FD; color: #1747B5; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700">TERBIT · ADA PERUBAHAN</span><span style="font-size: 12px; color: #4A5568">Draf disimpan 10:12 · Rina M. (Marketing)</span>
+<div style="margin-left: auto; display: flex; border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden; font-size: 13px"><span style="padding: 8px 12px; background: #0E1726; color: #FFFFFF">Desktop</span><span style="padding: 8px 12px">Mobile</span></div>
+<button type="button" style="height: 38px; padding: 0 14px; border: 1.5px solid #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit">Pratinjau</button><button type="button" style="height: 38px; padding: 0 14px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">Terbitkan perubahan ▾</button></div>
+<div style="flex: 1; display: grid; grid-template-columns: 260px minmax(0, 1fr) 380px; min-height: 0">
+<aside style="background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<b style="font-size: 14px">Blok halaman (5)</b>
+<sc-for list="{{blocks}}" as="b" hint-placeholder-count="5"><div style="{{b.st}}"><span aria-hidden="true" style="color: #7D8796">⋮⋮</span><span style="flex: 1; display: flex; flex-direction: column"><b>{{b.n}}</b><span style="font-size: 11px; color: #4A5568">{{b.d}}</span></span><span style="{{b.flagSt}}">{{b.flag}}</span></div></sc-for>
+<button type="button" style="height: 40px; border: 1.5px dashed #7D8796; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 600">+ Tambah blok</button>
+<span style="color: #4A5568; font-size: 12px; line-height: 1.5">Urutkan dengan seret atau Alt + ↑/↓. Blok: Hero, Produk promosi, Grid produk, Teks, Gambar + teks, FAQ, Syarat promo, CTA.</span>
+</aside>
+<div style="padding: 20px; overflow: hidden; display: flex; flex-direction: column; gap: 10px">
+<div style="background: #FFFFFF; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(14,23,38,0.08)">
+<div style="background: #F5A524; display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; outline: 2px solid #1F5AE0; outline-offset: -2px"><div style="padding: 26px 24px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px">20 – 22 OKT 2026 · WIB</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; line-height: 1">Flash sale akhir pekan</span><span style="font-size: 12px">Charger GaN 65W −25%, selama stok ada.</span></div><div style="height: 170px"><dc-import name="ProductArt" kind="charger" bg="#F5A524" fg="#0E1726" accent="#FFFFFF" label="Hero" hint-size="100%,170px"></dc-import></div></div>
+<div style="padding: 16px 20px; display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px; align-items: center; border-bottom: 1px solid #E3E7ED"><div style="height: 110px; border-radius: 4px; overflow: hidden"><dc-import name="ProductArt" kind="charger" bg="#F2F4F7" fg="#0E1726" accent="#1F5AE0" label="Produk promosi" hint-size="140px,110px"></dc-import></div><div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px"><b style="font-size: 15px">Charger GaN 65W 3 Port</b><span><b>Rp299.250</b> <s style="color: #4A5568">Rp399.000</s></span><span style="color: #4A5568">Otomatis dari FS-WEEKEND</span></div></div>
+<div style="padding: 14px 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; border-bottom: 1px solid #E3E7ED"><div style="height: 70px; background: #F2F4F7; border-radius: 4px"></div><div style="height: 70px; background: #F2F4F7; border-radius: 4px"></div><div style="height: 70px; background: #F2F4F7; border-radius: 4px"></div><div style="height: 70px; background: #F2F4F7; border-radius: 4px"></div></div>
+<div style="padding: 14px 20px; font-size: 12px; color: #2D3748; border-bottom: 1px solid #E3E7ED; outline: 2px dashed #8A5300; outline-offset: -2px">Gambar + teks · <b style="color: #8A5300">teks alternatif kosong</b></div>
+<div style="padding: 14px 20px; font-size: 12px; color: #4A5568">Syarat promo…</div>
+</div>
+</div>
+<aside style="background: #FFFFFF; border-left: 1px solid #E3E7ED; padding: 16px; display: flex; flex-direction: column; gap: 12px; font-size: 13px; overflow: hidden">
+<div role="tablist" style="display: flex; gap: 18px; border-bottom: 1px solid #E3E7ED; font-size: 14px"><span role="tab" style="padding: 8px 0; color: #4A5568">Blok</span><span role="tab" aria-selected="true" style="padding: 8px 0; font-weight: 600; border-bottom: 3px solid #1F5AE0">SEO</span><span role="tab" style="padding: 8px 0; color: #4A5568">Jadwal</span></div>
+<label style="display: flex; flex-direction: column; gap: 5px; font-weight: 600">Judul SEO<input value="Flash Sale Charger GaN 65W −25% | Sambung" style="height: 38px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 10px; font-family: inherit; font-size: 13px"><span style="font-weight: 400; color: #1E7A45">41 / 60</span></label>
+<label style="display: flex; flex-direction: column; gap: 5px; font-weight: 600">Deskripsi meta<span style="min-height: 56px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 8px 10px; font-weight: 400; line-height: 1.4">Charger GaN 65W 3 port diskon 25% hanya 20–22 Oktober 2026. Lengkapi dengan kabel USB-C.</span><span style="font-weight: 400; color: #1E7A45">93 / 160</span></label>
+<label style="display: flex; flex-direction: column; gap: 5px; font-weight: 600">Slug<span style="height: 38px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 10px; display: flex; align-items: center; font-weight: 400; font-family: 'JetBrains Mono', monospace; font-size: 12px">/promo/flash-sale-akhir-pekan</span></label>
+<label style="display: flex; justify-content: space-between; align-items: center; font-weight: 600">Izinkan diindeks mesin pencari<span style="position: relative; width: 40px; height: 22px; border-radius: 11px; background: #1F5AE0; display: inline-block"><span style="position: absolute; right: 3px; top: 3px; width: 16px; height: 16px; border-radius: 8px; background: #FFFFFF"></span></span></label>
+<div style="display: flex; flex-direction: column; gap: 3px; border: 1px solid #E3E7ED; border-radius: 6px; padding: 10px; font-family: Roboto, Arial, sans-serif"><span style="font-size: 10px; color: #4A5568; font-family: 'IBM Plex Sans', sans-serif">PRATINJAU (perkiraan)</span><span style="font-size: 11px; color: #202124">sambung.example › promo › flash-sale-akhir-pekan</span><span style="font-size: 15px; color: #1A0DAB">Flash Sale Charger GaN 65W −25% | Sambung</span><span style="font-size: 12px; color: #4D5156">Charger GaN 65W 3 port diskon 25% hanya 20–22 Oktober 2026. Lengkapi dengan kabel USB-C.</span></div>
+<div role="alert" style="background: #FDF1DC; border-radius: 6px; padding: 10px; color: #5C3A00; display: flex; flex-direction: column; gap: 4px"><b style="color: #8A5300">Perlu diperbaiki sebelum terbit (1)</b><a href="#" style="color: #8A5300">Gambar + teks: isi teks alternatif →</a><span style="font-size: 12px">Peringatan (tidak menghalangi): halaman berakhir 22 Okt; setelahnya tampil "Promo telah berakhir".</span></div>
+</aside>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 32px; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · A10 content list</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Menu" style="width: 44px; height: 44px; border: none; background: none; font-size: 20px">☰</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Konten</b><button type="button" style="margin-left: auto; margin-right: 8px; height: 36px; padding: 0 12px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 13px">+ Halaman</button></div>
+<sc-for list="{{pages}}" as="p" hint-placeholder-count="6"><article style="margin: 10px 12px 0; background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 13px"><span style="display: flex; justify-content: space-between; gap: 8px"><b>{{p.t}}</b><span style="{{p.stSt}}">{{p.st}}</span></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">{{p.url}}</span><span style="color: #4A5568">{{p.meta}}</span></article></sc-for>
+<div style="height: 16px"></div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · editing on phone = text &amp; publish only</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><b style="font-size: 15px">Flash sale akhir pekan</b></div>
+<div style="padding: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 13px">
+<div style="background: #EAF0FD; color: #1747B5; border-radius: 6px; padding: 10px">Menyusun ulang blok dan mengubah tata letak tersedia di layar ≥ 1024 px.</div>
+<sc-for list="{{blocks}}" as="b" hint-placeholder-count="5"><div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; min-height: 44px"><span style="display: flex; flex-direction: column"><b>{{b.n}}</b><span style="font-size: 11px; color: #4A5568">{{b.d}}</span></span><span style="color: #1F5AE0">Ubah teks ›</span></div></sc-for>
+<button type="button" style="height: 46px; border: none; border-radius: 6px; background: #EEF1F5; color: #8A94A3; font-family: inherit; font-weight: 600" disabled>Terbitkan (perbaiki 1 galat)</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+var base = "display:flex;gap:10px;align-items:center;padding:10px;border-radius:6px;";
+var flag = "font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;";
+function b(n, d, kind) { return { n: n, d: d, st: base + (kind === "sel" ? "border:2px solid #1F5AE0;background:#EAF0FD" : kind === "err" ? "border:2px solid #8A5300" : "border:1px solid #E3E7ED"), flag: kind === "err" ? "1" : "", flagSt: kind === "err" ? flag + "background:#FDF1DC;color:#8A5300" : "display:none" }; }
+var chip = "flex:none;display:inline-flex;align-self:flex-start;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;";
+return {
+blocks: [b("Hero", "Judul, periode, gambar", "sel"), b("Produk promosi", "Dari FS-WEEKEND", ""), b("Grid produk", "Kategori Kabel · 4", ""), b("Gambar + teks", "Tips memilih kabel", "err"), b("Syarat promo", "Teks", "")],
+pages: [
+{ t: "Beranda", url: "/", meta: "Terbit · diubah 18 Okt", st: "TERBIT", stSt: chip + "background:#E3F4EA;color:#1E7A45" },
+{ t: "Flash sale akhir pekan", url: "/promo/flash-sale-akhir-pekan", meta: "Draf perubahan 10:12", st: "ADA PERUBAHAN", stSt: chip + "background:#EAF0FD;color:#1747B5" },
+{ t: "Panduan memilih kabel USB-C", url: "/blog/panduan-memilih-kabel-usb-c", meta: "Artikel · terbit 12 Okt", st: "TERBIT", stSt: chip + "background:#E3F4EA;color:#1E7A45" },
+{ t: "FAQ", url: "/faq", meta: "Terbit", st: "TERBIT", stSt: chip + "background:#E3F4EA;color:#1E7A45" },
+{ t: "Kebijakan privasi", url: "/kebijakan-privasi", meta: "Menunggu tinjauan hukum", st: "DRAF", stSt: chip + "background:#F2F4F7;color:#4A5568" },
+{ t: "Pengembalian & refund", url: "/pengembalian", meta: "Menunggu tinjauan bisnis", st: "DRAF", stSt: chip + "background:#F2F4F7;color:#4A5568" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Cart</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1400px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · S09 cart drawer, opened after "+ Keranjang" on the charger</div>
+<div style="width: 1440px; height: 900px; background: #FFFFFF; border: 1px solid #BFC3C9; position: relative; overflow: hidden">
+<div style="position: absolute; left: 0; top: 0; width: 1440px; height: 900px; background: #F3F4F5; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #8A8F98">(halaman produk di belakang, diredupkan)</div>
+<div style="position: absolute; left: 0; top: 0; width: 1440px; height: 900px; background: rgba(21,23,28,0.45)"></div>
+<div style="position: absolute; right: 0; top: 0; width: 440px; height: 900px; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid #DADCE0"><b style="font-size: 18px">Keranjang (3)</b><span>✕</span></div>
+<div style="margin: 14px 20px 0; background: #F3F4F5; padding: 10px 12px; font-size: 13px">✓ Charger GaN 65W 3 Port ditambahkan</div>
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="2">
+<div style="display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #EEEFF1">
+<div style="width: 72px; height: 72px; background: #E4E6E9; flex: none"></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 4px; font-size: 13px">
+<b style="font-size: 14px">{{l.name}}</b><span style="color: #5A606B">{{l.variant}}</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="border: 1px solid #BFC3C9; padding: 4px 8px">− {{l.qty}} +</span><b>{{l.total}}</b></div>
+<span style="color: #5A606B">{{l.note}}</span>
+</div>
+</div>
+</sc-for>
+<div style="margin-top: auto; border-top: 1px solid #DADCE0; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<div style="display: flex; justify-content: space-between"><span>Subtotal</span><b>Rp617.250</b></div>
+<span style="font-size: 12px; color: #5A606B">Ongkir dan voucher dihitung di checkout.</span>
+<span style="background: #2B2F36; color: #FFFFFF; padding: 13px; text-align: center; font-weight: 600">Checkout</span>
+<span style="border: 1px solid #2B2F36; padding: 12px; text-align: center; font-weight: 600">Lihat keranjang</span>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · S10 /keranjang</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><span>←</span><b>Keranjang (3)</b></div>
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="2">
+<div style="display: flex; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #EEEFF1">
+<div style="width: 72px; height: 72px; background: #E4E6E9; flex: none"></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 4px; font-size: 13px">
+<b>{{l.name}}</b><span style="color: #5A606B">{{l.variant}}</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="border: 1px solid #BFC3C9; padding: 4px 8px">− {{l.qty}} +</span><b>{{l.total}}</b></div>
+<div style="display: flex; justify-content: space-between; color: #5A606B"><span>{{l.note}}</span><u>Hapus</u></div>
+</div>
+</div>
+</sc-for>
+<div style="padding: 14px 16px; font-size: 13px; color: #5A606B; border-bottom: 1px solid #EEEFF1">Punya voucher? Masukkan di langkah Ringkasan.</div>
+<div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; font-size: 14px">
+<div style="display: flex; justify-content: space-between"><span>Subtotal (3 barang)</span><b>Rp617.250</b></div>
+<div style="display: flex; justify-content: space-between; color: #5A606B"><span>Hemat flash sale</span><span>Rp99.750</span></div>
+<div style="display: flex; justify-content: space-between; color: #5A606B"><span>Ongkir</span><span>dihitung di checkout</span></div>
+</div>
+<div style="padding: 12px 16px; border-top: 2px solid #2B2F36; display: flex; align-items: center; gap: 12px"><div style="display: flex; flex-direction: column; font-size: 12px"><span style="color: #5A606B">Subtotal</span><b style="font-size: 16px">Rp617.250</b></div><span style="flex: 1; background: #2B2F36; color: #FFFFFF; padding: 13px; text-align: center; font-weight: 600">Lanjut ke Checkout</span></div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">STATES (shared drawer + page)</div>
+<div style="width: 390px; display: flex; flex-direction: column; gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #BFC3C9; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 6px"><b>Jumlah melebihi stok</b><span style="color: #5A606B">Line B01-2M-BLK, qty 8 → "Maks. 7 tersedia". "+" disabled, qty reset to 7.</span></div>
+<div style="background: #FFFFFF; border: 1px solid #BFC3C9; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 6px"><b>Harga berubah</b><span style="color: #5A606B">Flash sale ended → B03 now Rp399.000. Banner: "1 harga berubah sejak ditambahkan"; subtotal recalculated.</span></div>
+<div style="background: #FFFFFF; border: 1px solid #BFC3C9; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 6px"><b>Varian habis</b><span style="color: #5A606B">Line greyed, excluded from subtotal, "Pindah ke wishlist" / "Hapus"; checkout blocked until resolved.</span></div>
+<div style="background: #FFFFFF; border: 1px solid #BFC3C9; padding: 14px; font-size: 13px; display: flex; flex-direction: column; gap: 6px"><b>Keranjang kosong</b><span style="color: #5A606B">Illustration slot · "Mulai belanja" · recently viewed strip.</span></div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+lines: [
+{ name: "Kabel USB-C ke USB-C 100W Braided", variant: "2 m · Hitam · Rp159.000", qty: "2", total: "Rp318.000", note: "Sisa 7" },
+{ name: "Charger GaN 65W 3 Port", variant: "Flash sale · Rp299.250 (Rp399.000)", qty: "1", total: "Rp299.250", note: "Flash sale s/d 22 Okt" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

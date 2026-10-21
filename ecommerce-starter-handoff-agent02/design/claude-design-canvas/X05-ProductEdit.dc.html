@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Product Edit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 2200px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A03 + A12 · /admin/products/B01 · unsaved changes</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="position: sticky; top: 0; height: 60px; background: #0E1726; color: #FFFFFF; display: flex; align-items: center; gap: 16px; padding: 0 28px; font-size: 14px"><span>← Produk</span><b>Kabel USB-C ke USB-C 100W Braided</b><span style="background: #F5A524; color: #0E1726; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700">1 perubahan belum disimpan (deskripsi meta)</span><span style="margin-left: auto; color: #CBD2DC; font-size: 12px">Terakhir diubah 18 Okt, 15:02 · Dewi O.</span><button type="button" style="height: 38px; padding: 0 14px; border: 1px solid #7D8796; border-radius: 6px; background: transparent; color: #FFFFFF; font-family: inherit">Buang</button><button type="button" style="height: 38px; padding: 0 16px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">Simpan</button></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 20px; padding: 24px 28px 40px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 17px">Informasi dasar</h2>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Nama produk *<input value="Kabel USB-C ke USB-C 100W Braided" style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; font-family: inherit; font-size: 14px"></label>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px"><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Kategori utama *<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-weight: 400">Kabel <span>▾</span></span><span style="font-weight: 400; color: #4A5568">Dipakai untuk breadcrumb (I2)</span></label><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Set atribut<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-weight: 400">Kabel (teknis) <span>▾</span></span></label></div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Deskripsi<span style="min-height: 90px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 10px 12px; font-weight: 400; font-size: 14px; line-height: 1.5">Mendukung pengisian daya hingga 100W bila charger dan perangkat mendukung. Kecepatan data USB 2.0, tidak untuk output video.</span></label>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between"><h2 style="margin: 0; font-size: 17px">Media</h2><span style="font-size: 12px; color: #4A5568">Teks alternatif wajib · gambar varian bisa ditautkan</span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px"><div style="height: 110px; border: 2px solid #1F5AE0; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Gambar utama" hint-size="100%,110px"></dc-import></div><div style="height: 110px; border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="adapter" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Konektor" hint-size="100%,110px"></dc-import></div><div style="height: 110px; border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#E3E7ED" fg="#1A2233" accent="#7D8796" label="Tampilan 3" hint-size="100%,110px"></dc-import></div><div style="height: 110px; border: 1px solid #CBD2DC; border-radius: 6px; background: #0E1726; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 12px">Video</div><div style="height: 110px; border: 1.5px dashed #7D8796; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; color: #4A5568">+ Unggah<br>JPG/PNG/WebP</div></div>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 17px">Atribut (dipakai filter &amp; perbandingan)</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{attrs}}" as="a" hint-placeholder-count="6"><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">{{a.k}}<span style="{{a.st}}">{{a.v}}</span></label></sc-for>
+</div>
+<span style="font-size: 12px; color: #4A5568">Kosongkan bila tidak tahu: toko menampilkan "Tidak dicantumkan", bukan "Tidak".</span>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 17px">Varian</h2><span style="font-size: 13px">Opsi: <b>Panjang</b> 1 m · 2 m · 3 m &nbsp; <b>Warna</b> Hitam · Putih</span></div>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<thead><tr style="background: #F2F4F7; color: #4A5568; font-size: 12px; text-align: left"><th scope="col" style="padding: 8px">Varian</th><th scope="col" style="padding: 8px">SKU</th><th scope="col" style="padding: 8px; text-align: right">Harga</th><th scope="col" style="padding: 8px; text-align: right">Harga coret</th><th scope="col" style="padding: 8px; text-align: right">Fisik</th><th scope="col" style="padding: 8px; text-align: right">Dicadangkan</th><th scope="col" style="padding: 8px; text-align: right">Tersedia</th><th scope="col" style="padding: 8px">Dijual</th></tr></thead>
+<tbody><sc-for list="{{vars}}" as="v" hint-placeholder-count="6"><tr style="{{v.row}}"><td style="padding: 8px; font-weight: 600">{{v.n}}</td><td style="padding: 8px; font-family: 'JetBrains Mono', monospace">{{v.sku}}</td><td style="padding: 8px; text-align: right"><span style="{{v.priceSt}}">{{v.p}}</span></td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace; color: #4A5568">{{v.was}}</td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{v.oh}}</td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{v.res}}</td><td style="padding: 8px; text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600">{{v.av}}</td><td style="padding: 8px"><span style="{{v.togSt}}"><span style="{{v.knob}}"></span></span></td></tr></sc-for></tbody>
+</table>
+<span style="font-size: 12px; color: #4A5568">Stok diubah di Inventaris (dengan alasan), bukan di sini. Kombinasi yang tidak dijual tidak tampil di toko.</span>
+</section>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 14px"><h2 style="margin: 0; font-size: 16px">Status</h2><label style="display: flex; justify-content: space-between; align-items: center">Aktif di toko<span style="position: relative; width: 44px; height: 24px; border-radius: 12px; background: #1F5AE0; display: inline-block"><span style="position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 9px; background: #FFFFFF"></span></span></label><span style="font-size: 12px; color: #4A5568">Arsipkan (bukan hapus) bila pernah dipesan.</span></section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 12px; font-size: 13px">
+<h2 style="margin: 0; font-size: 16px">SEO (A12)</h2>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Judul SEO<input value="Kabel USB-C ke USB-C 100W Braided 1–3 m | Sambung" style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 10px; font-family: inherit; font-size: 13px"><span style="font-weight: 400; color: #1E7A45">51 / 60 karakter</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Deskripsi meta<span style="min-height: 70px; border: 2px solid #1F5AE0; border-radius: 6px; padding: 8px 10px; font-weight: 400; line-height: 1.45">Kabel USB-C braided hingga 100W untuk laptop dan ponsel. Pilihan 1, 2, dan 3 meter. Spesifikasi lengkap dan catatan kompatibilitas.</span><span style="font-weight: 400; color: #1E7A45">128 / 160 karakter · diubah</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Slug URL<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 10px; display: flex; align-items: center; font-weight: 400; font-family: 'JetBrains Mono', monospace; font-size: 12px">/produk/kabel-usb-c-100w-braided</span><span style="font-weight: 400; color: #4A5568">Mengubah slug membuat pengalihan 301 otomatis (spesifikasi untuk Agent 02).</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">URL kanonis<span style="height: 40px; border: 1px solid #CBD2DC; background: #F2F4F7; border-radius: 6px; padding: 0 10px; display: flex; align-items: center; font-weight: 400; font-size: 12px; color: #4A5568">Otomatis (sama dengan slug)</span></label>
+<div style="display: flex; flex-direction: column; gap: 4px; border: 1px solid #E3E7ED; border-radius: 6px; padding: 12px; font-family: Roboto, Arial, sans-serif"><span style="font-size: 11px; color: #4A5568; font-family: 'IBM Plex Sans', sans-serif">PRATINJAU HASIL PENCARIAN (perkiraan)</span><span style="font-size: 12px; color: #202124">sambung.example › produk › kabel-usb-c-100w-braided</span><span style="font-size: 17px; color: #1A0DAB">Kabel USB-C ke USB-C 100W Braided 1–3 m | Sambung</span><span style="font-size: 13px; color: #4D5156; line-height: 1.45">Kabel USB-C braided hingga 100W untuk laptop dan ponsel. Pilihan 1, 2, dan 3 meter. Spesifikasi lengkap dan catatan kompatibilitas.</span></div>
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 10px; align-items: center"><div style="height: 50px; border-radius: 4px; overflow: hidden"><dc-import name="ProductArt" kind="cable" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="Gambar Open Graph" hint-size="80px,50px"></dc-import></div><span style="font-weight: 400; color: #4A5568">Gambar Open Graph: gambar utama (1200×630 dibuat otomatis)</span></div>
+<span style="font-weight: 400; color: #4A5568">Data terstruktur Product + Offer + AggregateRating dibuat dari isian ini (spesifikasi, bukan SEO produksi).</span>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 13px"><h2 style="margin: 0; font-size: 16px">Sering dibeli bersama</h2><span>Charger GaN 65W 3 Port ✕</span><span>Adaptor USB-C ke HDMI 4K60 ✕</span><span>Hub USB-C 7-in-1 ✕</span><span style="color: #1F5AE0">+ Tambah pasangan</span></section>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · edit one variant price · validation</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><b style="font-size: 15px">Varian 3 m · Hitam</b></div>
+<form style="padding: 14px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4A5568">SKU B01-3M-BLK</span>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Harga (Rp) *<input value="189000" inputmode="numeric" style="height: 44px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 15px; background: #FFFFFF"><span style="font-weight: 400; color: #4A5568">Tampil: Rp189.000</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Harga coret (Rp)<input value="179000" aria-invalid="true" inputmode="numeric" style="height: 44px; border: 2px solid #C0262D; border-radius: 6px; padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 15px; background: #FFFFFF"><span style="font-weight: 500; color: #C0262D">Harga coret harus lebih tinggi dari harga jual. Kosongkan bila tidak ada potongan.</span></label>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 12px; font-size: 13px; display: flex; flex-direction: column; gap: 4px"><b>Stok</b><span>Fisik 15 · dicadangkan 0 · tersedia 15</span><a href="#">Ubah di Inventaris →</a></div>
+<button type="button" disabled style="height: 48px; border: none; border-radius: 6px; background: #EEF1F5; color: #8A94A3; font-family: inherit; font-weight: 600; font-size: 15px">Simpan (perbaiki 1 galat)</button>
+</form>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":2200}}'>
+class Component extends DCLogic {
+renderVals() {
+var field = "height:40px;border:1.5px solid #7D8796;border-radius:6px;padding:0 10px;display:flex;align-items:center;font-weight:400;font-family:'JetBrains Mono',monospace;font-size:13px";
+var empty = field + ";color:#4A5568;font-family:'IBM Plex Sans',sans-serif";
+var tOn = "position:relative;display:inline-block;width:40px;height:22px;border-radius:11px;background:#1F5AE0";
+var tOff = "position:relative;display:inline-block;width:40px;height:22px;border-radius:11px;background:#7D8796";
+var kOn = "position:absolute;right:3px;top:3px;width:16px;height:16px;border-radius:8px;background:#FFFFFF";
+var kOff = "position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:8px;background:#FFFFFF";
+var p = "font-family:'JetBrains Mono',monospace;border:1.5px solid #7D8796;border-radius:4px;padding:4px 8px;display:inline-block";
+var pChanged = "font-family:'JetBrains Mono',monospace;border:2px solid #1F5AE0;background:#EAF0FD;border-radius:4px;padding:3px 7px;display:inline-block";
+function v(n, sku, pr, was, oh, res, av, on, changed) { return { n: n, sku: sku, p: pr, was: was, oh: oh, res: res, av: av, togSt: on ? tOn : tOff, knob: on ? kOn : kOff, priceSt: changed ? pChanged : p, row: "border-top:1px solid #E3E7ED;" + (on ? "" : "color:#8A94A3") }; }
+return {
+attrs: [
+{ k: "Konektor", v: "USB-C ↔ USB-C", st: field },
+{ k: "Daya maksimum", v: "100W (20V/5A)", st: field },
+{ k: "Kecepatan data", v: "USB 2.0 · 480 Mbps", st: field },
+{ k: "Output video", v: "Tidak", st: field },
+{ k: "Material", v: "Nilon braided", st: field },
+{ k: "Berat kemasan (g)", v: "80", st: field }
+],
+vars: [
+v("1 m · Hitam", "B01-1M-BLK", "129000", "149000", "42", "0", "42", true, false),
+v("2 m · Hitam", "B01-2M-BLK", "159000", "—", "9", "2", "7", true, false),
+v("2 m · Putih", "B01-2M-WHT", "159000", "—", "0", "0", "0", true, false),
+v("3 m · Hitam", "B01-3M-BLK", "189000", "—", "15", "0", "15", true, false),
+v("1 m · Putih", "—", "—", "—", "—", "—", "—", false, false),
+v("3 m · Putih", "—", "—", "—", "—", "—", "—", false, false)
+]
+};
+}
+}
+</script>
+</body>
+</html>

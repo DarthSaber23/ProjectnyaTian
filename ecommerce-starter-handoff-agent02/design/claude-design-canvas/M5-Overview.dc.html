@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>M5 Overview and Progress</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 1500px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">AGENT 01 · MILESTONE M5 · CLAUDE DESIGN</div><h1 style="margin: 0; font-size: 52px; font-weight: 700">M5 — Admin &amp; CMS</h1><div style="font-size: 18px; color: #3B4049">High-fidelity core admin modules (A01–A15) and wireframes for supporting modules (A16–A23). Three review batches; approval request after batch 3.</div></div>
+<div style="background: #FFF4E0; color: #7A4300; border: 1px solid #E8C48A; padding: 8px 14px; font-weight: 600; font-size: 15px">Status: Approved 20 Okt 2026</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start">
+<sc-for list="{{batches}}" as="b" hint-placeholder-count="3">
+<div style="{{b.box}}"><div style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 20px">{{b.t}}</b><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px">{{b.st}}</span></div>
+<sc-for list="{{b.items}}" as="i" hint-placeholder-count="5"><div style="font-size: 14px; line-height: 1.5; border-top: 1px solid #E6E7EA; padding-top: 6px">{{i}}</div></sc-for></div>
+</sc-for>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.55">
+<h2 style="margin: 0; font-size: 22px">Admin design rules</h2>
+<span><b>Theme:</b> admin is brand-neutral chrome (greys from the Sambung token set) with the store's primary colour for actions; a Halimun fork swaps the primary token only.</span>
+<span><b>Density:</b> 40 px controls, 14 px table text, tables in scroll boxes on tablet, stacked cards on phone (M3 responsive rules).</span>
+<span><b>Data:</b> the same W00 dataset as the storefront. Admin numbers must equal storefront numbers (stock, prices, order totals).</span>
+<span><b>Privacy:</b> customer contacts masked by default for Operations and CS; "Tampilkan" reveals are logged (D10).</span>
+<span><b>Audit:</b> every status change, price, stock and promotion edit shows actor + time.</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+var done = "background:#FFFFFF;border:2px solid #0B6B63;padding:20px;display:flex;flex-direction:column;gap:8px";
+var next = "background:#FFFFFF;border:1px solid #DADCE0;padding:20px;display:flex;flex-direction:column;gap:8px";
+return {
+batches: [
+{ t: "Batch 1 · operations", st: "DELIVERED", box: done, items: ["X01 Dashboard (A01)", "X02 Order list (A06)", "X03 Order detail, refund dialog (A07)", "X04 Product list + categories (A02, A04)", "X05 Product edit: variants, pricing, SEO (A03, A12)", "X06 Inventory + stock adjustment (A05)"] },
+{ t: "Batch 2 · marketing & customers", st: "DELIVERED", box: done, items: ["X07 Promotion list (A08)", "X08 Promotion editor + conflict check (A09)", "X09 Content list, block editor, SEO panel (A10, A11, A12)", "X10 Customer directory, profile, logged contact reveal (A13, A14)"] },
+{ t: "Batch 3 · analytics & settings", st: "DELIVERED", box: done, items: ["X11 Analytics, date ranges, metric definitions M1–M8 (A15)", "X12 Wireframes A16–A23: reports, users & roles, store, shipping, payment, notifications, audit log, admin login", "ANALYTICS_METRICS.md", "M5 approval requested"] }
+]
+};
+}
+}
+</script>
+</body>
+</html>

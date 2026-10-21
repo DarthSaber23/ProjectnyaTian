@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Wireframe Admin Dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#15171C}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1500px; box-sizing: border-box; padding: 40px 48px; background: #ECEDEF; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">DESKTOP 1440 · A01 · /admin · role Owner · range 14–20 Okt 2026 · every number from W00</div>
+<div style="width: 1440px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex">
+<div style="width: 220px; flex: none; background: #F3F4F5; padding: 20px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<div style="height: 32px; background: #E4E6E9; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px">[BRAND B] Admin</div>
+<span style="padding: 8px 10px; background: #FFFFFF; font-weight: 600">Dasbor</span>
+<span style="padding: 12px 10px 4px; font-size: 11px; color: #5A606B">PENJUALAN</span><span style="padding: 6px 10px">Pesanan <b>· 2</b></span><span style="padding: 6px 10px">Pelanggan</span>
+<span style="padding: 12px 10px 4px; font-size: 11px; color: #5A606B">KATALOG</span><span style="padding: 6px 10px">Produk</span><span style="padding: 6px 10px">Kategori</span><span style="padding: 6px 10px">Inventaris <b>· 4</b></span>
+<span style="padding: 12px 10px 4px; font-size: 11px; color: #5A606B">MARKETING</span><span style="padding: 6px 10px">Promosi</span><span style="padding: 6px 10px">Konten</span>
+<span style="padding: 12px 10px 4px; font-size: 11px; color: #5A606B">LAINNYA</span><span style="padding: 6px 10px">Analitik</span><span style="padding: 6px 10px">Pengaturan</span>
+</div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 24px; padding: 24px 32px 32px">
+<div style="display: flex; justify-content: space-between; align-items: center"><b style="font-size: 24px">Dasbor</b><div style="display: flex; gap: 10px; font-size: 14px"><span style="border: 1px solid #BFC3C9; padding: 8px 12px">14 – 20 Okt 2026 ▾</span><span style="border: 1px solid #BFC3C9; padding: 8px 12px">Zona waktu: Asia/Jakarta</span></div></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{kpi}}" as="k" hint-placeholder-count="4">
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #5A606B">{{k.l}} ⓘ</span><b style="font-size: 24px">{{k.v}}</b><span style="font-size: 12px; color: #5A606B">{{k.f}}</span></div>
+</sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; align-items: start">
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between"><b>Pendapatan harian</b><span style="font-size: 12px; color: #5A606B">Total Rp2.097.000 = jumlah batang</span></div>
+<div style="height: 240px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; align-items: end; border-bottom: 1px solid #2B2F36; padding: 0 8px">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; justify-content: flex-end; height: 240px"><span style="font-size: 11px">{{b.v}}</span><div style="{{b.st}}"></div></div>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; padding: 0 8px; font-size: 12px; color: #5A606B; text-align: center">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><span>{{b.d}}</span></sc-for>
+</div>
+<span style="font-size: 12px; color: #5A606B">19 Okt: Rp237.000 dibayar lalu direfund penuh pada hari yang sama (ORD-261019-0008).</span>
+</div>
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<b>Perlu tindakan</b>
+<div style="display: flex; justify-content: space-between; border-bottom: 1px solid #EEEFF1; padding-bottom: 8px"><span>Siap diproses (Dibayar)</span><b>2 · ORD-…0007, …0009</b></div>
+<div style="display: flex; justify-content: space-between; border-bottom: 1px solid #EEEFF1; padding-bottom: 8px"><span>Sedang diproses, belum dikirim</span><b>1 · ORD-261017-0005</b></div>
+<div style="display: flex; justify-content: space-between; border-bottom: 1px solid #EEEFF1; padding-bottom: 8px"><span>Menunggu pembayaran</span><b>1 · Rp587.250</b></div>
+<div style="display: flex; justify-content: space-between"><span>Update kurir terlambat</span><b>1 · ORD-261014-0003</b></div>
+<b style="margin-top: 8px">Stok menipis / habis</b>
+<sc-for list="{{low}}" as="s" hint-placeholder-count="4">
+<div style="display: flex; justify-content: space-between; font-size: 13px"><span>{{s.n}}</span><b>{{s.v}}</b></div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start">
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<div style="display: flex; justify-content: space-between"><b style="font-size: 14px">Produk terlaris</b><span style="color: #5A606B">urut: unit terjual (pesanan dibayar, tanpa refund)</span></div>
+<sc-for list="{{top}}" as="t" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 24px minmax(0, 1fr) 60px 100px; gap: 8px; border-top: 1px solid #EEEFF1; padding-top: 6px"><span style="color: #5A606B">{{t.r}}</span><span>{{t.n}}</span><span>{{t.u}}</span><b style="text-align: right">{{t.v}}</b></div>
+</sc-for>
+</div>
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<b style="font-size: 14px">Transaksi terbaru</b>
+<sc-for list="{{recent}}" as="o" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr) 100px; gap: 8px; border-top: 1px solid #EEEFF1; padding-top: 6px"><span style="font-family: 'IBM Plex Mono', monospace">{{o.no}}</span><span>{{o.st}}</span><b style="text-align: right">{{o.t}}</b></div>
+</sc-for>
+</div>
+</div>
+<div style="border: 1px solid #DADCE0; padding: 16px; display: flex; gap: 32px; font-size: 13px"><b style="font-size: 14px">Kampanye aktif</b><span>FS-WEEKEND · 0 pesanan dibayar · 1 menunggu</span><span>KABEL10 · 0 dibayar · 1 menunggu</span><span style="color: #5A606B">Atribusi: sentuhan kampanye terakhir ≤ 7 hari (D12)</span></div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5A606B">MOBILE 390 · menu in drawer</div>
+<div style="width: 390px; background: #FFFFFF; border: 1px solid #BFC3C9; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #DADCE0"><span>☰</span><b>Dasbor</b><span style="margin-left: auto; font-size: 12px; border: 1px solid #BFC3C9; padding: 4px 8px">14–20 Okt ▾</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 16px">
+<sc-for list="{{kpi}}" as="k" hint-placeholder-count="4">
+<div style="border: 1px solid #DADCE0; padding: 12px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #5A606B">{{k.l}}</span><b style="font-size: 17px">{{k.v}}</b></div>
+</sc-for>
+</div>
+<div style="margin: 0 16px 16px; border: 1px solid #DADCE0; padding: 12px; display: flex; flex-direction: column; gap: 8px">
+<b style="font-size: 14px">Pendapatan harian</b>
+<div style="height: 120px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; border-bottom: 1px solid #2B2F36">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><div style="{{b.ms}}"></div></sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; font-size: 10px; color: #5A606B; text-align: center"><sc-for list="{{bars}}" as="b" hint-placeholder-count="7"><span>{{b.d}}</span></sc-for></div>
+</div>
+<div style="margin: 0 16px 16px; border: 1px solid #DADCE0; padding: 12px; display: flex; flex-direction: column; gap: 6px; font-size: 13px">
+<b style="font-size: 14px">Perlu tindakan</b>
+<div style="display: flex; justify-content: space-between"><span>Siap diproses</span><b>2</b></div>
+<div style="display: flex; justify-content: space-between"><span>Belum dikirim</span><b>1</b></div>
+<div style="display: flex; justify-content: space-between"><span>Update kurir terlambat</span><b>1</b></div>
+<div style="display: flex; justify-content: space-between"><span>Stok menipis / habis</span><b>4</b></div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+function bar(d, v, h) { return { d: d, v: v, st: "width:100%;background:#2B2F36;height:" + Math.max(h, 2) + "px", ms: "background:#2B2F36;height:" + Math.max(Math.round(h / 2), 1) + "px" }; }
+return {
+kpi: [
+{ l: "Pendapatan", v: "Rp2.097.000", f: "Dibayar Rp2.334.000 − refund Rp237.000" },
+{ l: "Pesanan dibayar", v: "8", f: "Tidak termasuk kedaluwarsa & menunggu" },
+{ l: "Rata-rata nilai pesanan", v: "Rp262.125", f: "Rp2.097.000 ÷ 8" },
+{ l: "Konversi", v: "0,65%", f: "8 sesi pembelian ÷ 1.240 sesi" }
+],
+bars: [
+bar("14", "950rb", 200), bar("15", "0", 0), bar("16", "87rb", 18), bar("17", "567rb", 119), bar("18", "0", 0), bar("19", "217rb", 46), bar("20", "276rb", 58)
+],
+low: [
+{ n: "Kabel HDMI 2.1 8K · 2 m", v: "Habis" },
+{ n: "Kabel USB-C 100W · 2 m Putih", v: "Habis" },
+{ n: "Hub USB-C 7-in-1", v: "Sisa 4" },
+{ n: "Kabel USB-C 100W · 2 m Hitam", v: "Sisa 7 (2 dicadangkan)" }
+],
+top: [
+{ r: "1", n: "Kabel USB-C ke USB-C 100W Braided", u: "3 unit", v: "Rp387.000" },
+{ r: "2", n: "Hub USB-C 7-in-1", u: "1 unit", v: "Rp549.000" },
+{ r: "3", n: "Charger GaN 65W 3 Port", u: "1 unit", v: "Rp399.000" },
+{ r: "4", n: "Adaptor USB-C ke HDMI 4K60", u: "1 unit", v: "Rp219.000" },
+{ r: "5", n: "Kabel DisplayPort 1.4 · 2 m", u: "1 unit", v: "Rp199.000" }
+],
+recent: [
+{ no: "ORD-261020-0010", st: "Menunggu pembayaran · QRIS", t: "Rp587.250" },
+{ no: "ORD-261020-0009", st: "Dibayar · VA", t: "Rp276.000" },
+{ no: "ORD-261019-0008", st: "Dibatalkan · refund penuh", t: "Rp237.000" },
+{ no: "ORD-261019-0007", st: "Dibayar · QRIS", t: "Rp217.000" },
+{ no: "ORD-261018-0006", st: "Dibatalkan · kedaluwarsa", t: "Rp237.000" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Open Decisions and Assumptions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2500px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 02 · M0</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Decisions — approved</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Approval record: product owner, 20 Oct 2026. D1 changed (Claude Design instead of Figma); D2–D16 approved as proposed. The "Proposed default" column is now the approved rule.</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: 70px 220px minmax(0, 1fr) minmax(0, 1.5fr) 110px; background: #15171C; color: #F6F6F3; font-size: 13px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 12px 14px">ID</div>
+<div style="padding: 12px 14px">DECISION</div>
+<div style="padding: 12px 14px">WHY IT MATTERS</div>
+<div style="padding: 12px 14px">PROPOSED DEFAULT</div>
+<div style="padding: 12px 14px">NEEDED BY</div>
+</div>
+<sc-for list="{{decisions}}" as="d" hint-placeholder-count="16">
+<div style="display: grid; grid-template-columns: 70px 220px minmax(0, 1fr) minmax(0, 1.5fr) 110px; border-top: 1px solid #DADCE0; font-size: 14px; line-height: 1.5">
+<div style="padding: 14px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; color: #0B6B63">{{d.id}}</div>
+<div style="padding: 14px; font-weight: 600; display: flex; flex-direction: column; gap: 6px"><span>{{d.title}}</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #555B66">{{d.owner}}</span></div>
+<div style="padding: 14px; color: #3B4049">{{d.why}}</div>
+<div style="padding: 14px">{{d.def}}</div>
+<div style="padding: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #3B4049">{{d.ms}}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 24px">Working assumptions</h2>
+<ol style="margin: 0; padding-left: 22px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 6px">
+<li>No guest checkout: login is mandatory before the Address step.</li>
+<li>One store, one stock location and one shipping origin per client fork.</li>
+<li>Displayed prices are final prices including tax (confirmed by D5).</li>
+<li>No quantitative business KPI (key performance indicator) targets exist; only measurement definitions are proposed.</li>
+<li>All demo people, addresses and phone numbers are fictional; no live personal data in fixtures.</li>
+<li>Imagery uses neutral placeholders or original illustrations; no reference-brand assets.</li>
+<li>Prototype state may persist in browser local storage, disclosed as prototype-only, with a "reset demo data" control.</li>
+<li>Analytics event payloads carry no PII (personally identifiable information): no names, emails, phones, addresses or birth dates.</li>
+<li>"Delivered" comes only from a simulated courier event; admins may move paid orders to Processing and Shipped.</li>
+<li>Validation widths 360 / 390 / 768 / 1280 / 1440 px; implementation breakpoints proposed at M3.</li>
+<li>Storefront copy in Bahasa Indonesia; design documentation in English.</li>
+</ol>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 24px">Measurement definitions (no targets)</h2>
+<div style="font-size: 14px; color: #555B66">Approved with D12. Targets remain undefined; formulas are written up in ANALYTICS_METRICS.md at M5.</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5">
+<div><strong>Revenue</strong> = Σ grand total of orders with payment status Paid in range − Σ refunded amounts recorded in range.</div>
+<div><strong>Orders</strong> = count of orders whose payment became Paid in range (cancelled/unpaid excluded).</div>
+<div><strong>AOV (average order value)</strong> = Revenue ÷ Orders.</div>
+<div><strong>Conversion rate</strong> = sessions with a <code>purchase</code> event ÷ all sessions in range.</div>
+<div><strong>Abandoned cart rate</strong> = sessions with <code>add_to_cart</code> and no <code>purchase</code> ÷ sessions with <code>add_to_cart</code>.</div>
+<div><strong>Repeat purchase rate</strong> = customers with ≥2 paid orders (lifetime, at least one in range) ÷ customers with ≥1 paid order in range.</div>
+<div><strong>Top products</strong> = ranked by units sold on paid orders; revenue shown as secondary column.</div>
+<div><strong>Campaign attribution</strong> = last campaign touch (UTM/promotion click) within 7 days before purchase (mock rule).</div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+decisions: [
+{ id: "D1", title: "Design tool of record", owner: "OWNER · CHANGED ON APPROVAL", why: "The master prompt assumed Figma; the owner does not use Figma.", def: "Claude Design is the design tool of record for all milestones. One canvas page per milestone; M6 = clickable prototype built from linked Claude Design artboards. Tokens exported as JSON at M3 for the React prototype.", ms: "M0 ✓" },
+{ id: "D2", title: "Comparison limit", owner: "DESIGN", why: "Drives tray UI, mobile table layout and empty/maximum states.", def: "Maximum 4 products, same top-level category only. Desktop shows 4 columns; mobile shows 2 columns with the first product pinned and horizontal swipe. \"Show differences only\" toggle.", ms: "M2" },
+{ id: "D3", title: "Promotion stacking", owner: "OWNER · BUSINESS", why: "Incompatible stacking silently erodes margin and confuses totals.", def: "Per cart line: at most one product-level price promotion (strikethrough, flash sale, bundle or Buy X Get Y); if several qualify, apply the lowest resulting price and name it. Per order: at most one order voucher + one free-shipping voucher. Vouchers exclude flash-sale items unless the voucher allows it. Order: product promo → order voucher → shipping.", ms: "M1" },
+{ id: "D4", title: "Rupiah rounding & format", owner: "OWNER · FINANCE", why: "Totals must reconcile between cart, order, and analytics.", def: "All amounts are integer Rupiah. Percentage discounts are computed per unit and rounded down (floor) to Rp1, in the customer's favour; line total = unit price × quantity. Display format \"Rp1.250.000\" (dot thousands separator, no decimals).", ms: "M1" },
+{ id: "D5", title: "Tax (PPN) display", owner: "OWNER · FINANCE", why: "PPN (Pajak Pertambahan Nilai, value-added tax) affects price labels and invoices.", def: "Show tax-inclusive prices with no separate tax line and a \"Harga sudah termasuk PPN\" note at checkout. Tax invoices are out of scope. Needs finance confirmation.", ms: "M1" },
+{ id: "D6", title: "Stock reservation & payment expiry", owner: "DESIGN · AGENT 02", why: "Defines when stock moves from available to reserved and back.", def: "Reserve stock when the order is created (Pending Payment), not on add-to-cart. Mock payment windows: QRIS 15 min, e-wallet 15 min, virtual account 24 h. Release on Expired, Failed or Cancelled. Prototype gets a \"simulate time\" control. Production algorithm stays with Agent 02.", ms: "M1" },
+{ id: "D7", title: "Guest cart merge on login", owner: "DESIGN", why: "Cart must be preserved through the login redirect.", def: "Merge guest cart into account cart; same variant quantities are summed and capped at available stock; any change is shown in a notice on return to checkout.", ms: "M1" },
+{ id: "D8", title: "Product reviews", owner: "OWNER", why: "Reviews are required for display; writing them implies moderation.", def: "Display seeded reviews and rating summary with a \"verified purchase\" label. Review submission and moderation are Future.", ms: "M1" },
+{ id: "D9", title: "Catalog discovery pattern", owner: "DESIGN", why: "Affects SEO crawlability and mobile browsing.", def: "Numbered pagination with crawlable URLs (?page=2) on desktop; \"Muat lebih banyak\" (load more) on mobile that updates the same URLs. 24 products per page.", ms: "M2" },
+{ id: "D10", title: "Admin roles", owner: "OWNER", why: "Least-privilege access shapes navigation and which PII is shown.", def: "Owner, Admin, Operations (orders, inventory), Marketing (promotions, CMS), Customer Service (read-only customers and orders, masked contact data until revealed). Wireframe only in M5.", ms: "M5" },
+{ id: "D11", title: "Prototype toolchain", owner: "DESIGN · AGENT 02", why: "Must not lock the production architecture.", def: "Vite + React + TypeScript + Tailwind CSS + React Router + Zustand (state). Mock services behind typed interfaces with latency/failure toggles; fixtures in one seeded dataset. Framework-neutral so Agent 02 can move to an SSR framework.", ms: "M7" },
+{ id: "D12", title: "Metric definitions", owner: "OWNER · FINANCE", why: "Dashboards must reconcile with the mock dataset.", def: "Adopt the proposed formulas below; refunds subtracted in the period the refund is recorded.", ms: "M5" },
+{ id: "D13", title: "Address fields", owner: "OWNER", why: "Some couriers need kelurahan (urban village) for accurate rates.", def: "Required: recipient, phone, province, city/regency, district (kecamatan), postal code, detailed address. Optional: kelurahan, address label, delivery note. Mock region list is a small fictionalised subset.", ms: "M2" },
+{ id: "D14", title: "Admin language", owner: "OWNER", why: "Admin users may prefer English operational terms.", def: "Admin UI in Bahasa Indonesia, same as storefront; status names keep one fixed Indonesian label each, mapped to English codes in documentation.", ms: "M2" },
+{ id: "D15", title: "Showcase brand names", owner: "OWNER · LEGAL", why: "Fictional names can still collide with real trademarks.", def: "Use neutral codenames \"Brand A — Cosmetics\" and \"Brand B — Accessories\" in M1–M2; propose 3 names each at M3 for the owner to trademark-screen before use.", ms: "M3" },
+{ id: "D16", title: "WhatsApp number check", owner: "DESIGN", why: "Verification flows add steps and need an OTP (one-time password) provider.", def: "Format validation only (+62 / 08 prefix, 10–13 digits), no OTP in this stage. OTP verification is Future.", ms: "M2" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

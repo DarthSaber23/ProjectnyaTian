@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>M6 Overview and Test Scenarios</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2500px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">AGENT 01 · MILESTONE M6 · CLAUDE DESIGN</div><h1 style="margin: 0; font-size: 52px; font-weight: 700">M6 — Clickable prototype</h1><div style="font-size: 18px; color: #3B4049">Working prototypes in Claude Design: each flow is one interactive artboard (Play button) that keeps its own state, computes prices with the approved rules and uses W00 data. Three review batches; approval request after batch 3.</div></div>
+<div style="background: #FFF4E0; color: #7A4300; border: 1px solid #E8C48A; padding: 8px 14px; font-weight: 600; font-size: 15px">Status: Approved 20 Okt 2026</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start">
+<sc-for list="{{batches}}" as="b" hint-placeholder-count="3">
+<div style="{{b.box}}"><div style="display: flex; justify-content: space-between; align-items: baseline"><b style="font-size: 20px">{{b.t}}</b><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px">{{b.st}}</span></div>
+<sc-for list="{{b.items}}" as="i" hint-placeholder-count="4"><div style="font-size: 14px; line-height: 1.5; border-top: 1px solid #E6E7EA; padding-top: 6px">{{i}}</div></sc-for></div>
+</sc-for>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 22px">Test scenarios (press Play on the board named in the ID)</h2>
+<table style="width: 100%; border-collapse: collapse; font-size: 14px">
+<thead><tr style="background: #EEEFEB; text-align: left"><th scope="col" style="padding: 8px">ID</th><th scope="col" style="padding: 8px">Steps</th><th scope="col" style="padding: 8px">Expected result</th><th scope="col" style="padding: 8px">Rule</th></tr></thead>
+<tbody><sc-for list="{{tests}}" as="t" hint-placeholder-count="7"><tr style="border-top: 1px solid #E6E7EA; vertical-align: top"><td style="padding: 8px; font-family: 'IBM Plex Mono', monospace">{{t.id}}</td><td style="padding: 8px">{{t.s}}</td><td style="padding: 8px">{{t.e}}</td><td style="padding: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">{{t.r}}</td></tr></sc-for></tbody>
+</table>
+<span style="font-size: 13px; color: #555B66">All scenarios were run against the prototype logic in a script before publishing (results match). Visual rendering in Play has not been checked by Agent 01.</span>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 28px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.55">
+<h2 style="margin: 0; font-size: 22px">Prototype rules</h2>
+<span><b>Simulated clock:</b> 20 Okt 2026, order created 10:15 WIB, paid 10:21 — fixed so every run matches W00.</span>
+<span><b>Test panels:</b> dashed grey boxes ("PANEL UJI", "PANEL SIMULASI GATEWAY") are prototype controls, not store UI.</span>
+<span><b>Signed in:</b> as demo customer Rina Pratama (C-0001), because there is no guest checkout.</span>
+<span><b>State:</b> held in the artboard only; nothing is saved to the browser or sent anywhere. "Atur ulang prototipe" resets.</span>
+<span><b>Simplifications:</b> shipping rates do not vary by address; reviews hidden; search not included in P01.</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+renderVals() {
+var done = "background:#FFFFFF;border:2px solid #0B6B63;padding:20px;display:flex;flex-direction:column;gap:8px";
+var next = "background:#FFFFFF;border:1px solid #DADCE0;padding:20px;display:flex;flex-direction:column;gap:8px";
+return {
+batches: [
+{ t: "Batch 1 · purchase flow", st: "DELIVERED", box: done, items: ["P01 Sambung mobile: home → catalog → product → cart → vouchers → 3-step checkout → simulated payment → paid / failed / expired"] },
+{ t: "Batch 2 · discovery & account", st: "DELIVERED", box: done, items: ["P02 Halimun mobile: concern filter, bundle with shared stock, B2G1-SERUM, wishlist login gate, sign-in + lockout, guest cart merge", "P03 Sambung search (synonyms, length filter, zero results, recent searches) + compare (max 4, same category, pinned column, list view, differences only)", "P04 Sambung account: orders, tracking with overdue courier, WhatsApp CS hand-off, wishlist, addresses, consent toggles with timestamps"] },
+{ t: "Batch 3 · admin & handoff", st: "DELIVERED", box: done, items: ["P05 Admin (1440): process 0009 → ship with validated tracking no., Owner-only refund on 0007, contact reveal with reason + re-mask, role switch, session audit log", "P06 Admin (1440): CHARGER15 vs FS-WEEKEND per-day conflict check, voucher eligibility, review confirmation, scheduling", "PROTOTYPE_GUIDE.md + USABILITY_TEST_PLAN.md", "M6 approval requested"] }
+],
+tests: [
+{ id: "T1", s: "Home → panel uji → fill cart → apply KABEL10 + GRATISONGKIR → Kurir A → QRIS → Buat pesanan → simulate paid", e: "Subtotal Rp617.250 · −Rp30.000 · ongkir Rp18.000 −Rp18.000 · total Rp587.250 · ORD-261020-0010 · pay by 10:30 · paid 10:21", r: "D3 D4 D6 I3 I4 I9" },
+{ id: "T2", s: "Same cart → apply HEMAT50", e: "Rejected: min Rp500.000 outside flash sale, currently Rp318.000, short Rp182.000", r: "D3" },
+{ id: "T3", s: "Apply HEMAT50 then KABEL10", e: "KABEL10 replaces HEMAT50 (one order voucher)", r: "D3" },
+{ id: "T4", s: "T1 cart, choose Kurir C", e: "Ongkir Rp27.000 − Rp20.000 cap · total Rp594.250 · Kurir D disabled", r: "GRATISONGKIR" },
+{ id: "T5", s: "Open Kabel USB-C 100W", e: "2 m Putih disabled (Habis) · 2 m Hitam max 7 · B06 HDMI 2.1 shows Stok habis", r: "W00 stock" },
+{ id: "T6", s: "Place order → simulate kedaluwarsa → Masukkan lagi", e: "Stock returned · cart restored · vouchers must be re-applied · next order number 0011", r: "D6" },
+{ id: "T7", s: "Place order → simulate gagal", e: "Error message; order still waiting until expiry; can retry", r: "H07" },
+{ id: "P02-1", s: "Home → Kulit sensitif", e: "3 products: Cleanser, Moisturizer, Travel Cleanser (counts 3/2/1/1 match H01)", r: "W00" },
+{ id: "P02-2", s: "Add 1 serum → cart → +1 serum", e: "Nudge, then free Travel Cleanser line Rp0 (worth Rp45.000)", r: "B2G1-SERUM" },
+{ id: "P02-3", s: "Add 1 bundle → open Sunscreen", e: "Sunscreen shows Sisa 8: bundle and sunscreen share 9 units", r: "BND-PAGI" },
+{ id: "P02-4", s: "As guest tap heart → wrong password ×5", e: "Login sheet (I6); after 5 failures locked 15 min", r: "I6 · C9-style lockout" },
+{ id: "P02-5", s: "Reset → add items → Masuk untuk checkout → Masuk", e: "Guest cart merged message (D7), hand-off to P01", r: "D7" },
+{ id: "P03-1", s: "Sample type c 2m", e: "1 result, Kabel USB-C 100W at Rp159.000 · 2 m; note USB Type-C + length 2 m", r: "synonym map" },
+{ id: "P03-2", s: "Sample kabel → tick all 5", e: "4 accepted, 5th refused (max 4); adding a non-cable refused (same category)", r: "D2" },
+{ id: "P03-3", s: "Compare → Hanya perbedaan", e: "Rows reduced to those that differ; first column pinned; Daftar view", r: "L3" },
+{ id: "P03-4", s: "Sample mouse wireless", e: "0 results with category suggestions", r: "H20 states" },
+{ id: "P04-1", s: "Pesanan → ORD-261014-0003", e: "Overdue courier banner, resi SIM-KA-88213004, WhatsApp hand-off sends only order no.", r: "I7 · H13" },
+{ id: "P04-2", s: "Preferensi → turn off Rekomendasi pribadi → Simpan → back", e: "Timestamp updated; account shows generic popular list", r: "C4 · consent" },
+{ id: "P05-1", s: "Operasional: 0009 → Proses → Kirim → empty, then abc, then sample resi", e: "Diproses 10:20 (= W11); errors for empty/invalid; Dikirim 10:22 with SIM-KA-88213010; 2 audit entries", r: "W11 · ALCOA+" },
+{ id: "P05-2", s: "Operasional: Tampilkan kontak without reason, then with reason → 60 s", e: "Blocked until reason chosen; contact shown; CONTACT_REVEAL logged; re-masked after 60 s", r: "C2" },
+{ id: "P05-3", s: "Operasional: 0007 → Catat refund", e: "Blocked: Owner/Admin only", r: "I8 · A17" },
+{ id: "P05-4", s: "Owner: 0007 refund, custom Rp300.000 then Penuh + reason", e: "Over-limit error; full refund Rp217.000, Direfund + Dibatalkan, stock +1 B08, report impact on 20 Okt", r: "D12" },
+{ id: "P06-1", s: "CHARGER15 −15% from 21 Okt", e: "21–22 Okt FS-WEEKEND Rp299.250 wins; 23–31 Okt Rp339.150 (= X08)", r: "D3 D4" },
+{ id: "P06-2", s: "Change to −30%", e: "Warning: Rp279.300 beats flash sale; order vouchers become eligible", r: "D3" },
+{ id: "P06-3", s: "Jadwalkan without review tick; start 20 Okt", e: "Blocked with reason each time; scheduled only after review + valid start", r: "control" }
+]
+};
+}
+}
+</script>
+</body>
+</html>

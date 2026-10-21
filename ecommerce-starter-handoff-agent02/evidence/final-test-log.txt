@@ -1,0 +1,229 @@
+Final regression run 2026-10-21 07:55 WIB
+typecheck: clean
+ Test Files  3 passed (3)
+      Tests  46 passed (46)
+== e2e/smoke.mjs
+PASS axe home sambung 
+PASS mobile I6 wishlist needs sign-in 
+PASS mobile T2 HEMAT50 rejected 
+PASS mobile T3 replace 
+PASS axe cart 
+PASS axe sign-in 
+PASS mobile P7 wrong password 
+PASS mobile D7 cart merged 
+PASS mobile step1 total 
+PASS mobile T4 Kurir C 
+PASS mobile Kurir D disabled 
+PASS axe checkout step 1 
+PASS mobile T1 order number /pembayaran/ORD-261020-0010
+PASS mobile T1 expiry 10:30 
+PASS axe payment 
+PASS mobile T7 failed message 
+PASS mobile T6 cart restored 
+PASS mobile T6 next number 0011 (vouchers removed) 
+PASS mobile paid 
+PASS mobile T5 stock after paid 
+PASS mobile T5 Putih disabled 
+PASS axe product 
+PASS mobile P03-1 search synonym 
+PASS mobile P03-4 zero results 
+PASS axe search zero 
+PASS mobile D2 max 4 
+PASS mobile D2 same category 
+PASS mobile P03-3 compare page 
+PASS axe compare 
+PASS mobile P04-1 overdue banner 
+PASS mobile WA hand-off order no. only 
+PASS axe order tracking dialog 
+PASS mobile P04-2 consent timestamp 
+PASS mobile P04-2 generic list 
+PASS mobile orders list has 0011 + 0010 + 0003 
+PASS mobile P02-1 sensitif 3 
+PASS axe catalog halimun 
+PASS mobile B2G1 gift line 
+PASS axe cart halimun 
+PASS mobile no runtime errors 
+PASS desktop I6 wishlist needs sign-in 
+PASS desktop T2 HEMAT50 rejected 
+PASS desktop T3 replace 
+PASS desktop P7 wrong password 
+PASS desktop D7 cart merged 
+PASS desktop step1 total 
+PASS desktop T4 Kurir C 
+PASS desktop Kurir D disabled 
+PASS desktop T1 order number /pembayaran/ORD-261020-0010
+PASS desktop T1 expiry 10:30 
+PASS desktop T7 failed message 
+PASS desktop T6 cart restored 
+PASS desktop T6 next number 0011 (vouchers removed) 
+PASS desktop paid 
+PASS desktop T5 stock after paid 
+PASS desktop T5 Putih disabled 
+PASS desktop P03-1 search synonym 
+PASS desktop P03-4 zero results 
+PASS desktop D2 max 4 
+PASS desktop D2 same category 
+PASS desktop P03-3 compare page 
+PASS desktop P04-1 overdue banner 
+PASS desktop WA hand-off order no. only 
+PASS desktop P04-2 consent timestamp 
+PASS desktop P04-2 generic list 
+PASS desktop orders list has 0011 + 0010 + 0003 
+PASS desktop P02-1 sensitif 3 
+PASS desktop B2G1 gift line 
+PASS desktop no runtime errors 
+69/69 passed
+== e2e/admin.mjs
+PASS desktop redirect to admin login 
+PASS axe admin login 
+PASS desktop TOTP required 
+PASS desktop dashboard Rp2.097.000 
+PASS desktop dashboard Rp262.125 
+PASS desktop dashboard 0,65% 
+PASS desktop dashboard 88,9% 
+PASS desktop dashboard Rp237.000 
+PASS desktop ops has no audit menu 
+PASS axe dashboard 
+PASS desktop contact masked for ops 
+PASS desktop resi required 
+PASS desktop resi format 
+PASS axe ship dialog 
+PASS desktop shipped with resi 
+PASS desktop history 10:20 + 10:22 
+PASS desktop reveal needs reason 
+PASS axe reveal dialog 
+PASS desktop contact revealed 
+PASS desktop contact re-masked 
+PASS desktop ops cannot refund 
+PASS desktop owner sees full contact 
+PASS desktop refund over limit 
+PASS axe refund dialog 
+PASS desktop refunded + cancelled 
+PASS desktop D12 net after refund Rp1.880.000 
+PASS desktop audit REFUND_RECORDED 
+PASS desktop audit CONTACT_REVEAL 
+PASS desktop audit ORDER_SHIPPED 
+PASS desktop audit ORDER_STATUS 
+PASS axe audit log 
+PASS desktop P06-1 FS wins 21–22 
+PASS desktop P06-2 warning 
+PASS desktop P06-3 review required 
+PASS desktop P06-3 past start rejected 
+PASS desktop scheduled 
+PASS axe promotions 
+PASS desktop CS lands on orders 
+PASS desktop CS menu only orders 
+PASS desktop marketing has no orders menu 
+PASS desktop no runtime errors 
+PASS mobile redirect to admin login 
+PASS mobile TOTP required 
+PASS mobile dashboard Rp2.097.000 
+PASS mobile dashboard Rp262.125 
+PASS mobile dashboard 0,65% 
+PASS mobile dashboard 88,9% 
+PASS mobile dashboard Rp237.000 
+PASS mobile ops has no audit menu 
+PASS mobile contact masked for ops 
+PASS mobile resi required 
+PASS mobile resi format 
+PASS mobile shipped with resi 
+PASS mobile history 10:20 + 10:22 
+PASS mobile reveal needs reason 
+PASS mobile contact revealed 
+PASS mobile contact re-masked 
+PASS mobile ops cannot refund 
+PASS mobile owner sees full contact 
+PASS mobile refund over limit 
+PASS mobile refunded + cancelled 
+PASS mobile D12 net after refund Rp1.880.000 
+PASS mobile audit REFUND_RECORDED 
+PASS mobile audit CONTACT_REVEAL 
+PASS mobile audit ORDER_SHIPPED 
+PASS mobile audit ORDER_STATUS 
+PASS mobile P06-1 FS wins 21–22 
+PASS mobile P06-2 warning 
+PASS mobile P06-3 review required 
+PASS mobile P06-3 past start rejected 
+PASS mobile scheduled 
+PASS mobile CS lands on orders 
+PASS mobile CS menu only orders 
+PASS mobile marketing has no orders menu 
+PASS mobile no runtime errors 
+75/75 passed
+== e2e/qa.mjs
+PASS 360px no horizontal scroll · home 
+PASS 360px no horizontal scroll · kategori/semua 
+PASS 360px no horizontal scroll · kategori/kabel 
+PASS 360px no horizontal scroll · produk/kabel-usb-c-100w-braided 
+PASS 360px no horizontal scroll · produk/bundel-rutinitas-pagi 
+PASS 360px no horizontal scroll · keranjang 
+PASS 360px no horizontal scroll · cari?q=hdmi 
+PASS 360px no horizontal scroll · masuk 
+PASS 360px no horizontal scroll · halimun home 
+PASS 360px no horizontal scroll · halimun kategori/semua 
+PASS 360px no horizontal scroll · halimun produk/niacinamide-serum 
+PASS 360px no horizontal scroll · akun 
+PASS 360px no horizontal scroll · akun/pesanan 
+PASS 360px no horizontal scroll · akun/pesanan/ORD-261014-0003 
+PASS 360px no horizontal scroll · akun/wishlist 
+PASS 360px no horizontal scroll · akun/preferensi 
+PASS 360px no horizontal scroll · bandingkan 
+PASS 360px no horizontal scroll · admin 
+PASS 360px no horizontal scroll · admin/orders 
+PASS 360px no horizontal scroll · admin/orders/ORD-261020-0009 
+PASS 360px no horizontal scroll · admin/promotions 
+PASS 360px no horizontal scroll · admin/audit-log 
+PASS 768px no horizontal scroll · home 
+PASS 768px no horizontal scroll · kategori/semua 
+PASS 768px no horizontal scroll · kategori/kabel 
+PASS 768px no horizontal scroll · produk/kabel-usb-c-100w-braided 
+PASS 768px no horizontal scroll · produk/bundel-rutinitas-pagi 
+PASS 768px no horizontal scroll · keranjang 
+PASS 768px no horizontal scroll · cari?q=hdmi 
+PASS 768px no horizontal scroll · masuk 
+PASS 768px no horizontal scroll · halimun home 
+PASS 768px no horizontal scroll · halimun kategori/semua 
+PASS 768px no horizontal scroll · halimun produk/niacinamide-serum 
+PASS 768px no horizontal scroll · akun 
+PASS 768px no horizontal scroll · akun/pesanan 
+PASS 768px no horizontal scroll · akun/pesanan/ORD-261014-0003 
+PASS 768px no horizontal scroll · akun/wishlist 
+PASS 768px no horizontal scroll · akun/preferensi 
+PASS 768px no horizontal scroll · bandingkan 
+PASS 768px no horizontal scroll · admin 
+PASS 768px no horizontal scroll · admin/orders 
+PASS 768px no horizontal scroll · admin/orders/ORD-261020-0009 
+PASS 768px no horizontal scroll · admin/promotions 
+PASS 768px no horizontal scroll · admin/audit-log 
+PASS 1280px no horizontal scroll · home 
+PASS 1280px no horizontal scroll · kategori/semua 
+PASS 1280px no horizontal scroll · kategori/kabel 
+PASS 1280px no horizontal scroll · produk/kabel-usb-c-100w-braided 
+PASS 1280px no horizontal scroll · produk/bundel-rutinitas-pagi 
+PASS 1280px no horizontal scroll · keranjang 
+PASS 1280px no horizontal scroll · cari?q=hdmi 
+PASS 1280px no horizontal scroll · masuk 
+PASS 1280px no horizontal scroll · halimun home 
+PASS 1280px no horizontal scroll · halimun kategori/semua 
+PASS 1280px no horizontal scroll · halimun produk/niacinamide-serum 
+PASS 1280px no horizontal scroll · akun 
+PASS 1280px no horizontal scroll · akun/pesanan 
+PASS 1280px no horizontal scroll · akun/pesanan/ORD-261014-0003 
+PASS 1280px no horizontal scroll · akun/wishlist 
+PASS 1280px no horizontal scroll · akun/preferensi 
+PASS 1280px no horizontal scroll · bandingkan 
+PASS 1280px no horizontal scroll · admin 
+PASS 1280px no horizontal scroll · admin/orders 
+PASS 1280px no horizontal scroll · admin/orders/ORD-261020-0009 
+PASS 1280px no horizontal scroll · admin/promotions 
+PASS 1280px no horizontal scroll · admin/audit-log 
+PASS dialog opens with focus inside 
+PASS Tab / Shift+Tab stay inside dialog 
+PASS Escape closes dialog 
+PASS focus returns to opener 
+PASS axe admin order (after dialog) 
+PASS keyboard add to cart 
+72/72 passed
+== release gate
+Release gate: mock services cannot ship in a client build 
+2 moderate severity vulnerabilities

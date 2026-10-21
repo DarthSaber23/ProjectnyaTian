@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Storefront Sitemap</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 2400px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 11 · M1</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Storefront sitemap</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">43 screens, 8 sections. Access: Public = anyone; Login = redirects to /masuk?next=… and returns afterwards; Owner = only the customer who owns the order. Routes are proposals for the React prototype; Agent 02 may change the router, not the public URLs, without review.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="8">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; display: flex; flex-direction: column">
+<div style="padding: 16px 20px; border-bottom: 2px solid #15171C; display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span style="font-size: 20px; font-weight: 700">{{g.name}}</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #555B66">{{g.note}}</span></div>
+<sc-for list="{{g.rows}}" as="r" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.1fr) 72px; gap: 8px; padding: 9px 20px; border-top: 1px solid #EEEFF1; font-size: 14px; line-height: 1.45; align-items: start">
+<span style="font-family: 'IBM Plex Mono', monospace; color: #555B66">{{r.id}}</span>
+<span style="font-weight: 600">{{r.page}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #0B4F49; word-break: break-all">{{r.url}}</span>
+<span style="{{r.accStyle}}">{{r.acc}}</span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+
+<h2 style="margin: 0; font-size: 26px">Navigation model</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Shared (all brands)</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Announcement bar (dismissible, CMS-driven)</li>
+<li>Header: logo, category entry, search, wishlist, account, cart with count</li>
+<li>Cart drawer (S09) opens from any page after add-to-cart</li>
+<li>Footer: customer service, bulk inquiry, shipping info, policies, blog, newsletter, social links</li>
+<li>Breadcrumbs on catalog, product, blog and content pages</li>
+<li>Floating "Hubungi CS" (WhatsApp link-out) on product, cart and order pages</li>
+</ul>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Brand A — Cosmetics</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Editorial top nav: Belanja per Kebutuhan Kulit (skin concern), Koleksi, Bundel, Jurnal (blog), Tentang</li>
+<li>Concern and product-type entry are both category trees; collections are curated</li>
+<li>Mobile: menu sheet with concern tiles first; search behind an icon</li>
+</ul>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Brand B — Accessories</div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 4px">
+<li>Mega-menu by product type (Kabel, Adaptor &amp; Hub, Charger, Penyimpanan, Aksesori Meja)</li>
+<li>Second entry "Cari per Konektor" (USB Type-C, Lightning, HDMI, DisplayPort) as filtered catalog views</li>
+<li>Mobile: search bar always visible under the header; category list in a sheet</li>
+</ul>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 24px 28px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.55; color: #3B4049">
+<div style="font-size: 18px; font-weight: 700; color: #15171C">URL and SEO rules</div>
+<div>Filter and sort state is kept in query parameters (?warna=hitam&amp;urut=termurah). Filtered pages point their canonical URL to the unfiltered category page; paginated pages (?page=2) keep their own canonical. Search results (/cari) and account, cart, checkout and payment routes are excluded from indexing (noindex) and from the sitemap.xml specification. Brand A's concern pages and Brand B's connector pages are real category URLs, so they can rank.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+renderVals() {
+var styles = {
+"Public": "font-size:12px;font-weight:600;color:#0B4F49",
+"Login": "font-size:12px;font-weight:600;color:#7A4300",
+"Owner": "font-size:12px;font-weight:600;color:#8A1F24",
+"System": "font-size:12px;font-weight:600;color:#555B66"
+};
+function r(id, page, url, acc) { return { id: id, page: page, url: url, acc: acc, accStyle: styles[acc] }; }
+return {
+groups: [
+{ name: "Home & discovery", note: "INDEXED", rows: [
+r("S01", "Beranda (homepage)", "/", "Public"),
+r("S02", "Kategori / subkategori", "/kategori/{kategori}[/{sub}]", "Public"),
+r("S03", "Filter & urutkan (sheet)", "…?{filter}=…&urut=…", "Public"),
+r("S37", "Koleksi", "/koleksi/{slug}", "Public"),
+r("S36", "Kampanye", "/promo/{slug}", "Public")
+] },
+{ name: "Search & compare", note: "NOINDEX", rows: [
+r("S04", "Autocomplete (overlay)", "(any page)", "Public"),
+r("S05", "Hasil pencarian", "/cari?q={kata}", "Public"),
+r("S08", "Bandingkan produk", "/bandingkan?id=a,b,c", "Public")
+] },
+{ name: "Product", note: "INDEXED", rows: [
+r("S06", "Detail produk — Brand A", "/produk/{slug}", "Public"),
+r("S07", "Detail produk — Brand B", "/produk/{slug}", "Public")
+] },
+{ name: "Cart & authentication", note: "NOINDEX", rows: [
+r("S09", "Cart drawer (overlay)", "(any page)", "Public"),
+r("S10", "Keranjang", "/keranjang", "Public"),
+r("S11", "Masuk + Google (mock)", "/masuk?next={path}", "Public"),
+r("S12", "Daftar", "/daftar?next={path}", "Public"),
+r("S13", "Lupa / atur ulang kata sandi", "/lupa-kata-sandi · /atur-ulang-kata-sandi", "Public"),
+r("S14", "Pemulihan akun", "/pemulihan-akun", "Public")
+] },
+{ name: "Checkout & payment", note: "NOINDEX", rows: [
+r("S15", "1 · Pengiriman: alamat", "/checkout/pengiriman", "Login"),
+r("S16", "1 · Pengiriman: layanan", "/checkout/pengiriman", "Login"),
+r("S17", "2 · Ringkasan: voucher", "/checkout/ringkasan", "Login"),
+r("S18", "2 · Ringkasan: tinjau pesanan", "/checkout/ringkasan", "Login"),
+r("S19", "3 · Pembayaran: metode", "/checkout/pembayaran", "Login"),
+r("S20", "Instruksi pembayaran", "/pembayaran/{nomor-pesanan}", "Owner"),
+r("S21", "Hasil pembayaran", "/pembayaran/{nomor-pesanan}", "Owner"),
+r("S22", "Pesanan berhasil", "/pesanan/{nomor-pesanan}/berhasil", "Owner")
+] },
+{ name: "Account", note: "NOINDEX", rows: [
+r("S23", "Dasbor akun", "/akun", "Login"),
+r("S24", "Profil", "/akun/profil", "Login"),
+r("S25", "Buku alamat", "/akun/alamat", "Login"),
+r("S26", "Riwayat pesanan", "/akun/pesanan", "Login"),
+r("S27", "Detail & lacak pesanan", "/akun/pesanan/{nomor-pesanan}", "Owner"),
+r("S28", "Wishlist", "/akun/wishlist", "Login"),
+r("S29", "Preferensi komunikasi", "/akun/preferensi", "Login")
+] },
+{ name: "Content & support", note: "INDEXED", rows: [
+r("S30", "Tentang kami", "/tentang", "Public"),
+r("S31", "Kontak & layanan pelanggan", "/kontak", "Public"),
+r("S32", "Pembelian grosir", "/grosir", "Public"),
+r("S33", "FAQ", "/faq", "Public"),
+r("S34", "Blog / Jurnal", "/blog[?kategori=…]", "Public"),
+r("S35", "Artikel", "/blog/{slug}", "Public"),
+r("S38", "Info pengiriman", "/info/pengiriman", "Public"),
+r("S39", "Kebijakan privasi", "/kebijakan-privasi", "Public"),
+r("S40", "Syarat & ketentuan", "/syarat-ketentuan", "Public"),
+r("S41", "Pengembalian & refund", "/pengembalian", "Public")
+] },
+{ name: "System", note: "SPEC ONLY / NOINDEX", rows: [
+r("S42", "Halaman tidak ditemukan", "(any unknown URL) → 404", "System"),
+r("S43", "Galat / layanan tidak tersedia", "(on failure) → 500 / 503", "System"),
+r("—", "Sitemap & robots (spec)", "/sitemap.xml · /robots.txt", "System")
+] }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Initial Screen Inventory</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0B6B63}a:hover{color:#074A44}
+</style>
+</helmet>
+<div style="width: 1440px; min-height: 3400px; box-sizing: border-box; padding: 72px 80px; background: #F6F6F3; color: #15171C; font-family: 'IBM Plex Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 32px">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; border-bottom: 2px solid #15171C; padding-bottom: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; letter-spacing: 0.08em; color: #555B66">BOARD 03 · M0</div>
+<h1 style="margin: 0; font-size: 48px; font-weight: 700">Initial screen inventory</h1>
+<div style="font-size: 17px; color: #3B4049; line-height: 1.5">Every screen is designed at mobile (390 px) and desktop (1440 px); key screens are also checked at 360, 768 and 1280 px. Brand: A = cosmetics, B = accessories, Shared = one design re-skinned by tokens.</div>
+</div>
+<div style="display: flex; gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 30px; font-weight: 700">43</span><span style="font-size: 13px; color: #555B66">Storefront</span></div>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 30px; font-weight: 700">23</span><span style="font-size: 13px; color: #555B66">Admin</span></div>
+<div style="background: #15171C; color: #F6F6F3; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 30px; font-weight: 700">66</span><span style="font-size: 13px; color: #B8BCC4">Total</span></div>
+</div>
+</div>
+
+<h2 style="margin: 0; font-size: 26px">Customer storefront</h2>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: 64px 300px 110px 130px 100px minmax(0, 1fr); background: #15171C; color: #F6F6F3; font-size: 12px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 10px 12px">ID</div><div style="padding: 10px 12px">SCREEN</div><div style="padding: 10px 12px">PRIORITY</div><div style="padding: 10px 12px">FIDELITY</div><div style="padding: 10px 12px">BRAND</div><div style="padding: 10px 12px">REQUIRED STATES</div>
+</div>
+<sc-for list="{{store}}" as="r" hint-placeholder-count="43">
+<div style="display: grid; grid-template-columns: 64px 300px 110px 130px 100px minmax(0, 1fr); border-top: 1px solid #E6E7EA; font-size: 14px; line-height: 1.45; align-items: start">
+<div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; color: #555B66">{{r.id}}</div>
+<div style="padding: 9px 12px; font-weight: 600">{{r.name}}</div>
+<div style="padding: 9px 12px"><span style="{{r.chip}}">{{r.pri}}</span></div>
+<div style="padding: 9px 12px; color: #3B4049">{{r.fid}}</div>
+<div style="padding: 9px 12px; color: #3B4049">{{r.brand}}</div>
+<div style="padding: 9px 12px; color: #3B4049">{{r.states}}</div>
+</div>
+</sc-for>
+</div>
+
+<h2 style="margin: 0; font-size: 26px">Admin dashboard</h2>
+<div style="background: #FFFFFF; border: 1px solid #DADCE0">
+<div style="display: grid; grid-template-columns: 64px 300px 110px 130px 100px minmax(0, 1fr); background: #15171C; color: #F6F6F3; font-size: 12px; font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em">
+<div style="padding: 10px 12px">ID</div><div style="padding: 10px 12px">SCREEN</div><div style="padding: 10px 12px">PRIORITY</div><div style="padding: 10px 12px">FIDELITY</div><div style="padding: 10px 12px">ROLE</div><div style="padding: 10px 12px">REQUIRED STATES</div>
+</div>
+<sc-for list="{{admin}}" as="r" hint-placeholder-count="23">
+<div style="display: grid; grid-template-columns: 64px 300px 110px 130px 100px minmax(0, 1fr); border-top: 1px solid #E6E7EA; font-size: 14px; line-height: 1.45; align-items: start">
+<div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; color: #555B66">{{r.id}}</div>
+<div style="padding: 9px 12px; font-weight: 600">{{r.name}}</div>
+<div style="padding: 9px 12px"><span style="{{r.chip}}">{{r.pri}}</span></div>
+<div style="padding: 9px 12px; color: #3B4049">{{r.fid}}</div>
+<div style="padding: 9px 12px; color: #3B4049">{{r.brand}}</div>
+<div style="padding: 9px 12px; color: #3B4049">{{r.states}}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-size: 14px; color: #555B66; line-height: 1.5">Global patterns (header, footer, announcement bar, cart drawer shell, toasts, dialogs, skeleton loaders) are inventoried as components at M3, not as screens. Role column uses the proposed roles in D10.</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3400}}'>
+class Component extends DCLogic {
+renderVals() {
+var E = "display:inline-block;padding:2px 8px;font-size:12px;font-weight:600;background:#E3F1EF;color:#0B4F49";
+var S = "display:inline-block;padding:2px 8px;font-size:12px;font-weight:600;background:#EEF0F4;color:#2E3440";
+function row(id, name, p, fid, brand, states) {
+return { id: id, name: name, pri: p === "E" ? "Essential" : "Supporting", chip: p === "E" ? E : S, fid: fid, brand: brand, states: states };
+}
+return {
+store: [
+row("S01", "Homepage", "E", "Hi-fi", "A + B", "Loading sections, promo bar, empty campaign slot"),
+row("S02", "Category / catalog listing", "E", "Hi-fi", "A + B", "Loading, filtered, no results, error, out-of-stock badges"),
+row("S03", "Filter & sort panel (mobile sheet)", "E", "Hi-fi", "A + B", "Active filters, clear all, applied count"),
+row("S04", "Search autocomplete overlay", "E", "Hi-fi", "Shared", "Recent, popular, product + category suggestions, typo correction"),
+row("S05", "Search results", "E", "Hi-fi", "A + B", "Synonym notice, \"did you mean\", no results, loading, failure"),
+row("S06", "Product detail — cosmetics", "E", "Hi-fi", "A", "Variant (shade/size), low stock, out of stock, discount"),
+row("S07", "Product detail — accessories", "E", "Hi-fi", "B", "Length/colour/connector variant unavailable, qty exceeds stock"),
+row("S08", "Compare tray + comparison page", "E", "Hi-fi", "B (+A)", "Empty, 1 item, maximum reached, missing attribute, differences only"),
+row("S09", "Cart drawer", "E", "Hi-fi", "Shared", "Added, updating, error, empty"),
+row("S10", "Cart page", "E", "Hi-fi", "Shared", "Empty, stock changed, price changed, invalid quantity, loading"),
+row("S11", "Login + Google sign-in (mock)", "E", "Hi-fi", "Shared", "Wrong credentials, required-for-checkout notice, loading"),
+row("S12", "Register", "E", "Hi-fi", "Shared", "Validation, email already used, marketing consent unchecked"),
+row("S13", "Forgot / reset password", "E", "Hi-fi", "Shared", "Email sent (mock), expired link, success"),
+row("S14", "Account recovery", "E", "Hi-fi", "Shared", "Recovery steps, contact customer service fallback"),
+row("S15", "Checkout — address", "E", "Hi-fi", "Shared", "Saved addresses, new address form, validation errors"),
+row("S16", "Checkout — shipping", "E", "Hi-fi", "Shared", "Loading rates, courier unavailable, provider error, invalidated by address change"),
+row("S17", "Checkout — promotions / voucher", "E", "Hi-fi", "Shared", "Applied, invalid, expired, not eligible, conflict with flash sale"),
+row("S18", "Checkout — order review", "E", "Hi-fi", "Shared", "Price breakdown, stock re-check failure"),
+row("S19", "Payment method selection", "E", "Hi-fi", "Shared", "QRIS, virtual account, e-wallet, method unavailable"),
+row("S20", "Payment instructions (pending)", "E", "Hi-fi", "Shared", "QR code, account number copy, countdown, awaiting confirmation"),
+row("S21", "Payment result", "E", "Hi-fi", "Shared", "Paid, failed, expired, cancelled, retry / change method"),
+row("S22", "Order confirmation", "E", "Hi-fi", "Shared", "Paid confirmation, next steps"),
+row("S23", "Account dashboard", "E", "Hi-fi", "Shared", "New customer, returning customer"),
+row("S24", "Profile details", "E", "Hi-fi", "Shared", "Saved, validation, optional birth date empty"),
+row("S25", "Address book", "E", "Hi-fi", "Shared", "Empty, default address, delete confirmation"),
+row("S26", "Order history", "E", "Hi-fi", "Shared", "Empty, status filters, pending payment highlight"),
+row("S27", "Order detail + tracking timeline", "E", "Hi-fi", "Shared", "Each order status, courier delay, failed delivery, no tracking yet"),
+row("S28", "Wishlist", "E", "Hi-fi", "Shared", "Empty, item out of stock, move to cart"),
+row("S29", "Communication preferences", "E", "Hi-fi", "Shared", "Opt-in, opt-out, saved"),
+row("S30", "About the brand", "S", "Template", "A + B", "—"),
+row("S31", "Contact & customer service", "S", "Template", "Shared", "Form sent, form error"),
+row("S32", "Bulk purchase inquiry (Grosir)", "S", "Template", "Shared", "Validation, submitted"),
+row("S33", "FAQ", "S", "Template", "Shared", "Expanded, search within FAQ"),
+row("S34", "Blog index", "S", "Template", "A + B", "Empty category, pagination"),
+row("S35", "Blog article", "S", "Template", "A + B", "Related products block"),
+row("S36", "Campaign landing page", "S", "Template", "A + B", "Campaign ended"),
+row("S37", "Collection landing page", "S", "Template", "A + B", "Empty collection"),
+row("S38", "Shipping information", "S", "Template", "Shared", "—"),
+row("S39", "Privacy policy", "S", "Template", "Shared", "Placeholder — legal review label"),
+row("S40", "Terms & conditions", "S", "Template", "Shared", "Placeholder — legal review label"),
+row("S41", "Refund & returns information", "S", "Template", "Shared", "Placeholder — business review label"),
+row("S42", "404 not found", "S", "Template", "Shared", "Search + popular links"),
+row("S43", "General error / service unavailable", "S", "Template", "Shared", "Retry, contact support")
+],
+admin: [
+row("A01", "Dashboard overview", "E", "Hi-fi", "All", "Date range, loading, no data, low-stock alerts"),
+row("A02", "Product list", "E", "Hi-fi", "Ops/Mkt", "Search, filters, bulk select, archived, empty"),
+row("A03", "Product create / edit", "E", "Hi-fi", "Ops", "Attributes, variants, SKU, images, pricing, SEO, validation, unsaved changes"),
+row("A04", "Categories", "E", "Hi-fi", "Ops", "Nested categories, reorder, delete with products"),
+row("A05", "Inventory by variant + adjustment", "E", "Hi-fi", "Ops", "Available vs reserved, low stock, adjustment reason required"),
+row("A06", "Order list", "E", "Hi-fi", "Ops/CS", "Status filters, search, payment vs fulfilment status"),
+row("A07", "Order detail", "E", "Hi-fi", "Ops/CS", "Status history, process, ship (tracking ref), cancel, failed delivery"),
+row("A08", "Promotion list", "E", "Hi-fi", "Mkt", "Scheduled, active, expired, paused"),
+row("A09", "Promotion create / edit + preview", "E", "Hi-fi", "Mkt", "7 promotion types, validity, eligibility, conflict warning"),
+row("A10", "CMS page list", "E", "Hi-fi", "Mkt", "Draft, published, unpublished, scheduled"),
+row("A11", "CMS block editor + preview", "E", "Hi-fi", "Mkt", "Add, remove, reorder, edit, required-content errors, preview"),
+row("A12", "SEO settings panel + search preview", "E", "Hi-fi", "Mkt", "Title/description length, slug conflict, canonical, Open Graph"),
+row("A13", "Customer directory", "E", "Hi-fi", "CS/Admin", "Search, segments, consent indicators, masked contacts"),
+row("A14", "Customer profile", "E", "Hi-fi", "CS/Admin", "Order history, reveal contact (logged), no orders"),
+row("A15", "Analytics", "E", "Hi-fi", "Owner/Mkt", "Date range, filters, metric definitions, empty range"),
+row("A16", "Advanced reports", "S", "Wireframe", "Owner", "—"),
+row("A17", "Users & roles", "S", "Wireframe", "Owner", "Invite, role change, deactivate"),
+row("A18", "Store settings", "S", "Wireframe", "Admin", "—"),
+row("A19", "Shipping configuration", "S", "Wireframe", "Admin", "Provider not connected (preview)"),
+row("A20", "Payment configuration", "S", "Wireframe", "Admin", "Provider not connected (preview)"),
+row("A21", "Notification configuration", "S", "Wireframe", "Admin", "—"),
+row("A22", "Audit activity log", "S", "Wireframe", "Owner", "Filters, empty"),
+row("A23", "Admin sign-in", "S", "Wireframe", "All", "Wrong credentials, locked")
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Promotion Editor</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1800px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A09 · /admin/promotions/new · draft CHARGER15 · overlap with FS-WEEKEND detected</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 60px; background: #0E1726; color: #FFFFFF; display: flex; align-items: center; gap: 16px; padding: 0 28px; font-size: 14px"><span>← Promosi</span><b>Promosi baru</b><span style="background: #F2F4F7; color: #0E1726; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 700">DRAF</span><button type="button" style="margin-left: auto; height: 38px; padding: 0 14px; border: 1px solid #7D8796; border-radius: 6px; background: transparent; color: #FFFFFF; font-family: inherit">Simpan draf</button><button type="button" style="height: 38px; padding: 0 16px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">Jadwalkan</button></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 20px; padding: 24px 28px 40px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 18px; font-size: 14px">
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 17px">1 · Jenis promosi</h2>
+<div role="radiogroup" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{types}}" as="t" hint-placeholder-count="7"><div role="radio" aria-checked="{{t.on}}" style="{{t.st}}"><b style="font-size: 14px">{{t.n}}</b><span style="font-size: 12px; color: #4A5568">{{t.d}}</span></div></sc-for>
+</div>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 17px">2 · Detail</h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Nama / kode internal *<input value="CHARGER15" style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 14px"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Potongan (%) *<input value="15" style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 14px"><span style="font-weight: 400; color: #4A5568">Dibulatkan ke bawah ke Rp1 per unit (D4)</span></label>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Berlaku untuk *<span style="min-height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 6px 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-weight: 400"><span style="background: #EAF0FD; color: #1747B5; border-radius: 4px; padding: 3px 8px; font-size: 13px">Kategori: Charger (1 produk) ✕</span><span style="color: #4A5568; font-size: 13px">+ produk / kategori</span></span></label>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Mulai (WIB) *<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; font-weight: 400; font-family: 'JetBrains Mono', monospace">21 Okt 2026 · 00:00</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Berakhir (WIB) *<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; font-weight: 400; font-family: 'JetBrains Mono', monospace">31 Okt 2026 · 23:59</span></label>
+</div>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 17px">3 · Kelayakan &amp; batas</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Pelanggan<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-weight: 400">Semua <span>▾</span></span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Min. belanja<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; font-weight: 400; color: #4A5568">Tidak ada</span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px">Kuota pemakaian<span style="height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; padding: 0 12px; display: flex; align-items: center; font-weight: 400; color: #4A5568">Tidak dibatasi</span></label>
+</div>
+<label style="display: flex; justify-content: space-between; align-items: center; min-height: 44px; border-top: 1px solid #E3E7ED; padding-top: 10px"><span style="display: flex; flex-direction: column"><b>Boleh dipakai bersama voucher pesanan</b><span style="font-size: 12px; color: #4A5568">Promo harga produk; voucher tetap dihitung sesudahnya (urutan D3)</span></span><span style="position: relative; width: 44px; height: 24px; border-radius: 12px; background: #1F5AE0; display: inline-block"><span style="position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 9px; background: #FFFFFF"></span></span></label>
+</section>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; font-size: 14px">
+<section role="alert" style="background: #FDF1DC; border: 1.5px solid #8A5300; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px; color: #5C3A00">
+<b style="font-size: 15px; color: #8A5300">Tumpang tindih dengan FS-WEEKEND</b>
+<span style="line-height: 1.55">Charger GaN 65W 3 Port sudah dalam flash sale −25% sampai 22 Okt 23:59. Per aturan D3, satu barang hanya memakai satu promo harga: harga terendah yang dipakai.</span>
+<table style="width: 100%; border-collapse: collapse; font-size: 13px; background: #FFFFFF; border-radius: 6px; overflow: hidden">
+<thead><tr style="background: #F2F4F7; text-align: left; color: #4A5568"><th scope="col" style="padding: 8px">Tanggal</th><th scope="col" style="padding: 8px">Harga yang tampil</th><th scope="col" style="padding: 8px">Sumber</th></tr></thead>
+<tbody><tr style="border-top: 1px solid #E3E7ED"><td style="padding: 8px">21–22 Okt</td><td style="padding: 8px; font-family: 'JetBrains Mono', monospace">Rp299.250</td><td style="padding: 8px">FS-WEEKEND (−25%)</td></tr><tr style="border-top: 1px solid #E3E7ED"><td style="padding: 8px">23–31 Okt</td><td style="padding: 8px; font-family: 'JetBrains Mono', monospace">Rp339.150</td><td style="padding: 8px">CHARGER15 (−15%)</td></tr></tbody>
+</table>
+<span style="font-size: 12px">floor(399.000 × 0,85) = 339.150 · floor(399.000 × 0,75) = 299.250</span>
+<div style="display: flex; gap: 8px"><button type="button" style="height: 38px; padding: 0 12px; border: 1.5px solid #8A5300; border-radius: 6px; background: #FFFFFF; color: #8A5300; font-family: inherit; font-weight: 600; font-size: 13px">Mulai 23 Okt saja</button><button type="button" style="height: 38px; padding: 0 12px; border: none; background: none; color: #8A5300; font-family: inherit; text-decoration: underline; font-size: 13px">Tetap jadwalkan</button></div>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 15px">Pratinjau di toko (23 Okt)</b>
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; border: 1px solid #CBD2DC; border-radius: 6px; overflow: hidden"><div style="height: 96px"><dc-import name="ProductArt" kind="charger" bg="#F2F4F7" fg="#0E1726" accent="#1F5AE0" label="Charger GaN 65W" hint-size="96px,96px"></dc-import></div><div style="padding: 10px 10px 10px 0; display: flex; flex-direction: column; gap: 4px; font-size: 13px"><b>Charger GaN 65W 3 Port</b><span><b style="font-size: 16px">Rp339.150</b> <s style="color: #4A5568">Rp399.000</s></span><span style="align-self: flex-start; background: #EAF0FD; color: #1747B5; border-radius: 4px; padding: 1px 6px; font-size: 11px; font-weight: 700">−15%</span></div></div>
+<span style="font-size: 12px; color: #4A5568">Status setelah dijadwalkan: Terjadwal → Aktif otomatis pada waktu mulai (Asia/Jakarta).</span>
+</section>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · type "Beli X Gratis Y" (Halimun store example)</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Kembali" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">←</button><b style="font-size: 15px">B2G1-SERUM</b><span style="margin-left: 8px; background: #E3F4EA; color: #1E7A45; border-radius: 4px; padding: 2px 6px; font-size: 11px; font-weight: 700">AKTIF</span></div>
+<div style="padding: 14px; display: flex; flex-direction: column; gap: 12px; font-size: 13px">
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 8px"><b style="font-size: 14px">Beli</b><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 10px 12px">2 × Niacinamide Serum 30 ml (A03)</span><b style="font-size: 14px">Gratis</b><span style="border: 1.5px solid #7D8796; border-radius: 6px; padding: 10px 12px">1 × Travel Cleanser 30 ml (A05)</span><span style="color: #4A5568">Berlaku kelipatan: beli 4 gratis 2. Barang gratis mengikuti stok A05 (80 tersedia).</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px"><b style="font-size: 14px">Contoh di keranjang</b><div style="display: flex; justify-content: space-between"><span>A03 × 2 @ Rp149.000</span><span style="font-family: 'JetBrains Mono', monospace">Rp298.000</span></div><div style="display: flex; justify-content: space-between; color: #1E7A45"><span>A05 × 1 (gratis, nilai Rp45.000)</span><span style="font-family: 'JetBrains Mono', monospace">Rp0</span></div></div>
+<button type="button" style="height: 46px; border: 1.5px solid #0E1726; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 600">Jeda promosi</button>
+<span style="color: #4A5568; font-size: 12px">Menjeda promo aktif dicatat di log aktivitas.</span>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1800}}'>
+class Component extends DCLogic {
+renderVals() {
+var on = "border:2px solid #1F5AE0;background:#EAF0FD;border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:4px";
+var off = "border:1.5px solid #CBD2DC;border-radius:6px;padding:12.5px;display:flex;flex-direction:column;gap:4px";
+function t(n, d, sel) { return { n: n, d: d, on: sel ? "true" : "false", st: sel ? on : off }; }
+return {
+types: [
+t("Diskon persen", "% dari harga produk", true),
+t("Diskon nominal", "Rp per produk", false),
+t("Harga coret", "Harga baru permanen", false),
+t("Flash sale", "Waktu singkat + hitung mundur", false),
+t("Bundel", "Paket harga tetap", false),
+t("Beli X Gratis Y", "Barang hadiah", false),
+t("Voucher", "Kode pesanan / ongkir", false)
+]
+};
+}
+}
+</script>
+</body>
+</html>

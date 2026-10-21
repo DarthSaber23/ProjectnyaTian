@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Admin Products and Categories</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5AE0}
+</style>
+</helmet>
+<div style="width: 2040px; min-height: 1500px; box-sizing: border-box; padding: 40px 48px; background: #E9EAEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0E1726; display: flex; gap: 64px; align-items: flex-start">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">DESKTOP 1440 · A02 · /admin/products · Operations</div>
+<div style="width: 1440px; background: #F5F6F8; display: flex">
+<nav aria-label="Admin" style="width: 232px; flex: none; background: #FFFFFF; border-right: 1px solid #E3E7ED; padding: 20px 14px; display: flex; flex-direction: column; gap: 2px; font-size: 14px; min-height: 1000px">
+<div style="padding: 0 8px 18px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">SAMBUNG<span style="color: #1F5AE0">/</span></span></div>
+<span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Dasbor</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Pesanan</span><span style="font-size: 11px; color: #4A5568; letter-spacing: 0.06em; padding: 14px 10px 4px">KATALOG</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px; border-radius: 6px; background: #EAF0FD; color: #1747B5; font-weight: 600">Produk</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Kategori</span><span style="min-height: 40px; display: flex; align-items: center; padding: 0 10px">Inventaris</span>
+</nav>
+<main style="flex: 1; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600">Produk</h1><button type="button" style="height: 40px; padding: 0 16px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600">+ Tambah produk</button></div>
+<div style="display: flex; gap: 10px; align-items: center"><div style="width: 360px; height: 40px; border: 1.5px solid #7D8796; border-radius: 6px; background: #FFFFFF; display: flex; align-items: center; padding: 0 12px; color: #4A5568; font-size: 14px">Cari nama atau SKU…</div><button type="button" style="height: 40px; padding: 0 12px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 13px">Kategori: Semua ▾</button><button type="button" style="height: 40px; padding: 0 12px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 13px">Status: Aktif ▾</button><button type="button" style="height: 40px; padding: 0 12px; border: 1px solid #CBD2DC; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-size: 13px">Stok ▾</button><span style="margin-left: auto; font-size: 13px; color: #4A5568">8 produk · 11 varian</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E7ED; border-radius: 8px; overflow: hidden">
+<table style="width: 100%; border-collapse: collapse; font-size: 13.5px">
+<thead><tr style="background: #F2F4F7; text-align: left; color: #4A5568; font-size: 12px"><th scope="col" style="padding: 10px 12px">Produk</th><th scope="col" style="padding: 10px 8px">Kategori</th><th scope="col" style="padding: 10px 8px">Varian</th><th scope="col" style="padding: 10px 8px; text-align: right">Harga</th><th scope="col" style="padding: 10px 8px; text-align: right">Tersedia</th><th scope="col" style="padding: 10px 8px">Promo</th><th scope="col" style="padding: 10px 8px">Status</th></tr></thead>
+<tbody>
+<sc-for list="{{rows}}" as="p" hint-placeholder-count="8"><tr style="border-top: 1px solid #E3E7ED"><td style="padding: 10px 12px"><span style="display: flex; gap: 12px; align-items: center"><span style="width: 44px; height: 44px; border-radius: 6px; overflow: hidden; flex: none; display: block"><dc-import name="ProductArt" kind="{{p.art}}" bg="#F2F4F7" fg="#1A2233" accent="#1F5AE0" label="{{p.name}}" hint-size="44px,44px"></dc-import></span><span style="display: flex; flex-direction: column"><a href="#" style="color: #0E1726; font-weight: 600">{{p.name}}</a><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A5568">{{p.sku}}</span></span></span></td><td style="padding: 10px 8px">{{p.cat}}</td><td style="padding: 10px 8px">{{p.var}}</td><td style="padding: 10px 8px; text-align: right; font-family: 'JetBrains Mono', monospace">{{p.price}}</td><td style="padding: 10px 8px; text-align: right"><span style="{{p.stSt}}">{{p.st}}</span></td><td style="padding: 10px 8px">{{p.promo}}</td><td style="padding: 10px 8px"><span style="background: #E3F4EA; color: #1E7A45; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 600">Aktif</span></td></tr></sc-for>
+</tbody>
+</table>
+</div>
+<span style="font-size: 12px; color: #4A5568">"Tersedia" = stok fisik − dicadangkan, dijumlah dari semua varian. Produk diarsipkan, bukan dihapus, bila pernah dipesan.</span>
+</main>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A4F57">MOBILE 390 · A04 /admin/categories</div>
+<div style="width: 390px; background: #F5F6F8; display: flex; flex-direction: column">
+<div style="height: 56px; background: #FFFFFF; border-bottom: 1px solid #E3E7ED; display: flex; align-items: center; padding: 0 6px"><button type="button" aria-label="Menu" style="width: 44px; height: 44px; border: none; background: none; font-size: 20px">☰</button><b style="font-family: 'Space Grotesk', sans-serif; font-size: 18px">Kategori</b><button type="button" style="margin-left: auto; margin-right: 8px; height: 36px; padding: 0 12px; border: none; border-radius: 6px; background: #1F5AE0; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 13px">+ Tambah</button></div>
+<div style="padding: 12px; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="5"><div style="{{c.box}}"><span aria-hidden="true" style="color: #7D8796">⋮⋮</span><span style="flex: 1; display: flex; flex-direction: column"><b style="font-size: 14px">{{c.n}}</b><span style="font-size: 12px; color: #4A5568">{{c.d}}</span></span><span style="{{c.tagSt}}">{{c.tag}}</span></div></sc-for>
+<span style="font-size: 12px; color: #4A5568; line-height: 1.5">Seret ⋮⋮ (atau tombol ↑↓) untuk mengubah urutan menu toko. Kategori tanpa produk aktif otomatis disembunyikan dari menu.</span>
+<div role="alert" style="background: #FCE6E7; color: #C0262D; border-radius: 6px; padding: 12px; font-size: 13px"><b>Kategori "Kabel" tidak bisa dihapus</b><br><span style="color: #7A1A1E">Masih berisi 5 produk. Pindahkan produknya dulu.</span></div>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2040,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+var ok = "font-family:'JetBrains Mono',monospace";
+var low = "font-family:'JetBrains Mono',monospace;color:#8A5300;font-weight:600";
+var out = "font-family:'JetBrains Mono',monospace;color:#C0262D;font-weight:600";
+var box = "display:flex;gap:12px;align-items:center;min-height:56px;padding:8px 12px;background:#FFFFFF;border:1px solid #E3E7ED;border-radius:8px";
+var tag = "font-size:11px;font-weight:600;border-radius:4px;padding:2px 6px;";
+return {
+rows: [
+{ name: "Kabel USB-C ke USB-C 100W Braided", sku: "B01-*", cat: "Kabel", var: "4 (1 habis)", price: "129.000–189.000", st: "64", stSt: ok, promo: "Harga coret (1 m)", art: "cable" },
+{ name: "Adaptor USB-C ke HDMI 4K60", sku: "B02", cat: "Adaptor & Hub", var: "1", price: "219.000", st: "23", stSt: ok, promo: "—", art: "adapter" },
+{ name: "Charger GaN 65W 3 Port", sku: "B03", cat: "Charger", var: "1", price: "299.250", st: "11", stSt: ok, promo: "FS-WEEKEND −25%", art: "charger" },
+{ name: "Hub USB-C 7-in-1", sku: "B04", cat: "Adaptor & Hub", var: "1", price: "549.000", st: "4", stSt: low, promo: "—", art: "hub" },
+{ name: "Kabel USB-C ke Lightning · 1 m", sku: "B05", cat: "Kabel", var: "1", price: "149.000", st: "30", stSt: ok, promo: "—", art: "cable" },
+{ name: "Kabel HDMI 2.1 8K · 2 m", sku: "B06", cat: "Kabel", var: "1", price: "179.000", st: "0", stSt: out, promo: "—", art: "cable" },
+{ name: "Kabel USB-A ke USB-C · 1 m", sku: "B07", cat: "Kabel", var: "1", price: "69.000", st: "120", stSt: ok, promo: "—", art: "cable" },
+{ name: "Kabel DisplayPort 1.4 · 2 m", sku: "B08", cat: "Kabel", var: "1", price: "199.000", st: "18", stSt: ok, promo: "—", art: "cable" }
+],
+cats: [
+{ n: "Kabel", d: "5 produk · /kategori/kabel", tag: "Tampil", tagSt: tag + "background:#E3F4EA;color:#1E7A45", box: box },
+{ n: "Adaptor & Hub", d: "2 produk · /kategori/adaptor-hub", tag: "Tampil", tagSt: tag + "background:#E3F4EA;color:#1E7A45", box: box },
+{ n: "Charger", d: "1 produk · /kategori/charger", tag: "Tampil", tagSt: tag + "background:#E3F4EA;color:#1E7A45", box: box },
+{ n: "Penyimpanan", d: "0 produk", tag: "Disembunyikan", tagSt: tag + "background:#F2F4F7;color:#4A5568", box: box },
+{ n: "Aksesori Meja", d: "0 produk", tag: "Disembunyikan", tagSt: tag + "background:#F2F4F7;color:#4A5568", box: box }
+]
+};
+}
+}
+</script>
+</body>
+</html>
