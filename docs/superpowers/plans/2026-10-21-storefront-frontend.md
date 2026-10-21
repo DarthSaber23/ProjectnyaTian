@@ -134,3 +134,20 @@ The existing prototype `e2e/smoke.mjs` stays runnable against the mock preview b
 - The compose stack is running on the dev server.
 - The public web port passes the Playwright smoke in Task 6.
 - `.env` files are not in the git commit.
+
+---
+
+## Verification — 21 Oct 2026
+
+Web: typecheck clean, 5 test files / 51 tests pass. `build:client` fails when `VITE_DEMO_TOOLS=true` and passes with `false`. Playwright `e2e/api-smoke.mjs` run against `http://43.159.54.222` printed `api-smoke ok`.
+
+| Task | Criterion | Result |
+|---|---|---|
+| 1 | `web/src/pages/Home.tsx`, `web/src/config/brands.ts` exist; handoff folder untouched | Pass |
+| 2 | Client unit tests (error mapping, Bearer + Idempotency-Key, relative `/v1`) | Pass (3 tests) |
+| 2 | No storefront page imports `services/mock` | Pass. Only two test files and a comment in `contracts.ts` mention it |
+| 3 | Admin sign-in, metrics, process/ship/refund/reveal wired; `FORBIDDEN` shown as the API message | Sign-in and metrics pass in the smoke test. Process, ship, refund and the `FORBIDDEN` message are not covered by an automated test |
+| 4 | Payment page shows paid only from the server; simulator control only when demo tools are on | Pass in the smoke test (no paid state before an event); client bundle has no `X-Simulator-Token` string |
+| 5 | Web image has no mock import; nginx proxies `/v1/` and `/health`; deep links refresh | Pass (`/produk/kabel-usb-c-100w-braided` returns 200) |
+| 6 | Home product from API, Rina sign-in, reference cart Rp587.250, `ORD-` order, no paid state before event, admin net Rp2.097.000, axe 0 serious/critical | Pass (one run, all steps) |
+| 7 | Stack running on the dev server, smoke passes on the public port, no `.env` in the commit | Stack deployed and smoke passes. Commit still pending |

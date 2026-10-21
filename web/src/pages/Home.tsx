@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { DEMO_TOOLS } from "../config/brands";
+import { backend } from "../services/http/backend";
 import { categories } from "../mocks/fixtures";
 import { ProductCard } from "../components/ProductCard";
 import { useBrand, useCatalog } from "../store/hooks";
@@ -61,7 +62,7 @@ export function Home() {
 
       <section aria-labelledby="feat-h" className="flex flex-col gap-3">
         <h2 id="feat-h" className="text-2xl font-semibold">Pilihan untukmu</h2>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">{featured.map((p) => <ProductCard key={p.id} product={p} />)}</div>
+        {backend.loading && products.length === 0 ? <p className="text-sm text-muted">Memuat katalog…</p> : <div className="grid grid-cols-2 gap-3 md:grid-cols-4">{featured.map((p) => <ProductCard key={p.id} product={p} />)}</div>}
       </section>
 
       {DEMO_TOOLS && brand.id === "sambung" ? (

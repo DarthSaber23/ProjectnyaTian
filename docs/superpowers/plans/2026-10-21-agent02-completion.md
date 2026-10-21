@@ -28,7 +28,7 @@
 
 **Acceptance:** `git check-ignore -v .env` and `git check-ignore -v server/.env` both match. `server/.env.example` is not ignored.
 
-- [ ] Add root ignore rules for `.env`, `**/.env`, `node_modules`, `dist`, and `*.tsbuildinfo`, with exceptions for `**/.env.example`.
+- [x] Add root ignore rules for `.env`, `**/.env`, `node_modules`, `dist`, and `*.tsbuildinfo`, with exceptions for `**/.env.example`.
 
 ### Task 2: Address, consent, provider, and reveal rules
 
@@ -52,7 +52,7 @@
 - `assertProviderConfigured("midtrans", {})` throws mentioning `MIDTRANS_SERVER_KEY`.
 - Owner sees full contact. CS sees a mask. CS with a future `until` sees full contact. CS with a past `until` sees a mask.
 
-- [ ] Write the tests, then the functions, and keep them free of I/O.
+- [x] Write the tests, then the functions, and keep them free of I/O.
 
 ### Task 3: Persist the new rules and fix reveal
 
@@ -76,9 +76,9 @@
 - Audit log requires `audit.view`.
 - Responses set `X-Content-Type-Options: nosniff` and `X-Frame-Options: DENY`.
 
-- [ ] Add Prisma models `WishlistItem`, `AddressRecord`, `ConsentState`, `NotificationOutbox`, `RevealGrant`.
-- [ ] Wire endpoints and the security interceptor.
-- [ ] Store reveal grants and honour them in `contact`.
+- [x] Add Prisma models `WishlistItem`, `AddressRecord`, `ConsentState`, `NotificationOutbox`, `RevealGrant`.
+- [~] Wire endpoints and the security interceptor. Done except `POST /v1/notifications` (see Verification).
+- [x] Store reveal grants and honour them in `contact`.
 
 ### Task 4: Review, commit, deploy
 
@@ -87,3 +87,25 @@
 - `GET /health` on the dev server returns `databaseUser` `tian_app` and `storage` `minio`.
 - `GET /v1/admin/metrics` for 14–20 Oct 2026 still returns net revenue 2097000.
 - The git commit does not contain `.env` or `server/.env`.
+
+---
+
+## Verification — 21 Oct 2026
+
+Checked against the dev server `43.159.54.222` and a local checkout. Server: 11 test files, 73 tests pass; `npm run build` clean.
+
+| Task | Criterion | Result |
+|---|---|---|
+| 1 | `.env` and `server/.env` ignored, `server/.env.example` not ignored | Pass (`git check-ignore -v`); only the three `.env.example` files are tracked |
+| 2 | D13 address valid, missing province fails, phone `0812-0000-1234` passes, `123` fails | Pass (unit tests and live: 422 / 422 / 201) |
+| 2 | `maySend` rules, `assertProviderConfigured` throws naming the key, `visibleContact` masks | Pass (unit tests) |
+| 3 | Cart merge returns capped lines | Pass (live: wanted 14, kept 3, `capped` listed) |
+| 3 | Address create with invalid body returns 422 | Pass |
+| 3 | Reveal then `contact` returns `full: true` until `until` | Pass (live, CS role); reveal without a reason returns 422 |
+| 3 | Audit log requires `audit.view` | Pass (live: no token 401, customer token 401, CS 403, owner 200) |
+| 3 | `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY` | Pass (live) |
+| 3 | `POST /v1/notifications` writes an outbox row only when `maySend` allows it, with `provider: "none"` | **Not met.** No such route exists. The outbox row is written only inside the payment-paid path, and `NotificationOutbox` has no `provider` column. Needs an owner decision on who may call it before it is added |
+| 4 | Image build runs unit tests | Pass (`npm test` in the API Dockerfile; rebuild on 21 Oct succeeded) |
+| 4 | `/health` shows `tian_app` and `minio` | Pass |
+| 4 | Metrics 14–20 Oct net revenue 2097000 | Pass (live: 2097000, 8 paid, AOV 262125, completion 88.9%) |
+| 4 | Commit contains no `.env` | Pass for tracked files. Current work is not committed yet |

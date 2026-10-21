@@ -8,6 +8,7 @@ type Listener = () => void;
 
 class HttpBackend {
   version = 0;
+  loading = true;
   private listeners = new Set<Listener>();
   private catalogs: Partial<Record<BrandId, Catalog>> = {};
   private promotions: Partial<Record<BrandId, Promotion[]>> = {};
@@ -36,12 +37,16 @@ class HttpBackend {
   }
 
   async ready(): Promise<void> {
-    for (const brand of ["sambung", "halimun"] as const) {
-      const catalog = await api<{ products: Parameters<typeof buildCatalog>[0] }>(`/v1/catalog?brand=${brand}`);
-      this.catalogs[brand] = buildCatalog(catalog.products);
-      this.promotions[brand] = await api<Promotion[]>(`/v1/promotions/active?brand=${brand}`);
+    try {
+      for (const brand of ["sambung", "halimun"] as const) {
+        const catalog = await api<{ products: Parameters<typeof buildCatalog>[0] }>(`/v1/catalog?brand=${brand}`);
+        this.catalogs[brand] = buildCatalog(catalog.products);
+        this.promotions[brand] = await api<Promotion[]>(`/v1/promotions/active?brand=${brand}`);
+      }
+    } finally {
+      this.loading = false;
+      this.bump();
     }
-    this.bump();
   }
 
   getCatalog(brand: BrandId): Catalog {

@@ -5,6 +5,7 @@ import { Badge, PriceBlock, ProductArt, QtyStepper, StockNote } from "../compone
 import { formatIDR } from "../domain/money";
 import { bestUnitPrice } from "../domain/pricing";
 import { available, maxAddable } from "../domain/stock";
+import { pageAvailability } from "../boot";
 import { categories } from "../mocks/fixtures";
 import { backend } from "../services/http/backend";
 import { useBrand, useCatalog } from "../store/hooks";
@@ -25,6 +26,8 @@ export function ProductPage() {
   useBackendVersion();
   const cart = useShop((s) => s.cart);
   const brand = useBrand();
+  const availability = pageAvailability(backend.loading, Boolean(product));
+  if (availability === "loading") return <p className="text-sm text-muted">Memuat produk…</p>;
   if (!product) return <NotFound />;
   const variant = product.variants.find((v) => v.sku === sku) ?? product.variants[0]!;
   const best = bestUnitPrice(catalog, promotions, variant.sku, backend.now());

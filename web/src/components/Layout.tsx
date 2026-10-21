@@ -75,7 +75,10 @@ export function Layout() {
   const session = useShop((s) => s.session);
   const { pathname } = useLocation();
   useEffect(() => applyBrand(brand), [brand]);
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  // Braces keep the effect from returning scrollTo's result: newer Chrome returns a Promise, which React then calls as a cleanup and crashes on route change.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const cats = categories.filter((c) => c.brand === brand.id);
   return (
     <div className="flex min-h-screen flex-col bg-bg">
