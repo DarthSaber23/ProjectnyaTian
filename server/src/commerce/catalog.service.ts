@@ -1,4 +1,4 @@
-import { Injectable, OnModuleInit } from "@nestjs/common";
+import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
 import type { Prisma } from "@prisma/client";
 import { buildCatalog, type Catalog } from "../domain/catalog";
 import { computeTotals } from "../domain/pricing";
@@ -20,8 +20,12 @@ export interface PriceRequest {
 
 @Injectable()
 export class CatalogService implements OnModuleInit {
+  private readonly logger = new Logger(CatalogService.name);
   private catalogs = new Map<BrandId, Catalog>();
   private promos = new Map<BrandId, Promotion[]>();
+  /** Refreshes overlap after concurrent writes; only one started later than the last applied may replace it. */
+  private refreshesStarted = 0;
+  private refreshApplied = 0;
 
   constructor(private readonly prisma: PrismaService) {}
 
@@ -32,6 +36,18 @@ export class CatalogService implements OnModuleInit {
 
   async reload(): Promise<void> {
     await this.refresh();
+  }
+
+  /**
+   * After a committed order, payment or stock write. The write already succeeded, so a failed refresh is
+   * logged rather than turned into an error response; the next write refreshes again.
+   */
+  async refreshAfterWrite(): Promise<void> {
+    try {
+      await this.refresh();
+    } catch (error) {
+      this.logger.warn(`Catalogue refresh after a write failed: ${error instanceof Error ? error.message : String(error)}`);
+    }
   }
 
   snapshot(brand: BrandId): Catalog {
@@ -108,8 +124,11 @@ export class CatalogService implements OnModuleInit {
   }
 
   private async refresh(): Promise<void> {
+    const generation = ++this.refreshesStarted;
     const rows = await this.prisma.product.findMany({ include: { variants: true } });
     const promoRows = await this.prisma.promotion.findMany();
+    if (generation < this.refreshApplied) return; // a later refresh already applied newer stock
+    this.refreshApplied = generation;
     const all = rows.map(toProduct);
     for (const brand of ["sambung", "halimun"] as const) {
       this.catalogs.set(brand, buildCatalog(all.filter((p) => p.brand === brand)));

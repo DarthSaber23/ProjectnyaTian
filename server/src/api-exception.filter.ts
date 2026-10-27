@@ -1,4 +1,8 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from "@nestjs/common";
+import { Prisma } from "@prisma/client";
+
+/** P2028: transaction could not start or ran out of time. P2034: write conflict or deadlock. Both are worth a retry. */
+const BUSY_CODES = new Set(["P2028", "P2034"]);
 
 interface JsonResponse {
   status(code: number): { json(body: unknown): void };
@@ -21,6 +25,10 @@ export class ApiExceptionFilter implements ExceptionFilter {
       const message = typeof body === "string" ? body : (body as { message?: string | string[] }).message;
       const text = Array.isArray(message) ? message.join(", ") : message ?? exception.message;
       res.status(status).json({ error: { code: status === 404 ? "NOT_FOUND" : "VALIDATION", message: text, details: [] } });
+      return;
+    }
+    if (exception instanceof Prisma.PrismaClientKnownRequestError && BUSY_CODES.has(exception.code)) {
+      res.status(HttpStatus.SERVICE_UNAVAILABLE).json({ error: { code: "BUSY", message: "Sedang ramai. Coba lagi sebentar.", details: [] } });
       return;
     }
     const message = exception instanceof Error ? exception.message : "Unexpected error";

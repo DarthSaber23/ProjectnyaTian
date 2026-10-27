@@ -1,8 +1,8 @@
 import { HttpException, Injectable } from "@nestjs/common";
-import type { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { assertFulfilmentTransition, assertPaymentTransition, orderNumber, paymentExpiry } from "../domain/orders";
 import { computeTotals } from "../domain/pricing";
-import { applyStock, physicalDemand, shortages } from "../domain/stock";
+import { applyStock, shortages } from "../domain/stock";
 import { toWibIso, yymmdd } from "../domain/time";
 import type { BrandId, CartLine, Order, PaymentMethod } from "../domain/types";
 import { shippingQuotes } from "../data/fixtures";
@@ -11,6 +11,20 @@ import { CatalogService } from "./catalog.service";
 import { fulfilmentFor, kiriminAjaApiKey, type CourierEvent } from "./kiriminaja";
 import { chargeResponse, midtransServerKey, notificationFor, verifyNotification, type MidtransNotification } from "./midtrans";
 import { maySend } from "./notify";
+import { LOCKED_TX, changeStock, lockOrder, lockStock, writeStock } from "./order-lock";
+
+export const LATE_PAYMENT_NOTE = "Pembayaran masuk setelah kedaluwarsa · perlu refund manual";
+
+/**
+ * Money arriving for an order that already expired cannot revive it (its stock may be sold), so it is
+ * refused but noted for a manual refund. Returns true when the note was added (once per order).
+ */
+export function noteLatePayment(order: Order, at: string): boolean {
+  if (order.payment.status !== "expired") return false;
+  if (order.history.some((entry) => entry.status === LATE_PAYMENT_NOTE)) return false;
+  order.history.unshift({ at, status: LATE_PAYMENT_NOTE, actor: "Event gateway" });
+  return true;
+}
 
 export interface CreateOrderBody {
   brand?: BrandId;
@@ -56,22 +70,11 @@ export class OrderService {
       shippingVoucherCode: body.shippingVoucher,
       shippingCost: courier.cost,
     });
-    const skus = [...physicalDemand(this.catalog.snapshot(brand), preview.lines.map((l) => ({ sku: l.sku, qty: l.qty }))).keys()];
-
     const order = await this.prisma.$transaction(async (tx) => {
       const prior = await tx.idempotencyRecord.findUnique({ where: { key } });
       if (prior) return this.readOrder(tx, prior.orderNumber);
 
-      const catalog = structuredClone(this.catalog.snapshot(brand));
-      for (const sku of skus) {
-        const locked = await tx.$queryRaw<Array<{ onHand: number; reserved: number }>>`
-          SELECT "onHand", reserved FROM "Variant" WHERE sku = ${sku} FOR UPDATE`;
-        const hit = catalog.bySku.get(sku);
-        if (hit && locked[0]) {
-          hit.variant.onHand = locked[0].onHand;
-          hit.variant.reserved = locked[0].reserved;
-        }
-      }
+      const catalog = await lockStock(tx, this.catalog.snapshot(brand), preview.lines.map((l) => ({ sku: l.sku, qty: l.qty })));
       const totals = computeTotals({
         catalog,
         promotions: this.catalog.promotionsFor(brand),
@@ -84,16 +87,13 @@ export class OrderService {
       if (body.expectedTotal !== undefined && body.expectedTotal !== totals.total) {
         throw new HttpException({ code: "PRICE_CHANGED", message: "Harga berubah. Periksa lagi keranjang.", details: [totals] }, 409);
       }
-      const short = shortages(catalog, totals.lines.map((l) => ({ sku: l.sku, qty: l.qty })));
+      const stockLines = totals.lines.map((l) => ({ sku: l.sku, qty: l.qty }));
+      const short = shortages(catalog, stockLines);
       if (short.length) {
         throw new HttpException({ code: "STOCK_SHORTAGE", message: "Stok tidak cukup.", details: short }, 409);
       }
-      applyStock(catalog, totals.lines.map((l) => ({ sku: l.sku, qty: l.qty })), "reserve");
-      for (const sku of skus) {
-        const hit = catalog.bySku.get(sku);
-        if (!hit) continue;
-        await tx.variant.update({ where: { sku }, data: { onHand: hit.variant.onHand, reserved: hit.variant.reserved } });
-      }
+      applyStock(catalog, stockLines, "reserve");
+      await writeStock(tx, catalog, stockLines);
       const seqId = `${brand}:${yymmdd(createdAt)}`;
       await tx.$executeRaw`
         INSERT INTO "OrderSequence" ("id", "last") VALUES (${seqId}, 0)
@@ -120,42 +120,43 @@ export class OrderService {
       });
       await tx.idempotencyRecord.create({ data: { key, orderNumber: number } });
       return created;
+    }, LOCKED_TX).catch(async (error: unknown) => {
+      // A double-click with the same key that lost the race: hand back the order the first request placed.
+      if (!(error instanceof Prisma.PrismaClientKnownRequestError) || error.code !== "P2002") throw error;
+      const prior = await this.prisma.idempotencyRecord.findUnique({ where: { key } });
+      if (!prior) throw error;
+      return this.getByNumber(prior.orderNumber);
     });
-    await this.catalog.reload();
+    await this.catalog.refreshAfterWrite();
     return order;
   }
 
-  async applyPayment(number: string, outcome: "paid" | "failed" | "expired"): Promise<Order> {
-    const row = await this.prisma.orderRecord.findUnique({ where: { number } });
-    if (!row) throw new HttpException({ code: "NOT_FOUND", message: "Pesanan tidak ditemukan." }, 404);
-    const brand = row.storeId as BrandId;
-    const existing = row.payload as unknown as Order;
-    const skus = [...new Set(existing.totals.lines.map((line) => line.sku))];
-    const updated = await this.prisma.$transaction(async (tx) => {
-      const catalog = structuredClone(this.catalog.snapshot(brand));
-      for (const sku of skus) {
-        const locked = await tx.$queryRaw<Array<{ onHand: number; reserved: number }>>`
-          SELECT "onHand", reserved FROM "Variant" WHERE sku = ${sku} FOR UPDATE`;
-        const hit = catalog.bySku.get(sku);
-        if (hit && locked[0]) {
-          hit.variant.onHand = locked[0].onHand;
-          hit.variant.reserved = locked[0].reserved;
-        }
-      }
+  /**
+   * The order row is locked and its status checked inside the transaction, so a duplicate or racing
+   * gateway event sees the settled state and is refused (409) instead of settling stock twice.
+   */
+  async applyPayment(number: string, outcome: "paid" | "failed" | "expired", options: { refreshCatalog?: boolean } = {}): Promise<Order> {
+    const result = await this.prisma.$transaction(async (tx) => {
+      const { order: existing, brand } = await lockOrder(tx, number);
+      const at = toWibIso(new Date());
       try {
         assertPaymentTransition(existing.payment.status, outcome);
       } catch (error) {
-        const message = error instanceof Error ? error.message : "Transisi pembayaran tidak diizinkan.";
-        throw new HttpException({ code: "CONFLICT", message }, 409);
+        // Returned, not thrown: the late-payment note must commit.
+        if (outcome === "paid" && noteLatePayment(existing, at)) {
+          await tx.orderRecord.update({ where: { number }, data: { payload: existing as unknown as Prisma.InputJsonValue } });
+          await tx.auditRecord.create({ data: { at, actor: "Event gateway", code: "LATE_PAYMENT", action: LATE_PAYMENT_NOTE, object: number } });
+        }
+        return { order: existing, refused: error instanceof Error ? error.message : "Transisi pembayaran tidak diizinkan." };
       }
-      const at = toWibIso(new Date());
       existing.payment.status = outcome;
       const lines = existing.totals.lines.map((line) => ({ sku: line.sku, qty: line.qty }));
+      const catalog = this.catalog.snapshot(brand);
       if (outcome === "paid") {
         existing.payment.paidAt = at;
         existing.payment.reference = `SIM-PAY-${number}`;
         existing.fulfilment = "to_process";
-        applyStock(catalog, lines, "commit");
+        await changeStock(tx, catalog, lines, "commit");
         existing.history.unshift({ at, status: "Dibayar", actor: "Event gateway (simulasi)" });
         if (maySend("email", "transactional", { emailPromo: false, waOrderInfo: false })) {
           await tx.notificationOutbox.create({
@@ -171,21 +172,17 @@ export class OrderService {
         }
       } else if (outcome === "expired") {
         existing.fulfilment = "cancelled";
-        applyStock(catalog, lines, "release");
+        await changeStock(tx, catalog, lines, "release");
         existing.history.unshift({ at, status: "Kedaluwarsa · stok dikembalikan", actor: "Sistem" });
       } else {
         existing.history.unshift({ at, status: "Pembayaran gagal", actor: "Event gateway (simulasi)" });
       }
-      for (const sku of skus) {
-        const hit = catalog.bySku.get(sku);
-        if (!hit) continue;
-        await tx.variant.update({ where: { sku }, data: { onHand: hit.variant.onHand, reserved: hit.variant.reserved } });
-      }
       await tx.orderRecord.update({ where: { number }, data: { payload: existing as unknown as Prisma.InputJsonValue } });
-      return existing;
-    });
-    await this.catalog.reload();
-    return updated;
+      return { order: existing, refused: undefined };
+    }, LOCKED_TX);
+    if (result.refused) throw new HttpException({ code: "CONFLICT", message: result.refused }, 409);
+    if (options.refreshCatalog !== false) await this.catalog.refreshAfterWrite();
+    return result.order;
   }
 
   async paymentCharge(customerId: string, number: string): Promise<Record<string, unknown>> {
@@ -230,20 +227,25 @@ export class OrderService {
   }
 
   private async applyCourier(number: string, event: CourierEvent, awb?: string): Promise<void> {
-    const row = await this.prisma.orderRecord.findUnique({ where: { number } });
-    if (!row) return;
-    const order = row.payload as unknown as Order;
-    const next = fulfilmentFor(event, order.fulfilment);
-    if (!next) return;
-    try {
-      assertFulfilmentTransition(order.fulfilment, next);
-    } catch {
-      return;
-    }
-    order.fulfilment = next;
-    if (awb) order.trackingNumber = awb;
-    order.history.unshift({ at: toWibIso(new Date()), status: next, actor: "KiriminAja" });
-    await this.prisma.orderRecord.update({ where: { number }, data: { payload: order as unknown as Prisma.InputJsonValue } });
+    await this.prisma.$transaction(async (tx) => {
+      const locked = await lockOrder(tx, number).catch((error: unknown) => {
+        if (error instanceof HttpException && error.getStatus() === 404) return undefined; // not our order: ignore
+        throw error;
+      });
+      if (!locked) return;
+      const order = locked.order;
+      const next = fulfilmentFor(event, order.fulfilment);
+      if (!next) return;
+      try {
+        assertFulfilmentTransition(order.fulfilment, next);
+      } catch {
+        return;
+      }
+      order.fulfilment = next;
+      if (awb) order.trackingNumber = awb;
+      order.history.unshift({ at: toWibIso(new Date()), status: next, actor: "KiriminAja" });
+      await tx.orderRecord.update({ where: { number }, data: { payload: order as unknown as Prisma.InputJsonValue } });
+    }, LOCKED_TX);
   }
 
   async getForCustomer(customerId: string, number: string): Promise<Order> {

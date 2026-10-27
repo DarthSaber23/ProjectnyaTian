@@ -6,9 +6,10 @@ import { BootstrapService } from "./bootstrap.service";
 import { CatalogService } from "./catalog.service";
 import { CommerceController } from "./commerce.controller";
 import { OrderService } from "./order.service";
+import { ReservationSweeper } from "./reservation-sweeper";
 
 @Module({
   controllers: [CommerceController],
-  providers: [CatalogService, AuthService, OrderService, AdminService, AccountApi, BootstrapService],
+  providers: [CatalogService, AuthService, OrderService, AdminService, AccountApi, BootstrapService, ReservationSweeper],
 })
 export class CommerceModule {}

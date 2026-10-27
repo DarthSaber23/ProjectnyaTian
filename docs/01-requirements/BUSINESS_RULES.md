@@ -48,6 +48,9 @@ Reference: two B01-2M-BLK and one B03, with KABEL10 and GRATISONGKIR and Kurir A
 | BR-S6 | Approved P6 | A bundle consumes component stock. Halimun sunscreen and the morning bundle share the A04 pool |
 | BR-S7 | Approved assumption | One stock location and one shipping origin per deployment |
 | BR-S8 | Prototype only | The cap of 10 units per Halimun line in the prototype is a demo limit, not a business rule |
+| BR-S9 | Approved by owner 27 Oct 2026 | When no gateway "expire" event arrives, the server expires an unpaid or failed order itself, 5 minutes after the BR-S3 window ends (grace for a late webhook), and releases its reservation. This is the one payment-status change that does not come from a verified webhook; it never comes from the browser |
+| BR-S10 | Approved by owner 27 Oct 2026 | A payment that arrives after the order expired does not revive it (its stock may be sold). The order history and audit log record "Pembayaran masuk setelah kedaluwarsa · perlu refund manual" for Ops to refund |
+| BR-S11 | Approved by owner 27 Oct 2026 | Order and stock changes run in one locked transaction: the order row first, then stock rows in SKU order. A repeated or racing webhook, refund, or courier event sees the latest state, so stock and refunds are never applied twice |
 | BR-S9 | Approved | Low stock means available quantity at or below 10. The number 10 is the W00 display threshold |
 
 Concurrent purchases of the last unit must not both succeed. The mechanism (row lock or conditional update) is specified in A3. The invariant is specified now: the sum of active reservations and committed sales for a SKU cannot exceed the received stock plus adjustments.

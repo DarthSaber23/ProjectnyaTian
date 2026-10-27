@@ -4,14 +4,14 @@ import { computeMetrics } from "../domain/analytics";
 import { formatIDR } from "../domain/money";
 import { assertFulfilmentTransition, assertPaymentTransition } from "../domain/orders";
 import { can, REVEAL_REASONS, REVEAL_SECONDS, ROLE_LABEL } from "../domain/rbac";
-import { applyStock } from "../domain/stock";
 import { addMinutes, toWibIso } from "../domain/time";
-import type { Order, StaffRole } from "../domain/types";
+import type { BrandId, Order, StaffRole } from "../domain/types";
 import { customers } from "../data/fixtures";
 import { visibleContact } from "./privacy";
 import { PrismaService } from "../prisma.service";
 import { AuthService } from "./auth.service";
 import { CatalogService } from "./catalog.service";
+import { LOCKED_TX, changeStock, lockOrder } from "./order-lock";
 
 @Injectable()
 export class AdminService {
@@ -86,15 +86,15 @@ export class AdminService {
     if (!Number.isInteger(amount) || amount <= 0) {
       throw new HttpException({ code: "VALIDATION", message: "Isi jumlah refund lebih dari Rp0 (bilangan bulat Rupiah)." }, 422);
     }
-    const current = await this.read(number);
-    const remaining = current.totals.total - current.refunded;
-    if (amount > remaining) {
-      throw new HttpException({ code: "VALIDATION", message: `Jumlah melebihi sisa yang bisa direfund (${formatIDR(remaining)}).` }, 422);
-    }
-    if (current.fulfilment === "shipped" || current.fulfilment === "in_transit" || current.fulfilment === "delivered") {
-      throw new HttpException({ code: "VALIDATION", message: "Refund setelah dikirim memerlukan alur retur (di luar cakupan, P10)." }, 422);
-    }
-    const order = await this.mutate(user, number, "REFUND_RECORDED", (current, at) => {
+    // The "≤ remaining" check runs on the locked order, so two refunds at once cannot both pass it.
+    return this.mutate(user, number, "REFUND_RECORDED", (current, at) => {
+      const remaining = current.totals.total - current.refunded;
+      if (amount > remaining) {
+        throw new HttpException({ code: "VALIDATION", message: `Jumlah melebihi sisa yang bisa direfund (${formatIDR(remaining)}).` }, 422);
+      }
+      if (current.fulfilment === "shipped" || current.fulfilment === "in_transit" || current.fulfilment === "delivered") {
+        throw new HttpException({ code: "VALIDATION", message: "Refund setelah dikirim memerlukan alur retur (di luar cakupan, P10)." }, 422);
+      }
       const total = current.refunded + amount;
       const full = total >= current.totals.total;
       assertPaymentTransition(current.payment.status, full ? "refunded" : "partially_refunded");
@@ -107,9 +107,7 @@ export class AdminService {
       }
       current.history.unshift({ at, status: `${full ? "Dibatalkan · refund penuh" : "Refund sebagian"} ${formatIDR(amount)}`, actor: this.actor(user) });
       return `Refund ${full ? "penuh" : "sebagian"} ${formatIDR(amount)} · ${reason}`;
-    });
-    if (restock && order.fulfilment === "cancelled") await this.restock(order);
-    return order;
+    }, restock ? (tx, order, brand) => this.restock(tx, order, brand) : undefined);
   }
 
   async reveal(authorization: string | undefined, customerId: string, reason: string, orderNumber: string) {
@@ -181,41 +179,43 @@ export class AdminService {
     return rows.map((row) => row.payload as unknown as Order);
   }
 
-  private async restock(order: Order): Promise<void> {
-    const catalog = structuredClone(this.catalog.snapshot("sambung"));
-    const lines = order.totals.lines.map((line) => ({ sku: line.sku, qty: line.qty }));
-    applyStock(catalog, lines, "restock");
-    for (const line of lines) {
-      const hit = catalog.bySku.get(line.sku);
-      if (!hit) continue;
-      await this.prisma.variant.update({ where: { sku: line.sku }, data: { onHand: hit.variant.onHand, reserved: hit.variant.reserved } });
-    }
-    await this.catalog.reload();
+  /** A fully refunded (cancelled) order's goods go back on the shelf: bundle components, from locked stock. */
+  private async restock(tx: Prisma.TransactionClient, order: Order, brand: BrandId): Promise<void> {
+    if (order.fulfilment !== "cancelled") return;
+    await changeStock(tx, this.catalog.snapshot(brand), order.totals.lines.map((line) => ({ sku: line.sku, qty: line.qty })), "restock");
   }
 
+  /**
+   * Locks the order, applies the change and any stock effect, and writes the order and its audit entry
+   * in one transaction: concurrent staff actions queue on the lock, and a failure leaves nothing half done.
+   */
   private async mutate(
     user: { id: string; name: string; role: StaffRole },
     number: string,
     code: string,
     change: (order: Order, at: string) => string,
+    effect?: (tx: Prisma.TransactionClient, order: Order, brand: BrandId) => Promise<void>,
   ): Promise<Order> {
     const at = toWibIso(new Date());
-    const current = await this.read(number);
-    const before = current.fulfilment;
-    let action = "";
-    try {
-      action = change(current, at);
-    } catch (error) {
-      const message = error instanceof Error ? error.message : "Transisi tidak diizinkan.";
-      throw new HttpException({ code: "CONFLICT", message }, 409);
-    }
-    await this.prisma.orderRecord.update({
-      where: { number },
-      data: { payload: current as unknown as Prisma.InputJsonValue },
-    });
-    await this.prisma.auditRecord.create({
-      data: { at, actor: this.actor(user), code, action, object: number, before: { fulfilment: before }, after: { fulfilment: current.fulfilment } },
-    });
-    return current;
+    const order = await this.prisma.$transaction(async (tx) => {
+      const { order: current, brand } = await lockOrder(tx, number);
+      const before = current.fulfilment;
+      let action = "";
+      try {
+        action = change(current, at);
+      } catch (error) {
+        if (error instanceof HttpException) throw error;
+        const message = error instanceof Error ? error.message : "Transisi tidak diizinkan.";
+        throw new HttpException({ code: "CONFLICT", message }, 409);
+      }
+      if (effect) await effect(tx, current, brand);
+      await tx.orderRecord.update({ where: { number }, data: { payload: current as unknown as Prisma.InputJsonValue } });
+      await tx.auditRecord.create({
+        data: { at, actor: this.actor(user), code, action, object: number, before: { fulfilment: before }, after: { fulfilment: current.fulfilment } },
+      });
+      return current;
+    }, LOCKED_TX);
+    if (effect) await this.catalog.refreshAfterWrite();
+    return order;
   }
 }
