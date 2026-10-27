@@ -1,10 +1,14 @@
 import { buildCatalog, type Catalog } from "../../domain/catalog";
+import { can } from "../../domain/rbac";
 import { toWibIso } from "../../domain/time";
-import type { BrandId, CartLine, Order, PaymentMethod, Promotion } from "../../domain/types";
+import type { BrandId, CartLine, Order, PaymentMethod, Promotion, StaffRole } from "../../domain/types";
 import type { CreateOrderResult, Session, SignInResult } from "../contracts";
-import { ApiError, api, setCustomerToken } from "./client";
+import { ApiError, api } from "./client";
 
 type Listener = () => void;
+
+/** Shown when sign-in fails for any reason other than wrong credentials or a lock. */
+export const SIGN_IN_UNAVAILABLE = "Akun belum bisa dimuat. Periksa koneksi, lalu coba masuk lagi.";
 
 class HttpBackend {
   version = 0;
@@ -57,23 +61,38 @@ class HttpBackend {
     return this.promotions[brand] ?? [];
   }
 
+  /** Wrong credentials and locks come back as results; any other failure throws SIGN_IN_UNAVAILABLE. */
   async signIn(email: string, password: string): Promise<SignInResult> {
+    let result: { customerId: string; name: string; email: string };
     try {
-      const result = await api<{ token: string; customerId: string; name: string; email: string }>("/v1/auth/sign-in", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-      });
-      setCustomerToken(result.token);
-      await this.loadCustomer(result.customerId);
-      return { ok: true, session: { customerId: result.customerId, name: result.name, email: result.email, method: "password" } };
+      result = await api("/v1/auth/sign-in", { method: "POST", body: JSON.stringify({ email, password }) });
     } catch (error) {
       if (error instanceof ApiError && error.code === "LOCKED") {
         const until = (error.details[0] as { until?: string } | undefined)?.until ?? this.now();
         return { ok: false, reason: "locked", until };
       }
-      const remaining = (error instanceof ApiError ? (error.details[0] as { remaining?: number } | undefined)?.remaining : undefined) ?? 0;
-      return { ok: false, reason: "invalid", remaining };
+      if (error instanceof ApiError && error.code === "INVALID_CREDENTIALS") {
+        const remaining = (error.details[0] as { remaining?: number } | undefined)?.remaining ?? 0;
+        return { ok: false, reason: "invalid", remaining };
+      }
+      throw new ApiError("UNAVAILABLE", SIGN_IN_UNAVAILABLE);
     }
+    await this.loadCustomer(result.customerId).catch(() => {
+      throw new ApiError("UNAVAILABLE", SIGN_IN_UNAVAILABLE);
+    });
+    return { ok: true, session: { customerId: result.customerId, name: result.name, email: result.email, method: "password" } };
+  }
+
+  /** After a page reload: the session cookie, if still valid, signs the customer back in. */
+  async restoreSession(): Promise<Session | null> {
+    const { customer } = await api<{ customer: { customerId: string; name: string; email: string } | null }>("/v1/auth/session");
+    if (!customer) return null;
+    await this.loadCustomer(customer.customerId);
+    return { ...customer, method: "password" };
+  }
+
+  async signOut(): Promise<void> {
+    await api("/v1/auth/sign-out", { method: "POST" });
   }
 
   async signInWithGoogle(): Promise<SignInResult> {
@@ -82,12 +101,16 @@ class HttpBackend {
   }
 
   private async loadCustomer(customerId: string): Promise<void> {
-    this.orders = await api<Order[]>("/v1/me/orders");
-    const wish = await api<{ productId: string }[]>("/v1/me/wishlist");
+    const [orders, wish, cart, consents] = await Promise.all([
+      api<Order[]>("/v1/me/orders"),
+      api<{ productId: string }[]>("/v1/me/wishlist"),
+      api<{ lines: CartLine[] }>("/v1/me/cart?brand=sambung"),
+      api<Partial<typeof this.consentCache>>("/v1/me/consents"),
+    ]);
+    this.orders = orders;
     this.wishIds.set(`${customerId}:sambung`, wish.map((item) => item.productId));
-    const cart = await api<{ lines: CartLine[] }>("/v1/me/cart?brand=sambung");
     this.carts.set(`${customerId}:sambung`, cart.lines);
-    this.consentCache = { ...this.consentCache, ...(await api<Partial<typeof this.consentCache>>("/v1/me/consents")) };
+    this.consentCache = { ...this.consentCache, ...consents };
     this.bump();
   }
 
@@ -95,9 +118,10 @@ class HttpBackend {
     return this.carts.get(`${customerId}:${brand}`) ?? [];
   }
 
-  saveCart(customerId: string, brand: BrandId, lines: CartLine[]): void {
+  /** Resolves once the server has the cart, so sign-out can wait for it. */
+  saveCart(customerId: string, brand: BrandId, lines: CartLine[]): Promise<void> {
     this.carts.set(`${customerId}:${brand}`, lines);
-    void api("/v1/me/cart", { method: "PUT", body: JSON.stringify({ brand, lines }) });
+    return api("/v1/me/cart", { method: "PUT", body: JSON.stringify({ brand, lines }) }).then(() => undefined);
   }
 
   async mergeRemote(brand: BrandId, account: CartLine[], guest: CartLine[]): Promise<{ lines: CartLine[]; capped: { sku: string }[] }> {
@@ -198,9 +222,10 @@ class HttpBackend {
     return order;
   }
 
-  async loadStaff(): Promise<void> {
-    this.orders = await api<Order[]>("/v1/admin/orders", { auth: "staff" });
-    this.metrics = await api("/v1/admin/metrics?from=2026-10-14&to=2026-10-20&sessions=1240", { auth: "staff" });
+  /** Loads only what the role may see, so a role without the dashboard or orders can still sign in. */
+  async loadStaff(role: StaffRole): Promise<void> {
+    this.orders = can(role, "orders.view") ? await api<Order[]>("/v1/admin/orders") : [];
+    this.metrics = can(role, "dashboard.view") ? await api("/v1/admin/metrics?from=2026-10-14&to=2026-10-20&sessions=1240") : null;
     this.bump();
   }
 

@@ -108,6 +108,24 @@ export class AuthService {
     return this.subject("customer", authorization);
   }
 
+  /** Session restore after a page reload. Null instead of 401 so a guest visit is not an error; other failures still throw. */
+  async customerSession(authorization?: string): Promise<{ customerId: string; name: string; email: string } | null> {
+    const id = await this.subject("customer", authorization).catch(nullIfUnauthorized);
+    const account = id ? await this.prisma.customerAccount.findUnique({ where: { id } }) : null;
+    return account ? { customerId: account.id, name: account.name, email: account.email } : null;
+  }
+
+  async staffSession(authorization?: string): Promise<{ staffId: string; name: string; email: string; role: StaffRole } | null> {
+    const id = await this.subject("staff", authorization).catch(nullIfUnauthorized);
+    const account = id ? await this.prisma.staffAccount.findUnique({ where: { id } }) : null;
+    return account ? { staffId: account.id, name: account.name, email: account.email, role: account.role as StaffRole } : null;
+  }
+
+  /** Customer session length in seconds, for the cookie Max-Age. */
+  get sessionSeconds(): number {
+    return SESSION_MINUTES * 60;
+  }
+
   async staff(authorization?: string): Promise<{ id: string; name: string; role: StaffRole; email: string }> {
     const id = await this.subject("staff", authorization);
     const account = await this.prisma.staffAccount.findUnique({ where: { id } });
@@ -168,4 +186,9 @@ export class AuthService {
   googleStart(): never {
     throw new HttpException({ code: "NOT_CONFIGURED", message: "Google Sign-In belum dikonfigurasi. Isi GOOGLE_CLIENT_ID di server." }, 501);
   }
+}
+
+function nullIfUnauthorized(error: unknown): null {
+  if (error instanceof HttpException && error.getStatus() === 401) return null;
+  throw error;
 }

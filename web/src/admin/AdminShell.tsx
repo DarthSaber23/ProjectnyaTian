@@ -23,12 +23,14 @@ export const DEMO_STAFF_PASSWORD = "demo-staff-2026";
 export function AdminLogin() {
   const signIn = useAdmin((s) => s.signIn);
   const user = useAdmin((s) => s.user);
+  const check = useAdmin((s) => s.check);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState<string>();
   useEffect(() => applyBrand(BRANDS.sambung), []);
+  useEffect(() => { void check(); }, [check]); // a still-valid staff cookie skips this form
   if (user) return <Navigate to={can(user.role, "dashboard.view") ? "/admin" : "/admin/orders"} replace />;
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,11 +72,15 @@ export function AdminLogin() {
 
 export function AdminShell() {
   const user = useAdmin((s) => s.user);
+  const checked = useAdmin((s) => s.checked);
+  const check = useAdmin((s) => s.check);
   const signOut = useAdmin((s) => s.signOut);
   const brand = useShop((s) => s.brand);
   const a = useAdminData();
   const { pathname } = useLocation();
   useEffect(() => applyBrand(BRANDS.sambung), [brand]); // admin data is the Sambung store in this prototype
+  useEffect(() => { void check(); }, [check]);
+  if (!user && !checked) return <div className="min-h-screen bg-alt p-6"><p role="status" className="text-sm text-muted">Memuat akun staf…</p></div>;
   if (!user) return <Navigate to="/admin/login" replace />;
   const nav = NAV.filter((n) => can(user.role, n.perm));
   const allowed = nav.some((n) => (n.to === "/admin" ? pathname === "/admin" : pathname.startsWith(n.to)));

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Header, Headers, HttpException, Param, Patch, Post, Put, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Header, Headers, HttpException, Param, Patch, Post, Put, Query, Req, Res } from "@nestjs/common";
 import type { BrandId } from "../domain/types";
 import { search } from "../domain/search";
 import { AccountApi } from "./account.api";
@@ -8,6 +8,10 @@ import { CatalogService, type PriceRequest } from "./catalog.service";
 import { shippingPrice, type ShippingPriceRequest } from "./kiriminaja";
 import { notificationFor, midtransServerKey, type MidtransNotification } from "./midtrans";
 import { OrderService, type CreateOrderBody } from "./order.service";
+import { clearedCookie, isHttps, sessionCookie, withoutBrowserToken, type SessionKind } from "./session-cookie";
+
+type HttpRequest = { protocol?: string; headers: Record<string, string | string[] | undefined> };
+type HttpResponse = { setHeader(name: string, value: string): void };
 
 @Controller()
 export class CommerceController {
@@ -44,8 +48,15 @@ export class CommerceController {
   }
 
   @Post("auth/sign-in")
-  signIn(@Body() body: { email?: string; password?: string }) {
-    return this.auth.signInCustomer(body?.email ?? "", body?.password ?? "");
+  async signIn(@Body() body: { email?: string; password?: string }, @Req() req: HttpRequest, @Res({ passthrough: true }) res: HttpResponse) {
+    const result = await this.auth.signInCustomer(body?.email ?? "", body?.password ?? "");
+    return this.startSession(req, res, "customer", result);
+  }
+
+  @Get("auth/session")
+  @Header("Cache-Control", "no-store")
+  async session(@Headers("authorization") authorization: string | undefined) {
+    return { customer: await this.auth.customerSession(authorization) };
   }
 
   @Get("products/:slug")
@@ -66,13 +77,15 @@ export class CommerceController {
   }
 
   @Post("auth/sign-out")
-  signOut(@Headers("authorization") authorization: string | undefined) {
+  signOut(@Headers("authorization") authorization: string | undefined, @Req() req: HttpRequest, @Res({ passthrough: true }) res: HttpResponse) {
+    res.setHeader("Set-Cookie", clearedCookie("customer", isHttps(req)));
     return this.auth.signOut(authorization);
   }
 
   @Post("auth/register")
-  register(@Body() body: { name?: string; email?: string; password?: string }) {
-    return this.auth.register(body?.name ?? "", body?.email ?? "", body?.password ?? "");
+  async register(@Body() body: { name?: string; email?: string; password?: string }, @Req() req: HttpRequest, @Res({ passthrough: true }) res: HttpResponse) {
+    const result = await this.auth.register(body?.name ?? "", body?.email ?? "", body?.password ?? "");
+    return this.startSession(req, res, "customer", result);
   }
 
   @Post("auth/forgot-password")
@@ -207,8 +220,21 @@ export class CommerceController {
   }
 
   @Post("admin/auth/sign-in")
-  staffSignIn(@Body() body: { email?: string; password?: string; totp?: string }) {
-    return this.auth.signInStaff(body?.email ?? "", body?.password ?? "", body?.totp ?? "");
+  async staffSignIn(@Body() body: { email?: string; password?: string; totp?: string }, @Req() req: HttpRequest, @Res({ passthrough: true }) res: HttpResponse) {
+    const result = await this.auth.signInStaff(body?.email ?? "", body?.password ?? "", body?.totp ?? "");
+    return this.startSession(req, res, "staff", result);
+  }
+
+  @Get("admin/auth/session")
+  @Header("Cache-Control", "no-store")
+  async staffSession(@Headers("authorization") authorization: string | undefined) {
+    return { staff: await this.auth.staffSession(authorization) };
+  }
+
+  @Post("admin/auth/sign-out")
+  staffSignOut(@Headers("authorization") authorization: string | undefined, @Req() req: HttpRequest, @Res({ passthrough: true }) res: HttpResponse) {
+    res.setHeader("Set-Cookie", clearedCookie("staff", isHttps(req)));
+    return this.auth.signOut(authorization);
   }
 
   @Get("admin/orders")
@@ -272,6 +298,15 @@ export class CommerceController {
     @Body() body: { reason?: string; orderNumber?: string },
   ) {
     return this.admin.reveal(authorization, id, body?.reason ?? "", body?.orderNumber ?? "");
+  }
+
+  /** Customers stay signed in for the session length; staff cookies end with the browser session. */
+  private startSession<T extends { token: string }>(req: HttpRequest, res: HttpResponse, kind: SessionKind, result: T) {
+    const maxAge = kind === "customer" ? this.auth.sessionSeconds : undefined;
+    res.setHeader("Set-Cookie", sessionCookie(kind, result.token, isHttps(req), maxAge));
+    res.setHeader("Cache-Control", "no-store");
+    const origin = req.headers.origin;
+    return withoutBrowserToken(result, Array.isArray(origin) ? origin[0] : origin);
   }
 
   private assertSimulator(token: string | undefined): void {

@@ -50,6 +50,7 @@ export function Checkout() {
     }).catch(() => undefined);
     void api<ShippingQuote[]>("/v1/shipping/quotes").then((rows) => { if (rows.length) setQuotes(rows); }).catch(() => undefined);
   }, [s.session]);
+  if (!s.session && !s.sessionChecked) return <p role="status" className="text-sm text-muted">Memuat akun…</p>;
   if (s.cart.length === 0) return <Navigate to="/keranjang" replace />;
   if (!s.session) return <Navigate to={`/masuk?alasan=checkout&next=${encodeURIComponent(`/checkout/${step}`)}`} replace />; // no guest checkout
   const session = s.session;

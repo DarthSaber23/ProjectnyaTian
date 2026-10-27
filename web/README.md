@@ -57,7 +57,9 @@ e2e/smoke.mjs    Playwright flow + axe scan (WCAG 2.0/2.1/2.2 A/AA tags)
 
 ## Admin (`/admin`, English paths per I1, Indonesian UI per D14)
 
-Demo staff (fictional): Andi S. (Owner), Dewi O. (Operasional), Rina M. (Marketing), Akun CS demo. Password `demo-staff-2026`, any 6-digit authenticator code (simulated). Use the demo panel on the admin sign-in page.
+Demo staff (fictional): Andi S. (Owner), Dewi O. (Operasional), Rina M. (Marketing), Akun CS demo. Password `demo-staff-2026`. Against the real API the 6-digit code must come from an authenticator app: run `npm run totp:setup` in `server/` and add the printed key to Google Authenticator or Authy. "Any 6-digit code" only ever applied to the old in-browser mock.
+
+Sessions are HttpOnly cookies set by the API (`tian_session` for customers, `tian_staff` for staff), so a page reload keeps you signed in for up to 7 days.
 
 | Rule | Where | Test |
 |---|---|---|

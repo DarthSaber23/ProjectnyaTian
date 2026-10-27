@@ -5,7 +5,7 @@ import { looksLikeEmail, safeNext } from "../domain/auth";
 import { formatWib } from "../domain/time";
 import { DEMO_LOGIN } from "../mocks/fixtures";
 import { ApiError } from "../services/http/client";
-import { backend } from "../services/http/backend";
+import { SIGN_IN_UNAVAILABLE, backend } from "../services/http/backend";
 import { useShop } from "../store/shop";
 
 const REASONS: Record<string, string> = {
@@ -61,7 +61,13 @@ export function SignIn() {
     setFieldError(fe);
     if (fe.email || fe.password) return;
     setBusy(true);
-    try { finish(await backend.signIn(email, password)); } finally { setBusy(false); }
+    try {
+      finish(await backend.signIn(email, password));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : SIGN_IN_UNAVAILABLE);
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (

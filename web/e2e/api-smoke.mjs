@@ -3,7 +3,8 @@ import { chromium } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
 
 const base = process.env.BASE_URL ?? "http://127.0.0.1:8081";
-const secret = process.env.STAFF_TOTP_SECRET ?? "JBSWY3DPEHPK3PXP";
+const secret = process.env.STAFF_TOTP_SECRET;
+if (!secret) throw new Error("Set STAFF_TOTP_SECRET to the API server's value (server/.env).");
 
 function totp(now = Date.now()) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
@@ -49,6 +50,8 @@ await page.locator("#email").fill("rina@example.com");
 await page.locator("#password").fill("demo-rina-2026");
 await page.getByRole("button", { name: "Masuk" }).click();
 await page.getByRole("heading", { name: "Akun" }).waitFor({ timeout: 20_000 });
+await page.reload({ waitUntil: "networkidle" });
+await page.getByRole("heading", { name: "Akun" }).waitFor({ timeout: 20_000 }).catch(() => fail("Customer was signed out by a page reload"));
 
 await go("/keranjang");
 while (await page.getByRole("button", { name: "Hapus" }).count()) {
@@ -83,6 +86,19 @@ await page.locator("#a-pw").fill("demo-staff-2026");
 await page.locator("#a-otp").fill(totp());
 await page.getByRole("button", { name: "Masuk" }).click();
 await page.getByText("Rp2.097.000").waitFor({ timeout: 20_000 });
+await page.reload({ waitUntil: "networkidle" });
+await page.getByText("Rp2.097.000").waitFor({ timeout: 20_000 }).catch(() => fail("Staff was signed out by a page reload"));
+
+await Promise.all([
+  page.waitForResponse((response) => response.url().endsWith("/v1/admin/auth/sign-out")),
+  page.getByRole("button", { name: "Keluar" }).click(),
+]);
+await page.goto(`${base}/admin/login`, { waitUntil: "networkidle" });
+await page.locator("#a-email").fill("cs@toko.example");
+await page.locator("#a-pw").fill("demo-staff-2026");
+await page.locator("#a-otp").fill(totp());
+await page.getByRole("button", { name: "Masuk" }).click();
+await page.waitForURL(/\/admin\/orders$/, { timeout: 20_000 }).catch(() => fail("CS could not sign in to the admin"));
 console.log("api-smoke ok");
 } finally {
   await browser.close();

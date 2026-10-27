@@ -1,5 +1,6 @@
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from "@nestjs/common";
 import { Observable } from "rxjs";
+import { isHttps } from "./commerce/session-cookie";
 
 @Injectable()
 export class SecurityInterceptor implements NestInterceptor {
@@ -10,8 +11,7 @@ export class SecurityInterceptor implements NestInterceptor {
     response.setHeader("Referrer-Policy", "no-referrer");
     response.setHeader("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'");
     const request = context.switchToHttp().getRequest<{ protocol?: string; headers?: Record<string, string | undefined> }>();
-    const forwarded = request.headers?.["x-forwarded-proto"];
-    if (request.protocol === "https" || forwarded === "https") {
+    if (isHttps(request)) {
       response.setHeader("Strict-Transport-Security", "max-age=15552000");
     }
     return next.handle();

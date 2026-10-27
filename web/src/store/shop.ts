@@ -33,11 +33,14 @@ interface ShopState {
   paymentMethod: PaymentMethod;
   toast?: Toast;
   session: Session | null;
+  /** False until the boot-time cookie check has answered, so guarded routes wait instead of redirecting. */
+  sessionChecked: boolean;
   compare: string[];
   compareMessage?: string;
   recentSearches: string[];
 
   signedIn(session: Session): { merged: number; capped: number };
+  restoreSession(): Promise<void>;
   signOut(): void;
   toggleCompare(productId: string): void;
   clearCompare(): void;
@@ -78,6 +81,7 @@ let toastSeq = 0;
 
 export const useShop = create<ShopState>((set, get) => ({
   brand: DEFAULT_BRAND,
+  sessionChecked: false,
   ...initial,
 
   setBrand: (brand) => set({ brand, ...initial, session: get().session }),
@@ -92,9 +96,22 @@ export const useShop = create<ShopState>((set, get) => ({
     return { merged: saved.length, capped: res.capped.length };
   },
 
+  restoreSession: async () => {
+    try {
+      const session = await backend.restoreSession();
+      if (session && !get().session) get().signedIn(session);
+    } catch {
+      // Unreachable server: carry on as a guest; signing in again still works.
+    } finally {
+      set({ sessionChecked: true });
+    }
+  },
+
   signOut: () => {
     const { session, brand, cart } = get();
-    if (session) backend.saveCart(session.customerId, brand, cart);
+    // The cart PUT must land before the server forgets the session, or it is rejected and the cart is lost.
+    const saved = session ? backend.saveCart(session.customerId, brand, cart) : Promise.resolve();
+    void saved.catch(() => undefined).then(() => backend.signOut()).catch(() => undefined);
     set({ session: null, cart: [], orderVoucher: undefined, shippingVoucher: undefined, voucherMessage: undefined, compare: [] });
   },
 
@@ -192,6 +209,7 @@ export const useShop = create<ShopState>((set, get) => ({
   dismissToast: () => set({ toast: undefined }),
 
   resetAll: () => {
+    if (get().session) void backend.signOut().catch(() => undefined); // else the cookie signs the demo back in on reload
     resetMocks();
     set({ ...initial });
   },

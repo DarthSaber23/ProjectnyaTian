@@ -1,9 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ApiError, api, apiUrl, setCustomerToken } from "./client";
+import { ApiError, api, apiUrl } from "./client";
 
 afterEach(() => {
   vi.unstubAllGlobals();
-  setCustomerToken(null);
 });
 
 describe("api client", () => {
@@ -22,14 +21,14 @@ describe("api client", () => {
     await expect(api("/v1/orders", { method: "POST", body: "{}" })).rejects.toBeInstanceOf(ApiError);
   });
 
-  it("sends the bearer token and Idempotency-Key", async () => {
+  it("sends the session cookie and Idempotency-Key, never a token page scripts could read", async () => {
     const fetchMock = vi.fn(async () => new Response("{}", { status: 200 }));
     vi.stubGlobal("fetch", fetchMock);
-    setCustomerToken("abc");
     await api("/v1/orders", { method: "POST", body: "{}", idempotencyKey: "key-1" });
     const [, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
     const headers = new Headers(init.headers);
-    expect(headers.get("authorization")).toBe("Bearer abc");
+    expect(init.credentials).toBe("include");
+    expect(headers.get("authorization")).toBeNull();
     expect(headers.get("idempotency-key")).toBe("key-1");
   });
 });

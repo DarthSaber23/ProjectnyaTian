@@ -18,7 +18,9 @@ import { NotFound } from "./NotFound";
 /** Guards routes that need a signed-in customer; keeps the target so sign-in can return there. */
 export function RequireAuth({ reason = "akun" }: { reason?: string }) {
   const session = useShop((s) => s.session);
+  const sessionChecked = useShop((s) => s.sessionChecked);
   const { pathname } = useLocation();
+  if (!session && !sessionChecked) return <p role="status" className="text-sm text-muted">Memuat akun…</p>;
   if (!session) return <Navigate to={`/masuk?alasan=${reason}&next=${encodeURIComponent(pathname)}`} replace />;
   return <Outlet />;
 }

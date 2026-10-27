@@ -1,6 +1,6 @@
 import type { Order, StaffRole } from "../../domain/types";
 import type { Staff } from "../../mocks/fixtures";
-import { ApiError, api, setStaffToken } from "./client";
+import { ApiError, api } from "./client";
 import { backend } from "./backend";
 
 export function validateTracking(raw: string): string | null {
@@ -34,17 +34,27 @@ class HttpAdmin {
 
   async signIn(email: string, password: string, totp: string): Promise<Staff> {
     try {
-      const result = await api<{ token: string; staffId: string; name: string; role: StaffRole }>("/v1/admin/auth/sign-in", {
+      const result = await api<{ staffId: string; name: string; role: StaffRole }>("/v1/admin/auth/sign-in", {
         method: "POST",
-        auth: "staff",
         body: JSON.stringify({ email, password, totp }),
       });
-      setStaffToken(result.token);
-      await backend.loadStaff();
+      await backend.loadStaff(result.role);
       return { id: result.staffId, name: result.name, role: result.role, email };
     } catch (error) {
       throw new Error(error instanceof ApiError ? error.message : "Gagal masuk");
     }
+  }
+
+  /** After a page reload: the staff cookie, if still valid, signs the person back in. */
+  async restoreSession(): Promise<Staff | null> {
+    const { staff } = await api<{ staff: { staffId: string; name: string; email: string; role: StaffRole } | null }>("/v1/admin/auth/session");
+    if (!staff) return null;
+    await backend.loadStaff(staff.role);
+    return { id: staff.staffId, name: staff.name, email: staff.email, role: staff.role };
+  }
+
+  async signOut(): Promise<void> {
+    await api("/v1/admin/auth/sign-out", { method: "POST" });
   }
 
   contact(user: Staff, customerId: string): { name: string; email: string; phone: string; address: string; full: boolean; revealedUntil?: string } {
@@ -53,7 +63,7 @@ class HttpAdmin {
   }
 
   async loadContact(user: Staff, customerId: string): Promise<{ name: string; email: string; phone: string; address: string; full: boolean; revealedUntil?: string }> {
-    const view = await api<{ name: string; email: string; phone: string; address: string; full: boolean }>("/v1/admin/customers/" + customerId + "/contact", { auth: "staff" });
+    const view = await api<{ name: string; email: string; phone: string; address: string; full: boolean }>("/v1/admin/customers/" + customerId + "/contact");
     return { ...view, revealedUntil: this.reveals.get(`${user.id}:${customerId}`) };
   }
 
@@ -72,7 +82,6 @@ class HttpAdmin {
   async reveal(user: Staff, customerId: string, reason: string, orderNumber: string): Promise<string> {
     const result = await api<{ until: string }>(`/v1/admin/customers/${customerId}/contact-reveals`, {
       method: "POST",
-      auth: "staff",
       body: JSON.stringify({ reason, orderNumber }),
     });
     this.reveals.set(`${user.id}:${customerId}`, result.until);
@@ -92,7 +101,7 @@ class HttpAdmin {
   audit: { at: string; actor: string; code: string; action: string; object: string }[] = [];
 
   async loadAudit(): Promise<void> {
-    this.audit = await api("/v1/admin/audit-log", { auth: "staff" });
+    this.audit = await api("/v1/admin/audit-log");
     this.bump();
   }
 
@@ -110,10 +119,10 @@ class HttpAdmin {
     throw new Error("Penjadwalan promosi baru belum tersedia di API.");
   }
 
-  private async mutate(_user: Staff, path: string, body: unknown): Promise<Order> {
+  private async mutate(user: Staff, path: string, body: unknown): Promise<Order> {
     try {
-      const order = await api<Order>(path, { method: "POST", auth: "staff", body: JSON.stringify(body) });
-      await backend.loadStaff();
+      const order = await api<Order>(path, { method: "POST", body: JSON.stringify(body) });
+      await backend.loadStaff(user.role);
       this.bump();
       return order;
     } catch (error) {
