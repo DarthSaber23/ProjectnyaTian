@@ -1,10 +1,13 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from "@nestjs/common";
 import { Prisma } from "@prisma/client";
+import { NO_STORE } from "./cache-policy";
 
 /** P2028: transaction could not start or ran out of time. P2034: write conflict or deadlock. Both are worth a retry. */
 const BUSY_CODES = new Set(["P2028", "P2034"]);
 
 interface JsonResponse {
+  headersSent?: boolean;
+  setHeader(name: string, value: string): void;
   status(code: number): { json(body: unknown): void };
 }
 
@@ -12,6 +15,7 @@ interface JsonResponse {
 export class ApiExceptionFilter implements ExceptionFilter {
   catch(exception: unknown, host: ArgumentsHost): void {
     const res = host.switchToHttp().getResponse<JsonResponse>();
+    if (!res.headersSent) res.setHeader("Cache-Control", NO_STORE); // overrides a public route's policy: an error is never reused
     if (exception instanceof HttpException) {
       const status = exception.getStatus();
       const body = exception.getResponse();
