@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
+import { photoSizes } from "../domain/photos";
 import { bestUnitPrice } from "../domain/pricing";
 import { available } from "../domain/stock";
 import { categories } from "../mocks/fixtures";
@@ -83,7 +84,7 @@ export function Catalog() {
           <div className="card flex flex-col items-start gap-3 p-6"><b>Tidak ada produk yang cocok</b><span className="text-sm text-muted">Coba hapus filter.</span>
             <button type="button" className="btn-secondary" onClick={() => { setInStockOnly(false); setParams(new URLSearchParams()); }}>Hapus filter</button></div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-4">{list.slice(0, shown).map((p) => <ProductCard key={p.id} product={p} />)}</div>
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-4">{list.slice(0, shown).map((p) => <ProductCard key={p.id} product={p} sizes={photoSizes("catalogCard")} />)}</div>
         )}
         {list.length > shown ? <button type="button" className="btn-secondary self-center" onClick={() => setShown((n) => n + PAGE_SIZE)}>Muat lebih banyak</button> : null}
       </section>

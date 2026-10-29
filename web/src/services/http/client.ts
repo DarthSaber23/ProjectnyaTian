@@ -17,13 +17,25 @@ export function apiUrl(path: string): string {
 export async function api<T>(path: string, init: RequestInit & { idempotencyKey?: string } = {}): Promise<T> {
   const { idempotencyKey, ...request } = init;
   const headers = new Headers(request.headers);
-  if (request.body && !headers.has("content-type")) headers.set("content-type", "application/json");
+  // A FormData body gets its multipart boundary from the browser; setting content-type here would break it.
+  if (request.body && !(request.body instanceof FormData) && !headers.has("content-type")) headers.set("content-type", "application/json");
   if (idempotencyKey) headers.set("idempotency-key", idempotencyKey);
   const response = await fetch(apiUrl(path), { ...request, headers, credentials: "include" });
+  // nginx answers an oversize upload itself, possibly as HTML.
+  if (response.status === 413) throw new ApiError("TOO_LARGE", "Ukuran file maksimal 10 MB.");
   const text = await response.text();
-  const json = text ? JSON.parse(text) as { error?: { code?: string; message?: string; details?: unknown[] } } : {};
+  let json: { error?: { code?: string; message?: string; details?: unknown[] } } = {};
+  if (text) {
+    try {
+      json = JSON.parse(text);
+    } catch {
+      throw response.ok
+        ? new ApiError("BAD_RESPONSE", "Respons server tidak dapat dibaca.")
+        : new ApiError("HTTP", response.statusText || "Permintaan gagal.");
+    }
+  }
   if (!response.ok) {
-    throw new ApiError(json.error?.code ?? "HTTP", json.error?.message ?? response.statusText, json.error?.details ?? []);
+    throw new ApiError(json.error?.code ?? "HTTP", json.error?.message ?? (response.statusText || "Permintaan gagal."), json.error?.details ?? []);
   }
   return json as T;
 }

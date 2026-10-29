@@ -2,7 +2,9 @@ import { useCallback, useState } from "react";
 import { Dialog } from "../components/Dialog";
 import { Link, NavLink, Navigate, Outlet, useLocation, useParams } from "react-router-dom";
 import { SummaryRows } from "../components/Summary";
-import { ProductArt, StockNote } from "../components/ui";
+import { ProductPhoto } from "../components/ProductPhoto";
+import { StockNote } from "../components/ui";
+import { photoSizes } from "../domain/photos";
 import { formatIDR } from "../domain/money";
 import { FULFIL_LABEL, isCourierOverdue, PAYMENT_LABEL } from "../domain/orders";
 import { bestUnitPrice } from "../domain/pricing";
@@ -87,7 +89,7 @@ export function AccountHome() {
         <div className="grid gap-2 sm:grid-cols-3">
           {recs.map((p) => (
             <Link key={p.id} to={`/produk/${p.slug}`} className="flex min-w-0 items-center gap-3 rounded-brand border border-line p-2 hover:bg-alt">
-              <ProductArt kind={p.art.kind} bg={p.art.bg} accent={p.art.accent} label={p.name} className="w-14 shrink-0 rounded" />
+              <ProductPhoto product={p} image={p.images?.[0]} sizes={photoSizes("accountRecommended")} decorative className="w-14 shrink-0 rounded" />
               <span className="flex min-w-0 flex-col break-words text-[13px]"><b>{p.name}</b><span className="money">{formatIDR(Math.min(...p.variants.map((v) => bestUnitPrice(catalog, promotions, v.sku, backend.now()).unit)))}</span>
                 {personalised && wish.includes(p.id) ? <span className="text-muted">Ada di wishlist kamu</span> : null}</span>
             </Link>
@@ -197,7 +199,7 @@ export function WishlistPage() {
         const a = available(catalog, v.sku);
         return (
           <div key={id} className="card grid grid-cols-[72px_1fr] items-center gap-3 p-3">
-            <ProductArt kind={p.art.kind} bg={p.art.bg} accent={p.art.accent} label={p.name} className="rounded-brand" />
+            <ProductPhoto product={p} image={p.images?.[0]} sizes={photoSizes("accountWishlist")} decorative className="rounded-brand" />
             <div className="flex flex-col gap-1">
               <Link to={`/produk/${p.slug}`} className="font-semibold underline">{p.name}</Link>
               <span className="money">{formatIDR(bestUnitPrice(catalog, promotions, v.sku, backend.now()).unit)}</span>

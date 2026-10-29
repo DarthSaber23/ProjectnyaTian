@@ -13,6 +13,7 @@ import { SearchPage } from "./pages/SearchPage";
 import { SignIn } from "./pages/SignIn";
 import { AdminLogin, AdminShell } from "./admin/AdminShell";
 import { AdminAudit, AdminDashboard, AdminOrderDetail, AdminOrders, AdminPromotions } from "./admin/AdminPages";
+import { AdminProductPhotos, AdminProducts } from "./admin/ProductPages";
 
 /** Remount the product page per slug so variant/qty state never leaks between products. */
 function ProductRoute() {
@@ -36,6 +37,8 @@ export function App() {
           <Route path="orders" element={<AdminOrders />} />
           <Route path="orders/:nomor" element={<AdminOrderDetail />} />
           <Route path="promotions" element={<AdminPromotions />} />
+          <Route path="products" element={<AdminProducts />} />
+          <Route path="products/:id" element={<AdminProductPhotos />} />
           <Route path="audit-log" element={<AdminAudit />} />
         </Route>
         <Route element={<Layout />}>

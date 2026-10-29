@@ -1,0 +1,294 @@
+{
+  "timestamp": "2026-10-29T08:18:46.094Z",
+  "projectName": "ProjectnyaTian",
+  "version": "0.1.0",
+  "modules": {
+    "frontend": {
+      "status": "active",
+      "path": "web/src",
+      "description": "React 18 storefront (Agent 01 prototype - read-only)",
+      "owner": "Agent 01",
+      "fileCount": 54,
+      "testCount": 14,
+      "files": [
+        "admin-media.test.ts",
+        "AdminPages.tsx",
+        "AdminShell.tsx",
+        "product-pages-wiring.test.ts",
+        "ProductPages.tsx",
+        "serial-queue.test.ts",
+        "serial-queue.ts",
+        "App.tsx",
+        "boot.test.ts",
+        "boot.ts"
+      ],
+      "dependencies": [
+        "react",
+        "react-router",
+        "zustand",
+        "tailwindcss"
+      ]
+    },
+    "backend-api": {
+      "status": "active",
+      "path": "server/src",
+      "description": "NestJS REST API + business logic",
+      "owner": "Agent 02",
+      "fileCount": 75,
+      "testCount": 44,
+      "files": [
+        "api-exception.filter.test.ts",
+        "api-exception.filter.ts",
+        "app.module.ts",
+        "cache-policy.test.ts",
+        "cache-policy.ts",
+        "account.api.ts",
+        "address.test.ts",
+        "address.ts",
+        "admin.service.test.ts",
+        "admin.service.ts"
+      ],
+      "dependencies": [
+        "nestjs",
+        "prisma",
+        "postgresql",
+        "aws-sdk-s3"
+      ]
+    },
+    "commerce-rules": {
+      "status": "In Progress",
+      "path": "server/src/commerce",
+      "description": "Pure business logic (ported from web/src/domain)",
+      "owner": "Agent 02",
+      "fileCount": 21,
+      "testCount": 14,
+      "files": [
+        "account.api.ts",
+        "address.test.ts",
+        "address.ts",
+        "admin.service.test.ts",
+        "admin.service.ts",
+        "auth.service.test.ts",
+        "auth.service.ts",
+        "bootstrap.service.ts",
+        "catalog.service.test.ts",
+        "catalog.service.ts"
+      ],
+      "dependencies": [
+        "address",
+        "notify",
+        "providers",
+        "privacy",
+        "order",
+        "payment"
+      ]
+    },
+    "media": {
+      "status": "In Progress",
+      "path": "server/src/media",
+      "description": "Product photos: upload checks, WebP processing, locked writes, admin routes, seed CLIs",
+      "owner": "Agent 02",
+      "fileCount": 20,
+      "testCount": 20,
+      "files": [
+        "common.ts",
+        "remove-samples.test.ts",
+        "remove-samples.ts",
+        "samples.test.ts",
+        "seed.test.ts",
+        "seed.ts",
+        "error-map.test.ts",
+        "error-map.ts",
+        "errors.test.ts",
+        "errors.ts"
+      ],
+      "dependencies": [
+        "sharp",
+        "multer",
+        "aws-sdk-s3",
+        "prisma",
+        "commerce-rules"
+      ]
+    },
+    "media-seed": {
+      "status": "In Progress",
+      "path": "server/seed",
+      "description": "Committed demo photos (WebP) and samples.json with licence records",
+      "owner": "Agent 02",
+      "fileCount": 0,
+      "testCount": 0,
+      "files": [],
+      "dependencies": [
+        "media"
+      ]
+    },
+    "database": {
+      "status": "In Progress",
+      "path": "server/prisma",
+      "description": "PostgreSQL schema & migrations",
+      "owner": "Agent 02",
+      "fileCount": 0,
+      "testCount": 0,
+      "files": [],
+      "dependencies": [
+        "postgres",
+        "prisma"
+      ]
+    },
+    "authentication": {
+      "status": "not_found",
+      "path": "server/src/auth",
+      "fileCount": 0,
+      "testCount": 0
+    },
+    "payment-adapter": {
+      "status": "not_found",
+      "path": "server/src/integrations/payment",
+      "fileCount": 0,
+      "testCount": 0
+    },
+    "shipping-adapter": {
+      "status": "not_found",
+      "path": "server/src/integrations/shipping",
+      "fileCount": 0,
+      "testCount": 0
+    },
+    "notifications": {
+      "status": "not_found",
+      "path": "server/src/integrations/notifications",
+      "fileCount": 0,
+      "testCount": 0
+    },
+    "analytics": {
+      "status": "not_found",
+      "path": "server/src/analytics",
+      "fileCount": 0,
+      "testCount": 0
+    },
+    "documentation": {
+      "status": "active",
+      "path": "docs",
+      "description": "Architecture & requirements docs",
+      "owner": "Agent 02",
+      "fileCount": 0,
+      "testCount": 0,
+      "files": [],
+      "dependencies": []
+    },
+    "deployment": {
+      "status": "In Progress",
+      "path": ".",
+      "description": "Docker Compose & infrastructure config",
+      "owner": "Agent 02",
+      "fileCount": 175,
+      "testCount": 61,
+      "files": [
+        "AdminPages.tsx",
+        "AdminShell.tsx",
+        "App.tsx",
+        "Dialog.tsx",
+        "Layout.tsx",
+        "ProductCard.tsx",
+        "Summary.tsx",
+        "ui.tsx",
+        "brands.ts",
+        "admin.test.ts"
+      ],
+      "dependencies": [
+        "docker",
+        "docker-compose"
+      ]
+    }
+  },
+  "testCoverage": {
+    "total": 345,
+    "withTests": 5
+  },
+  "constraints": {
+    "money": "Integer Rupiah (no floats)",
+    "stock": "Reserved at create, expires per D6 (QRIS/e-wallet 15min, VA 24h)",
+    "payment": "Status changes only from verified webhook, never browser",
+    "reference_checkout": "Rp587.250",
+    "reference_metrics": {
+      "net_revenue": 2097000,
+      "order_count": 8,
+      "aov": 262125,
+      "completion_rate": "88.9%"
+    }
+  },
+  "milestones": {
+    "B0": {
+      "title": "Intake & gap review",
+      "status": "done",
+      "date": "2026-10-21"
+    },
+    "B1": {
+      "title": "Architecture & API spec",
+      "status": "in_progress"
+    },
+    "B2": {
+      "title": "Data model",
+      "status": "in_progress"
+    },
+    "B3": {
+      "title": "Domain port",
+      "status": "in_progress"
+    },
+    "B4": {
+      "title": "Identity, access, audit",
+      "status": "pending"
+    },
+    "B5": {
+      "title": "Commerce core",
+      "status": "pending"
+    },
+    "B6": {
+      "title": "Payments",
+      "status": "pending"
+    },
+    "B7": {
+      "title": "Shipping, notifications, analytics",
+      "status": "pending"
+    },
+    "B8": {
+      "title": "Frontend integration",
+      "status": "pending"
+    },
+    "B9": {
+      "title": "Security, QA & deployment",
+      "status": "pending"
+    }
+  },
+  "generatedAt": "29/10/2026, 15.18.46",
+  "git": {
+    "commit": "4e13276",
+    "branch": "feat/product-images",
+    "status": 143
+  },
+  "constraintCompliance": {
+    "moneyIntegerRupiah": {
+      "status": "assumed",
+      "note": "Enforced in server code via integer column types"
+    },
+    "stockReservationAtCreate": {
+      "status": "pending",
+      "milestone": "B5"
+    },
+    "paymentWebhookDriven": {
+      "status": "pending",
+      "milestone": "B6"
+    },
+    "consentAppendOnly": {
+      "status": "pending",
+      "milestone": "B4"
+    },
+    "auditImmutable": {
+      "status": "pending",
+      "milestone": "B4"
+    },
+    "rblcLeastPrivilege": {
+      "status": "pending",
+      "milestone": "B4"
+    }
+  }
+}

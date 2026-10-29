@@ -41,20 +41,51 @@ model Product {
   specs      Json?
   components Json?
   variants   Variant[]
+  images     ProductImage[]
 
   @@unique([storeId, slug])
 }
 
 model Variant {
-  sku       String  @id
+  sku       String        @id
   productId String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product       @relation(fields: [productId], references: [id])
   label     String
   price     Int
   compareAt Int?
   onHand    Int
   reserved  Int
   attrs     Json?
+  imageId   String?
+  image     ProductImage? @relation(fields: [imageId], references: [id], onDelete: SetNull)
+
+  @@index([imageId])
+}
+
+/// One product photo. Files live in MinIO under media/products/{productId}/{hash16}-{target}.webp.
+model ProductImage {
+  id           String    @id @default(cuid())
+  productId    String
+  product      Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  position     Int
+  alt          String
+  hash         String
+  width        Int
+  height       Int
+  sizes        Int[]
+  source       String
+  creator      String?
+  licence      String?
+  licenceUrl   String?
+  sourceUrl    String?
+  retrievedAt  String?
+  licenceCheck String?
+  createdAt    String
+  createdBy    String
+  variants     Variant[]
+
+  @@unique([productId, position])
+  @@unique([productId, hash])
 }
 
 model Promotion {

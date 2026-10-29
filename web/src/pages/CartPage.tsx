@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SummaryRows } from "../components/Summary";
-import { ProductArt, QtyStepper } from "../components/ui";
+import { ProductPhoto } from "../components/ProductPhoto";
+import { QtyStepper } from "../components/ui";
+import { photoForVariant, photoSizes } from "../domain/photos";
 import { DEMO_TOOLS } from "../config/brands";
 import { formatIDR } from "../domain/money";
 import { available, maxAddable } from "../domain/stock";
@@ -42,7 +44,7 @@ export function CartPage() {
             const cap = l.isGift ? l.qty : maxAddable(catalog, l.sku, others, brand.maxQtyPerLine);
             return (
               <li key={`${l.sku}-${l.isGift}`} className="card grid grid-cols-[80px_1fr] gap-3 p-3">
-                <ProductArt kind={product.art.kind} bg={product.art.bg} accent={product.art.accent} label={product.name} className="rounded-brand" />
+                <ProductPhoto product={product} image={photoForVariant(product, l.sku)} sizes={photoSizes("cartRow")} decorative className="rounded-brand" />
                 <div className="flex min-w-0 flex-col gap-1">
                   <b className="text-[15px]">{l.name}</b>
                   <span className="text-[13px] text-muted">{l.variantLabel ? `${l.variantLabel} · ` : ""}{l.isGift ? "Gratis" : formatIDR(l.unitPrice)}{l.appliedPriceCode && !l.isGift ? ` · ${l.appliedPriceCode}` : ""}</span>

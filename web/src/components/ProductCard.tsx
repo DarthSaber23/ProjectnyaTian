@@ -6,10 +6,12 @@ import { categories } from "../mocks/fixtures";
 import { backend } from "../services/http/backend";
 import { useBrand, useCatalog, useProductView } from "../store/hooks";
 import { useShop } from "../store/shop";
-import { Badge, PriceBlock, ProductArt } from "./ui";
+import { photoSizes } from "../domain/photos";
+import { ProductPhoto } from "./ProductPhoto";
+import { Badge, PriceBlock } from "./ui";
 
 /** `lengthM` (from search) shows the matching length variant's price and stock. */
-export function ProductCard({ product, lengthM }: { product: Product; lengthM?: number }) {
+export function ProductCard({ product, lengthM, sizes = photoSizes("homeCard") }: { product: Product; lengthM?: number; sizes?: string }) {
   const view = useProductView(product);
   const brand = useBrand();
   const { catalog, promotions } = useCatalog();
@@ -26,7 +28,7 @@ export function ProductCard({ product, lengthM }: { product: Product; lengthM?: 
   return (
     <article className="card flex flex-col overflow-hidden">
       <Link to={`/produk/${product.slug}`} className="group flex flex-1 flex-col gap-1.5 pb-3 focus-visible:outline-offset-[-3px]">
-        <ProductArt kind={product.art.kind} bg={product.art.bg} accent={product.art.accent} label={product.name} />
+        <ProductPhoto product={product} image={product.images?.[0]} sizes={sizes} decorative />
         <span className="flex min-h-[22px] gap-1 px-3 pt-1">{view.badge ? <Badge text={view.badge.text} tone={view.badge.tone} /> : null}</span>
         <span className="px-3 text-[12px] text-muted">{category}</span>
         <h3 className="px-3 font-body text-[15px] font-semibold leading-snug group-hover:underline">{product.name}</h3>

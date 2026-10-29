@@ -30,6 +30,23 @@ export async function lockOrder(tx: Prisma.TransactionClient, number: string): P
   return { order: row.payload, brand: row.storeId === "halimun" ? "halimun" : "sambung" };
 }
 
+/**
+ * Locks a product row (FOR UPDATE) before any read or write of its photos, so counts, duplicate checks and
+ * positions are read under the lock. Photo code never takes a variant lock before this one.
+ */
+export async function lockProduct(tx: Prisma.TransactionClient, productId: string): Promise<void> {
+  const rows = await tx.$queryRaw<Array<{ id: string }>>`
+    SELECT id FROM "Product" WHERE id = ${productId} FOR UPDATE`;
+  if (!rows[0]) throw new HttpException({ code: "NOT_FOUND", message: "Produk, varian atau foto tidak ditemukan." }, 404);
+}
+
+/** Locks a product's variants in SKU order, the same order lockStock uses, and returns the SKUs. */
+export async function lockVariants(tx: Prisma.TransactionClient, productId: string): Promise<string[]> {
+  const rows = await tx.$queryRaw<Array<{ sku: string }>>`
+    SELECT sku FROM "Variant" WHERE "productId" = ${productId} ORDER BY sku FOR UPDATE`;
+  return rows.map((r) => r.sku);
+}
+
 /** Locks the lines' stock rows and returns a private copy of the catalogue holding their locked values. */
 export async function lockStock(tx: Prisma.TransactionClient, catalog: Catalog, lines: CartLine[]): Promise<Catalog> {
   const fresh = structuredClone(catalog);

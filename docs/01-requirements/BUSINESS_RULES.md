@@ -126,6 +126,10 @@ Admin paths follow the sitemap: `/admin/settings/users` and `/admin/settings/pay
 | BR-C3 | Approved I1, I2 | Public slugs are Indonesian. Admin paths are English. Product URLs are `/produk/{slug}` |
 | BR-C4 | Approved L4 | Filter chrome is configuration: sidebar or top bar. Both brands share one filter logic and one mobile sheet |
 | BR-C5 | Approved D8 | Reviews are display-only and may be labelled verified purchase. Customers cannot submit a review in this release |
+| BR-C7 | Approved 28 Oct 2026 (product images spec) | A product has at most 6 photos. Position 0 is the main photo shown on cards, the cart and account rows. A product with no photo shows its drawing. A variant may be linked to one photo of its own product; the cart row and the product page then show it |
+| BR-C8 | Approved 28 Oct 2026 | Every photo has alt text of 1–125 characters (Unicode code points) describing what is visible. Uploads take JPEG, PNG or WebP up to 10 MB, at least 480 px on the shorter side and at most 40 megapixels. Originals are not kept; only resized WebP copies without metadata |
+| BR-C9 | Approved 28 Oct 2026 | Owner, Admin and Marketing may upload, reorder, re-label, link and remove photos (`products.media`). Operasional and CS may not. The uploader must tick "Saya memiliki hak atau izin untuk memakai foto ini di toko."; the confirmation is kept in the audit entry |
+| BR-C10 | Approved 28 Oct 2026 | Demo photos are credit-free only (CC0, public domain, Unsplash or Pexels licence), carry the "Foto contoh" caption on the product page, and must be removed (`npm run media:remove-samples`) before launch. A product whose photo was ever removed never gets a demo photo back |
 | BR-C6 | Baseline OD-09 | Production search accepts a query of at least two characters, applies the synonym map, tolerates one edit at four letters and two edits at eight, and ranks name, then synonym, then category, then attribute. Autocomplete returns at most six products and three categories. The prototype's substring match remains the regression baseline for the W00 synonym and length cases |
 
 ## 8. Analytics

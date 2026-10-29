@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useBackendVersion } from "../store/shop";
-import { Badge, PriceBlock, ProductArt, QtyStepper, StockNote } from "../components/ui";
+import { ProductGallery } from "../components/ProductGallery";
+import { Badge, PriceBlock, QtyStepper, StockNote } from "../components/ui";
 import { formatIDR } from "../domain/money";
 import { bestUnitPrice } from "../domain/pricing";
 import { available, maxAddable } from "../domain/stock";
@@ -52,7 +53,7 @@ export function ProductPage() {
         <ol className="flex flex-wrap gap-1"><li><Link to="/" className="underline">Beranda</Link> /</li><li><Link to={`/kategori/${category?.slug}`} className="underline">{category?.name}</Link> /</li><li aria-current="page">{product.name}</li></ol>
       </nav>
       <div className="grid gap-6 md:grid-cols-2">
-        <ProductArt kind={product.art.kind} bg={product.art.bg} accent={product.art.accent} label={product.name} className="rounded-brand" />
+        <ProductGallery key={product.id} product={product} variant={variant} />
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap gap-2">
             {best.isFlashSale && promo?.kind === "price" ? <Badge text={`FLASH SALE · berakhir 22 Okt 23:59`} tone="flash" /> : variant.compareAt ? <Badge text={product.components ? `Hemat ${formatIDR(variant.compareAt - variant.price)}` : "HARGA CORET"} tone="strike" /> : null}

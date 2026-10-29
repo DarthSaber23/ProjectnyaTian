@@ -1,0 +1,12 @@
+Licence record: sample photo for B05 (Kabel USB-C ke Lightning 1 m)
+Checked: 2026-10-29 (WIB) by Agent 02 (Claude), for the owner's approved Appendix A list
+File page: https://commons.wikimedia.org/wiki/File:Apple_Lightning_Connector.webp (page id 183878390)
+Revision seen: 1176296366 (2026-03-05T12:56:37Z), read through the Commons API
+Creator: Wikideas1
+Licence section of the wikitext at that revision:
+  =={{int:license-header}}==
+  {{self|cc-zero}}
+Licence: CC0 1.0 Universal Public Domain Dedication, https://creativecommons.org/publicdomain/zero/1.0/
+Templates searched for and not present: Trademarked, Personality rights, Non-free, FoP-, Copyvio, delete
+Original downloaded: https://upload.wikimedia.org/wikipedia/commons/6/6a/Apple_Lightning_Connector.webp (1864 x 1442, 574,240 bytes)
+Eye check: close-up of a Lightning plug with a dark housing on a wooden surface; no logo or readable text. The housing carries a small embossed square mark that is out of focus and not legible.

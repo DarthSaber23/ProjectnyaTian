@@ -17,6 +17,8 @@ export interface Variant {
   reserved: number;
   /** Optional attributes used by filters/compare, e.g. { lengthM: 2, colour: "Hitam" }. */
   attrs?: Record<string, string | number>;
+  /** Linked product photo (ProductImage.id); absent when the variant has none. */
+  imageId?: string;
 }
 
 export interface Product {
@@ -32,6 +34,19 @@ export interface Product {
   /** Products whose stock is consumed by this product (bundles). sku -> qty per unit. */
   components?: Record<string, number>;
   specs?: Record<string, string>;
+  /** Product photos in gallery order; position 0 is the main photo. Absent or empty: the drawing is shown. */
+  images?: ProductImage[];
+}
+
+/** Public catalogue photo (spec section 1). srcset descriptors are shorter-side targets. */
+export interface ProductImage {
+  id: string;
+  alt: string;
+  width: number;
+  height: number;
+  src: string;
+  srcset: string;
+  sample?: true;
 }
 
 export type ArtKind = "bottle" | "jar" | "tube" | "dropper" | "cable" | "charger" | "adapter" | "hub";

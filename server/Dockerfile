@@ -12,6 +12,7 @@ RUN npm install
 COPY prisma ./prisma
 COPY tsconfig.json tsconfig.build.json vitest.config.ts ./
 COPY src ./src
+COPY seed ./seed
 
 ENV DATABASE_URL=postgresql://user:pass@localhost:5432/tian
 RUN npx prisma generate && npm test && npm run build

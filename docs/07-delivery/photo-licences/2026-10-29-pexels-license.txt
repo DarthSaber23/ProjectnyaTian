@@ -1,0 +1,7 @@
+Pexels License: dated summary
+Page: https://www.pexels.com/license/ (read in a browser on 2026-10-29 WIB by Agent 02 (Claude))
+Summary in our own words of what the page said on that date (the page itself is not copied here):
+- Photos may be used free of charge; attribution is not required.
+- Photos may be modified.
+- Not allowed: showing identifiable people in a bad light; selling unaltered copies; implying endorsement by people or brands shown; redistributing on other stock platforms; using a photo as part of a trade mark or business name.
+How this project complies: the photo shows no person or brand, it is used only as a sample image inside the storefront template (never offered as a standalone set), and it is labelled "Foto contoh" in the shop.

@@ -1,5 +1,7 @@
 import type { Order, StaffRole } from "../../domain/types";
 import type { Staff } from "../../mocks/fixtures";
+import { buildUploadInit } from "../../domain/photos";
+import type { AdminImage, AdminProduct } from "../contracts";
 import { ApiError, api } from "./client";
 import { backend } from "./backend";
 
@@ -117,6 +119,32 @@ class HttpAdmin {
   schedule(_user: Staff): void {
     this.draft = { ...this.draft, status: "draft" };
     throw new Error("Penjadwalan promosi baru belum tersedia di API.");
+  }
+
+  /* ---- Product photos (products.media). Errors are ApiError with the server's Bahasa message. ---- */
+
+  listProducts(): Promise<AdminProduct[]> {
+    return api<AdminProduct[]>("/v1/admin/products");
+  }
+
+  uploadPhoto(productId: string, file: File, alt: string, rightsConfirmed: boolean): Promise<AdminImage> {
+    return api<AdminImage>(`/v1/admin/products/${encodeURIComponent(productId)}/images`, buildUploadInit(file, alt, rightsConfirmed));
+  }
+
+  changePhotoAlt(productId: string, imageId: string, alt: string): Promise<AdminImage> {
+    return api<AdminImage>(`/v1/admin/products/${encodeURIComponent(productId)}/images/${encodeURIComponent(imageId)}`, { method: "PATCH", body: JSON.stringify({ alt }) });
+  }
+
+  reorderPhotos(productId: string, ids: string[]): Promise<{ ids: string[] }> {
+    return api<{ ids: string[] }>(`/v1/admin/products/${encodeURIComponent(productId)}/images/order`, { method: "PUT", body: JSON.stringify({ ids }) });
+  }
+
+  linkVariantPhoto(sku: string, imageId: string | null): Promise<{ sku: string; imageId: string | null }> {
+    return api<{ sku: string; imageId: string | null }>(`/v1/admin/variants/${encodeURIComponent(sku)}/image`, { method: "PUT", body: JSON.stringify({ imageId }) });
+  }
+
+  deletePhoto(productId: string, imageId: string): Promise<{ ok: true }> {
+    return api<{ ok: true }>(`/v1/admin/products/${encodeURIComponent(productId)}/images/${encodeURIComponent(imageId)}`, { method: "DELETE" });
   }
 
   private async mutate(user: Staff, path: string, body: unknown): Promise<Order> {

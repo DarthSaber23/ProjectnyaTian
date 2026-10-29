@@ -3,7 +3,7 @@ import { HttpException } from "@nestjs/common";
 import { describe, expect, it } from "vitest";
 import { buildCatalog } from "../domain/catalog";
 import { products } from "../data/fixtures";
-import { changeStock, lockOrder, stockLockOrder } from "./order-lock";
+import { changeStock, lockOrder, lockProduct, lockVariants, stockLockOrder } from "./order-lock";
 
 const halimun = buildCatalog(products.filter((p) => p.brand === "halimun"));
 
@@ -55,5 +55,24 @@ describe("lockOrder", () => {
   it("reports a missing order as not found", async () => {
     const { tx } = fakeTx([]);
     await expect(lockOrder(tx, "ORD-000000-0000")).rejects.toBeInstanceOf(HttpException);
+  });
+});
+
+describe("lockProduct and lockVariants", () => {
+  it("lockProduct selects FOR UPDATE on the product id and throws 404 NOT_FOUND when absent", async () => {
+    const found = fakeTx([{ id: "B01" }]);
+    await lockProduct(found.tx, "B01");
+    expect(found.locked).toEqual(["B01"]);
+    const missing = fakeTx([]);
+    const error = await lockProduct(missing.tx, "NOPE").catch((e: unknown) => e);
+    expect(error).toBeInstanceOf(HttpException);
+    expect((error as HttpException).getStatus()).toBe(404);
+    expect((error as HttpException).getResponse()).toEqual({ code: "NOT_FOUND", message: "Produk, varian atau foto tidak ditemukan." });
+  });
+
+  it("lockVariants returns SKUs in sorted order", async () => {
+    const { tx, locked } = fakeTx([{ sku: "B01-1M-BLK" }, { sku: "B01-2M-BLK" }]);
+    expect(await lockVariants(tx, "B01")).toEqual(["B01-1M-BLK", "B01-2M-BLK"]);
+    expect(locked).toEqual(["B01"]);
   });
 });

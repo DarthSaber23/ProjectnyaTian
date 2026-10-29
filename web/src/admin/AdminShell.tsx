@@ -14,6 +14,7 @@ const NAV: { to: string; label: string; perm: Permission }[] = [
   { to: "/admin", label: "Dasbor", perm: "dashboard.view" },
   { to: "/admin/orders", label: "Pesanan", perm: "orders.view" },
   { to: "/admin/promotions", label: "Promosi", perm: "promotions.view" },
+  { to: "/admin/products", label: "Produk", perm: "products.media" },
   { to: "/admin/audit-log", label: "Log audit", perm: "audit.view" },
 ];
 

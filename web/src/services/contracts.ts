@@ -75,3 +75,27 @@ export interface AccountService {
   consents(customerId: string): Record<string, { granted: boolean; changedAt: string; source: string }>;
   updateConsents(customerId: string, changes: Record<string, boolean>): void;
 }
+
+/** Admin view of a product photo (server media.types.ts): the public shape plus order, source and licence fields. */
+export type AdminImage = import("../domain/types").ProductImage & {
+  position: number;
+  source: "upload" | "sample";
+  creator: string | null;
+  licence: string | null;
+  licenceUrl: string | null;
+  sourceUrl: string | null;
+  retrievedAt: string | null;
+  licenceCheck: string | null;
+  createdAt: string;
+  createdBy: string;
+};
+
+export interface AdminProduct {
+  id: string;
+  brand: import("../domain/types").BrandId;
+  slug: string;
+  name: string;
+  art: import("../domain/types").Product["art"];
+  variants: { sku: string; label: string; imageId: string | null }[];
+  images: AdminImage[];
+}

@@ -11,5 +11,6 @@ import { ReservationSweeper } from "./reservation-sweeper";
 @Module({
   controllers: [CommerceController],
   providers: [CatalogService, AuthService, OrderService, AdminService, AccountApi, BootstrapService, ReservationSweeper],
+  exports: [CatalogService, AuthService],
 })
 export class CommerceModule {}

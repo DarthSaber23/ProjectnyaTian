@@ -4,8 +4,8 @@ import { formatIDR } from "../domain/money";
 import type { ArtKind } from "../domain/types";
 import { useShop } from "../store/shop";
 
-/** Original placeholder illustration (no product photos in the starter). Decorative: alt via label. */
-export function ProductArt({ kind, bg, accent, label, className = "" }: { kind: ArtKind; bg: string; accent: string; label: string; className?: string }) {
+/** Placeholder illustration, shown when a product has no photo. `decorative` hides it when the name is already beside it. */
+export function ProductArt({ kind, bg, accent, label, className = "", decorative = false }: { kind: ArtKind; bg: string; accent: string; label: string; className?: string; decorative?: boolean }) {
   const ink = "#1A2233";
   const shape: Record<ArtKind, ReactNode> = {
     cable: (<><path d="M30 70 C30 40, 70 40, 70 30" stroke={accent} strokeWidth="5" fill="none" strokeLinecap="round" /><rect x="22" y="68" width="16" height="14" rx="3" fill={ink} /><rect x="62" y="18" width="16" height="14" rx="3" fill={ink} /></>),
@@ -18,7 +18,7 @@ export function ProductArt({ kind, bg, accent, label, className = "" }: { kind: 
     dropper: (<><rect x="44" y="14" width="12" height="16" rx="5" fill={ink} /><rect x="34" y="30" width="32" height="50" rx="8" fill="#fff" stroke={ink} strokeWidth="2" /><rect x="40" y="48" width="20" height="12" rx="2" fill={accent} /></>),
   };
   return (
-    <div className={`flex aspect-square w-full items-center justify-center ${className}`} style={{ background: bg }} role="img" aria-label={`Ilustrasi ${label}`}>
+    <div className={`flex aspect-square w-full items-center justify-center ${className}`} style={{ background: bg }} {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": `Ilustrasi ${label}` })}>
       <svg viewBox="0 0 100 100" className="h-3/5 w-3/5" aria-hidden="true">{shape[kind]}</svg>
     </div>
   );

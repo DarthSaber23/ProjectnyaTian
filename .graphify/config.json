@@ -1,0 +1,296 @@
+{
+  "projectName": "ProjectnyaTian",
+  "description": "Modular Indonesian B2C e-commerce starter (Agent 02 Backend)",
+  "version": "0.1.0",
+  "lastUpdated": "2026-10-29T00:00:00Z",
+  "modules": [
+    {
+      "name": "frontend",
+      "path": "web/src",
+      "description": "React 18 storefront (Agent 01 prototype - read-only)",
+      "responsibility": "UI/UX, mock services, business rule reference",
+      "dependencies": [
+        "react",
+        "react-router",
+        "zustand",
+        "tailwindcss"
+      ],
+      "key_files": [
+        "domain/*.ts",
+        "pages/*.tsx",
+        "services/contracts.ts",
+        "services/http/backend.ts"
+      ],
+      "owner": "Agent 01"
+    },
+    {
+      "name": "backend-api",
+      "path": "server/src",
+      "description": "NestJS REST API + business logic",
+      "responsibility": "Data persistence, payment processing, inventory management, authentication",
+      "dependencies": [
+        "nestjs",
+        "prisma",
+        "postgresql",
+        "aws-sdk-s3"
+      ],
+      "key_files": [
+        "main.ts",
+        "commerce/",
+        "security.interceptor.ts",
+        "security.interceptor.test.ts",
+        "cache-policy.ts",
+        "cache-policy.test.ts",
+        "api-exception.filter.ts",
+        "api-exception.filter.test.ts"
+      ],
+      "owner": "Agent 02"
+    },
+    {
+      "name": "commerce-rules",
+      "path": "server/src/commerce",
+      "description": "Pure business logic (ported from web/src/domain)",
+      "responsibility": "Address validation, consent checks, provider config, privacy masking, inventory, pricing, promotions",
+      "dependencies": [
+        "address",
+        "notify",
+        "providers",
+        "privacy",
+        "order",
+        "payment"
+      ],
+      "key_files": [
+        "address.ts",
+        "address.test.ts",
+        "notify.ts",
+        "notify.test.ts",
+        "providers.ts",
+        "providers.test.ts",
+        "privacy.ts",
+        "privacy.test.ts",
+        "auth.service.ts",
+        "auth.service.test.ts",
+        "session-cookie.ts",
+        "session-cookie.test.ts",
+        "order-lock.ts",
+        "order-lock.test.ts",
+        "order.service.ts",
+        "order.service.test.ts",
+        "reservation-sweeper.ts",
+        "reservation-sweeper.test.ts",
+        "catalog.service.test.ts",
+        "admin.service.ts",
+        "admin.service.test.ts",
+        "commerce.controller.ts"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    },
+    {
+      "name": "media",
+      "path": "server/src/media",
+      "description": "Product photos: upload checks, WebP processing, locked writes, admin routes, seed CLIs",
+      "responsibility": "Photo storage in MinIO media/, audit of every photo change, product lock before photo reads and writes",
+      "dependencies": [
+        "sharp",
+        "multer",
+        "aws-sdk-s3",
+        "prisma",
+        "commerce-rules"
+      ],
+      "key_files": [
+        "media.service.ts",
+        "media.controller.ts",
+        "staff-media.guard.ts",
+        "process.ts",
+        "rules.ts",
+        "policy.ts",
+        "cli/seed.ts",
+        "cli/remove-samples.ts"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    },
+    {
+      "name": "media-seed",
+      "path": "server/seed",
+      "description": "Committed demo photos (WebP) and samples.json with licence records",
+      "responsibility": "Credit-free sample photos for dev and demos; removed before launch",
+      "dependencies": [
+        "media"
+      ],
+      "key_files": [
+        "media/samples.json"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    },
+    {
+      "name": "database",
+      "path": "server/prisma",
+      "description": "PostgreSQL schema & migrations",
+      "responsibility": "Data models, relationships, constraints, indexes",
+      "dependencies": [
+        "postgres",
+        "prisma"
+      ],
+      "key_files": [
+        "schema.prisma"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    },
+    {
+      "name": "authentication",
+      "path": "server/src/auth",
+      "description": "Customer & staff auth (pending B4)",
+      "responsibility": "Password, OAuth 2.0 (Google), TOTP, session management, CSRF, rate limiting",
+      "dependencies": [
+        "passport",
+        "jwt",
+        "bcrypt",
+        "speakeasy"
+      ],
+      "key_files": [],
+      "owner": "Agent 02",
+      "status": "Not Started"
+    },
+    {
+      "name": "payment-adapter",
+      "path": "server/src/integrations/payment",
+      "description": "Payment gateway abstraction (pending B6)",
+      "responsibility": "Midtrans & Duitku adapter, webhook verification, idempotency, refunds",
+      "dependencies": [
+        "payment-provider-sdk"
+      ],
+      "key_files": [],
+      "owner": "Agent 02",
+      "status": "Not Started"
+    },
+    {
+      "name": "shipping-adapter",
+      "path": "server/src/integrations/shipping",
+      "description": "Shipping provider abstraction (pending B7)",
+      "responsibility": "Quote, label creation, tracking, webhook parsing",
+      "dependencies": [
+        "biteship",
+        "rajaongkir",
+        "kiriminaja"
+      ],
+      "key_files": [],
+      "owner": "Agent 02",
+      "status": "Not Started"
+    },
+    {
+      "name": "notifications",
+      "path": "server/src/integrations/notifications",
+      "description": "Email & WhatsApp (pending B7)",
+      "responsibility": "Transactional & marketing messages, consent checks, retry logic",
+      "dependencies": [
+        "sendgrid",
+        "twilio",
+        "whatsapp-provider"
+      ],
+      "key_files": [],
+      "owner": "Agent 02",
+      "status": "Not Started"
+    },
+    {
+      "name": "analytics",
+      "path": "server/src/analytics",
+      "description": "Event tracking (pending B7)",
+      "responsibility": "GA4-compatible sessions (no PII), metric aggregation, reporting",
+      "dependencies": [
+        "google-analytics",
+        "event-logger"
+      ],
+      "key_files": [],
+      "owner": "Agent 02",
+      "status": "Not Started"
+    },
+    {
+      "name": "documentation",
+      "path": "docs",
+      "description": "Architecture & requirements docs",
+      "responsibility": "A0–A7 milestones, ADRs, API specs, data dictionary",
+      "dependencies": [],
+      "key_files": [
+        "00-handoff/",
+        "01-requirements/",
+        "superpowers/"
+      ],
+      "owner": "Agent 02"
+    },
+    {
+      "name": "deployment",
+      "path": ".",
+      "description": "Docker Compose & infrastructure config",
+      "responsibility": "Dev environment, VPS deployment (pending B8–B9)",
+      "dependencies": [
+        "docker",
+        "docker-compose"
+      ],
+      "key_files": [
+        "docker-compose.yml",
+        ".env.example"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    }
+  ],
+  "constraints": {
+    "money": "Integer Rupiah (no floats)",
+    "stock": "Reserved at create, expires per D6 (QRIS/e-wallet 15min, VA 24h)",
+    "payment": "Status changes only from verified webhook, never browser",
+    "reference_checkout": "Rp587.250",
+    "reference_metrics": {
+      "net_revenue": 2097000,
+      "order_count": 8,
+      "aov": 262125,
+      "completion_rate": "88.9%"
+    }
+  },
+  "milestones": {
+    "B0": {
+      "title": "Intake & gap review",
+      "status": "done",
+      "date": "2026-10-21"
+    },
+    "B1": {
+      "title": "Architecture & API spec",
+      "status": "in_progress"
+    },
+    "B2": {
+      "title": "Data model",
+      "status": "in_progress"
+    },
+    "B3": {
+      "title": "Domain port",
+      "status": "in_progress"
+    },
+    "B4": {
+      "title": "Identity, access, audit",
+      "status": "pending"
+    },
+    "B5": {
+      "title": "Commerce core",
+      "status": "pending"
+    },
+    "B6": {
+      "title": "Payments",
+      "status": "pending"
+    },
+    "B7": {
+      "title": "Shipping, notifications, analytics",
+      "status": "pending"
+    },
+    "B8": {
+      "title": "Frontend integration",
+      "status": "pending"
+    },
+    "B9": {
+      "title": "Security, QA & deployment",
+      "status": "pending"
+    }
+  }
+}

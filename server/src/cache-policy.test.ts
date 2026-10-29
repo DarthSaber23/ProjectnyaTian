@@ -30,6 +30,13 @@ describe("cachePolicy", () => {
     expect(cachePolicy("POST", "/v1/catalog")).toBe(NO_STORE);
   });
 
+  it("admin media routes stay private, no-store", () => {
+    expect(cachePolicy("GET", "/v1/admin/products")).toBe(NO_STORE);
+    expect(cachePolicy("POST", "/v1/admin/products/B01/images")).toBe(NO_STORE);
+    expect(cachePolicy("PUT", "/v1/admin/products/B01/images/order")).toBe(NO_STORE);
+    expect(cachePolicy("PUT", "/v1/admin/variants/B01-1M/image")).toBe(NO_STORE);
+  });
+
   it("does not treat look-alike or nested paths as public", () => {
     expect(cachePolicy("GET", "/v1/catalog/extra")).toBe(NO_STORE);
     expect(cachePolicy("GET", "/v1/products/a/b")).toBe(NO_STORE);

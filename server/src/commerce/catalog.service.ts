@@ -8,6 +8,7 @@ import type { BrandId, Product, Promotion, ShippingQuote, Totals } from "../doma
 import { categories, products, promotions, shippingQuotes } from "../data/fixtures";
 import { toStorefrontQuotes } from "./kiriminaja";
 import { PrismaService } from "../prisma.service";
+import { toPublicImage } from "../media/public-image";
 
 export interface PriceRequest {
   brand?: BrandId;
@@ -125,7 +126,7 @@ export class CatalogService implements OnModuleInit {
 
   private async refresh(): Promise<void> {
     const generation = ++this.refreshesStarted;
-    const rows = await this.prisma.product.findMany({ include: { variants: true } });
+    const rows = await this.prisma.product.findMany({ include: { variants: true, images: { orderBy: { position: "asc" } } } });
     const promoRows = await this.prisma.promotion.findMany();
     if (generation < this.refreshApplied) return; // a later refresh already applied newer stock
     this.refreshApplied = generation;
@@ -224,7 +225,9 @@ function toProduct(row: {
     onHand: number;
     reserved: number;
     attrs: Prisma.JsonValue | null;
+    imageId?: string | null;
   }>;
+  images?: Array<{ id: string; productId: string; alt: string; hash: string; width: number; height: number; sizes: number[]; source: string }>;
 }): Product {
   return {
     id: row.id,
@@ -245,7 +248,9 @@ function toProduct(row: {
       onHand: v.onHand,
       reserved: v.reserved,
       attrs: (v.attrs ?? undefined) as Product["variants"][number]["attrs"],
+      ...(v.imageId ? { imageId: v.imageId } : {}),
     })),
+    images: (row.images ?? []).map(toPublicImage),
   };
 }
 

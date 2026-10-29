@@ -1,0 +1,41 @@
+[
+  {
+    "productId": "B07",
+    "position": 0,
+    "alt": "Kabel USB-C dengan ikatan kabel di atas latar polos",
+    "variantSkus": [],
+    "files": ["198db1a95712a714-480.webp", "198db1a95712a714-960.webp", "198db1a95712a714-1600.webp"],
+    "creator": "Fructibus",
+    "licence": "CC0 1.0",
+    "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:USB-C_cable_2017_A.jpg",
+    "retrievedAt": "2026-10-29",
+    "licenceCheck": "Diperiksa oleh Agent 02 (Claude) pada 2026-10-29; salinan: docs/07-delivery/photo-licences/2026-10-29-commons-usb-c-cable-2017-a.txt"
+  },
+  {
+    "productId": "B05",
+    "position": 0,
+    "alt": "Konektor Lightning dari dekat di atas latar putih",
+    "variantSkus": [],
+    "files": ["09722da14a4e0982-480.webp", "09722da14a4e0982-960.webp", "09722da14a4e0982-1442.webp"],
+    "creator": "Wikideas1",
+    "licence": "CC0 1.0",
+    "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple_Lightning_Connector.webp",
+    "retrievedAt": "2026-10-29",
+    "licenceCheck": "Diperiksa oleh Agent 02 (Claude) pada 2026-10-29; salinan: docs/07-delivery/photo-licences/2026-10-29-commons-apple-lightning-connector.txt"
+  },
+  {
+    "productId": "A02",
+    "position": 0,
+    "alt": "Toples krim putih di atas permukaan kayu dengan daun",
+    "variantSkus": [],
+    "files": ["ea1851c7eb63a4e8-480.webp", "ea1851c7eb63a4e8-960.webp", "ea1851c7eb63a4e8-1600.webp"],
+    "creator": "PNW Production",
+    "licence": "Pexels License",
+    "licenceUrl": "https://www.pexels.com/license/",
+    "sourceUrl": "https://www.pexels.com/photo/white-cosmetic-cream-container-on-wooden-surface-8490089/",
+    "retrievedAt": "2026-10-29",
+    "licenceCheck": "Diperiksa oleh Agent 02 (Claude) pada 2026-10-29; salinan: docs/07-delivery/photo-licences/2026-10-29-pexels-8490089.txt"
+  }
+]

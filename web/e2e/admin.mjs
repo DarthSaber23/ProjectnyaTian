@@ -75,9 +75,15 @@ for (const vp of [{ w: 1440, h: 900, n: "desktop" }, { w: 390, h: 844, n: "mobil
   await page.getByRole("link", { name: "ORD-261019-0007" }).click();
   await page.getByRole("button", { name: "Catat refund…" }).click();
   check(`${vp.n} ops cannot refund`, await page.getByText(/Refund hanya oleh Owner\/Admin/).isVisible());
+  check(`${vp.n} ops has no Produk menu`, (await page.getByRole("link", { name: "Produk", exact: true }).count()) === 0);
+  await page.goto(base.replace(/#.*$/, "") + "#/admin/products");
+  if (await page.getByRole("heading", { name: /Admin/ }).isVisible().catch(() => false)) await login(page, "Dewi O.");
+  if (!page.url().endsWith("#/admin/products")) await page.goto(base.replace(/#.*$/, "") + "#/admin/products");
+  check(`${vp.n} ops sees Tidak ada akses on products`, await page.getByRole("heading", { name: "Tidak ada akses" }).isVisible());
   await logout(page);
 
   await login(page, "Andi S.");
+  check(`${vp.n} owner sees Produk menu`, (await page.getByRole("link", { name: "Produk", exact: true }).count()) > 0);
   await page.getByRole("link", { name: "Pesanan", exact: true }).click();
   await page.getByRole("link", { name: "ORD-261019-0007" }).click();
   check(`${vp.n} owner sees full contact`, await page.getByText("budi@example.com").isVisible());

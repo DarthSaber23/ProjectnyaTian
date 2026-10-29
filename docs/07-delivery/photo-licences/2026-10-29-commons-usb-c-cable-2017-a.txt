@@ -1,0 +1,13 @@
+Licence record: sample photo for B07 (Kabel USB-A ke USB-C 1 m)
+Checked: 2026-10-29 (WIB) by Agent 02 (Claude), for the owner's approved Appendix A list
+File page: https://commons.wikimedia.org/wiki/File:USB-C_cable_2017_A.jpg (page id 64025084)
+Revision seen: 1178357094 (2026-03-09T13:38:09Z), read through the Commons API
+Creator: Fructibus
+Licence section of the wikitext at that revision:
+  =={{int:license-header}}==
+  {{self|cc-zero}}
+Licence: CC0 1.0 Universal Public Domain Dedication, https://creativecommons.org/publicdomain/zero/1.0/
+Templates searched for and not present: Trademarked, Personality rights, Non-free, FoP-, Copyvio, delete
+Original downloaded: https://upload.wikimedia.org/wikipedia/commons/c/c3/USB-C_cable_2017_A.jpg (3872 x 2904, 1,578,741 bytes)
+Eye check: white USB-A to USB-C cable on a wooden table, no brand, no person, no readable text (the plug shows the standard USB symbol only).
+Notes for the owner: the centred square crop clips both plug ends; the approved alt text says "latar polos" while the background is a wooden table.

@@ -9,13 +9,14 @@ export type Permission =
   | "orders.view" | "orders.fulfil" | "orders.refund"
   | "customers.contact.full" | "customers.contact.reveal"
   | "promotions.view" | "promotions.edit"
-  | "reports.export" | "audit.view" | "users.manage";
+  | "reports.export" | "audit.view" | "users.manage"
+  | "products.media";
 
 const MATRIX: Record<StaffRole, Permission[]> = {
-  owner: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "orders.refund", "customers.contact.full", "promotions.view", "promotions.edit", "reports.export", "audit.view", "users.manage"],
-  admin: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "orders.refund", "customers.contact.full", "promotions.view", "promotions.edit", "reports.export", "audit.view"],
+  owner: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "orders.refund", "customers.contact.full", "promotions.view", "promotions.edit", "reports.export", "audit.view", "users.manage", "products.media"],
+  admin: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "orders.refund", "customers.contact.full", "promotions.view", "promotions.edit", "reports.export", "audit.view", "products.media"],
   operations: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "customers.contact.reveal"],
-  marketing: ["dashboard.view", "analytics.view", "promotions.view", "promotions.edit"],
+  marketing: ["dashboard.view", "analytics.view", "promotions.view", "promotions.edit", "products.media"],
   cs: ["orders.view", "customers.contact.reveal"],
 };
 

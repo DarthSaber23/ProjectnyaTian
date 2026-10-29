@@ -10,7 +10,7 @@ Requirements and architecture for the modular Indonesian B2C e-commerce starter.
 | A3 Domain and data design | `04-data/` | Not started |
 | A4 APIs and integrations | `05-api/` | Not started |
 | A5 Non-functional and infrastructure design | `06-quality/` (performance, security, observability) | Not started |
-| A6 Test and implementation planning | `07-delivery/` | Not started |
+| A6 Test and implementation planning | `07-delivery/` ([LAUNCH_CHECKLIST.md](07-delivery/LAUNCH_CHECKLIST.md): checks before launch; [photo-licences/](07-delivery/photo-licences/): demo photo licence records) | Not started |
 | A7 Final review and Agent 03 handoff | `07-delivery/AGENT_03_HANDOFF.md` | Not started |
 
 ## A0 files

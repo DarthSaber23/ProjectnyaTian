@@ -1,5 +1,6 @@
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
+import { photoSizes } from "../domain/photos";
 import { search } from "../domain/search";
 import { categories } from "../mocks/fixtures";
 import { useBrand, useCatalog } from "../store/hooks";
@@ -45,7 +46,7 @@ export function SearchPage() {
               <div className="flex flex-wrap gap-2">{cats.map((c) => <Link key={c.id} to={`/kategori/${c.slug}`} className="chip-off">{c.name}</Link>)}</div>
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{res.products.map((p) => <ProductCard key={p.id} product={p} lengthM={res.lengthM ?? undefined} />)}</div>
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{res.products.map((p) => <ProductCard key={p.id} product={p} lengthM={res.lengthM ?? undefined} sizes={photoSizes("searchCard")} />)}</div>
           )}
         </>
       )}
