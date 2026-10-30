@@ -1,6 +1,7 @@
 import { HttpException, Injectable } from "@nestjs/common";
 import type { Prisma } from "@prisma/client";
 import { mergeCarts } from "../domain/cart";
+import { toWibIso } from "../domain/time";
 import type { BrandId, CartLine } from "../domain/types";
 import { PrismaService } from "../prisma.service";
 import { validateAddress, type AddressInput } from "./address";
@@ -125,7 +126,7 @@ export class AccountApi {
   async updateConsents(authorization: string | undefined, changes: Record<string, boolean>) {
     const customerId = await this.auth.customerId(authorization);
     const allowed = ["emailPromo", "waOrderInfo", "personalised"];
-    const at = new Date().toISOString();
+    const at = toWibIso(new Date());
     for (const [key, granted] of Object.entries(changes)) {
       if (!allowed.includes(key) || typeof granted !== "boolean") {
         throw new HttpException({ code: "VALIDATION", message: "Kunci persetujuan tidak dikenal." }, 422);

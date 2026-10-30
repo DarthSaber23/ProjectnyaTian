@@ -46,8 +46,19 @@ let base: string;
 beforeAll(async () => {
   app = await NestFactory.create(GuardOrderModule, { logger: false });
   app.useGlobalFilters(new ApiExceptionFilter());
-  await app.listen(0, "127.0.0.1");
-  base = await app.getUrl();
+  let lastErr: unknown;
+  for (let i = 0; i < 3; i++) {
+    try {
+      await app.listen(0, "127.0.0.1");
+      base = await app.getUrl();
+      lastErr = undefined;
+      break;
+    } catch (err) {
+      lastErr = err;
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+  }
+  if (lastErr) throw lastErr;
 });
 
 afterAll(async () => {
