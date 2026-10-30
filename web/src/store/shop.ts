@@ -84,7 +84,16 @@ export const useShop = create<ShopState>((set, get) => ({
   sessionChecked: false,
   ...initial,
 
-  setBrand: (brand) => set({ brand, ...initial, session: get().session }),
+  setBrand: (brand) => {
+    const { session, brand: prevBrand, cart: prevCart } = get();
+    if (session) {
+      void backend.saveCart(session.customerId, prevBrand, prevCart);
+      void backend.loadCustomer(session.customerId, brand).then(() => {
+        set({ cart: backend.savedCart(session.customerId, brand) });
+      });
+    }
+    set({ brand, ...initial, session });
+  },
 
   /** D7: merge the guest cart into the account cart on sign-in. */
   signedIn: (session) => {

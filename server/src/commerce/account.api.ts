@@ -8,6 +8,7 @@ import { validateAddress, type AddressInput } from "./address";
 import { AuthService } from "./auth.service";
 import { CatalogService } from "./catalog.service";
 import { decryptField, encryptField } from "./field-crypto";
+import { siteConfig } from "../seo/site-config";
 
 @Injectable()
 export class AccountApi {
@@ -19,7 +20,7 @@ export class AccountApi {
 
   async merge(authorization: string | undefined, body: { brand?: BrandId; account?: CartLine[]; guest?: CartLine[]; perLineCap?: number }) {
     await this.auth.customerId(authorization);
-    const brand: BrandId = body.brand === "halimun" ? "halimun" : "sambung";
+    const brand: BrandId = body.brand === "halimun" || body.brand === "sambung" ? body.brand : siteConfig().brand;
     return mergeCarts(this.catalog.snapshot(brand), asLines(body.account), asLines(body.guest), 99);
   }
 
@@ -95,14 +96,15 @@ export class AccountApi {
 
   async cart(authorization: string | undefined, brand?: string) {
     const customerId = await this.auth.customerId(authorization);
-    const id = `${customerId}:${brand === "halimun" ? "halimun" : "sambung"}`;
+    const resolvedBrand = brand === "halimun" || brand === "sambung" ? brand : siteConfig().brand;
+    const id = `${customerId}:${resolvedBrand}`;
     const row = await this.prisma.savedCart.findUnique({ where: { id } });
     return { lines: (row?.lines as { sku: string; qty: number }[]) ?? [] };
   }
 
   async saveCart(authorization: string | undefined, body: { brand?: "halimun" | "sambung"; lines?: { sku: string; qty: number }[] }) {
     const customerId = await this.auth.customerId(authorization);
-    const brand = body.brand === "halimun" ? "halimun" : "sambung";
+    const brand = body.brand === "halimun" || body.brand === "sambung" ? body.brand : siteConfig().brand;
     const lines = asLines(body.lines) as unknown as Prisma.InputJsonValue;
     const id = `${customerId}:${brand}`;
     await this.prisma.savedCart.upsert({

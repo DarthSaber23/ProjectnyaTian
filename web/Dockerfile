@@ -5,6 +5,8 @@ RUN npm ci
 COPY . .
 ENV VITE_DEMO_TOOLS=false
 ENV VITE_API_URL=
+ARG VITE_BRAND=sambung
+ENV VITE_BRAND=${VITE_BRAND}
 RUN npm run build:client
 
 FROM nginx:1.27-alpine

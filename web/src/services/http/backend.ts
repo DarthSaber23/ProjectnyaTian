@@ -1,6 +1,7 @@
 import { buildCatalog, type Catalog } from "../../domain/catalog";
 import { can } from "../../domain/rbac";
 import { toWibIso } from "../../domain/time";
+import { DEFAULT_BRAND } from "../../config/brands";
 import type { BrandId, CartLine, Order, PaymentMethod, Promotion, StaffRole } from "../../domain/types";
 import type { CreateOrderResult, Lang, PublicArticle, PublicArticleCard, Session, SignInResult } from "../contracts";
 import { ApiError, api } from "./client";
@@ -120,16 +121,16 @@ class HttpBackend {
     return { ok: false, reason: "invalid", remaining: 0 };
   }
 
-  private async loadCustomer(customerId: string): Promise<void> {
+  async loadCustomer(customerId: string, brand: BrandId = DEFAULT_BRAND): Promise<void> {
     const [orders, wish, cart, consents] = await Promise.all([
       api<Order[]>("/v1/me/orders"),
       api<{ productId: string }[]>("/v1/me/wishlist"),
-      api<{ lines: CartLine[] }>("/v1/me/cart?brand=sambung"),
+      api<{ lines: CartLine[] }>(`/v1/me/cart?brand=${brand}`),
       api<Partial<typeof this.consentCache>>("/v1/me/consents"),
     ]);
     this.orders = orders;
-    this.wishIds.set(`${customerId}:sambung`, wish.map((item) => item.productId));
-    this.carts.set(`${customerId}:sambung`, cart.lines);
+    this.wishIds.set(`${customerId}:${brand}`, wish.map((item) => item.productId));
+    this.carts.set(`${customerId}:${brand}`, cart.lines);
     this.consentCache = { ...this.consentCache, ...consents };
     this.bump();
   }

@@ -9,6 +9,7 @@ import { shippingPrice, type ShippingPriceRequest } from "./kiriminaja";
 import { notificationFor, midtransServerKey, type MidtransNotification } from "./midtrans";
 import { OrderService, type CreateOrderBody } from "./order.service";
 import { clearedCookie, isHttps, sessionCookie, withoutBrowserToken, type SessionKind } from "./session-cookie";
+import { siteConfig } from "../seo/site-config";
 
 type HttpRequest = { protocol?: string; headers: Record<string, string | string[] | undefined> };
 type HttpResponse = { setHeader(name: string, value: string): void };
@@ -318,5 +319,6 @@ export class CommerceController {
 }
 
 function asBrand(value: string | undefined): BrandId {
-  return value === "halimun" ? "halimun" : "sambung";
+  if (value === "halimun" || value === "sambung") return value;
+  return siteConfig().brand;
 }

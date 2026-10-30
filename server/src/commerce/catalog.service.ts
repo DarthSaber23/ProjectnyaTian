@@ -9,6 +9,7 @@ import { categories, products, promotions, shippingQuotes } from "../data/fixtur
 import { toStorefrontQuotes } from "./kiriminaja";
 import { PrismaService } from "../prisma.service";
 import { toPublicImage } from "../media/public-image";
+import { siteConfig } from "../seo/site-config";
 
 export interface PriceRequest {
   brand?: BrandId;
@@ -90,7 +91,7 @@ export class CatalogService implements OnModuleInit {
   }
 
   price(body: PriceRequest): Totals & { totalDisplay: string } {
-    const brand: BrandId = body.brand === "halimun" ? "halimun" : "sambung";
+    const brand: BrandId = body.brand === "halimun" || body.brand === "sambung" ? body.brand : siteConfig().brand;
     const lines = body.lines ?? [];
     if (lines.length === 0) {
       throw new RangeError("Keranjang kosong.");
