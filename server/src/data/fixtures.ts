@@ -203,6 +203,7 @@ export const staff: Staff[] = [
   { id: "U-02", name: "Dewi O.", role: "operations", email: "dewi@toko.example" },
   { id: "U-03", name: "Rina M.", role: "marketing", email: "rina.m@toko.example" },
   { id: "U-04", name: "Akun CS demo", role: "cs", email: "cs@toko.example" },
+  { id: "U-05", name: "Sinta P.", role: "seo", email: "sinta@toko.example" },
 ];
 
 export interface CustomerRecord { id: string; name: string; email: string; phone: string; address: string }

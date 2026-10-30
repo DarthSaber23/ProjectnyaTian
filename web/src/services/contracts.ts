@@ -99,3 +99,72 @@ export interface AdminProduct {
   variants: { sku: string; label: string; imageId: string | null }[];
   images: AdminImage[];
 }
+
+/* ---- Articles and SEO (item 2), mirroring server/src/content/content.types.ts ---- */
+
+export type Lang = "id" | "en";
+export type ArticleStatus = "draft" | "published" | "unpublished";
+
+export interface ArticleTextInput {
+  slug: string;
+  title: string;
+  seoTitle?: string | null;
+  metaDescription: string;
+  summary: string;
+  body: string;
+  noindex: boolean;
+  canonicalUrl?: string | null;
+}
+
+export interface ArticleView {
+  id: string;
+  store: import("../domain/types").BrandId;
+  status: ArticleStatus;
+  publishAt: string | null;
+  publishedAt: string | null;
+  updatedAt: string;
+  version: number;
+  authorId: string;
+  authorName: string;
+  cover: (import("../domain/types").ProductImage & { alt: string }) | null;
+  tags: string[];
+  sample: boolean;
+  texts: Partial<Record<Lang, ArticleTextInput>>;
+  productIds: string[];
+  live: boolean;
+}
+
+export interface PublicArticleCard {
+  id: string;
+  lang: Lang;
+  slug: string;
+  title: string;
+  summary: string;
+  cover: import("../domain/types").ProductImage | null;
+  readingMinutes: number;
+  publishedAt: string;
+}
+
+export interface PublicArticle extends PublicArticleCard {
+  seoTitle: string;
+  metaDescription: string;
+  html: string;
+  plain: string;
+  noindex: boolean;
+  canonicalUrl: string | null;
+  updatedAt: string;
+  authorName: string;
+  otherLang: { lang: Lang; slug: string } | null;
+  products: import("../domain/types").Product[];
+}
+
+export type SeoKind = "product" | "category";
+export interface SeoRow {
+  key: string;
+  name: string;
+  /** The shop page, e.g. "/produk/kabel-usb-c". */
+  path: string;
+  auto: { title: string; description: string };
+  override: { seoTitle: string | null; metaDescription: string | null } | null;
+}
+

@@ -2,7 +2,7 @@
 
 **Purpose:** Track major architectural changes, module dependencies, and milestones for ProjectnyaTian (Agent 02 backend).
 
-**Updated:** 2026-10-29
+**Updated:** 2026-10-30
 
 ---
 
@@ -76,6 +76,20 @@ Shipping Flow
 ---
 
 ## Change Log
+
+### 2026-10-30 · Blog articles and the SEO role (item 2)
+**What:** Articles per store (`/blog/{slug}`, optional English at `/en/blog/{slug}`) linked both ways with products, written and published directly by the new `seo` role and the Owner. New modules `server/src/content` (ArticleService with version checks, scheduled publishing, slug redirects, Markdown subset shared with web via test vectors, SEO overrides, public reads, seed CLIs) and `server/src/seo` (server-filled `index.html` for crawlers and first load, sitemap, robots). Storefront blog list, article page, "Artikel terkait" and "Dari blog"; admin Blog editor and SEO screen.
+**Why:** Owner item 2 (29 Oct). Spec `docs/superpowers/specs/2026-10-29-seo-articles-design.md`, plan `docs/superpowers/plans/2026-10-29-seo-articles.md`.
+**Changes:**
+- Schema: `Article`, `ArticleText`, `ArticleProduct`, `SlugRedirect`, `SeoOverride` (additive)
+- RBAC: role `seo` with `articles.manage`, `seo.edit`, `products.media`; Owner gains both new permissions (server and web)
+- nginx: renderer locations with fallback to `index.html`; `/media/articles/`; `sitemap.xml`, `robots.txt`
+- `server/.env`: `PUBLIC_BASE_URL`, `SITE_BRAND`, optional `GOOGLE_SITE_VERIFICATION`
+- `npm run content:seed` / `content:remove-samples` with `server/seed/content/articles.json`
+
+**Open:** dev deploy and checks (Task 13).
+
+---
 
 ### 2026-10-29 · Product photos in MinIO (item 1)
 **What:** Real product photos. New module `server/src/media` (upload checks, sharp WebP copies at 480/960/1600 on the shorter side, product lock before every photo read or write, two-phase delete, audit with `actorId`, admin routes behind a guard that runs before Multer, seed and remove CLIs) and `server/seed/media` (three credit-free demo photos with licence records). Storefront `ProductPhoto`/`ProductGallery` replace the drawing inside the same square frame; new admin Produk screens.

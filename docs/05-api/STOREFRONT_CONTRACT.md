@@ -32,6 +32,23 @@ Dummy data loaded on startup for customer `C-0001` (`rina@example.com` / `demo-r
 | POST | `/v1/auth/forgot-password` |
 | POST | `/v1/auth/sign-out` |
 | GET | `/v1/auth/google/start` returns `501 NOT_CONFIGURED` until `GOOGLE_CLIENT_ID` is set |
+| GET | `/v1/articles?lang=id\|en&page=` |
+| GET | `/v1/articles/{slug}?lang=id\|en` |
+| GET | `/v1/products/{slug}/articles` |
+
+### Blog articles
+
+Only live articles of the deployment's store (`SITE_BRAND`) are public. A live article is published with a publish time at or before now (WIB).
+
+- `GET /v1/articles` answers `{ "page", "pages", "items": [card] }`, newest first, 12 per page. A card is `{ id, lang, slug, title, summary, cover, readingMinutes, publishedAt }`; `cover` has the product photo shape (`src`, `srcset`, `width`, `height`, `alt`) or is `null`.
+- `GET /v1/articles/{slug}` answers the card fields plus `seoTitle`, `metaDescription`, `html` (the server's Markdown renderer output; the only HTML the storefront inserts), `plain`, `noindex`, `canonicalUrl`, `updatedAt`, `authorName`, `otherLang` (`{ lang, slug }` or `null`) and `products` (catalogue products in the article's order). An old slug answers `301` with `Location` set to the current one; an unknown or not-live slug answers `404 NOT_FOUND` "Artikel tidak ditemukan.".
+- `GET /v1/products/{slug}/articles` answers up to 3 live Bahasa cards that link to the product, newest first, or `[]`.
+- Article covers and body images are served by nginx from `/media/articles/{articleId}/{hash16}-{target}.webp` with the same rules as product photos.
+
+### Server-rendered pages (crawlers and first load)
+
+nginx sends `/blog`, `/blog/{slug}`, `/en/blog`, `/en/blog/{slug}`, `/produk/{slug}` and `/kategori/{slug}` to `GET /render?path=…` on the API, which fills `index.html` with the title, description, canonical, Open Graph, `hreflang` (only when both languages exist), JSON-LD and the page text in `#ssr` (hidden once JavaScript runs). `GET /sitemap.xml` and `GET /robots.txt` come from the same service. When the API is down, nginx falls back to the plain `index.html`. These three paths have no `/v1` prefix and are not part of the JSON API.
+
 
 ### Product photos in catalogue responses
 
@@ -87,7 +104,7 @@ Until `MIDTRANS_SERVER_KEY` and `KIRIMINAJA_API_KEY` are set, the simulator uses
 | GET | `/v1/admin/promotions/{code}` |
 | GET | `/v1/admin/audit-log` |
 
-### Admin media (`products.media`: Owner, Admin, Marketing)
+### Admin media (`products.media`: Owner, Admin, Marketing, SEO)
 
 Staff cookie required. A guard checks the session (401) and the permission (403 `FORBIDDEN`) before any upload body is read. Every response is `private, no-store`. Each change writes an audit entry (`PRODUCT_IMAGE_ADDED`, `PRODUCT_IMAGE_REMOVED`, `PRODUCT_IMAGE_REORDERED`, `PRODUCT_IMAGE_ALT_CHANGED`, `VARIANT_IMAGE_LINKED`, `PRODUCT_IMAGE_FILE_DELETE_FAILED`) with `actorId` in `after`.
 
@@ -116,3 +133,26 @@ Upload limits: one JPEG, PNG or WebP file up to 10 MB (type read from the bytes)
 | 503 | `STORAGE_UNAVAILABLE` | "Penyimpanan foto sedang tidak tersedia. Coba lagi sebentar." (with `Retry-After: 10` when image work is busy) |
 
 Live Midtrans, Duitku, and courier calls stay refused until their server keys exist. Google sign-in stays `NOT_CONFIGURED`. The UI can be built against this list.
+
+### Admin articles and SEO (`articles.manage`, `seo.edit`: Owner and SEO)
+
+Staff cookie, guard before any body is read, `private, no-store`, an audit entry for every change (`ARTICLE_CREATED`, `ARTICLE_UPDATED`, `ARTICLE_PUBLISHED`, `ARTICLE_SCHEDULED`, `ARTICLE_UNPUBLISHED`, `ARTICLE_DELETED`, `ARTICLE_SLUG_CHANGED`, `ARTICLE_COVER_CHANGED`, `SEO_OVERRIDE_CHANGED`) with `actorId` in `after`.
+
+| Method | Path | Body | Answer |
+|---|---|---|---|
+| GET | `/v1/admin/articles?store=` | | Articles of the store, newest change first |
+| POST | `/v1/admin/articles` | `{ store, text }` (Bahasa fields) | The new draft |
+| GET | `/v1/admin/articles/{id}` | | `{ id, store, status, publishAt, publishedAt, updatedAt, version, authorId, authorName, cover, tags, sample, texts: { id, en? }, productIds, live }` |
+| PUT | `/v1/admin/articles/{id}` | `{ version, texts: { id, en?: text or null }, tags, productIds }` | The article; `en: null` removes the English version |
+| POST | `/v1/admin/articles/{id}/publish` | `{ version, publishAt: ISO or null }` | The article |
+| POST | `/v1/admin/articles/{id}/unpublish` | `{ version }` | The article |
+| DELETE | `/v1/admin/articles/{id}` | | `{ "ok": true }`; drafts and unpublished articles only |
+| POST | `/v1/admin/articles/{id}/cover` | multipart `file`, `alt`, `rightsConfirmed` | The article |
+| DELETE | `/v1/admin/articles/{id}/cover` | | The article |
+| POST | `/v1/admin/articles/{id}/images` | multipart `file`, `rightsConfirmed` | `{ src, width, height }` for `![alt](src)` |
+| GET | `/v1/admin/seo?store=&kind=product\|category` | | `[{ key, name, path, auto: { title, description }, override }]` |
+| PUT | `/v1/admin/seo/{kind}/{key}` | `{ store, seoTitle, metaDescription }` (null = automatic) | `200`, empty |
+| DELETE | `/v1/admin/seo/{kind}/{key}?store=` | | `200`, empty; back to automatic |
+
+Upload rules and messages are those of product photos. Article errors: `409 CONFLICT` "Slug sudah dipakai artikel lain." / "Artikel diubah orang lain. Muat ulang halaman." / "Batalkan terbit dulu sebelum menghapus."; `422 VALIDATION` for slugs, lengths, missing fields before publish, an incomplete English version, a schedule time not in the future, products of another store or more than 6, a canonical that is not `https://`; `404 NOT_FOUND` "Artikel tidak ditemukan.".
+

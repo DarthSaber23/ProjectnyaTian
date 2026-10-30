@@ -10,21 +10,23 @@ export type Permission =
   | "customers.contact.full" | "customers.contact.reveal"
   | "promotions.view" | "promotions.edit"
   | "reports.export" | "audit.view" | "users.manage"
-  | "products.media";
+  | "products.media"
+  | "articles.manage" | "seo.edit";
 
 const MATRIX: Record<StaffRole, Permission[]> = {
-  owner: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "orders.refund", "customers.contact.full", "promotions.view", "promotions.edit", "reports.export", "audit.view", "users.manage", "products.media"],
+  owner: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "orders.refund", "customers.contact.full", "promotions.view", "promotions.edit", "reports.export", "audit.view", "users.manage", "products.media", "articles.manage", "seo.edit"],
   admin: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "orders.refund", "customers.contact.full", "promotions.view", "promotions.edit", "reports.export", "audit.view", "products.media"],
   operations: ["dashboard.view", "analytics.view", "orders.view", "orders.fulfil", "customers.contact.reveal"],
   marketing: ["dashboard.view", "analytics.view", "promotions.view", "promotions.edit", "products.media"],
   cs: ["orders.view", "customers.contact.reveal"],
+  seo: ["articles.manage", "seo.edit", "products.media"],
 };
 
 export function can(role: StaffRole | undefined, p: Permission): boolean {
   return !!role && MATRIX[role].includes(p);
 }
 
-export const ROLE_LABEL: Record<StaffRole, string> = { owner: "Owner", admin: "Admin", operations: "Operasional", marketing: "Marketing", cs: "CS" };
+export const ROLE_LABEL: Record<StaffRole, string> = { owner: "Owner", admin: "Admin", operations: "Operasional", marketing: "Marketing", cs: "CS", seo: "SEO" };
 
 /** C2: contact reveal requires one of these reasons and lasts 60 seconds. */
 export const REVEAL_REASONS = ["Konfirmasi pengiriman pesanan", "Tindak lanjut tiket bantuan", "Verifikasi refund"] as const;

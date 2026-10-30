@@ -1,0 +1,126 @@
+[
+  {
+    "store": "sambung",
+    "tags": [
+      "kabel",
+      "panduan"
+    ],
+    "productIds": [
+      "B01",
+      "B03",
+      "B07"
+    ],
+    "cover": {
+      "productId": "B07",
+      "alt": "Kabel USB-C terikat rapi di atas latar polos"
+    },
+    "texts": {
+      "id": {
+        "slug": "cara-memilih-kabel-usb-c",
+        "title": "Cara memilih kabel USB-C untuk laptop dan ponsel",
+        "seoTitle": "Cara memilih kabel USB-C untuk laptop dan ponsel",
+        "metaDescription": "Daya, kecepatan data, dan panjang: tiga hal yang menentukan kabel USB-C mana yang cocok untuk laptop, ponsel, dan charger Anda.",
+        "summary": "Bentuk colokannya sama, kemampuannya bisa jauh berbeda. Tiga pertanyaan sebelum membeli kabel USB-C.",
+        "body": "Semua kabel USB-C terlihat mirip, tetapi isinya tidak sama. Ada kabel yang sanggup mengisi laptop, ada yang hanya cukup untuk ponsel, dan ada yang bisa membawa gambar ke monitor. Tiga pertanyaan berikut membantu memilih tanpa menebak.\n\n## 1. Berapa daya yang dibutuhkan perangkat?\n\nLihat label pada charger bawaan laptop Anda. Laptop tipis umumnya memakai charger 65W, sedangkan ponsel jauh lebih kecil. Kabel harus sanggup membawa daya sebesar charger yang dipakai, kalau tidak pengisian akan melambat.\n\n- Untuk laptop: pilih kabel yang mencantumkan daya maksimal, misalnya **100W** pada Kabel USB-C ke USB-C 100W Braided.\n- Untuk ponsel dari port USB-A: kabel USB-A ke USB-C dengan arus **3A** sudah cukup untuk pemakaian harian.\n- Charger dengan beberapa port, seperti Charger GaN 65W 3 Port, membagi dayanya ke semua perangkat yang tersambung. Isi laptop sendirian bila ingin pengisian tercepat.\n\n## 2. Perlukah kabel untuk data dan layar?\n\nKecepatan data tertulis pada spesifikasi. Kabel dengan USB 2.0 (480 Mbps) cukup untuk mengisi daya dan menyalin foto sesekali, tetapi tidak untuk menyambung monitor. Bila ingin menampilkan layar laptop ke monitor, cari kabel yang mencantumkan output video, atau pakai adaptor dan hub.\n\n## 3. Berapa panjang yang pas?\n\nUkur jarak dari stopkontak ke tempat Anda biasa bekerja, lalu tambahkan sedikit kelonggaran. Kabel 1 m rapi untuk meja, 2 m nyaman untuk sofa atau tempat tidur, dan 3 m membantu bila stopkontak jauh. Kabel yang terlalu panjang cenderung kusut dan mudah tersangkut.\n\n## Merawat kabel agar awet\n\n- Cabut dengan memegang kepala colokan, bukan kabelnya.\n- Gulung longgar; hindari tekukan tajam di dekat colokan.\n- Simpan terpisah dari benda tajam di dalam tas.\n\nMasih ragu? Bandingkan spesifikasi beberapa kabel di halaman produk, atau tanyakan kepada kami lewat chat sebelum membeli.\n",
+        "noindex": false,
+        "canonicalUrl": null
+      },
+      "en": {
+        "slug": "how-to-choose-a-usb-c-cable",
+        "title": "How to choose a USB-C cable for your laptop and phone",
+        "seoTitle": null,
+        "metaDescription": "Power, data speed and length: the three things that decide which USB-C cable suits your laptop, phone and charger.",
+        "summary": "The plug looks the same, the abilities can differ a lot. Three questions to answer before buying a USB-C cable.",
+        "body": "Every USB-C cable looks alike, but they are not built the same. Some can charge a laptop, some are only good for a phone, and some can carry a picture to a monitor. These three questions help you choose without guessing.\n\n## 1. How much power does the device need?\n\nCheck the label on your laptop's own charger. Thin laptops usually ship with a 65W charger, while phones need far less. The cable has to carry as much power as the charger delivers, or charging slows down.\n\n- For a laptop: choose a cable that states its maximum power, such as **100W** on the USB-C to USB-C 100W Braided cable.\n- For a phone from a USB-A port: a USB-A to USB-C cable rated **3A** is enough for everyday use.\n- A charger with several ports, such as the GaN 65W 3 Port charger, shares its power between everything plugged in. Charge the laptop on its own when you want the fastest charge.\n\n## 2. Do you need data and video?\n\nData speed is listed in the specifications. A USB 2.0 cable (480 Mbps) is fine for charging and the occasional photo transfer, but it will not drive a monitor. To show your laptop screen on a monitor, look for a cable that lists video output, or use an adapter or hub.\n\n## 3. What length fits?\n\nMeasure from the socket to where you usually work and add a little slack. A 1 m cable keeps a desk tidy, 2 m is comfortable on a sofa or bed, and 3 m helps when the socket is far away. Cables that are too long tangle and snag.\n\n## Making a cable last\n\n- Unplug by holding the plug head, not the cord.\n- Coil it loosely and avoid sharp bends near the plug.\n- Keep it away from sharp objects in your bag.\n\nStill unsure? Compare the specifications on the product pages, or ask us in chat before you buy.\n",
+        "noindex": false,
+        "canonicalUrl": null
+      }
+    }
+  },
+  {
+    "store": "sambung",
+    "tags": [
+      "monitor",
+      "panduan"
+    ],
+    "productIds": [
+      "B02",
+      "B04",
+      "B06"
+    ],
+    "cover": null,
+    "texts": {
+      "id": {
+        "slug": "menyambung-laptop-ke-monitor",
+        "title": "Menyambung laptop ke monitor: HDMI, DisplayPort, atau hub USB-C",
+        "seoTitle": null,
+        "metaDescription": "Panduan singkat memilih kabel HDMI, DisplayPort, adaptor, atau hub USB-C untuk menyambung laptop ke monitor dan TV.",
+        "summary": "Port di laptop menentukan pilihan Anda. Begini cara mencocokkan laptop, kabel, dan monitor tanpa salah beli.",
+        "body": "Monitor tambahan membuat kerja lebih lega, asalkan sambungannya cocok. Mulailah dari port yang ada di laptop, lalu cocokkan dengan port di monitor.\n\n## Bila laptop punya port HDMI\n\nCara paling sederhana adalah kabel HDMI langsung ke monitor atau TV. Kabel HDMI 2.1 8K mendukung 8K60 dan 4K120, jadi tetap layak dipakai ketika Anda mengganti monitor atau konsol kelak. Pastikan monitor dan laptop juga mendukung resolusi yang ingin dipakai; kabel tidak bisa menaikkan kemampuan perangkat.\n\n## Bila laptop hanya punya USB-C\n\nBanyak laptop tipis hanya menyediakan USB-C. Ada dua pilihan:\n\n1. **Adaptor USB-C ke HDMI** untuk satu monitor. Adaptor 4K60 cukup untuk monitor 4K pada 60Hz.\n2. **Hub USB-C 7-in-1** bila Anda juga butuh port lain. Hub menambah HDMI, USB-A, slot kartu SD dan microSD, serta port PD untuk mengisi daya laptop lewat hub.\n\nPeriksa dulu apakah port USB-C laptop Anda mendukung output video. Biasanya tertulis di buku panduan atau ditandai simbol layar di samping port.\n\n## Bila monitor punya DisplayPort\n\nBeberapa monitor kerja dan gaming lebih lengkap lewat DisplayPort. Kabel DisplayPort 1.4 mendukung 8K60, cocok bila kartu grafis atau laptop Anda punya port DisplayPort.\n\n## Sebelum membeli\n\n- Catat port di laptop dan di monitor.\n- Tentukan resolusi dan refresh rate yang Anda pakai sehari-hari.\n- Ukur jarak meja agar panjang kabel pas.\n\nDengan tiga catatan itu, pilihan kabel atau adaptor biasanya tinggal satu.\n",
+        "noindex": false,
+        "canonicalUrl": null
+      }
+    }
+  },
+  {
+    "store": "halimun",
+    "tags": [
+      "rutinitas"
+    ],
+    "productIds": [
+      "A01",
+      "A02",
+      "A04"
+    ],
+    "cover": {
+      "productId": "A02",
+      "alt": "Toples krim putih di atas permukaan kayu dengan daun"
+    },
+    "texts": {
+      "id": {
+        "slug": "rutinitas-pagi-sederhana",
+        "title": "Rutinitas pagi sederhana: bersihkan, lembapkan, lindungi",
+        "seoTitle": null,
+        "metaDescription": "Tiga langkah perawatan kulit pagi yang mudah diikuti: pembersih lembut, pelembap, dan tabir surya, beserta urutan dan takarannya.",
+        "summary": "Rutinitas pagi tidak perlu panjang. Tiga langkah yang konsisten lebih mudah dijalani daripada sepuluh langkah yang sering terlewat.",
+        "body": "Rutinitas pagi yang baik adalah yang benar-benar Anda jalani setiap hari. Tiga langkah berikut cukup untuk memulai.\n\n## 1. Bersihkan dengan lembut\n\nBasahi wajah dengan air suam-suam kuku, lalu pijat pembersih secukupnya selama sekitar 30 detik. Pembersih ber-pH rendah seperti Gentle Low-pH Cleanser terasa lembut untuk pemakaian pagi dan malam. Bilas sampai bersih, lalu tepuk-tepuk wajah dengan handuk, jangan digosok.\n\n## 2. Lembapkan selagi kulit sedikit lembap\n\nPelembap lebih mudah meratakan diri pada kulit yang masih sedikit lembap. Ambil seukuran biji jagung, ratakan ke wajah dan leher. Barrier Repair Moisturizer (50 ml) dibuat untuk membantu kulit terasa lembap dan nyaman sepanjang hari.\n\n## 3. Lindungi dari matahari\n\nTabir surya adalah langkah terakhir di pagi hari. Gunakan sekitar dua ruas jari untuk wajah dan leher, lalu ulangi setiap dua jam bila Anda berada di luar ruangan atau berkeringat. Daily Sunscreen Gel bertekstur gel ringan sehingga nyaman dipakai di bawah riasan.\n\n## Tips agar rutinitas bertahan\n\n- Simpan ketiga produk di satu tempat yang terlihat setiap pagi.\n- Coba produk baru di area kecil, misalnya di belakang telinga, selama beberapa hari sebelum dipakai di seluruh wajah.\n- Bila kulit terasa perih, gatal, atau kemerahan, hentikan pemakaian dan konsultasikan dengan dokter kulit.\n\nIngin praktis? Bundel Rutinitas Pagi berisi ketiga langkah ini dalam satu paket.\n",
+        "noindex": false,
+        "canonicalUrl": null
+      },
+      "en": {
+        "slug": "a-simple-morning-routine",
+        "title": "A simple morning routine: cleanse, moisturise, protect",
+        "seoTitle": null,
+        "metaDescription": "Three easy morning skin care steps: a gentle cleanser, a moisturiser and sunscreen, with the order and how much to use.",
+        "summary": "A morning routine does not need to be long. Three steps you keep up are easier than ten steps you often skip.",
+        "body": "A good morning routine is one you actually follow every day. These three steps are enough to start.\n\n## 1. Cleanse gently\n\nWet your face with lukewarm water, then massage a small amount of cleanser for about 30 seconds. A low-pH cleanser such as the Gentle Low-pH Cleanser feels mild enough for morning and evening. Rinse well, then pat your face dry with a towel rather than rubbing.\n\n## 2. Moisturise while the skin is still slightly damp\n\nMoisturiser spreads more easily on skin that is still a little damp. Take a pea-sized amount and smooth it over your face and neck. The Barrier Repair Moisturizer (50 ml) is made to help skin feel moisturised and comfortable through the day.\n\n## 3. Protect from the sun\n\nSunscreen is the last morning step. Use about two finger-lengths for your face and neck, and reapply every two hours when you are outdoors or sweating. The Daily Sunscreen Gel has a light gel texture that sits comfortably under make-up.\n\n## Tips to keep the routine going\n\n- Keep all three products in one place you see every morning.\n- Try a new product on a small area, such as behind the ear, for a few days before using it on your whole face.\n- If your skin stings, itches or turns red, stop using the product and see a dermatologist.\n\nWant it simple? The Morning Routine Bundle has all three steps in one set.\n",
+        "noindex": false,
+        "canonicalUrl": null
+      }
+    }
+  },
+  {
+    "store": "halimun",
+    "tags": [
+      "perjalanan"
+    ],
+    "productIds": [
+      "A05",
+      "A04",
+      "A02"
+    ],
+    "cover": null,
+    "texts": {
+      "id": {
+        "slug": "merawat-kulit-saat-bepergian",
+        "title": "Merawat kulit saat bepergian tanpa membawa banyak barang",
+        "seoTitle": null,
+        "metaDescription": "Cara menjaga rutinitas perawatan kulit tetap jalan saat bepergian: ukuran perjalanan, cuaca, dan kebiasaan sederhana di jalan.",
+        "summary": "Perjalanan sering membuat rutinitas berantakan. Bawa sedikit barang, pertahankan tiga langkah dasar, dan sesuaikan dengan cuaca tujuan.",
+        "body": "Udara kabin yang kering, jadwal yang padat, dan cuaca yang berbeda bisa membuat kulit terasa tidak nyaman selama perjalanan. Kuncinya adalah mempertahankan langkah dasar dengan barang sesedikit mungkin.\n\n## Pilih ukuran perjalanan\n\nBotol kecil menghemat tempat dan lebih mudah dibawa di kabin. Travel Cleanser berukuran 30 ml cukup untuk perjalanan beberapa hari. Untuk pelembap dan tabir surya, pindahkan secukupnya ke wadah kecil yang bersih bila kemasan aslinya terlalu besar.\n\n## Sesuaikan dengan cuaca tujuan\n\n- **Tujuan panas dan lembap:** pakai lapisan tipis dan pilih tabir surya bertekstur ringan seperti Daily Sunscreen Gel.\n- **Tujuan sejuk atau ber-AC sepanjang hari:** kulit cenderung terasa kering; oleskan pelembap seperti Barrier Repair Moisturizer pagi dan malam.\n\n## Kebiasaan kecil di jalan\n\n- Minum air yang cukup selama penerbangan.\n- Bersihkan wajah sebelum tidur, sesingkat apa pun malamnya.\n- Ulangi tabir surya ketika lama berada di luar ruangan.\n- Simpan produk di tas yang terlindung dari panas matahari langsung.\n\n## Setelah pulang\n\nKembali ke rutinitas biasa secara bertahap. Bila kulit terasa iritasi selama atau setelah perjalanan, beri jeda dari produk baru dan konsultasikan dengan dokter kulit bila keluhan berlanjut.\n",
+        "noindex": false,
+        "canonicalUrl": null
+      }
+    }
+  }
+]

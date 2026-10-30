@@ -15,6 +15,8 @@ const NAV: { to: string; label: string; perm: Permission }[] = [
   { to: "/admin/orders", label: "Pesanan", perm: "orders.view" },
   { to: "/admin/promotions", label: "Promosi", perm: "promotions.view" },
   { to: "/admin/products", label: "Produk", perm: "products.media" },
+  { to: "/admin/blog", label: "Blog", perm: "articles.manage" },
+  { to: "/admin/seo", label: "SEO", perm: "seo.edit" },
   { to: "/admin/audit-log", label: "Log audit", perm: "audit.view" },
 ];
 
@@ -32,13 +34,13 @@ export function AdminLogin() {
   const [error, setError] = useState<string>();
   useEffect(() => applyBrand(BRANDS.sambung), []);
   useEffect(() => { void check(); }, [check]); // a still-valid staff cookie skips this form
-  if (user) return <Navigate to={can(user.role, "dashboard.view") ? "/admin" : "/admin/orders"} replace />;
+  if (user) return <Navigate to={can(user.role, "dashboard.view") ? "/admin" : can(user.role, "articles.manage") ? "/admin/blog" : "/admin/orders"} replace />;
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setError(undefined);
     void admin.signIn(email, password, code).then((person) => {
       signIn(person);
-      navigate(can(person.role, "dashboard.view") ? "/admin" : "/admin/orders");
+      navigate(can(person.role, "dashboard.view") ? "/admin" : can(person.role, "articles.manage") ? "/admin/blog" : "/admin/orders");
     }).catch((err: unknown) => setError(err instanceof Error ? err.message : "Gagal masuk"));
   };
   return (

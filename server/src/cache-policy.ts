@@ -4,7 +4,7 @@
  * Catalogue stock may then lag about a minute on screen; checkout re-checks it under lock.
  */
 export const NO_STORE = "private, no-store";
-const CATALOGUE = /^\/v1\/(catalog|promotions\/active|products\/[^/]+)$/;
+const CATALOGUE = /^\/v1\/(catalog|promotions\/active|products\/[^/]+|products\/[^/]+\/articles|articles|articles\/[^/]+)$/;
 const CONTENT = /^\/v1\/pages(\/[^/]+)?$/;
 
 export function cachePolicy(method: string, path: string): string {

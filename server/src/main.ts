@@ -4,11 +4,14 @@ import { AppModule } from "./app.module";
 import { ApiExceptionFilter } from "./api-exception.filter";
 import { SecurityInterceptor } from "./security.interceptor";
 import { bearerFromCookie, corsOrigins, crossSiteWrite } from "./commerce/session-cookie";
+import { siteConfig } from "./seo/site-config";
 
 type CookieRequest = { method: string; path: string; headers: Record<string, string | string[] | undefined> };
 type JsonResponse = { status(code: number): { json(body: unknown): void } };
 
 async function bootstrap(): Promise<void> {
+  // A wrong SITE_BRAND or PUBLIC_BASE_URL stops the start here, not on the first page request.
+  siteConfig();
   const app = await NestFactory.create(AppModule);
   const origins = corsOrigins(process.env.CORS_ORIGINS);
   if (origins.length) app.enableCors({ origin: origins, credentials: true });
@@ -26,7 +29,7 @@ async function bootstrap(): Promise<void> {
   });
   app.useGlobalFilters(new ApiExceptionFilter());
   app.useGlobalInterceptors(new SecurityInterceptor());
-  app.setGlobalPrefix("v1", { exclude: ["health"] });
+  app.setGlobalPrefix("v1", { exclude: ["health", "render", "sitemap.xml", "robots.txt"] });
   const port = Number(process.env.PORT ?? 8080);
   await app.listen(port, "0.0.0.0");
 }

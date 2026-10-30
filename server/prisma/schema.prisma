@@ -16,6 +16,7 @@ model Store {
   categories Category[]
   products   Product[]
   promotions Promotion[]
+  articles   Article[]
 }
 
 model Category {
@@ -42,6 +43,7 @@ model Product {
   components Json?
   variants   Variant[]
   images     ProductImage[]
+  articles   ArticleProduct[]
 
   @@unique([storeId, slug])
 }
@@ -245,4 +247,86 @@ model PasswordReset {
   email     String
   tokenHash String
   expiresAt String
+}
+
+/// A blog article of one store (spec item 2). "Scheduled" is status published with publishAt in the future.
+model Article {
+  id          String           @id @default(cuid())
+  storeId     String
+  store       Store            @relation(fields: [storeId], references: [id])
+  status      String
+  publishAt   String?
+  publishedAt String?
+  updatedAt   String
+  version     Int              @default(1)
+  authorId    String
+  coverHash   String?
+  coverWidth  Int?
+  coverHeight Int?
+  coverSizes  Int[]
+  coverAlt    String?
+  tags        String[]
+  sample      Boolean          @default(false)
+  createdAt   String
+  createdBy   String
+  texts       ArticleText[]
+  products    ArticleProduct[]
+  redirects   SlugRedirect[]
+
+  @@index([storeId, status])
+}
+
+/// One language of an article; the "id" row is required. storeId is copied from the article for the slug key.
+model ArticleText {
+  articleId       String
+  article         Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  lang            String
+  storeId         String
+  slug            String
+  title           String
+  seoTitle        String?
+  metaDescription String  @default("")
+  summary         String  @default("")
+  body            String  @default("")
+  noindex         Boolean @default(false)
+  canonicalUrl    String?
+
+  @@id([articleId, lang])
+  @@unique([storeId, lang, slug])
+}
+
+model ArticleProduct {
+  articleId String
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  position  Int
+
+  @@id([articleId, productId])
+}
+
+/// An old article slug; it points at the article, so a chain of renames always ends at the current slug.
+model SlugRedirect {
+  id          String  @id @default(cuid())
+  storeId     String
+  kind        String
+  lang        String
+  fromSlug    String
+  toArticleId String
+  article     Article @relation(fields: [toArticleId], references: [id], onDelete: Cascade)
+
+  @@unique([storeId, kind, lang, fromSlug])
+}
+
+/// Hand-written SEO title and description for a product or category; no row means the automatic text.
+model SeoOverride {
+  storeId         String
+  kind            String
+  key             String
+  seoTitle        String?
+  metaDescription String?
+  updatedAt       String
+  updatedBy       String
+
+  @@id([storeId, kind, key])
 }

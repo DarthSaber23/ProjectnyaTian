@@ -14,7 +14,7 @@ const block = (opening: string) => {
 };
 const count = (text: string, needle: string) => text.split(needle).length - 1;
 
-const MEDIA = 'location ~ "^/media/(products/[A-Za-z0-9_-]+/[0-9a-f]{16}-[0-9]{3,4}\\.webp)$"';
+const MEDIA = 'location ~ "^/media/((products|articles)/[A-Za-z0-9_-]+/[0-9a-f]{16}-[0-9]{3,4}\\.webp)$"';
 const HIDDEN = [
   "Server", "Cache-Control", "Set-Cookie", "x-amz-request-id", "x-amz-id-2", "x-amz-version-id", "x-amz-server-side-encryption",
   "x-minio-deployment-id", "x-minio-error-code", "Strict-Transport-Security", "X-Xss-Protection", "Content-Security-Policy",
@@ -54,13 +54,18 @@ describe("web/nginx.conf template", () => {
     expect(notFound).toContain('return 404 "Not found";');
   });
 
-  it("allows an 11m body only on the image upload path and answers 413 as JSON", () => {
-    expect(count(conf, "client_max_body_size")).toBe(1);
-    const upload = block("location ~ ^/v1/admin/products/[^/]+/images$ {");
-    expect(upload).toContain("client_max_body_size 11m;");
-    expect(upload).toContain("limit_except POST { deny all; }");
-    expect(upload).toContain("error_page 413 = @too_large;");
-    expect(upload).toContain("proxy_pass http://api:8080;");
+  it("allows an 11m body only on the product photo and article cover/image upload paths and answers 413 as JSON", () => {
+    expect(count(conf, "client_max_body_size")).toBe(2);
+    for (const opening of ["location ~ ^/v1/admin/products/[^/]+/images$ {", "location ~ ^/v1/admin/articles/[^/]+/(cover|images)$ {"]) {
+      const upload = block(opening);
+      expect(upload, opening).toContain("client_max_body_size 11m;");
+      expect(upload).toContain("limit_except POST { deny all; }");
+      expect(upload).toContain("error_page 413 = @too_large;");
+      expect(upload).toContain("proxy_pass http://api:8080;");
+      expect(upload).toContain("proxy_http_version 1.1;");
+      expect(upload).toContain("proxy_set_header Host $host;");
+      expect(upload).toContain("proxy_set_header X-Forwarded-Proto $scheme;");
+    }
     expect(block("location /v1/ {")).not.toContain("client_max_body_size");
     expect(block("location @too_large {")).toContain(
       `return 413 '{"error":{"code":"TOO_LARGE","message":"Ukuran file maksimal 10 MB.","details":[]}}';`,
@@ -82,5 +87,31 @@ describe("web/nginx.conf template", () => {
     expect(web).toContain('"NGINX_ENVSUBST_FILTER=^(MINIO_BUCKET|MEDIA_UPSTREAM)$"');
     expect(web).not.toContain("env_file");
     expect(compose.slice(0, compose.indexOf("\n  web:"))).toMatch(/mem_limit: 1536m/);
+  });
+
+  it("blog, product and category pages go to the API renderer and fall back to index.html on an API error", () => {
+    for (const opening of ["location ~ ^/(blog|en/blog)(/|$) {", "location ~ ^/(produk|kategori)/ {"]) {
+      const b = block(opening);
+      expect(b).toContain("rewrite ^ /render break;");
+      // The raw, still percent-encoded request line (with its query) goes to the renderer in a header.
+      expect(b).toContain("proxy_set_header X-Render-Uri $request_uri;");
+      expect(b).not.toContain("$uri");
+      expect(b).toContain("proxy_pass http://api:8080;");
+      expect(b).toContain("proxy_intercept_errors on;");
+      expect(b).toContain("error_page 500 502 503 504 = @spa;");
+    }
+    const spa = block("location @spa {");
+    expect(spa).toContain("try_files /index.html =404;");
+    expect(spa).toContain('add_header Cache-Control "no-cache";');
+  });
+
+  it("sitemap.xml and robots.txt come from the API", () => {
+    expect(block("location = /sitemap.xml {")).toContain("proxy_pass http://api:8080/sitemap.xml;");
+    expect(block("location = /robots.txt {")).toContain("proxy_pass http://api:8080/robots.txt;");
+  });
+
+  it("the shell for the renderer answers only private networks and serves index.html", () => {
+    const shell = block("location = /__shell.html {");
+    for (const line of ["allow 127.0.0.1;", "allow 172.16.0.0/12;", "allow 10.0.0.0/8;", "allow 192.168.0.0/16;", "deny all;", "try_files /index.html =404;"]) expect(shell).toContain(line);
   });
 });

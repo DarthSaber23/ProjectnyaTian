@@ -2,7 +2,7 @@
   "projectName": "ProjectnyaTian",
   "description": "Modular Indonesian B2C e-commerce starter (Agent 02 Backend)",
   "version": "0.1.0",
-  "lastUpdated": "2026-10-29T00:00:00Z",
+  "lastUpdated": "2026-10-30T00:00:00Z",
   "modules": [
     {
       "name": "frontend",
@@ -121,6 +121,70 @@
       ],
       "key_files": [
         "media/samples.json"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    },
+    {
+      "name": "content",
+      "path": "server/src/content",
+      "description": "Blog articles and SEO text: editor API, publish rules, slug redirects, Markdown subset, public article reads, seed CLIs",
+      "responsibility": "Articles per store and language (Bahasa required, English optional), audit of every change, SEO overrides for products and categories, sample articles",
+      "dependencies": [
+        "prisma",
+        "media",
+        "commerce-rules"
+      ],
+      "key_files": [
+        "article.service.ts",
+        "seo.service.ts",
+        "public-content.service.ts",
+        "admin-content.controller.ts",
+        "public-content.controller.ts",
+        "permission.guard.ts",
+        "markdown.ts",
+        "rules.ts",
+        "content-events.ts",
+        "cli/seed.ts",
+        "cli/remove-samples.ts"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    },
+    {
+      "name": "seo-render",
+      "path": "server/src/seo",
+      "description": "Server-filled HTML shell for /blog, /en/blog, /produk, /kategori; sitemap.xml and robots.txt",
+      "responsibility": "Title, meta, canonical, Open Graph, hreflang, JSON-LD and page text for crawlers and first load; 60 s cache with ETag, cleared on article change",
+      "dependencies": [
+        "content",
+        "commerce-rules"
+      ],
+      "key_files": [
+        "render.service.ts",
+        "render.controller.ts",
+        "head.ts",
+        "jsonld.ts",
+        "sitemap.ts",
+        "robots.ts",
+        "shell.ts",
+        "site-config.ts",
+        "ssr-body.ts"
+      ],
+      "owner": "Agent 02",
+      "status": "In Progress"
+    },
+    {
+      "name": "content-seed",
+      "path": "server/seed/content",
+      "description": "Four original demo articles (two per store, the first of each with English)",
+      "responsibility": "Demo content for content:seed; checked against the catalogue (no unstated product figures, no medical claims)",
+      "dependencies": [
+        "content",
+        "media-seed"
+      ],
+      "key_files": [
+        "articles.json"
       ],
       "owner": "Agent 02",
       "status": "In Progress"

@@ -14,11 +14,22 @@ import { SignIn } from "./pages/SignIn";
 import { AdminLogin, AdminShell } from "./admin/AdminShell";
 import { AdminAudit, AdminDashboard, AdminOrderDetail, AdminOrders, AdminPromotions } from "./admin/AdminPages";
 import { AdminProductPhotos, AdminProducts } from "./admin/ProductPages";
+import { AdminArticleEditor, AdminBlogList } from "./admin/BlogPages";
+import { AdminSeo } from "./admin/SeoPage";
+import { ArticlePage } from "./pages/ArticlePage";
+import { BlogList } from "./pages/BlogList";
+import type { Lang } from "./services/contracts";
 
 /** Remount the product page per slug so variant/qty state never leaks between products. */
 function ProductRoute() {
   const { slug } = useParams();
   return <ProductPage key={slug} />;
+}
+
+/** Remount the article page per language and slug so loading state never shows the previous article. */
+function ArticleRoute({ lang }: { lang: Lang }) {
+  const { slug } = useParams();
+  return <ArticlePage key={`${lang}/${slug}`} lang={lang} />;
 }
 
 /**
@@ -39,6 +50,10 @@ export function App() {
           <Route path="promotions" element={<AdminPromotions />} />
           <Route path="products" element={<AdminProducts />} />
           <Route path="products/:id" element={<AdminProductPhotos />} />
+          <Route path="blog" element={<AdminBlogList />} />
+          <Route path="blog/new" element={<AdminArticleEditor />} />
+          <Route path="blog/:id" element={<AdminArticleEditor />} />
+          <Route path="seo" element={<AdminSeo />} />
           <Route path="audit-log" element={<AdminAudit />} />
         </Route>
         <Route element={<Layout />}>
@@ -50,6 +65,10 @@ export function App() {
           <Route path="pembayaran/:nomor" element={<PaymentPage />} />
           <Route path="cari" element={<SearchPage />} />
           <Route path="bandingkan" element={<ComparePage />} />
+          <Route path="blog" element={<BlogList lang="id" />} />
+          <Route path="blog/:slug" element={<ArticleRoute lang="id" />} />
+          <Route path="en/blog" element={<BlogList lang="en" />} />
+          <Route path="en/blog/:slug" element={<ArticleRoute lang="en" />} />
           <Route path="masuk" element={<SignIn />} />
           <Route element={<RequireAuth />}>
             <Route path="akun" element={<AccountLayout />}>

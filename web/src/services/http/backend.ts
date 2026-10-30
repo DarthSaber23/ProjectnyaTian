@@ -2,7 +2,7 @@ import { buildCatalog, type Catalog } from "../../domain/catalog";
 import { can } from "../../domain/rbac";
 import { toWibIso } from "../../domain/time";
 import type { BrandId, CartLine, Order, PaymentMethod, Promotion, StaffRole } from "../../domain/types";
-import type { CreateOrderResult, Session, SignInResult } from "../contracts";
+import type { CreateOrderResult, Lang, PublicArticle, PublicArticleCard, Session, SignInResult } from "../contracts";
 import { ApiError, api } from "./client";
 
 type Listener = () => void;
@@ -38,6 +38,26 @@ class HttpBackend {
 
   now(): string {
     return toWibIso(new Date());
+  }
+
+  /* ---- Blog (item 2): live articles of this deployment's store ---- */
+
+  articles(lang: Lang, page = 1): Promise<{ page: number; pages: number; items: PublicArticleCard[] }> {
+    return api(`/v1/articles?lang=${lang}&page=${page}`);
+  }
+
+  /** The article, or null when it does not exist (yet). A renamed slug is followed to the current one. */
+  async article(lang: Lang, slug: string): Promise<PublicArticle | null> {
+    try {
+      return await api<PublicArticle>(`/v1/articles/${encodeURIComponent(slug)}?lang=${lang}`);
+    } catch (error) {
+      if (error instanceof ApiError && error.code === "NOT_FOUND") return null;
+      throw error;
+    }
+  }
+
+  productArticles(slug: string): Promise<PublicArticleCard[]> {
+    return api(`/v1/products/${encodeURIComponent(slug)}/articles`);
   }
 
   async ready(): Promise<void> {

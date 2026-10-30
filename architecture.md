@@ -57,6 +57,13 @@ Photos live in the MinIO bucket `MINIO_BUCKET` (default `tian-media`) under `med
 - **nginx.** `web/nginx.conf` is a template (`/etc/nginx/templates/default.conf.template`). Compose passes only `MINIO_BUCKET` and `MEDIA_UPSTREAM` (default `http://host.docker.internal:9000`) to the web container, set in the root `.env` (see `.env.example`); web never receives `server/.env`. `/media/` serves only names that match the allowlist pattern, GET only, without cookies or query string, with `immutable` caching; anything else is a plain 404. Only the upload path accepts an 11 MB body.
 - **Demo photos.** Run `npm run media:seed` and `npm run media:remove-samples -- --operator "<nama>"` by hand inside the API container (`docker compose exec api …`), then `docker compose restart api`.
 
+## Blog and search pages
+
+- **Renderer.** nginx sends `/blog`, `/en/blog`, `/produk/…` and `/kategori/…` to the API's `GET /render?path=…`, which fetches the built `index.html` from the web container (`http://web/__shell.html`, private ranges only, cached 60 s) and fills in the title, meta tags, JSON-LD and page text. Pages are cached 60 s with an ETag; an article change clears the cache at once, catalogue changes show within 60 s. If the API fails, nginx serves the plain `index.html` (`@spa`).
+- **Settings in `server/.env`.** `PUBLIC_BASE_URL` (the public address used in canonical, Open Graph and the sitemap; dev: `http://43.159.54.222`), `SITE_BRAND` (`sambung` or `halimun`: the store whose articles and pages are public), optional `GOOGLE_SITE_VERIFICATION`. The API refuses to start with an invalid `SITE_BRAND`.
+- **Article images** live in the same bucket under `media/articles/{articleId}/{hash16}-{target}.webp` and are served by the same nginx `/media/` rule.
+- **Demo articles.** Run `npm run content:seed` and `npm run content:remove-samples -- --operator "<nama>"` by hand inside the API container, then `docker compose restart api`. The seed adds the demo SEO account (`U-05`) when it is missing.
+
 ## Deploy backup step
 
 Until the scheduled backups of milestone B9, every deploy starts with a backup kept off the MinIO volume, in a dated folder (for example `/home/ubuntu/backups/2026-10-29/`):

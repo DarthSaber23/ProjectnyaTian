@@ -95,17 +95,20 @@ Fulfilment states: menunggu pembayaran, perlu diproses, diproses, dikirim, dalam
 
 U = change, L = view, Samar = masked contact with timed reveal, — = no access.
 
-| Module | Owner | Admin | Operasional | Marketing | CS |
-|---|---|---|---|---|---|
-| Dashboard and analytics | L | L | L | L | — |
-| Orders | U | U | U | — | L |
-| Refunds | U | U | — | — | — |
-| Customer contact | Penuh | Penuh | Samar | — | Samar |
-| Products and inventory | U | U | U | L | L |
-| Promotions and content | U | U | — | U | — |
-| Reports and export | U | U | — | — | — |
-| Settings | U | U | Shipping only | — | — |
-| Users and audit log | U | L (log only) | — | — | — |
+| Module | Owner | Admin | Operasional | Marketing | CS | SEO |
+|---|---|---|---|---|---|---|
+| Dashboard and analytics | L | L | L | L | — | — |
+| Orders | U | U | U | — | L | — |
+| Refunds | U | U | — | — | — | — |
+| Customer contact | Penuh | Penuh | Samar | — | Samar | — |
+| Products and inventory | U | U | U | L | L | Photos only |
+| Promotions and content | U | U | — | U | — | — |
+| Articles and SEO | U | — | — | — | — | U |
+| Reports and export | U | U | — | — | — | — |
+| Settings | U | U | Shipping only | — | — | — |
+| Users and audit log | U | L (log only) | — | — | — | — |
+
+Articles and SEO: only the Owner and the SEO role write articles, publish directly, and change product and category SEO text; every change is audited (item 2). The SEO role also manages product photos (`products.media`) and sees nothing else.
 
 Admin paths follow the sitemap: `/admin/settings/users` and `/admin/settings/payments`.
 

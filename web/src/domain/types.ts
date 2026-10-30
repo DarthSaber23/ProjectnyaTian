@@ -6,7 +6,7 @@
 
 export type Rupiah = number;
 export type BrandId = "halimun" | "sambung";
-export type StaffRole = "owner" | "admin" | "operations" | "marketing" | "cs";
+export type StaffRole = "owner" | "admin" | "operations" | "marketing" | "cs" | "seo";
 
 export interface Variant {
   sku: string;

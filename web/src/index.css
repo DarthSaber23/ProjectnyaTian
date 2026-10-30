@@ -22,6 +22,18 @@
   .chip-off { @apply chip border-line-strong bg-surface text-ink; }
   .money { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
   .sim-panel { @apply rounded-brand border-2 border-dashed border-line-strong bg-alt p-3; }
+
+  /* Article text from the server's Markdown renderer (h2/h3, p, lists, links, figures only). */
+  .article-body { @apply flex flex-col gap-4 text-[17px] leading-[1.75]; }
+  .article-body h2 { @apply mt-4 text-2xl font-semibold leading-snug; }
+  .article-body h3 { @apply mt-2 text-xl font-semibold leading-snug; }
+  .article-body ul { @apply list-disc pl-6; }
+  .article-body ol { @apply list-decimal pl-6; }
+  .article-body li + li { @apply mt-1.5; }
+  .article-body a { @apply font-semibold text-primary-ink underline; }
+  .article-body figure { @apply m-0 flex flex-col gap-2; }
+  .article-body figure img { @apply h-auto w-full rounded-brand; }
+  .article-body figcaption { @apply text-[14px] text-muted; }
 }
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-29T08:18:46.094Z",
+  "timestamp": "2026-10-30T06:50:40.497Z",
   "projectName": "ProjectnyaTian",
   "version": "0.1.0",
   "modules": {
@@ -8,19 +8,19 @@
       "path": "web/src",
       "description": "React 18 storefront (Agent 01 prototype - read-only)",
       "owner": "Agent 01",
-      "fileCount": 54,
-      "testCount": 14,
+      "fileCount": 64,
+      "testCount": 22,
       "files": [
+        "admin-content.test.ts",
         "admin-media.test.ts",
         "AdminPages.tsx",
         "AdminShell.tsx",
+        "article-editor.test.ts",
+        "article-editor.ts",
+        "blog-wiring.test.ts",
+        "BlogPages.tsx",
         "product-pages-wiring.test.ts",
-        "ProductPages.tsx",
-        "serial-queue.test.ts",
-        "serial-queue.ts",
-        "App.tsx",
-        "boot.test.ts",
-        "boot.ts"
+        "ProductPages.tsx"
       ],
       "dependencies": [
         "react",
@@ -34,8 +34,8 @@
       "path": "server/src",
       "description": "NestJS REST API + business logic",
       "owner": "Agent 02",
-      "fileCount": 75,
-      "testCount": 44,
+      "fileCount": 102,
+      "testCount": 63,
       "files": [
         "api-exception.filter.test.ts",
         "api-exception.filter.ts",
@@ -122,6 +122,68 @@
         "media"
       ]
     },
+    "content": {
+      "status": "In Progress",
+      "path": "server/src/content",
+      "description": "Blog articles and SEO text: editor API, publish rules, slug redirects, Markdown subset, public article reads, seed CLIs",
+      "owner": "Agent 02",
+      "fileCount": 15,
+      "testCount": 14,
+      "files": [
+        "admin-content.controller.test.ts",
+        "admin-content.controller.ts",
+        "article-media.test.ts",
+        "article-media.ts",
+        "article.service.test.ts",
+        "article.service.ts",
+        "article.slugs.test.ts",
+        "articles-json.test.ts",
+        "common.ts",
+        "remove-samples.ts"
+      ],
+      "dependencies": [
+        "prisma",
+        "media",
+        "commerce-rules"
+      ]
+    },
+    "seo-render": {
+      "status": "In Progress",
+      "path": "server/src/seo",
+      "description": "Server-filled HTML shell for /blog, /en/blog, /produk, /kategori; sitemap.xml and robots.txt",
+      "owner": "Agent 02",
+      "fileCount": 10,
+      "testCount": 4,
+      "files": [
+        "builders.test.ts",
+        "head.ts",
+        "jsonld.ts",
+        "render.controller.test.ts",
+        "render.controller.ts",
+        "render.service.ts",
+        "render.test.ts",
+        "robots.ts",
+        "seo.module.ts",
+        "shell.ts"
+      ],
+      "dependencies": [
+        "content",
+        "commerce-rules"
+      ]
+    },
+    "content-seed": {
+      "status": "In Progress",
+      "path": "server/seed/content",
+      "description": "Four original demo articles (two per store, the first of each with English)",
+      "owner": "Agent 02",
+      "fileCount": 0,
+      "testCount": 0,
+      "files": [],
+      "dependencies": [
+        "content",
+        "media-seed"
+      ]
+    },
     "database": {
       "status": "In Progress",
       "path": "server/prisma",
@@ -180,8 +242,8 @@
       "path": ".",
       "description": "Docker Compose & infrastructure config",
       "owner": "Agent 02",
-      "fileCount": 175,
-      "testCount": 61,
+      "fileCount": 212,
+      "testCount": 88,
       "files": [
         "AdminPages.tsx",
         "AdminShell.tsx",
@@ -201,8 +263,8 @@
     }
   },
   "testCoverage": {
-    "total": 345,
-    "withTests": 5
+    "total": 444,
+    "withTests": 7
   },
   "constraints": {
     "money": "Integer Rupiah (no floats)",
@@ -259,11 +321,11 @@
       "status": "pending"
     }
   },
-  "generatedAt": "29/10/2026, 15.18.46",
+  "generatedAt": "30/10/2026, 13.50.40",
   "git": {
-    "commit": "4e13276",
-    "branch": "feat/product-images",
-    "status": 143
+    "commit": "2526964",
+    "branch": "feat/seo-articles",
+    "status": 123
   },
   "constraintCompliance": {
     "moneyIntegerRupiah": {

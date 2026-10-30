@@ -1,7 +1,7 @@
-import type { Order, StaffRole } from "../../domain/types";
+import type { BrandId, Order, StaffRole } from "../../domain/types";
 import type { Staff } from "../../mocks/fixtures";
 import { buildUploadInit } from "../../domain/photos";
-import type { AdminImage, AdminProduct } from "../contracts";
+import type { AdminImage, AdminProduct, ArticleTextInput, ArticleView, Lang, SeoKind, SeoRow } from "../contracts";
 import { ApiError, api } from "./client";
 import { backend } from "./backend";
 
@@ -119,6 +119,63 @@ class HttpAdmin {
   schedule(_user: Staff): void {
     this.draft = { ...this.draft, status: "draft" };
     throw new Error("Penjadwalan promosi baru belum tersedia di API.");
+  }
+
+  /* ---- Articles and SEO (articles.manage, seo.edit). Errors are ApiError with the server's Bahasa message. ---- */
+
+  listArticles(store: BrandId): Promise<ArticleView[]> {
+    return api<ArticleView[]>(`/v1/admin/articles?store=${store}`);
+  }
+
+  getArticle(id: string): Promise<ArticleView> {
+    return api<ArticleView>(`/v1/admin/articles/${encodeURIComponent(id)}`);
+  }
+
+  createArticle(store: BrandId, text: ArticleTextInput): Promise<ArticleView> {
+    return api<ArticleView>("/v1/admin/articles", { method: "POST", body: JSON.stringify({ store, text }) });
+  }
+
+  saveArticle(id: string, body: { version: number; texts: Partial<Record<Lang, ArticleTextInput | null>>; tags: string[]; productIds: string[] }): Promise<ArticleView> {
+    return api<ArticleView>(`/v1/admin/articles/${encodeURIComponent(id)}`, { method: "PUT", body: JSON.stringify(body) });
+  }
+
+  publishArticle(id: string, version: number, publishAt?: string): Promise<ArticleView> {
+    return api<ArticleView>(`/v1/admin/articles/${encodeURIComponent(id)}/publish`, { method: "POST", body: JSON.stringify({ version, publishAt: publishAt ?? null }) });
+  }
+
+  unpublishArticle(id: string, version: number): Promise<ArticleView> {
+    return api<ArticleView>(`/v1/admin/articles/${encodeURIComponent(id)}/unpublish`, { method: "POST", body: JSON.stringify({ version }) });
+  }
+
+  deleteArticle(id: string): Promise<{ ok: true }> {
+    return api<{ ok: true }>(`/v1/admin/articles/${encodeURIComponent(id)}`, { method: "DELETE" });
+  }
+
+  uploadArticleCover(id: string, file: File, alt: string, rightsConfirmed: boolean): Promise<ArticleView> {
+    return api<ArticleView>(`/v1/admin/articles/${encodeURIComponent(id)}/cover`, buildUploadInit(file, alt, rightsConfirmed));
+  }
+
+  removeArticleCover(id: string): Promise<ArticleView> {
+    return api<ArticleView>(`/v1/admin/articles/${encodeURIComponent(id)}/cover`, { method: "DELETE" });
+  }
+
+  uploadArticleImage(id: string, file: File, rightsConfirmed: boolean): Promise<{ src: string; width: number; height: number }> {
+    const form = new FormData();
+    form.append("rightsConfirmed", rightsConfirmed ? "true" : "false");
+    form.append("file", file);
+    return api(`/v1/admin/articles/${encodeURIComponent(id)}/images`, { method: "POST", body: form });
+  }
+
+  seoRows(store: BrandId, kind: SeoKind): Promise<SeoRow[]> {
+    return api<SeoRow[]>(`/v1/admin/seo?store=${store}&kind=${kind}`);
+  }
+
+  setSeo(store: BrandId, kind: SeoKind, key: string, seoTitle: string | null, metaDescription: string | null): Promise<void> {
+    return api(`/v1/admin/seo/${kind}/${encodeURIComponent(key)}`, { method: "PUT", body: JSON.stringify({ store, seoTitle, metaDescription }) });
+  }
+
+  clearSeo(store: BrandId, kind: SeoKind, key: string): Promise<void> {
+    return api(`/v1/admin/seo/${kind}/${encodeURIComponent(key)}?store=${store}`, { method: "DELETE" });
   }
 
   /* ---- Product photos (products.media). Errors are ApiError with the server's Bahasa message. ---- */

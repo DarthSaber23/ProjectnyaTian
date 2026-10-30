@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { DEMO_TOOLS } from "../config/brands";
 import { backend } from "../services/http/backend";
 import { categories } from "../mocks/fixtures";
+import { FromBlog } from "../components/FromBlog";
 import { ProductCard } from "../components/ProductCard";
 import { useBrand, useCatalog } from "../store/hooks";
 import { useShop } from "../store/shop";
@@ -64,6 +65,8 @@ export function Home() {
         <h2 id="feat-h" className="text-2xl font-semibold">Pilihan untukmu</h2>
         {backend.loading && products.length === 0 ? <p className="text-sm text-muted">Memuat katalog…</p> : <div className="grid grid-cols-2 gap-3 md:grid-cols-4">{featured.map((p) => <ProductCard key={p.id} product={p} />)}</div>}
       </section>
+
+      <FromBlog />
 
       {DEMO_TOOLS && brand.id === "sambung" ? (
         <section className="sim-panel flex flex-col gap-2 text-[14px]" aria-label="Panel uji">

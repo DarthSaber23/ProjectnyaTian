@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useBackendVersion } from "../store/shop";
 import { ProductGallery } from "../components/ProductGallery";
+import { RelatedArticles } from "../components/RelatedArticles";
 import { Badge, PriceBlock, QtyStepper, StockNote } from "../components/ui";
 import { formatIDR } from "../domain/money";
 import { bestUnitPrice } from "../domain/pricing";
@@ -110,6 +111,7 @@ export function ProductPage() {
           ) : null}
         </div>
       </div>
+      <RelatedArticles productSlug={product.slug} />
     </div>
   );
 }

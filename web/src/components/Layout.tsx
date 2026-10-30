@@ -116,8 +116,9 @@ export function Layout() {
         <Outlet />
       </main>
       <footer className="border-t border-line bg-surface">
+        {/* The Blog link sits inline so the footer keeps its height (a taller footer makes the loading-state jump larger). */}
         <div className="mx-auto max-w-[1280px] px-4 py-6 text-[13px] text-muted">
-          {brand.name} · {brand.tagline}. Harga sudah termasuk PPN. Nama brand adalah nama kerja (belum dicek merek).
+          <Link to="/blog" className="py-1 text-ink underline">Blog</Link> · {brand.name} · {brand.tagline}. Harga sudah termasuk PPN. Nama brand adalah nama kerja (belum dicek merek).
         </div>
       </footer>
       <CompareTray />
