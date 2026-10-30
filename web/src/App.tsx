@@ -1,4 +1,5 @@
 import { BrowserRouter, HashRouter, MemoryRouter, Route, Routes, useParams } from "react-router-dom";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Layout } from "./components/Layout";
 import { CartPage } from "./pages/CartPage";
 import { Catalog } from "./pages/Catalog";
@@ -41,48 +42,50 @@ const Router = import.meta.env.MODE === "artifact" ? MemoryRouter : import.meta.
 export function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="admin/login" element={<AdminLogin />} />
-        <Route path="admin" element={<AdminShell />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="orders" element={<AdminOrders />} />
-          <Route path="orders/:nomor" element={<AdminOrderDetail />} />
-          <Route path="promotions" element={<AdminPromotions />} />
-          <Route path="products" element={<AdminProducts />} />
-          <Route path="products/:id" element={<AdminProductPhotos />} />
-          <Route path="blog" element={<AdminBlogList />} />
-          <Route path="blog/new" element={<AdminArticleEditor />} />
-          <Route path="blog/:id" element={<AdminArticleEditor />} />
-          <Route path="seo" element={<AdminSeo />} />
-          <Route path="audit-log" element={<AdminAudit />} />
-        </Route>
-        <Route element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="kategori/:slug" element={<Catalog />} />
-          <Route path="produk/:slug" element={<ProductRoute />} />
-          <Route path="keranjang" element={<CartPage />} />
-          <Route path="checkout/:step" element={<Checkout />} />
-          <Route path="pembayaran/:nomor" element={<PaymentPage />} />
-          <Route path="cari" element={<SearchPage />} />
-          <Route path="bandingkan" element={<ComparePage />} />
-          <Route path="blog" element={<BlogList lang="id" />} />
-          <Route path="blog/:slug" element={<ArticleRoute lang="id" />} />
-          <Route path="en/blog" element={<BlogList lang="en" />} />
-          <Route path="en/blog/:slug" element={<ArticleRoute lang="en" />} />
-          <Route path="masuk" element={<SignIn />} />
-          <Route element={<RequireAuth />}>
-            <Route path="akun" element={<AccountLayout />}>
-              <Route index element={<AccountHome />} />
-              <Route path="pesanan" element={<OrdersPage />} />
-              <Route path="pesanan/:nomor" element={<OrderDetailPage />} />
-              <Route path="wishlist" element={<WishlistPage />} />
-              <Route path="alamat" element={<AddressesPage />} />
-              <Route path="preferensi" element={<PreferencesPage />} />
-            </Route>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="admin/login" element={<AdminLogin />} />
+          <Route path="admin" element={<AdminShell />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="orders/:nomor" element={<AdminOrderDetail />} />
+            <Route path="promotions" element={<AdminPromotions />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="products/:id" element={<AdminProductPhotos />} />
+            <Route path="blog" element={<AdminBlogList />} />
+            <Route path="blog/new" element={<AdminArticleEditor />} />
+            <Route path="blog/:id" element={<AdminArticleEditor />} />
+            <Route path="seo" element={<AdminSeo />} />
+            <Route path="audit-log" element={<AdminAudit />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="kategori/:slug" element={<Catalog />} />
+            <Route path="produk/:slug" element={<ProductRoute />} />
+            <Route path="keranjang" element={<CartPage />} />
+            <Route path="checkout/:step" element={<Checkout />} />
+            <Route path="pembayaran/:nomor" element={<PaymentPage />} />
+            <Route path="cari" element={<SearchPage />} />
+            <Route path="bandingkan" element={<ComparePage />} />
+            <Route path="blog" element={<BlogList lang="id" />} />
+            <Route path="blog/:slug" element={<ArticleRoute lang="id" />} />
+            <Route path="en/blog" element={<BlogList lang="en" />} />
+            <Route path="en/blog/:slug" element={<ArticleRoute lang="en" />} />
+            <Route path="masuk" element={<SignIn />} />
+            <Route element={<RequireAuth />}>
+              <Route path="akun" element={<AccountLayout />}>
+                <Route index element={<AccountHome />} />
+                <Route path="pesanan" element={<OrdersPage />} />
+                <Route path="pesanan/:nomor" element={<OrderDetailPage />} />
+                <Route path="wishlist" element={<WishlistPage />} />
+                <Route path="alamat" element={<AddressesPage />} />
+                <Route path="preferensi" element={<PreferencesPage />} />
+              </Route>
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </ErrorBoundary>
     </Router>
   );
 }

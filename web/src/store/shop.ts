@@ -38,6 +38,7 @@ interface ShopState {
   compare: string[];
   compareMessage?: string;
   recentSearches: string[];
+  checkoutKey: string;
 
   signedIn(session: Session): { merged: number; capped: number };
   restoreSession(): Promise<void>;
@@ -62,6 +63,8 @@ interface ShopState {
   resetAll(): void;
 }
 
+const newCheckoutKey = () => `web-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
 const initial = {
   cart: [] as CartLine[],
   orderVoucher: undefined,
@@ -75,6 +78,7 @@ const initial = {
   compare: [] as string[],
   compareMessage: undefined,
   recentSearches: ["charger gan", "hdmi"],
+  checkoutKey: newCheckoutKey(),
 };
 
 let toastSeq = 0;
@@ -149,7 +153,10 @@ export const useShop = create<ShopState>((set, get) => ({
     const added = Math.max(0, Math.min(qty, room));
     if (added === 0) return { added };
     const exists = cart.some((l) => l.sku === sku);
-    set({ cart: exists ? cart.map((l) => (l.sku === sku ? { ...l, qty: l.qty + added } : l)) : [...cart, { sku, qty: added }] });
+    set({
+      cart: exists ? cart.map((l) => (l.sku === sku ? { ...l, qty: l.qty + added } : l)) : [...cart, { sku, qty: added }],
+      checkoutKey: newCheckoutKey(),
+    });
     return { added };
   },
 
@@ -158,10 +165,10 @@ export const useShop = create<ShopState>((set, get) => ({
     const others = cart.filter((l) => l.sku !== sku);
     const cap = maxAddable(backend.getCatalog(brand), sku, others, BRANDS[brand].maxQtyPerLine);
     const q = Math.max(1, Math.min(Math.floor(qty), cap));
-    set({ cart: cart.map((l) => (l.sku === sku ? { ...l, qty: q } : l)) });
+    set({ cart: cart.map((l) => (l.sku === sku ? { ...l, qty: q } : l)), checkoutKey: newCheckoutKey() });
   },
 
-  remove: (sku) => set({ cart: get().cart.filter((l) => l.sku !== sku) }),
+  remove: (sku) => set({ cart: get().cart.filter((l) => l.sku !== sku), checkoutKey: newCheckoutKey() }),
 
   applyVoucher: (raw) => {
     const code = raw.trim().toUpperCase();
@@ -172,11 +179,12 @@ export const useShop = create<ShopState>((set, get) => ({
       set({
         orderVoucher: code,
         voucherMessage: { text: prev && prev !== code ? `${code} menggantikan ${prev} (hanya 1 voucher pesanan).` : `${code} dipasang.`, tone: "info" },
+        checkoutKey: newCheckoutKey(),
       });
       return;
     }
     if (kind === "shipping") {
-      set({ shippingVoucher: code, voucherMessage: { text: `${code} dipasang.`, tone: "info" } });
+      set({ shippingVoucher: code, voucherMessage: { text: `${code} dipasang.`, tone: "info" }, checkoutKey: newCheckoutKey() });
       return;
     }
     const lines = get().cart;
@@ -192,6 +200,7 @@ export const useShop = create<ShopState>((set, get) => ({
         set({
           orderVoucher: code,
           voucherMessage: { text: prev && prev !== code ? `${code} menggantikan ${prev} (hanya 1 voucher pesanan).` : `${code} dipasang.`, tone: asOrder.orderVoucher?.status.ok ? "info" : "error" },
+          checkoutKey: newCheckoutKey(),
         });
         return;
       }
@@ -201,18 +210,18 @@ export const useShop = create<ShopState>((set, get) => ({
         set({ voucherMessage: { text: `Kode ${code} tidak ditemukan atau sudah berakhir.`, tone: "error" } });
         return;
       }
-      set({ shippingVoucher: code, voucherMessage: { text: `${code} dipasang.`, tone: "info" } });
+      set({ shippingVoucher: code, voucherMessage: { text: `${code} dipasang.`, tone: "info" }, checkoutKey: newCheckoutKey() });
     }).catch(() => set({ voucherMessage: { text: `Kode ${code} tidak ditemukan atau sudah berakhir.`, tone: "error" } }));
   },
 
   removeVoucher: (kind) =>
-    set(kind === "order" ? { orderVoucher: undefined, voucherMessage: undefined } : { shippingVoucher: undefined, voucherMessage: undefined }),
+    set(kind === "order" ? { orderVoucher: undefined, voucherMessage: undefined, checkoutKey: newCheckoutKey() } : { shippingVoucher: undefined, voucherMessage: undefined, checkoutKey: newCheckoutKey() }),
 
   setAddress: (addressId) => set({ addressId }),
   setCourier: (courierId) => set({ courierId }),
   setPaymentMethod: (paymentMethod) => set({ paymentMethod }),
-  clearCheckout: () => set({ cart: [], orderVoucher: undefined, shippingVoucher: undefined, voucherMessage: undefined }),
-  restoreCart: (lines) => set({ cart: lines, orderVoucher: undefined, shippingVoucher: undefined, voucherMessage: undefined }),
+  clearCheckout: () => set({ cart: [], orderVoucher: undefined, shippingVoucher: undefined, voucherMessage: undefined, checkoutKey: newCheckoutKey() }),
+  restoreCart: (lines) => set({ cart: lines, orderVoucher: undefined, shippingVoucher: undefined, voucherMessage: undefined, checkoutKey: newCheckoutKey() }),
 
   notify: (text, tone = "info", action) => set({ toast: { id: ++toastSeq, text, tone, action } }),
   dismissToast: () => set({ toast: undefined }),
@@ -220,7 +229,7 @@ export const useShop = create<ShopState>((set, get) => ({
   resetAll: () => {
     if (get().session) void backend.signOut().catch(() => undefined); // else the cookie signs the demo back in on reload
     resetMocks();
-    set({ ...initial });
+    set({ ...initial, checkoutKey: newCheckoutKey() });
   },
 }));
 

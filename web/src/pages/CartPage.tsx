@@ -39,7 +39,19 @@ export function CartPage() {
         {overStock.length ? <p role="alert" className="rounded-brand bg-[#FDECEC] p-3 text-sm font-semibold text-danger">Stok berubah untuk {overStock.length} barang. Kurangi jumlah sebelum checkout.</p> : null}
         <ul className="flex flex-col gap-3">
           {totals.lines.map((l) => {
-            const { product } = catalog.bySku.get(l.sku)!;
+            const entry = catalog.bySku.get(l.sku);
+            if (!entry) {
+              return (
+                <li key={`${l.sku}-${l.isGift}`} className="card flex items-center justify-between gap-3 p-4">
+                  <div className="flex flex-col">
+                    <b className="text-[15px]">{l.name || l.sku}</b>
+                    <span className="text-[13px] text-muted">Produk tidak lagi tersedia</span>
+                  </div>
+                  <button type="button" className="btn-secondary text-[13px] text-danger" onClick={() => { s.remove(l.sku); s.notify("Barang dihapus dari keranjang"); }}>Hapus</button>
+                </li>
+              );
+            }
+            const { product } = entry;
             const others = s.cart.filter((c) => c.sku !== l.sku);
             const cap = l.isGift ? l.qty : maxAddable(catalog, l.sku, others, brand.maxQtyPerLine);
             return (

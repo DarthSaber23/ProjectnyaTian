@@ -203,11 +203,12 @@ class HttpBackend {
     paymentMethod: PaymentMethod;
     orderVoucherCode?: string;
     shippingVoucherCode?: string;
+    idempotencyKey?: string;
   }): Promise<CreateOrderResult> {
     try {
       const order = await api<Order>("/v1/orders", {
         method: "POST",
-        idempotencyKey: `web-${Date.now()}`,
+        idempotencyKey: input.idempotencyKey ?? `web-${Date.now()}`,
         body: JSON.stringify({
           brand: input.brand,
           lines: input.lines,

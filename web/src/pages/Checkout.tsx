@@ -67,6 +67,7 @@ export function Checkout() {
       const res = await backend.create({
         brand: s.brand, customerId: session.customerId, lines: s.cart, addressId: s.addressId, courierId: s.courierId,
         paymentMethod: s.paymentMethod, orderVoucherCode: s.orderVoucher, shippingVoucherCode: s.shippingVoucher,
+        idempotencyKey: s.checkoutKey,
       });
       if (!res.ok) {
         setError(res.reason === "stock" ? `Stok tidak cukup untuk ${res.details.map((d) => `${d.sku} (tersedia ${d.available})`).join(", ")}. Ubah keranjang.` : res.message);
