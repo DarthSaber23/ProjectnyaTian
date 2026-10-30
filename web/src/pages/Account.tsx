@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Dialog } from "../components/Dialog";
 import { Link, NavLink, Navigate, Outlet, useLocation, useParams } from "react-router-dom";
 import { SummaryRows } from "../components/Summary";
@@ -10,7 +10,7 @@ import { FULFIL_LABEL, isCourierOverdue, PAYMENT_LABEL } from "../domain/orders"
 import { bestUnitPrice } from "../domain/pricing";
 import { available } from "../domain/stock";
 import { formatWib } from "../domain/time";
-import type { Order } from "../domain/types";
+import type { Address, Order } from "../domain/types";
 import { demoCustomer, type ConsentKey } from "../mocks/fixtures";
 import { backend } from "../services/http/backend";
 import { useBrand, useCatalog } from "../store/hooks";
@@ -219,15 +219,182 @@ export function WishlistPage() {
 }
 
 export function AddressesPage() {
+  const notify = useShop((s) => s.notify);
+  const activeAddressId = useShop((s) => s.addressId);
+  const setAddress = useShop((s) => s.setAddress);
+  const [addresses, setAddresses] = useState<Address[]>(demoCustomer.addresses);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editId, setEditId] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    label: "Rumah",
+    recipient: "",
+    phone: "",
+    line: "",
+    city: "Kota Bandung",
+    district: "Coblong",
+    province: "Jawa Barat",
+    postalCode: "40132",
+  });
+
+  const load = useCallback(() => {
+    void backend.listAddresses().then((res) => {
+      if (res.length > 0) setAddresses(res);
+    });
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  const openAdd = () => {
+    setEditId(null);
+    setForm({ label: "Rumah", recipient: "", phone: "", line: "", city: "Kota Bandung", district: "Coblong", province: "Jawa Barat", postalCode: "40132" });
+    setModalOpen(true);
+  };
+
+  const openEdit = (a: Address) => {
+    setEditId(a.id);
+    setForm({ label: a.label, recipient: a.recipient, phone: a.phone, line: a.line, city: a.city, district: "Coblong", province: "Jawa Barat", postalCode: a.postalCode });
+    setModalOpen(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    await backend.deleteAddress(id).catch(() => undefined);
+    setAddresses((prev) => prev.filter((a) => a.id !== id));
+    notify("Alamat dihapus.");
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.recipient.trim() || !form.phone.trim() || !form.line.trim()) {
+      notify("Lengkapi data penerima dan alamat.", "error");
+      return;
+    }
+    if (editId) {
+      await backend.updateAddress(editId, form).catch(() => undefined);
+      notify("Alamat berhasil diperbarui.");
+    } else {
+      await backend.addAddress(form).catch(() => undefined);
+      notify("Alamat baru ditambahkan.");
+    }
+    setModalOpen(false);
+    load();
+  };
+
   return (
     <div className="flex flex-col gap-3">
-      <h1 className="text-3xl font-semibold">Buku alamat</h1>
-      {demoCustomer.addresses.map((a) => (
-        <div key={a.id} className={`card flex flex-col gap-0.5 p-4 ${a.isPrimary ? "border-2 border-primary" : ""}`}>
-          <b>{a.label}{a.isPrimary ? " · utama" : ""}</b><span className="text-sm">{a.recipient} · {a.phone}</span><span className="text-[13px] text-muted">{a.line}, {a.city} {a.postalCode}</span>
-        </div>
-      ))}
-      <p className="text-[13px] text-muted">Formulir tambah/ubah alamat (field D13) mengikuti desain H14; interaktif di batch berikutnya bila diperlukan.</p>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-semibold">Buku alamat</h1>
+        <button type="button" className="btn-primary" onClick={openAdd}>
+          + Tambah alamat baru
+        </button>
+      </div>
+
+      {addresses.map((a) => {
+        const isCurrentPrimary = activeAddressId === a.id || (a.isPrimary && !activeAddressId);
+        return (
+          <div key={a.id} className={`card flex flex-col gap-2 p-4 ${isCurrentPrimary ? "border-2 border-primary" : ""}`}>
+            <div className="flex items-start justify-between">
+              <div>
+                <b>{a.label}{isCurrentPrimary ? " · utama" : ""}</b>
+                <div className="text-sm">{a.recipient} · {a.phone}</div>
+                <div className="text-[13px] text-muted">{a.line}, {a.city} {a.postalCode}</div>
+              </div>
+              <div className="flex items-center gap-2">
+                {!isCurrentPrimary && (
+                  <button
+                    type="button"
+                    className="btn-secondary text-xs"
+                    onClick={() => {
+                      setAddress(a.id);
+                      notify(`Alamat ${a.label} dijadikan utama.`);
+                    }}
+                  >
+                    Jadikan utama
+                  </button>
+                )}
+                <button type="button" className="text-xs text-primary underline" onClick={() => openEdit(a)}>
+                  Ubah
+                </button>
+                <button type="button" className="text-xs text-danger underline" onClick={() => handleDelete(a.id)}>
+                  Hapus
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {modalOpen ? (
+        <Dialog titleId="addr-modal" onClose={() => setModalOpen(false)}>
+          <h2 id="addr-modal" className="text-xl font-semibold">
+            {editId ? "Ubah Alamat" : "Tambah Alamat Baru"}
+          </h2>
+          <form onSubmit={handleSave} className="flex flex-col gap-3">
+            <label className="text-sm font-semibold">Label Alamat (contoh: Rumah, Kantor)</label>
+            <input
+              type="text"
+              required
+              value={form.label}
+              onChange={(e) => setForm({ ...form, label: e.target.value })}
+              className="min-h-[44px] rounded-ctl border border-line-strong px-3"
+            />
+            <label className="text-sm font-semibold">Nama Penerima</label>
+            <input
+              type="text"
+              required
+              value={form.recipient}
+              onChange={(e) => setForm({ ...form, recipient: e.target.value })}
+              className="min-h-[44px] rounded-ctl border border-line-strong px-3"
+            />
+            <label className="text-sm font-semibold">Nomor Telepon</label>
+            <input
+              type="tel"
+              required
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              className="min-h-[44px] rounded-ctl border border-line-strong px-3"
+            />
+            <label className="text-sm font-semibold">Alamat Lengkap (Jalan, No, RT/RW)</label>
+            <textarea
+              required
+              value={form.line}
+              onChange={(e) => setForm({ ...form, line: e.target.value })}
+              className="min-h-[60px] rounded-ctl border border-line-strong p-2 text-sm"
+            />
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <label className="text-sm font-semibold">Kota / Kabupaten</label>
+                <input
+                  type="text"
+                  required
+                  value={form.city}
+                  onChange={(e) => setForm({ ...form, city: e.target.value })}
+                  className="min-h-[44px] w-full rounded-ctl border border-line-strong px-3"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold">Kode Pos</label>
+                <input
+                  type="text"
+                  required
+                  value={form.postalCode}
+                  onChange={(e) => setForm({ ...form, postalCode: e.target.value })}
+                  className="min-h-[44px] w-full rounded-ctl border border-line-strong px-3"
+                />
+              </div>
+            </div>
+            <div className="flex gap-2 pt-2">
+              <button type="button" className="btn-secondary flex-1" onClick={() => setModalOpen(false)}>
+                Batal
+              </button>
+              <button type="submit" className="btn-primary flex-1">
+                Simpan Alamat
+              </button>
+            </div>
+          </form>
+        </Dialog>
+      ) : null}
     </div>
   );
 }

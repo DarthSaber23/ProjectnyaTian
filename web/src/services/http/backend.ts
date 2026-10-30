@@ -2,7 +2,7 @@ import { buildCatalog, type Catalog } from "../../domain/catalog";
 import { can } from "../../domain/rbac";
 import { toWibIso } from "../../domain/time";
 import { DEFAULT_BRAND } from "../../config/brands";
-import type { BrandId, CartLine, Order, PaymentMethod, Promotion, StaffRole } from "../../domain/types";
+import type { Address, BrandId, CartLine, Order, PaymentMethod, Promotion, StaffRole } from "../../domain/types";
 import type { CreateOrderResult, Lang, PublicArticle, PublicArticleCard, Session, SignInResult } from "../contracts";
 import { ApiError, api } from "./client";
 
@@ -110,6 +110,96 @@ class HttpBackend {
     if (!customer) return null;
     await this.loadCustomer(customer.customerId);
     return { ...customer, method: "password" };
+  }
+
+  async register(name: string, email: string, password: string): Promise<SignInResult> {
+    const result = await api<{ customerId: string; name: string; email: string }>("/v1/auth/register", {
+      method: "POST",
+      body: JSON.stringify({ name, email, password }),
+    });
+    await this.loadCustomer(result.customerId).catch(() => undefined);
+    return { ok: true, session: { customerId: result.customerId, name: result.name, email: result.email, method: "password" } };
+  }
+
+  async forgotPassword(email: string): Promise<{ sent: boolean }> {
+    return api("/v1/auth/forgot-password", { method: "POST", body: JSON.stringify({ email }) });
+  }
+
+  async listAddresses(): Promise<Address[]> {
+    try {
+      const rows = await api<Array<Address & { detail?: string; province?: string; district?: string }>>("/v1/me/addresses");
+      return rows.map((r) => ({
+        id: r.id,
+        label: r.label || "Alamat",
+        recipient: r.recipient,
+        phone: r.phone,
+        line: r.detail || r.line || "",
+        city: r.province ? `${r.city}, ${r.province}` : r.city,
+        postalCode: r.postalCode,
+        isPrimary: r.isPrimary ?? false,
+      }));
+    } catch {
+      return [];
+    }
+  }
+
+  async addAddress(input: Partial<Address> & { detail?: string; district?: string; province?: string }): Promise<Address> {
+    const row = await api<Address & { detail?: string; province?: string }>("/v1/me/addresses", {
+      method: "POST",
+      body: JSON.stringify({
+        label: input.label || "Rumah",
+        recipient: input.recipient,
+        phone: input.phone,
+        province: input.province || "Jawa Barat",
+        city: input.city || "Kota Bandung",
+        district: input.district || "Coblong",
+        postalCode: input.postalCode,
+        detail: input.line || input.detail,
+      }),
+    });
+    this.bump();
+    return {
+      id: row.id,
+      label: row.label || "Alamat",
+      recipient: row.recipient,
+      phone: row.phone,
+      line: row.detail || row.line || "",
+      city: row.province ? `${row.city}, ${row.province}` : row.city,
+      postalCode: row.postalCode,
+      isPrimary: row.isPrimary,
+    };
+  }
+
+  async updateAddress(id: string, input: Partial<Address> & { detail?: string; district?: string; province?: string }): Promise<Address> {
+    const row = await api<Address & { detail?: string; province?: string }>(`/v1/me/addresses/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        label: input.label,
+        recipient: input.recipient,
+        phone: input.phone,
+        province: input.province,
+        city: input.city,
+        district: input.district,
+        postalCode: input.postalCode,
+        detail: input.line || input.detail,
+      }),
+    });
+    this.bump();
+    return {
+      id: row.id,
+      label: row.label || "Alamat",
+      recipient: row.recipient,
+      phone: row.phone,
+      line: row.detail || row.line || "",
+      city: row.province ? `${row.city}, ${row.province}` : row.city,
+      postalCode: row.postalCode,
+      isPrimary: row.isPrimary,
+    };
+  }
+
+  async deleteAddress(id: string): Promise<void> {
+    await api(`/v1/me/addresses/${id}`, { method: "DELETE" });
+    this.bump();
   }
 
   async signOut(): Promise<void> {
