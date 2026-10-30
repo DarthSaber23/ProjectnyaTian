@@ -76,3 +76,11 @@ Branch review as a workflow: five lenses (server, security, web, SEO, spec and t
 | Concurrency check | 12/12 |
 | API log | no `ERROR` lines in the last hour |
 | Data | 4 sample articles, no leftover test articles or redirects; every `ARTICLE_*`/`SEO_*` audit entry has `actorId` |
+
+## Owner feedback fixes (30 Oct 2026, after commit 7c3eb96)
+
+| Reported | Cause | Fix (test first) | Checked on dev |
+|---|---|---|---|
+| Account "Ringkasan": text written vertically | `w-full` in the photo frame overrode `w-14` on the "Rekomendasi untukmu" rows, so the name and price got a one-letter column (the item 1 open note) | photo wrapped in a fixed `w-14` box | 390 px screenshot: names and prices on normal lines |
+| Staff sign-in fails for the owner | server accepts `sinta@toko.example` / demo password with a current TOTP code (UI sign-in lands on Blog); the owner's device needs the authenticator set up | eye button on the staff and customer password fields (`PasswordInput`, 44 px, "Tampilkan/Sembunyikan kata sandi", `aria-pressed`) | field switches to text; sign-in check 12/12 |
+| Article "menyambung-laptop-ke-monitor": picture does not load | the article has no cover; the card showed an empty brand-coloured 16:9 panel that read as a broken image | cards carry `coverProduct` (first linked product still for sale); the frame shows its photo or drawing; admin list shows "Tanpa sampul" | `/blog` screenshot: adaptor drawing in the frame; `seo-dev.mjs` 16/16 |

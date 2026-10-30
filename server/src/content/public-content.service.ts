@@ -91,9 +91,15 @@ export class PublicContentService {
       cover: row.coverHash
         ? toPublicArticleImage({ articleId: row.id, hash: row.coverHash, width: row.coverWidth ?? 0, height: row.coverHeight ?? 0, sizes: row.coverSizes, alt: row.coverAlt ?? "" })
         : null,
+      coverProduct: row.coverHash ? null : this.coverProduct(row),
       readingMinutes: readingMinutes(text.body),
       publishedAt: row.publishedAt ?? row.publishAt ?? row.updatedAt,
     };
+  }
+
+  private coverProduct(row: Row): PublicArticleCard["coverProduct"] {
+    const first = this.products(row.storeId as BrandId, row)[0];
+    return first ? { name: first.name, art: first.art, image: first.images?.[0] ?? null } : null;
   }
 
   /** Linked products that are still in this store's catalogue, in the article's order. */

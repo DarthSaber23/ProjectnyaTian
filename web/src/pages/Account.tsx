@@ -89,7 +89,7 @@ export function AccountHome() {
         <div className="grid gap-2 sm:grid-cols-3">
           {recs.map((p) => (
             <Link key={p.id} to={`/produk/${p.slug}`} className="flex min-w-0 items-center gap-3 rounded-brand border border-line p-2 hover:bg-alt">
-              <ProductPhoto product={p} image={p.images?.[0]} sizes={photoSizes("accountRecommended")} decorative className="w-14 shrink-0 rounded" />
+              <div className="w-14 shrink-0"><ProductPhoto product={p} image={p.images?.[0]} sizes={photoSizes("accountRecommended")} decorative className="rounded" /></div>
               <span className="flex min-w-0 flex-col break-words text-[13px]"><b>{p.name}</b><span className="money">{formatIDR(Math.min(...p.variants.map((v) => bestUnitPrice(catalog, promotions, v.sku, backend.now()).unit)))}</span>
                 {personalised && wish.includes(p.id) ? <span className="text-muted">Ada di wishlist kamu</span> : null}</span>
             </Link>

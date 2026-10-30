@@ -77,6 +77,13 @@ describe("storefront blog wiring", () => {
     }
   });
 
+  it("an article without a cover shows its first product's photo or drawing in the frame, not an empty panel", () => {
+    const card = read("components/ArticleCard.tsx");
+    expect(card).toContain("coverProduct");
+    expect(card).toMatch(/<ProductPhoto product=\{product\} image=\{product\.image\}/);
+    expect(card.match(/<ArticleCover /g)?.length).toBe(card.match(/<ArticleCover [^>]*product=\{card\.coverProduct\}/g)?.length);
+  });
+
   it("article cards keep a fixed 16:9 frame with lazy loading and a brand-coloured fallback", () => {
     const card = read("components/ArticleCard.tsx");
     expect(card).toContain("aspect-video");

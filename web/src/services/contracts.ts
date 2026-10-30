@@ -141,6 +141,8 @@ export interface PublicArticleCard {
   title: string;
   summary: string;
   cover: import("../domain/types").ProductImage | null;
+  /** Without a cover: the first linked product still for sale, so the card's frame shows its photo or drawing. */
+  coverProduct: { name: string; art: import("../domain/types").Product["art"]; image: import("../domain/types").ProductImage | null } | null;
   readingMinutes: number;
   publishedAt: string;
 }

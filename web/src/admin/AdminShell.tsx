@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { DemoBar } from "../components/Layout";
+import { PasswordInput } from "../components/PasswordInput";
 import { Toaster } from "../components/ui";
 import { applyBrand, BRANDS, DEMO_TOOLS } from "../config/brands";
 import { can, ROLE_LABEL, type Permission } from "../domain/rbac";
@@ -52,7 +53,7 @@ export function AdminLogin() {
           <label htmlFor="a-email" className="text-sm font-semibold">Email</label>
           <input id="a-email" type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} className="min-h-[44px] rounded-ctl border border-line-strong px-3" />
           <label htmlFor="a-pw" className="text-sm font-semibold">Kata sandi</label>
-          <input id="a-pw" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="min-h-[44px] rounded-ctl border border-line-strong px-3" />
+          <PasswordInput id="a-pw" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="min-h-[44px] rounded-ctl border border-line-strong px-3" />
           <label htmlFor="a-otp" className="text-sm font-semibold">Kode autentikator (6 digit)</label>
           <input id="a-otp" inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))} className="min-h-[44px] rounded-ctl border border-line-strong px-3 font-mono tracking-widest" />
           {error ? <p role="alert" className="text-[13px] font-semibold text-danger">{error}</p> : null}

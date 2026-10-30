@@ -42,6 +42,8 @@ export interface PublicArticleCard {
   title: string;
   summary: string;
   cover: ProductImage | null;
+  /** Without a cover: the first linked product still for sale, so the card's frame shows its photo or drawing. */
+  coverProduct: { name: string; art: Product["art"]; image: ProductImage | null } | null;
   readingMinutes: number;
   publishedAt: string;
 }

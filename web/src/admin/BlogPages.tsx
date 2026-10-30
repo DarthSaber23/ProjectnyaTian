@@ -65,7 +65,7 @@ export function AdminBlogList() {
         <ul className="card divide-y divide-line">
           {articles.map((a) => (
             <li key={a.id} className="flex flex-wrap items-center gap-3 p-3">
-              <div className="w-24 shrink-0"><ArticleCover image={a.cover} sizes="96px" decorative className="rounded" /></div>
+              <div className="w-24 shrink-0">{a.cover ? <ArticleCover image={a.cover} sizes="96px" decorative className="rounded" /> : <div className="flex aspect-video w-full items-center justify-center rounded bg-alt text-center text-[11px] text-muted">Tanpa sampul</div>}</div>
               <div className="flex min-w-0 flex-1 flex-col gap-0.5">
                 <b className="break-words">{a.texts.id?.title || "(tanpa judul)"}</b>
                 <span className="flex flex-wrap items-center gap-2 text-[13px] text-muted">

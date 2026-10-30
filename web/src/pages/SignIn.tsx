@@ -7,6 +7,7 @@ import { DEMO_LOGIN } from "../mocks/fixtures";
 import { ApiError } from "../services/http/client";
 import { SIGN_IN_UNAVAILABLE, backend } from "../services/http/backend";
 import { useShop } from "../store/shop";
+import { PasswordInput } from "../components/PasswordInput";
 
 const REASONS: Record<string, string> = {
   checkout: "Masuk untuk lanjut checkout. Keranjangmu aman dan akan digabung ke akun.",
@@ -80,7 +81,7 @@ export function SignIn() {
           className={`min-h-[44px] rounded-ctl border px-3 ${fieldError.email ? "border-2 border-danger" : "border-line-strong"}`} />
         {fieldError.email ? <span id="email-err" className="text-[13px] font-semibold text-danger">{fieldError.email}</span> : null}
         <label htmlFor="password" className="text-sm font-semibold">Kata sandi</label>
-        <input id="password" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} aria-invalid={!!fieldError.password} aria-describedby={fieldError.password ? "pw-err" : undefined}
+        <PasswordInput id="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} aria-invalid={!!fieldError.password} aria-describedby={fieldError.password ? "pw-err" : undefined}
           className={`min-h-[44px] rounded-ctl border px-3 ${fieldError.password ? "border-2 border-danger" : "border-line-strong"}`} />
         {fieldError.password ? <span id="pw-err" className="text-[13px] font-semibold text-danger">{fieldError.password}</span> : null}
         {error ? <p role="alert" className="text-[13px] font-semibold text-danger">{error}</p> : null}

@@ -8,7 +8,7 @@ import { PublicContentService } from "./public-content.service";
 
 const catalogueProducts = [
   { id: "B01", slug: "kabel-usb-c", name: "Kabel USB-C", brand: "sambung", variants: [] },
-  { id: "B02", slug: "adaptor", name: "Adaptor", brand: "sambung", variants: [] },
+  { id: "B02", slug: "adaptor", name: "Adaptor", brand: "sambung", variants: [], art: { kind: "adapter", bg: "#F2F4F7", accent: "#1F5AE0" } },
 ];
 
 async function setup() {
@@ -47,6 +47,16 @@ describe("siteConfig", () => {
 });
 
 describe("PublicContentService", () => {
+  it("a card without a cover carries its first linked product that is still in the catalogue, for the picture frame", async () => {
+    const { service, publish } = await setup();
+    await publish("tanpa-sampul", { products: ["B02", "B01"] });
+    const [card] = (await service.list("sambung", "id", 1)).items;
+    expect(card).toMatchObject({ cover: null, coverProduct: { name: "Adaptor", art: { kind: "adapter", bg: "#F2F4F7", accent: "#1F5AE0" }, image: null } });
+    await publish("tanpa-produk");
+    expect((await service.list("sambung", "id", 1)).items.find((c) => c.slug === "tanpa-produk")).toMatchObject({ coverProduct: null });
+  });
+
+
   it("lists live articles newest first, 12 per page, cards only", async () => {
     const { h, service, publish } = await setup();
     for (let i = 0; i < 13; i++) {

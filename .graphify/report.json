@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-30T06:50:40.497Z",
+  "timestamp": "2026-10-30T07:32:09.380Z",
   "projectName": "ProjectnyaTian",
   "version": "0.1.0",
   "modules": {
@@ -8,8 +8,8 @@
       "path": "web/src",
       "description": "React 18 storefront (Agent 01 prototype - read-only)",
       "owner": "Agent 01",
-      "fileCount": 64,
-      "testCount": 22,
+      "fileCount": 65,
+      "testCount": 23,
       "files": [
         "admin-content.test.ts",
         "admin-media.test.ts",
@@ -242,8 +242,8 @@
       "path": ".",
       "description": "Docker Compose & infrastructure config",
       "owner": "Agent 02",
-      "fileCount": 212,
-      "testCount": 88,
+      "fileCount": 213,
+      "testCount": 89,
       "files": [
         "AdminPages.tsx",
         "AdminShell.tsx",
@@ -263,7 +263,7 @@
     }
   },
   "testCoverage": {
-    "total": 444,
+    "total": 446,
     "withTests": 7
   },
   "constraints": {
@@ -321,11 +321,11 @@
       "status": "pending"
     }
   },
-  "generatedAt": "30/10/2026, 13.50.40",
+  "generatedAt": "30/10/2026, 14.32.09",
   "git": {
-    "commit": "2526964",
+    "commit": "7c3eb96",
     "branch": "feat/seo-articles",
-    "status": 123
+    "status": 38
   },
   "constraintCompliance": {
     "moneyIntegerRupiah": {

@@ -50,4 +50,10 @@ describe("product photo wiring", () => {
       expect(gallery).toContain(part);
     }
   });
+
+  it("the account recommendation photo sits in a fixed-width box, so the name never wraps one letter per line", () => {
+    const account = read("pages/Account.tsx");
+    expect(account).toMatch(/<div className="w-14 shrink-0"><ProductPhoto [^>]*photoSizes\("accountRecommended"\)[^>]*\/><\/div>/);
+    expect(account).not.toMatch(/<ProductPhoto [^>]*className="[^"]*w-14/);
+  });
 });
