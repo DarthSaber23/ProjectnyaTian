@@ -96,7 +96,11 @@ export function SignIn() {
           <button type="button" className="btn-secondary self-start" onClick={() => { setEmail(DEMO_LOGIN.email); setPassword(DEMO_LOGIN.password); }}>Isi kredensial demo</button>
         </section>
       ) : null}
-      <Link to="/" className="text-sm underline">Kembali belanja</Link>
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <Link to="/" className="inline-flex min-h-[44px] items-center text-sm underline">Kembali belanja</Link>
+        {/* Staff accounts are separate from customer accounts and sign in with an authenticator code. */}
+        <Link to="/admin/login" className="inline-flex min-h-[44px] items-center text-sm text-muted underline">Staf toko? Masuk di halaman admin</Link>
+      </div>
     </div>
   );
 }

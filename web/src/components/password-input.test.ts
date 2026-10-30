@@ -25,4 +25,8 @@ describe("password field with an eye button", () => {
     expect(source).toContain(use);
     expect(source).not.toContain('type="password"');
   });
+
+  it("the customer sign-in page points staff to the admin sign-in", () => {
+    expect(read("pages/SignIn.tsx")).toMatch(/<Link to="\/admin\/login"[^>]*>Staf toko\? Masuk di halaman admin<\/Link>/);
+  });
 });
