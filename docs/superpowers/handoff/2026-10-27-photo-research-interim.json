@@ -1,0 +1,2714 @@
+{
+ "snapshotAt": "2026-10-27, workflow stopped by the owner during the search stage; verify stage never ran",
+ "unverified": true,
+ "groups": {
+  "search:usb-c-cables": {
+   "candidatesSeen": [
+    {
+     "ref": "commons:64025084",
+     "width": 3872,
+     "height": 2904,
+     "licence": "cc0 1.0",
+     "title": "USB-C cable 2017 A",
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_cable_2017_A.jpg"
+    },
+    {
+     "ref": "commons:179155149",
+     "width": 2395,
+     "height": 2140,
+     "licence": "cc0 1.0",
+     "title": "USB-C-connector-and-cable",
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C-connector-and-cable.png"
+    },
+    {
+     "ref": "commons:92009891",
+     "width": 3024,
+     "height": 4032,
+     "licence": "cc0 1.0",
+     "title": "USB Type-C",
+     "page": "https://commons.wikimedia.org/wiki/File:USB_Type-C.jpg"
+    },
+    {
+     "ref": "commons:66595553",
+     "width": 1600,
+     "height": 1200,
+     "licence": "cc0 1.0",
+     "title": "Braided cable close up",
+     "page": "https://commons.wikimedia.org/wiki/File:Braided_cable_close_up.jpg"
+    },
+    {
+     "ref": "commons:183850900",
+     "width": 3904,
+     "height": 2193,
+     "licence": "cc0 1.0",
+     "title": "USB-C connector and receptacle",
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_connector_and_receptacle.webp"
+    },
+    {
+     "ref": "commons:114260691",
+     "width": 2560,
+     "height": 1536,
+     "licence": "pd",
+     "title": "USB-A and USB micro B connectors in the power bank",
+     "page": "https://commons.wikimedia.org/wiki/File:USB-A_and_USB_micro_B_connectors_in_the_power_bank.jpg"
+    },
+    {
+     "ref": "commons:47277602",
+     "width": 2048,
+     "height": 1536,
+     "licence": "cc0 1.0",
+     "title": "USB Type-C to ultra thin reversible USB",
+     "page": "https://commons.wikimedia.org/wiki/File:USB_Type-C_to_ultra_thin_reversible_USB.jpeg"
+    },
+    {
+     "ref": "commons:62107009",
+     "width": 4608,
+     "height": 3456,
+     "licence": "cc0 1.0",
+     "title": "USB OTG Type-C Adapter - A",
+     "page": "https://commons.wikimedia.org/wiki/File:USB_OTG_Type-C_Adapter_-_A.jpg"
+    },
+    {
+     "ref": "commons:70557726",
+     "width": 3300,
+     "height": 2600,
+     "licence": "pd",
+     "title": "Nintendo-Switch-JoyCon-Grip-Chargeable-04",
+     "page": "https://commons.wikimedia.org/wiki/File:Nintendo-Switch-JoyCon-Grip-Chargeable-04.jpg"
+    },
+    {
+     "ref": "commons:70557712",
+     "width": 3300,
+     "height": 2600,
+     "licence": "pd",
+     "title": "Nintendo-Switch-JoyCon-Grip-Chargeable-02",
+     "page": "https://commons.wikimedia.org/wiki/File:Nintendo-Switch-JoyCon-Grip-Chargeable-02.jpg"
+    },
+    {
+     "ref": "commons:2578403",
+     "width": 1497,
+     "height": 696,
+     "licence": "pd",
+     "title": "USB types 2",
+     "page": "https://commons.wikimedia.org/wiki/File:USB_types_2.jpg"
+    },
+    {
+     "ref": "commons:180426676",
+     "width": 1152,
+     "height": 768,
+     "licence": "pd",
+     "title": "EFTA00001363 - White box contains a silver USB drive cable and a yellow note labeled neon ",
+     "page": "https://commons.wikimedia.org/wiki/File:EFTA00001363_-_White_box_contains_a_silver_USB_drive_cable_and_a_yellow_note_labeled_neon_with_the_number_418_placed_on_a_dark_surface_beside_an_open_book.jpg"
+    },
+    {
+     "ref": "commons:70729615",
+     "width": 5288,
+     "height": 5435,
+     "licence": "pd",
+     "title": "CAT-B25-Sides-USB-Port",
+     "page": "https://commons.wikimedia.org/wiki/File:CAT-B25-Sides-USB-Port.jpg"
+    },
+    {
+     "ref": "commons:11356524",
+     "width": 2960,
+     "height": 2280,
+     "licence": "pd",
+     "title": "Xbox-360-Play&Charge-Kit-White",
+     "page": "https://commons.wikimedia.org/wiki/File:Xbox-360-Play%26Charge-Kit-White.jpg"
+    },
+    {
+     "ref": "commons:66306490",
+     "width": 2307,
+     "height": 1496,
+     "licence": "pd",
+     "title": "Sinclair ZX Spectrum Vega - Cabling",
+     "page": "https://commons.wikimedia.org/wiki/File:Sinclair_ZX_Spectrum_Vega_-_Cabling.jpg"
+    },
+    {
+     "ref": "commons:70729585",
+     "width": 4959,
+     "height": 2509,
+     "licence": "pd",
+     "title": "CAT-B25-Earbuds",
+     "page": "https://commons.wikimedia.org/wiki/File:CAT-B25-Earbuds.jpg"
+    },
+    {
+     "ref": "commons:78386482",
+     "width": 1543,
+     "height": 2595,
+     "licence": "pd",
+     "title": "Fracarro-SIG9506UN-Programming-Unit-And-Display-Back",
+     "page": "https://commons.wikimedia.org/wiki/File:Fracarro-SIG9506UN-Programming-Unit-And-Display-Back.jpg"
+    },
+    {
+     "ref": "commons:78386483",
+     "width": 4561,
+     "height": 3571,
+     "licence": "pd",
+     "title": "Fracarro-SIG9506UN-Programming-Unit-And-Display-BL",
+     "page": "https://commons.wikimedia.org/wiki/File:Fracarro-SIG9506UN-Programming-Unit-And-Display-BL.jpg"
+    },
+    {
+     "ref": "commons:61648989",
+     "width": 6000,
+     "height": 4704,
+     "licence": "pd",
+     "title": "Nintendo-Switch-AC-Adapter",
+     "page": "https://commons.wikimedia.org/wiki/File:Nintendo-Switch-AC-Adapter.jpg"
+    },
+    {
+     "ref": "commons:2205245",
+     "width": 1083,
+     "height": 975,
+     "licence": "pd",
+     "title": "USB Mini-B and Standard-A plugs",
+     "page": "https://commons.wikimedia.org/wiki/File:USB_Mini-B_and_Standard-A_plugs.jpg"
+    },
+    {
+     "ref": "commons:8766969",
+     "width": 1520,
+     "height": 1152,
+     "licence": "pd",
+     "title": "Type A USB",
+     "page": "https://commons.wikimedia.org/wiki/File:Type_A_USB.JPG"
+    },
+    {
+     "ref": "commons:2205904",
+     "width": 1497,
+     "height": 696,
+     "licence": "pd",
+     "title": "USB types",
+     "page": "https://commons.wikimedia.org/wiki/File:USB_types.jpg"
+    }
+   ]
+  },
+  "search:video-cables": {
+   "candidatesSeen": [
+    {
+     "ref": "commons:57003351",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "2009-265-83 The Connection (3384421358)",
+     "page": null
+    },
+    {
+     "ref": "commons:58368257",
+     "width": 1568,
+     "height": 667,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI_Connector_Types.png"
+    },
+    {
+     "ref": "commons:10388818",
+     "width": 1837,
+     "height": 888,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Female_HDMI_connector.JPG"
+    },
+    {
+     "ref": "commons:16128115",
+     "width": 2000,
+     "height": 1500,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI-Connector.jpg"
+    },
+    {
+     "ref": "commons:2878716",
+     "width": 2008,
+     "height": 1860,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI-CloseupOfPlugs-vs-USB.jpg"
+    },
+    {
+     "ref": "commons:149897989",
+     "width": 4000,
+     "height": 3008,
+     "licence": "By",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DP-HDMI_Dongle_By_ONTEN.jpg"
+    },
+    {
+     "ref": "commons:39647698",
+     "width": 3264,
+     "height": 2448,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Amazon_Fire_TV_Stick_HDMI.jpg"
+    },
+    {
+     "ref": "commons:184004489",
+     "width": 2121,
+     "height": 1591,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Stargardzki_p%C5%82ug.jpg"
+    },
+    {
+     "ref": "commons:145131375",
+     "width": 3544,
+     "height": 1345,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Interfaces_on_left_side_of_Lenovo_ThinkPad_T410_laptop_(2011)_-_VGA,_Ethernet,_DisplayPort,_3xUSB_2.0.jpg"
+    },
+    {
+     "ref": "commons:144997388",
+     "width": 3971,
+     "height": 2780,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Interfaces_on_left_side_of_Lenovo_ThinkPad_T410_laptop_-_VGA_connector,_Ethernet_port,_Display_port,_three_USB_2.0_ports.jpg"
+    },
+    {
+     "ref": "commons:149559392",
+     "width": 4160,
+     "height": 3722,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Computerhardware_und_Peripherie_20240203_HOF07027_RAW-Export.png"
+    },
+    {
+     "ref": "commons:84672033",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Cable_TV_Box_(49045039997).jpg"
+    },
+    {
+     "ref": "commons:131692654",
+     "width": 4000,
+     "height": 3000,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Micro_USB_vs_micro_HDMI_01.jpg"
+    },
+    {
+     "ref": "commons:131692655",
+     "width": 4000,
+     "height": 3000,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Micro_USB_vs_micro_HDMI_02.jpg"
+    },
+    {
+     "ref": "commons:50348148",
+     "width": 5184,
+     "height": 3456,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI_and_Mini_HDMI_connector_compared.jpg"
+    },
+    {
+     "ref": "commons:50348151",
+     "width": 5184,
+     "height": 3456,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Mini_HDMI_Connector.jpg"
+    },
+    {
+     "ref": "commons:151329645",
+     "width": 2544,
+     "height": 1696,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:View_of_HDMI_plug_of_first-generation_Chromecast_in_hand.jpg"
+    },
+    {
+     "ref": "commons:175990659",
+     "width": 3060,
+     "height": 4080,
+     "licence": "by 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI_%22Dongle%22.jpg"
+    },
+    {
+     "ref": "commons:149276204",
+     "width": 3552,
+     "height": 2000,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:AV_Out_In_HDMI_In_Jack_Plug_Red_White_Yellow_Audio_and_Video_Mixer_Backside_(12248078123).jpg"
+    },
+    {
+     "ref": "commons:46146981",
+     "width": 3648,
+     "height": 2736,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:GF1-_Plugs_(Take_2)_(4089430440).jpg"
+    },
+    {
+     "ref": "commons:46954259",
+     "width": 4896,
+     "height": 3672,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Skw_Piesteritz_Hallen_0691.JPG"
+    },
+    {
+     "ref": "commons:46954894",
+     "width": 4896,
+     "height": 3085,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:SKW_Piesteritz_0717.JPG"
+    },
+    {
+     "ref": "commons:46954897",
+     "width": 4896,
+     "height": 3672,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:SKW_Piesteritz_Bahnanschluss_0708.JPG"
+    },
+    {
+     "ref": "commons:46954260",
+     "width": 4896,
+     "height": 3672,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Skw_Piesteritz_Nord_0690.JPG"
+    },
+    {
+     "ref": "commons:116561687",
+     "width": 5472,
+     "height": 3648,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:9V-SKW_Singapore_Airlines_Airbus_A380-841_(42558367584).jpg"
+    },
+    {
+     "ref": "commons:46954899",
+     "width": 4896,
+     "height": 3089,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:SKW_Piesteritz_Chemie_Campus_0725.jpg"
+    },
+    {
+     "ref": "commons:24739892",
+     "width": 1024,
+     "height": 683,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:LY-SKW_(8480113026).jpg"
+    },
+    {
+     "ref": "commons:125817847",
+     "width": 4233,
+     "height": 2965,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Kabel_DisplayPort_zu_Digital_Visual_Interface_20221119_HOF06615-HDR.png"
+    },
+    {
+     "ref": "commons:5989281",
+     "width": 1050,
+     "height": 570,
+     "licence": "by 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DisplayPort_(connector).PNG"
+    },
+    {
+     "ref": "commons:125817898",
+     "width": 4145,
+     "height": 3216,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Kabel_DisplayPort_zu_Digital_Visual_Interface_20221119_HOF06616-SDR.png"
+    },
+    {
+     "ref": "commons:45851390",
+     "width": 2296,
+     "height": 1528,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MiniDisplayport_to_DVI-D_Dual_Link_adapter.jpg"
+    },
+    {
+     "ref": "commons:151470944",
+     "width": 3060,
+     "height": 4080,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_connector_on_a_laptop.jpg"
+    },
+    {
+     "ref": "commons:106614000",
+     "width": 2592,
+     "height": 1944,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lifesaver_kit_for_presenters,_mini_displayport_to_vga,_hdmi,_and_dvi_adapters_(9201274040).jpg"
+    },
+    {
+     "ref": "commons:5488295",
+     "width": 2444,
+     "height": 1479,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Displayport-cable.jpg"
+    },
+    {
+     "ref": "commons:68777886",
+     "width": 2877,
+     "height": 1919,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:9V-SKW_28042018LHR_(41818178372).jpg"
+    },
+    {
+     "ref": "commons:76126500",
+     "width": 3933,
+     "height": 2622,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:9V-SKW@HKG_(20190125161133).jpg"
+    },
+    {
+     "ref": "commons:76126499",
+     "width": 4252,
+     "height": 2834,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:9V-SKW@HKG_(20190125161137).jpg"
+    },
+    {
+     "ref": "commons:76126511",
+     "width": 4252,
+     "height": 2834,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:9V-SKW@HKG_(20190125161140).jpg"
+    },
+    {
+     "ref": "commons:29381817",
+     "width": 2256,
+     "height": 1496,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:LY-SKW_(7382633152).jpg"
+    },
+    {
+     "ref": "commons:78659692",
+     "width": 4252,
+     "height": 2835,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:9V-SKW@HKG_(20190501134222).jpg"
+    },
+    {
+     "ref": "commons:76126501",
+     "width": 3934,
+     "height": 2621,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:9V-SKW@HKG_(20190125161131).jpg"
+    },
+    {
+     "ref": "commons:37610184",
+     "width": 3110,
+     "height": 1996,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DisplayPort_connector-male-front_PNr%C2%B00439.jpg"
+    },
+    {
+     "ref": "commons:37610191",
+     "width": 2823,
+     "height": 2030,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DisplayPort_connector-male-front_oblique_PNr%C2%B00441.jpg"
+    },
+    {
+     "ref": "commons:37610168",
+     "width": 2738,
+     "height": 1112,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DisplayPort_connector-female_PNr%C2%B00435.jpg"
+    },
+    {
+     "ref": "commons:17911092",
+     "width": 2048,
+     "height": 1152,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Displayport-vs-usb.jpg"
+    },
+    {
+     "ref": "commons:85446320",
+     "width": 2000,
+     "height": 3000,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ATX_Computer_cases,_back_view.jpg"
+    },
+    {
+     "ref": "commons:15899872",
+     "width": 1546,
+     "height": 1218,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Mini_displayport.jpg"
+    },
+    {
+     "ref": "commons:80967658",
+     "width": 1200,
+     "height": 850,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lenovo_DisplayPort_Dual.jpg"
+    },
+    {
+     "ref": "commons:37484715",
+     "width": 2625,
+     "height": 1751,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_Mini_DisplayPort_adapter_FAIL_(2969264395).jpg"
+    },
+    {
+     "ref": "commons:138126769",
+     "width": 1806,
+     "height": 486,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Usb_Typec_2.0_(%E3%82%AA%E3%82%B9%E5%81%B4).png"
+    },
+    {
+     "ref": "commons:72230760",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ATX_computer_case_-_left_-_2018-05-18.jpg"
+    },
+    {
+     "ref": "commons:5042380",
+     "width": 2940,
+     "height": 1954,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Mini_DisplayPort_on_Apple_MacBook.jpg"
+    },
+    {
+     "ref": "commons:37610193",
+     "width": 2529,
+     "height": 2478,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DisplayPort_connector-male-front_oblique_PNr%C2%B00440.jpg"
+    },
+    {
+     "ref": "commons:67335386",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Mini_Displayport_logo_icon.jpg"
+    },
+    {
+     "ref": "commons:99594824",
+     "width": 1973,
+     "height": 1120,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:RJ-45_Ethernet_socket_on_Lenovo_T410_Laptop_(cropped2).jpg"
+    },
+    {
+     "ref": "commons:99563537",
+     "width": 1778,
+     "height": 1088,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:RJ-45_Ethernet_socket_on_Lenovo_T410_Laptop_(cropped).jpg"
+    },
+    {
+     "ref": "commons:150065686",
+     "width": 1280,
+     "height": 576,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Amd-radeon-rx6800xt-from2020year-inputs.jpg"
+    },
+    {
+     "ref": "commons:148152271",
+     "width": 3648,
+     "height": 2736,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Mini_DisplayPort_to_DVI_adapter.jpg"
+    },
+    {
+     "ref": "commons:148153345",
+     "width": 1280,
+     "height": 960,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_accessories_-_remote,_mini_DisplayPort_adapters.jpg"
+    }
+   ]
+  },
+  "search:adapter-hub": {
+   "candidatesSeen": [
+    {
+     "ref": "commons:62107009",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "USB OTG Type-C Adapter - A",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:62107008",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "USB OTG Type-C Adapter - B",
+     "page": null
+    },
+    {
+     "ref": "commons:61648989",
+     "width": 6000,
+     "height": 4704,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Nintendo-Switch-AC-Adapter.jpg"
+    },
+    {
+     "ref": "commons:149202367",
+     "width": 3024,
+     "height": 4032,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USA_phone_charger_at_airport_01.jpg"
+    },
+    {
+     "ref": "commons:10388818",
+     "width": 1837,
+     "height": 888,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Female_HDMI_connector.JPG"
+    },
+    {
+     "ref": "commons:86471175",
+     "width": 4032,
+     "height": 3024,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Zero_with_Mini_HDMI_adapter_18_29_01_050000.jpeg"
+    },
+    {
+     "ref": "commons:165107428",
+     "width": 1706,
+     "height": 960,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI%E8%BD%89VGA%E8%BD%89%E6%8E%A5%E9%A0%AD.jpg"
+    },
+    {
+     "ref": "commons:86471162",
+     "width": 3419,
+     "height": 2564,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Zero_with_Mini_HDMI_adapter.jpeg"
+    },
+    {
+     "ref": "commons:57003351",
+     "width": 2400,
+     "height": 1800,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:2009-265-83_The_Connection_(3384421358).jpg"
+    },
+    {
+     "ref": "commons:41223892",
+     "width": 3450,
+     "height": 2580,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Xbox-360-Audio-Adapter.jpg"
+    },
+    {
+     "ref": "commons:147733289",
+     "width": 4000,
+     "height": 3000,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Receptacle_ports_on_an_HP_elitebook_640.jpg"
+    },
+    {
+     "ref": "commons:32185908",
+     "width": 2592,
+     "height": 1936,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MK809III_V1.0_130606_inside_RAM_IT66121-HDMI.jpg"
+    },
+    {
+     "ref": "commons:32185911",
+     "width": 2592,
+     "height": 1936,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MK809III_V1.0_130606_inside_VREG_uSD_USB.jpg"
+    },
+    {
+     "ref": "commons:32185909",
+     "width": 2592,
+     "height": 1936,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MK809III_V1.0_130606_inside_RAM_RK3188-ARMv7-SoC.jpg"
+    },
+    {
+     "ref": "commons:32185905",
+     "width": 2592,
+     "height": 1936,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MK809III_V1.0_130606.jpg"
+    },
+    {
+     "ref": "commons:32185907",
+     "width": 2592,
+     "height": 1936,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MK809III_V1.0_130606_connectors.jpg"
+    },
+    {
+     "ref": "commons:32185906",
+     "width": 2592,
+     "height": 1936,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MK809III_V1.0_130606_inside_NAND_AP6210-WIFI.jpg"
+    },
+    {
+     "ref": "commons:32185912",
+     "width": 2592,
+     "height": 1936,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MK809III_V1.0_130606_inside_front.jpg"
+    },
+    {
+     "ref": "commons:193788943",
+     "width": 1668,
+     "height": 1078,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_Regulation_World_Map_2.0_2026.jpg"
+    },
+    {
+     "ref": "commons:872204",
+     "width": 2697,
+     "height": 3098,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_Hub_Internals.jpg"
+    },
+    {
+     "ref": "commons:69767059",
+     "width": 2119,
+     "height": 1901,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_hub_Gembird.jpg"
+    },
+    {
+     "ref": "commons:98814283",
+     "width": 2000,
+     "height": 2000,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ALMIGHTY_DOCK_C1.jpg"
+    },
+    {
+     "ref": "commons:164224703",
+     "width": 2000,
+     "height": 1429,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Pulsar_X2_CrazyLight,_8K_Dongle_--_2025_--_0151.jpg"
+    },
+    {
+     "ref": "commons:173476879",
+     "width": 6000,
+     "height": 4000,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Logitech_Unifying_receiver_trio_HS3.jpg"
+    },
+    {
+     "ref": "commons:173476869",
+     "width": 6000,
+     "height": 4000,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Logitech_Unifying_receiver_trio_HS1.jpg"
+    },
+    {
+     "ref": "commons:71716914",
+     "width": 2640,
+     "height": 1800,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:U2F_Hardware_Authentication_Security_Keys_(Yubico_Yubikey_4_and_Feitian_MultiPass_FIDO)_(42286852310).jpg"
+    },
+    {
+     "ref": "commons:127962036",
+     "width": 2200,
+     "height": 1375,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ASRock_USB-3_Type-C_PCIe-card.jpg"
+    },
+    {
+     "ref": "commons:84671870",
+     "width": 9504,
+     "height": 6336,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_96W_USB_Type-C_Power_Adapter_for_new_16_inch_MacBook_Pro_(49165128252).jpg"
+    },
+    {
+     "ref": "commons:149518548",
+     "width": 4080,
+     "height": 3072,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:WD_Blue_Hard_Disk_Drive_connected_to_Laptop_via_USB-C.jpg"
+    },
+    {
+     "ref": "commons:130584645",
+     "width": 4624,
+     "height": 3468,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:TUNEWEAR-ALMIGHTY-DOCK-nano1_02.jpg"
+    },
+    {
+     "ref": "commons:130584643",
+     "width": 4624,
+     "height": 3468,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:TUNEWEAR-ALMIGHTY-DOCK-nano1_03.jpg"
+    },
+    {
+     "ref": "commons:151470944",
+     "width": 3060,
+     "height": 4080,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_connector_on_a_laptop.jpg"
+    },
+    {
+     "ref": "commons:164388533",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:WLA_2025_in_Niger_Delta_presentation.jpg"
+    },
+    {
+     "ref": "commons:180636216",
+     "width": 7323,
+     "height": 4882,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Silicon_vs_GaN_30W_USB-C_chargers.jpg"
+    },
+    {
+     "ref": "commons:50348148",
+     "width": 5184,
+     "height": 3456,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI_and_Mini_HDMI_connector_compared.jpg"
+    },
+    {
+     "ref": "commons:50348151",
+     "width": 5184,
+     "height": 3456,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Mini_HDMI_Connector.jpg"
+    },
+    {
+     "ref": "commons:53736865",
+     "width": 1080,
+     "height": 720,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Fire-TV_Stick_and_HDMI-Adapter.jpg"
+    },
+    {
+     "ref": "commons:106614000",
+     "width": 2592,
+     "height": 1944,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lifesaver_kit_for_presenters,_mini_displayport_to_vga,_hdmi,_and_dvi_adapters_(9201274040).jpg"
+    },
+    {
+     "ref": "commons:165865538",
+     "width": 1033,
+     "height": 271,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI_Alt_Mode_-_USB_Type-C_pin_mapping.png"
+    },
+    {
+     "ref": "commons:184895605",
+     "width": 1200,
+     "height": 1019,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ASIX_AX58200_EtherCAT_Slave_Controller_SoC.jpg"
+    },
+    {
+     "ref": "commons:98883444",
+     "width": 4450,
+     "height": 3700,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Asus-ROG-Strix-Z390-F-Gaming-Motherboard_20201120_DSC6025.jpg"
+    },
+    {
+     "ref": "commons:184896864",
+     "width": 1776,
+     "height": 1356,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ASIX_AX68004_4-Port_USB_KVM_Switch_SoC.png"
+    },
+    {
+     "ref": "commons:184897138",
+     "width": 1445,
+     "height": 1193,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ASIX_AX68002_2-Port_USB_KVM_Switch_SoC.png"
+    },
+    {
+     "ref": "commons:130584644",
+     "width": 4624,
+     "height": 3468,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:TUNEWEAR-ALMIGHTY-DOCK-nano1_01.jpg"
+    },
+    {
+     "ref": "commons:40073555",
+     "width": 2304,
+     "height": 1728,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Stribe_%26_Arduinome_-_Base_acrylics_arrive_and_general_layout_(2009-08-16_11.28.00_by_c-g.).jpg"
+    },
+    {
+     "ref": "commons:40072937",
+     "width": 1728,
+     "height": 2304,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Stribe_16_-_Work_starts_on_finishing_(2009-09-02_13.19.33_by_c-g.).jpg"
+    },
+    {
+     "ref": "commons:40072960",
+     "width": 1229,
+     "height": 669,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Stribe_16_Phase_2._pre-viz_-_Ports_(2010-03-11_13.08.27_by_c-g.).jpg"
+    },
+    {
+     "ref": "commons:38933924",
+     "width": 1600,
+     "height": 1200,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:US_Robotics_USB_3.0_Hub_(6301899812).jpg"
+    },
+    {
+     "ref": "commons:57001326",
+     "width": 1325,
+     "height": 882,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:2010-365-48_Best._USB_Hub._Evah._(4367289690).jpg"
+    },
+    {
+     "ref": "commons:1134122",
+     "width": 1024,
+     "height": 768,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_hubs.jpg"
+    },
+    {
+     "ref": "commons:38933980",
+     "width": 1481,
+     "height": 890,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:VIA_Labs_VL811_USB_3.0_4-Port_Hub_-_Board_Angle_(6119774674).jpg"
+    },
+    {
+     "ref": "commons:29058121",
+     "width": 2560,
+     "height": 1920,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:VIA_Labs_VL812_USB_3.0_4-Port_Hub_-_Board_Angle.jpg"
+    },
+    {
+     "ref": "commons:29058071",
+     "width": 2560,
+     "height": 1920,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:VIA_Labs_VL812_USB_3.0_4-Port_Hub_-_Board_Top.jpg"
+    },
+    {
+     "ref": "commons:38933976",
+     "width": 1600,
+     "height": 1003,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:VIA_Labs_VL811_USB_3.0_4-Port_Hub_-_Board_Top_(6119775186).jpg"
+    },
+    {
+     "ref": "commons:148007310",
+     "width": 6016,
+     "height": 4016,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Yamaha_Montage_M7_-_DM_board_(YM483)_component_side.jpg"
+    },
+    {
+     "ref": "commons:167567814",
+     "width": 6683,
+     "height": 1441,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Nintendo_Switch_2_20250605_HOF4675-HDR_RAW-Export.png"
+    },
+    {
+     "ref": "commons:124264331",
+     "width": 3627,
+     "height": 3049,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Sabrent_DS-SC4B_20221006_HOF05375.png"
+    },
+    {
+     "ref": "commons:124266434",
+     "width": 5000,
+     "height": 5000,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Sabrent_DS-SC4B_20221006_HOF05385.png"
+    },
+    {
+     "ref": "commons:131744528",
+     "width": 7701,
+     "height": 3213,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Nintendo_Switch_%E2%80%93_OLED-Modell_(The_Legend_of_Zelda_-_Tears_of_the_Kingdom)_20230510_HOF02524_RAW-Export.png"
+    },
+    {
+     "ref": "commons:124392707",
+     "width": 3143,
+     "height": 2976,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Sabrent_DS-SC4B_20221006_HOF05394.png"
+    },
+    {
+     "ref": "commons:59071103",
+     "width": 1280,
+     "height": 960,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_Digital_AV_Multiport_Adapter.jpeg"
+    },
+    {
+     "ref": "commons:170301379",
+     "width": 6029,
+     "height": 3947,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Razer_Blade_Pro_17_(2020_model)_with_backplate_removed.jpg"
+    },
+    {
+     "ref": "commons:85057113",
+     "width": 1080,
+     "height": 722,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Various_USB-C_hubs_and_adapters_with_MacBook_Pro_(26550311179).jpg"
+    },
+    {
+     "ref": "commons:66221243",
+     "width": 3096,
+     "height": 4128,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Adapter_USB_Typ_C_auf_USB_Micro_B_(Buchsenseite).jpg"
+    },
+    {
+     "ref": "commons:66221242",
+     "width": 3096,
+     "height": 4128,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Adapter_USB_Typ_C_auf_USB_Micro_B_(Steckerseite).jpg"
+    },
+    {
+     "ref": "commons:116613523",
+     "width": 1718,
+     "height": 1289,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Osma_USB_Type-C_to_3.5mm_stereo_mini_jack_ADCS-04BK.jpg"
+    },
+    {
+     "ref": "commons:48114601",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_OTG_Type_C.jpg"
+    },
+    {
+     "ref": "commons:48134426",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Adapter_cable_USB_Type_C_male_to_Micro_USB_Type_B_female.jpg"
+    },
+    {
+     "ref": "commons:61767679",
+     "width": 4128,
+     "height": 3096,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Adattatore_USB.jpg"
+    },
+    {
+     "ref": "commons:83645978",
+     "width": 8808,
+     "height": 5703,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_USB-C_(USB_Type_C)_87W_Power_Adapter_for_MacBook_Pro_(48979218053).jpg"
+    },
+    {
+     "ref": "commons:55216752",
+     "width": 4608,
+     "height": 2592,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Sharp_mobile_Z2_FS8002_adapter_20170122.jpg"
+    },
+    {
+     "ref": "commons:31270226",
+     "width": 1182,
+     "height": 591,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:A_SlimPort-to-HDMI_adapter,_made_by_Analogix.jpg"
+    },
+    {
+     "ref": "commons:4290244",
+     "width": 2800,
+     "height": 2100,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DVI-HDMI-Adapter.jpg"
+    },
+    {
+     "ref": "commons:95122932",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Adaptador_HDMI_a_RCA.jpg"
+    },
+    {
+     "ref": "commons:24991358",
+     "width": 2169,
+     "height": 1421,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Mini_DisplayPort_to_HDMI_adapter.jpeg"
+    },
+    {
+     "ref": "commons:28825733",
+     "width": 2048,
+     "height": 1536,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DVI-HDMI_2.jpg"
+    },
+    {
+     "ref": "commons:10743609",
+     "width": 1684,
+     "height": 1616,
+     "licence": "by-sa 3.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:HDMI-C.jpg"
+    },
+    {
+     "ref": "commons:28825705",
+     "width": 2048,
+     "height": 1536,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:DVI-HDMI_1.jpg"
+    },
+    {
+     "ref": "commons:97964747",
+     "width": 4608,
+     "height": 3456,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Raspberry_PI_hdmi-vga_connector.jpg"
+    },
+    {
+     "ref": "commons:96439679",
+     "width": 2896,
+     "height": 1012,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_2MicroHDMI_Rpi4.jpg"
+    },
+    {
+     "ref": "commons:85839416",
+     "width": 2867,
+     "height": 1491,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_Hubb_5_portar.jpg"
+    },
+    {
+     "ref": "commons:138845267",
+     "width": 1480,
+     "height": 888,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Raspberry_Pi_4,_2_GB_RAM_version_4_(cropped)_USB-C_HDMI.jpg"
+    },
+    {
+     "ref": "commons:94931904",
+     "width": 6705,
+     "height": 3771,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Acer_Swift_3_rear-left_edge.jpg"
+    },
+    {
+     "ref": "commons:105438734",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:PinePhone_Docking_Bar.jpg"
+    },
+    {
+     "ref": "commons:197247722",
+     "width": 3556,
+     "height": 3556,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Fte_Maximal_eXtreme_HD_flex_Plus_-_board_1_-_ALi_M3510C-7125.jpg"
+    },
+    {
+     "ref": "commons:196753307",
+     "width": 5766,
+     "height": 5713,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:2026-07-26_Anschl%C3%BCsse_der_Sony_a7R_VI_ohne_Focus_Stacking_HOF6966-HDR.png"
+    },
+    {
+     "ref": "commons:164226812",
+     "width": 3973,
+     "height": 2648,
+     "licence": "PD",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C-PD_to_Dell_Adapter_3.jpg"
+    },
+    {
+     "ref": "commons:164226810",
+     "width": 3727,
+     "height": 2485,
+     "licence": "PD",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C-PD_to_Dell_Adapter_2.jpg"
+    },
+    {
+     "ref": "commons:164226819",
+     "width": 3917,
+     "height": 2611,
+     "licence": "PD",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C-PD_to_Thinkpad_slim-tip_Adapter_2.jpg"
+    },
+    {
+     "ref": "commons:164226809",
+     "width": 3673,
+     "height": 2448,
+     "licence": "PD",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C-PD_to_Dell_Adapter.jpg"
+    },
+    {
+     "ref": "commons:164226817",
+     "width": 4896,
+     "height": 3263,
+     "licence": "PD",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C-PD_to_Thinkpad_slim-tip_Adapter.jpg"
+    },
+    {
+     "ref": "commons:132407413",
+     "width": 4188,
+     "height": 3376,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:2023_Hub_USB_2.0.jpg"
+    },
+    {
+     "ref": "commons:62774032",
+     "width": 3532,
+     "height": 1898,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_C_Hub.png"
+    },
+    {
+     "ref": "commons:47284701",
+     "width": 1068,
+     "height": 1010,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_Type-C_macbook-cropped.png"
+    },
+    {
+     "ref": "commons:133069376",
+     "width": 4080,
+     "height": 3056,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:2023_Hub_USB_2.0_(2).jpg"
+    },
+    {
+     "ref": "commons:133069377",
+     "width": 4835,
+     "height": 2944,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:2023_Hub_USB_2.0_(1).jpg"
+    },
+    {
+     "ref": "commons:115647686",
+     "width": 2874,
+     "height": 1863,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_HUB_2.0.jpg"
+    },
+    {
+     "ref": "commons:76613187",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_hub_1_2019-02-16.jpg"
+    },
+    {
+     "ref": "commons:76613196",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_hub_3_2019-02-16.jpg"
+    },
+    {
+     "ref": "commons:150155438",
+     "width": 1024,
+     "height": 768,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Belkin_F5U700_USB_hub_back.jpg"
+    },
+    {
+     "ref": "commons:150155439",
+     "width": 1024,
+     "height": 768,
+     "licence": "by-sa 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Belkin_F5U700_USB_hub_front.jpg"
+    },
+    {
+     "ref": "commons:149736690",
+     "width": 5311,
+     "height": 3983,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Dell_WD15_(model_K17A)_-_board-4766.jpg"
+    },
+    {
+     "ref": "commons:132071062",
+     "width": 6960,
+     "height": 4640,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Equinox_SST-4_8P.jpg"
+    },
+    {
+     "ref": "commons:132071064",
+     "width": 6956,
+     "height": 4636,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Equinox_SST-4_8P_circuit_side.jpg"
+    },
+    {
+     "ref": "commons:105298218",
+     "width": 5578,
+     "height": 4480,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Siemens_Nixdorf_Scenic_4NC_-_motherboard-0384.jpg"
+    },
+    {
+     "ref": "commons:181577233",
+     "width": 2000,
+     "height": 1000,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Delock_87772_(1).jpg"
+    },
+    {
+     "ref": "commons:181577352",
+     "width": 2000,
+     "height": 1000,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Delock_87772_(4).jpg"
+    },
+    {
+     "ref": "commons:181577304",
+     "width": 2000,
+     "height": 1000,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Delock_87772_(2).jpg"
+    },
+    {
+     "ref": "commons:181577340",
+     "width": 2000,
+     "height": 1000,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Delock_87772_(3).jpg"
+    },
+    {
+     "ref": "commons:80156588",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_dock_front.jpg"
+    },
+    {
+     "ref": "commons:80156601",
+     "width": 4032,
+     "height": 3024,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-C_dock_-_back.jpg"
+    },
+    {
+     "ref": "commons:116485444",
+     "width": 3502,
+     "height": 1343,
+     "licence": "by-sa 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Delock_USB_m.2_NVMe_docking_station-slot_FS_PNr%C2%B00914.jpg"
+    }
+   ]
+  },
+  "search:charger": {
+   "candidatesSeen": [
+    {
+     "ref": "commons:176817231",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Baseus CCCP20UE 20W USB charger-1",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:176817229",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Baseus CCCP20UE 20W USB charger-2",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:176817216",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Orico YC-PE0508000H multiport USB charger-1",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:176817199",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Pisen MF-08EU 12W USB charger-4",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:176817208",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Pisen MF-08EU 12W USB charger-1",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:176817206",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Pisen MF-08EU 12W USB charger-2",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:80842528",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Burnt out Sansai USB charger 20190728-001",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:176817204",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Pisen MF-08EU 12W USB charger-3",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:176817241",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Baseus CCCP20UE 20W USB charger-0",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:149202367",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "USA phone charger at airport 01",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:193788943",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "USB-C Regulation World Map 2.0 2026",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:16128583",
+     "width": null,
+     "height": null,
+     "licence": "pd",
+     "title": "Notebook-Computer-AC-Adapter",
+     "page": "https://creativecommons.org/publicdomain/mark/1.0/"
+    },
+    {
+     "ref": "commons:16128517",
+     "width": null,
+     "height": null,
+     "licence": "pd",
+     "title": "Wall-Wart-AC-Adapter",
+     "page": "https://creativecommons.org/publicdomain/mark/1.0/"
+    },
+    {
+     "ref": "commons:60239636",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Lenovo Power Adapter AC 65W 20V",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:60311163",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Lenovo Power Adapter AC 135W 20V",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:104283028",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "Night-Shining White",
+     "page": null
+    },
+    {
+     "ref": "commons:43970112",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "En route; a descriptive automobile tour through nine countries and over nineteen great passes of Europe (1908) (14789524313)",
+     "page": null
+    },
+    {
+     "ref": "commons:43581664",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "Marmion (1885) (14596645968)",
+     "page": null
+    },
+    {
+     "ref": "commons:180636216",
+     "width": 7323,
+     "height": 4882,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Silicon_vs_GaN_30W_USB-C_chargers.jpg"
+    },
+    {
+     "ref": "commons:75481762",
+     "width": 6306,
+     "height": 4383,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB_Type-C_Cable_-_iPad_USB-C_Charger_(45640822114).jpg"
+    },
+    {
+     "ref": "commons:117735327",
+     "width": 2592,
+     "height": 1936,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Multi-USB_and_charger.jpg"
+    },
+    {
+     "ref": "commons:123871948",
+     "width": 3000,
+     "height": 1999,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-type_C_to_become_EU%27s_common_charger_by_end_of_2024.jpg"
+    },
+    {
+     "ref": "commons:123871958",
+     "width": 3000,
+     "height": 2000,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-type_C_to_become_EU%27s_common_charger_by_end_of_2024_-_52408865680.jpg"
+    },
+    {
+     "ref": "commons:172421558",
+     "width": 3762,
+     "height": 2508,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Samsung_EP-P1300_wireless_charger_internals.jpg"
+    },
+    {
+     "ref": "commons:84671870",
+     "width": 9504,
+     "height": 6336,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_96W_USB_Type-C_Power_Adapter_for_new_16_inch_MacBook_Pro_(49165128252).jpg"
+    },
+    {
+     "ref": "commons:33150344",
+     "width": 2304,
+     "height": 2835,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Moog_AC_adapter_(by_Audiotecna).jpg"
+    },
+    {
+     "ref": "commons:133104111",
+     "width": 3060,
+     "height": 4080,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:NA_Nintendo_3DS_charger_back.jpg"
+    },
+    {
+     "ref": "commons:146121373",
+     "width": 3072,
+     "height": 4080,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": null
+    },
+    {
+     "ref": "commons:159808880",
+     "width": 3072,
+     "height": 4080,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": null
+    },
+    {
+     "ref": "commons:199976343",
+     "width": 3060,
+     "height": 4080,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": null
+    },
+    {
+     "ref": "commons:176817213",
+     "width": 4032,
+     "height": 3024,
+     "licence": "cc0 1.0",
+     "title": null,
+     "page": null
+    },
+    {
+     "ref": "commons:10786466",
+     "width": 3072,
+     "height": 2304,
+     "licence": "pd",
+     "title": null,
+     "page": null
+    },
+    {
+     "ref": "commons:43291439",
+     "width": 2160,
+     "height": 3140,
+     "licence": "pd",
+     "title": null,
+     "page": null
+    }
+   ]
+  },
+  "search:cleansers-bundle": {
+   "candidatesSeen": [
+    {
+     "ref": "commons:43984219",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "The Ladies' home journal (1948) (14762731241)",
+     "page": null
+    },
+    {
+     "ref": "commons:195628771",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Toilet Duck bottle",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:42094673",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "American cookery (1915) (14782288884)",
+     "page": null
+    },
+    {
+     "ref": "commons:43979893",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "Canadian grocer January-March 1919 (1919) (14804381973)",
+     "page": null
+    },
+    {
+     "ref": "commons:41908294",
+     "width": null,
+     "height": null,
+     "licence": null,
+     "title": "Canadian grocer April-June 1918 (1918) (14781262284)",
+     "page": null
+    },
+    {
+     "ref": "commons:90140146",
+     "width": null,
+     "height": null,
+     "licence": "by",
+     "title": "print, trade-card",
+     "page": null
+    },
+    {
+     "ref": "commons:159447441",
+     "width": 1417,
+     "height": 2848,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Dog_rose_water.jpg"
+    },
+    {
+     "ref": "commons:155702653",
+     "width": 5006,
+     "height": 2651,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Pump_bottle_mechanism.jpg"
+    },
+    {
+     "ref": "commons:440399",
+     "width": 1360,
+     "height": 958,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Bicycle_pump_frame_mounted.jpg"
+    },
+    {
+     "ref": "commons:7177087",
+     "width": 2576,
+     "height": 1920,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Breast_milk_storage_containers_bottles.JPG"
+    },
+    {
+     "ref": "commons:3751913",
+     "width": 5639,
+     "height": 4226,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:An_Experiment_on_a_Bird_in_an_Air_Pump_by_Joseph_Wright_of_Derby,_1768.jpg"
+    },
+    {
+     "ref": "commons:118963",
+     "width": 2155,
+     "height": 3000,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lewis_Hine_Power_house_mechanic_working_on_steam_pump.jpg"
+    },
+    {
+     "ref": "commons:27903064",
+     "width": 1224,
+     "height": 1420,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Langmuir_mercury_diffusion_pump.jpg"
+    },
+    {
+     "ref": "commons:151142199",
+     "width": 4240,
+     "height": 6360,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Oval_portrait_miniature_of_girl_oil_painting_by_Valentine_Manchon_Duchesne_-_with_scale.jpg"
+    },
+    {
+     "ref": "commons:103436969",
+     "width": 2796,
+     "height": 2058,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Blackberry_Nip_(8064491103).jpg"
+    },
+    {
+     "ref": "commons:169311255",
+     "width": 4570,
+     "height": 3395,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Le_Cirque_Miniature_-_C%C3%A2ndido_de_Faria_-_1908.jpg"
+    },
+    {
+     "ref": "commons:54085719",
+     "width": 2752,
+     "height": 3852,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:StDenis.jpg"
+    },
+    {
+     "ref": "commons:24525948",
+     "width": 3168,
+     "height": 4808,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Grandes_Heures_Anne_de_Bretagne_Saint_Jean.jpg"
+    },
+    {
+     "ref": "commons:24527937",
+     "width": 3168,
+     "height": 4808,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Grandes_Heures_Anne_de_Bretagne_Saint_Marc.jpg"
+    },
+    {
+     "ref": "commons:15332104",
+     "width": 3050,
+     "height": 2500,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Nik-L-Nip-Bottles.jpg"
+    },
+    {
+     "ref": "commons:22024983",
+     "width": 4873,
+     "height": 2870,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Simon_Bening_-_Villagers_on_Their_Way_to_Church_-_Google_Art_Project.jpg"
+    },
+    {
+     "ref": "commons:60931262",
+     "width": 1333,
+     "height": 2000,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Perfume_bottle_in_the_shape_of_a_hes-vase_inlaid_with_the_figure_of_a_princess_MET_40.2.4_EGDP013337.jpg"
+    },
+    {
+     "ref": "commons:60931261",
+     "width": 1333,
+     "height": 2000,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Perfume_bottle_in_the_shape_of_a_hes-vase_inlaid_with_the_figure_of_a_princess_MET_40.2.4_EGDP013338.jpg"
+    },
+    {
+     "ref": "commons:65903154",
+     "width": 4743,
+     "height": 5975,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Net_Weight_Statements--Butter_Inspection_(35236823843).jpg"
+    },
+    {
+     "ref": "commons:178965836",
+     "width": 3060,
+     "height": 4080,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E7%BE%85%E6%B9%96_Luohu_%E5%A8%83%E5%93%88%E5%93%88_Wahaha_brand_%E8%86%A0%E6%B0%B4%E6%A8%BD_water_plastic_bottle_by_%E7%BE%8E%E9%A3%9F%E4%B9%8B%E6%97%85_Yummy_Travel_November_2025_N13P_01.jpg"
+    },
+    {
+     "ref": "commons:178965835",
+     "width": 3060,
+     "height": 4080,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E7%BE%85%E6%B9%96_Luohu_%E5%A8%83%E5%93%88%E5%93%88_Wahaha_brand_%E8%86%A0%E6%B0%B4%E6%A8%BD_water_plastic_bottle_by_%E7%BE%8E%E9%A3%9F%E4%B9%8B%E6%97%85_Yummy_Travel_November_2025_N13P_02.jpg"
+    },
+    {
+     "ref": "commons:56570938",
+     "width": 2448,
+     "height": 2448,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Cosmetics-1078712_1280.jpg"
+    },
+    {
+     "ref": "commons:163948522",
+     "width": 1080,
+     "height": 810,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:ADUNNI_COSMETICS_IBADAN.jpg"
+    },
+    {
+     "ref": "commons:135568063",
+     "width": 1202,
+     "height": 632,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Rare_beauty.webp"
+    },
+    {
+     "ref": "commons:177575310",
+     "width": 3024,
+     "height": 4032,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Korean_cosmetic_products.jpg"
+    },
+    {
+     "ref": "commons:57859610",
+     "width": 3899,
+     "height": 2942,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Cosmetic_Box_with_a_Swivel_Top_MET_DP116089.jpg"
+    },
+    {
+     "ref": "commons:50258477",
+     "width": 1488,
+     "height": 2048,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Cosmetics_Claims.jpg"
+    },
+    {
+     "ref": "commons:44158088",
+     "width": 3120,
+     "height": 2464,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:The_skin;_its_care_and_treatment_(1914)_(14784123113).jpg"
+    },
+    {
+     "ref": "commons:43910025",
+     "width": 3120,
+     "height": 2484,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:The_skin;_its_care_and_treatment_(1914)_(14761079391).jpg"
+    },
+    {
+     "ref": "commons:43909911",
+     "width": 1532,
+     "height": 1816,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Proper_care_of_the_hair_and_scalp_(1917)_(14768851455).jpg"
+    },
+    {
+     "ref": "commons:43325321",
+     "width": 1324,
+     "height": 1504,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:A_practical_treatise_on_diseases_of_the_skin,_for_the_use_of_students_and_practitioners_(1897)_(14781856524).jpg"
+    },
+    {
+     "ref": "commons:180349916",
+     "width": 2744,
+     "height": 2744,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Sgt._Pepper%27s_Lonely_Hearts_Club_Band_album_art.jpg"
+    },
+    {
+     "ref": "commons:41502197",
+     "width": 1015,
+     "height": 703,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Wilson_007_(15997803911).jpg"
+    },
+    {
+     "ref": "commons:157382700",
+     "width": 3621,
+     "height": 2414,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Naval_Station_Rota_Prepares_to_Receive_Evacuees_from_Afghanistan_(6805076).jpg"
+    },
+    {
+     "ref": "commons:41963689",
+     "width": 1184,
+     "height": 3084,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Postoperative_treatment;_an_epitome_of_the_general_management_of_postoperative_care_and_treatment_of_surgical_cases_as_practised_by_prominent_American_and_European_surgeons_(1907)_(14762176006).jpg"
+    },
+    {
+     "ref": "commons:49780782",
+     "width": 2592,
+     "height": 1944,
+     "licence": "cc0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Products_on_display_at_Diptyque.jpg"
+    },
+    {
+     "ref": "commons:194185160",
+     "width": 4032,
+     "height": 6048,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Person_pours_liquid_from_a_bottle_onto_a_tissue_in_a_bright_indoor_space.jpg"
+    },
+    {
+     "ref": "commons:93495264",
+     "width": 5051,
+     "height": 2841,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Breast_Pump_(50265746936).jpg"
+    },
+    {
+     "ref": "commons:64852892",
+     "width": 3264,
+     "height": 2448,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Holder,_cosmetic_or_medical_(AM_67443-4).jpg"
+    },
+    {
+     "ref": "commons:83124139",
+     "width": 8688,
+     "height": 5792,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Holder,_cosmetic_or_medical_(AM_67443-9).jpg"
+    },
+    {
+     "ref": "commons:76491978",
+     "width": 2271,
+     "height": 2639,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Roman_bottle_(FindID_774523).jpg"
+    },
+    {
+     "ref": "commons:84315874",
+     "width": 1536,
+     "height": 2048,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Bottle,_scent_(AM_1932.233-2).jpg"
+    },
+    {
+     "ref": "commons:84315880",
+     "width": 1536,
+     "height": 2048,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Bottle,_scent_(AM_1932.233-3).jpg"
+    },
+    {
+     "ref": "commons:36198783",
+     "width": 2832,
+     "height": 4256,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Unguent_bottle,_Roman,_251-450_CE_Wellcome_L0057222.jpg"
+    },
+    {
+     "ref": "commons:87769505",
+     "width": 3687,
+     "height": 2943,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Pennsylvania_Power_%26_Light_Company_D_fireless_steam_locomotive_(0-8-0F)_2_(26643157533).jpg"
+    },
+    {
+     "ref": "commons:87769503",
+     "width": 4000,
+     "height": 2651,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Pennsylvania_Power_%26_Light_Company_D_fireless_steam_locomotive_(0-8-0F)_1_(27214611496).jpg"
+    },
+    {
+     "ref": "commons:158044428",
+     "width": 1769,
+     "height": 2047,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Glass_inside-painted_snuff_bottle_with_a_traveling_scene.jpg"
+    },
+    {
+     "ref": "commons:116712242",
+     "width": 7952,
+     "height": 5304,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:World_Travel_and_Tourism_Council_-_0816-WTTC-2.11.21_(51651684521).jpg"
+    },
+    {
+     "ref": "commons:194054020",
+     "width": 2934,
+     "height": 4402,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Stanley_Travel_Mug_(52338838271).jpg"
+    },
+    {
+     "ref": "commons:132155334",
+     "width": 1500,
+     "height": 1127,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Nalgene_Wide_Mouth_water_bottle_(49126638263).jpg"
+    },
+    {
+     "ref": "commons:26783496",
+     "width": 5184,
+     "height": 3456,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lisbon_Travel_2011_(5900416666).jpg"
+    },
+    {
+     "ref": "commons:148292881",
+     "width": 2048,
+     "height": 2048,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:MORR_cosmetics_brand.png"
+    },
+    {
+     "ref": "commons:194185177",
+     "width": 4032,
+     "height": 6048,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Young_woman_applying_skincare_products_in_a_bathroom.jpg"
+    },
+    {
+     "ref": "commons:186316040",
+     "width": 4985,
+     "height": 3328,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Natural_herbal_powder_container_placed_on_marble_surface_ready_for_culinary_use_and_beauty_treatments.jpg"
+    },
+    {
+     "ref": "commons:187707422",
+     "width": 6016,
+     "height": 4016,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Skin_care_products_displayed_on_a_light_pink_background_with_a_spoonful_of_powder_near_jars.jpg"
+    },
+    {
+     "ref": "commons:186098612",
+     "width": 6016,
+     "height": 4016,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Creative_cucumber_slicer_placed_on_a_pastel_background_with_sliced_cucumbers_and_a_unique_green_case.jpg"
+    },
+    {
+     "ref": "commons:134209906",
+     "width": 4447,
+     "height": 3227,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:SkinTones%E2%84%A2_Color_Swatch_Kit_-_DPLA_-_e1363e0feda1cadcfa433a1430f86058_(page_1).jpg"
+    },
+    {
+     "ref": "commons:134209910",
+     "width": 4731,
+     "height": 2973,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:SkinTones%E2%84%A2_Color_Swatch_Kit_-_DPLA_-_e1363e0feda1cadcfa433a1430f86058_(page_2).jpg"
+    },
+    {
+     "ref": "commons:164192151",
+     "width": 3497,
+     "height": 3172,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Graceland_Cemetery,_1911_-_Valparaiso,_Indiana_(50841022077).jpg"
+    },
+    {
+     "ref": "commons:186098610",
+     "width": 5538,
+     "height": 3697,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Cosmetic_jar_with_light_pink_product_displayed_on_a_textured_background.jpg"
+    },
+    {
+     "ref": "commons:196010766",
+     "width": 5576,
+     "height": 3722,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Clear_cosmetic_bag_organized_with_various_beauty_products_and_tools_on_a_soft_pink_background.jpg"
+    },
+    {
+     "ref": "commons:194185171",
+     "width": 4032,
+     "height": 6048,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Woman_reaches_for_a_cosmetic_product_in_a_display.jpg"
+    }
+   ]
+  },
+  "search:lightning": {
+   "candidatesSeen": [
+    {
+     "ref": "commons:183878390",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Apple Lightning Connector",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:125000792",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Burned out Lightning cable",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:75253147",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Apple Lightning Dock Digitized",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:30822274",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Apple Lightning Dock",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:23255185",
+     "width": 1200,
+     "height": 800,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lightning_connector.jpg"
+    },
+    {
+     "ref": "commons:117303244",
+     "width": 10368,
+     "height": 6480,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lightning_Cable_(51826100650).jpg"
+    },
+    {
+     "ref": "commons:110817441",
+     "width": 2736,
+     "height": 3648,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lightning_Cable_(11729396666).jpg"
+    },
+    {
+     "ref": "commons:56120394",
+     "width": 1600,
+     "height": 1066,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lightning_cable_connector.jpg"
+    },
+    {
+     "ref": "commons:95535485",
+     "width": 5184,
+     "height": 3888,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_Lightning_Cable_End_(48727307142).jpg"
+    },
+    {
+     "ref": "commons:95535233",
+     "width": 5184,
+     "height": 3888,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Lightning_Connector_(49912382613).jpg"
+    },
+    {
+     "ref": "commons:23255193",
+     "width": 5760,
+     "height": 3840,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_30-pin_Dock_Cable_v._Lightning_Cable.jpg"
+    },
+    {
+     "ref": "commons:23255188",
+     "width": 5184,
+     "height": 3456,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_Lightning_-_Micro_USB%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF.jpg"
+    },
+    {
+     "ref": "commons:28920965",
+     "width": 3008,
+     "height": 2000,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:My_Digital_Travelling_Lifestyle_Tech_Bag_(by_Phil_Campbell).jpg"
+    },
+    {
+     "ref": "commons:57004133",
+     "width": 1994,
+     "height": 1329,
+     "licence": "by 2.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Apple_Plug_(3885641487).jpg"
+    },
+    {
+     "ref": "commons:123871948",
+     "width": 3000,
+     "height": 1999,
+     "licence": "by",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:USB-type_C_to_become_EU%27s_common_charger_by_end_of_2024.jpg"
+    },
+    {
+     "ref": "commons:117735327",
+     "width": 2592,
+     "height": 1936,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Multi-USB_and_charger.jpg"
+    },
+    {
+     "ref": "commons:50082218",
+     "width": 5788,
+     "height": 3752,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:F-35A_AFE_Airmen_are_pioneers_in_flight_equipment_160226-F-MT297-039.jpg"
+    },
+    {
+     "ref": "commons:162951712",
+     "width": 1990,
+     "height": 1445,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Brennan_J_Olson-US4909523A-1990-Inline_roller_skate-Patent_Drawing-FIG_5_6-urethane_tire_interlocked_with_plastic_hub.png"
+    },
+    {
+     "ref": "commons:162951696",
+     "width": 1996,
+     "height": 1518,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Brennan_J_Olson-US4909523A-1990-Inline_roller_skate-Patent_Drawing-FIG_4-bearing_assembly_and_hub.png"
+    },
+    {
+     "ref": "commons:43248006",
+     "width": 1184,
+     "height": 1325,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Electric_railway_journal_(1917)_(14758440201).jpg"
+    },
+    {
+     "ref": "commons:43357461",
+     "width": 1610,
+     "height": 1034,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Electrical_instruments_and_telephones_of_the_U.S._Signal_corps_(1911)_(14570077027).jpg"
+    },
+    {
+     "ref": "commons:49843768",
+     "width": 6877,
+     "height": 4912,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Weather_keeps_an_eye_on_the_sky_160516-F-RN544-143.jpg"
+    },
+    {
+     "ref": "commons:126938953",
+     "width": 2667,
+     "height": 4000,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:P059080-916478.jpg"
+    },
+    {
+     "ref": "commons:126938946",
+     "width": 4000,
+     "height": 2667,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:P059080-994645.jpg"
+    },
+    {
+     "ref": "commons:126938947",
+     "width": 2667,
+     "height": 4000,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:P059080-764559.jpg"
+    },
+    {
+     "ref": "commons:126938959",
+     "width": 4000,
+     "height": 2667,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:P059080-584287.jpg"
+    },
+    {
+     "ref": "commons:126938960",
+     "width": 4000,
+     "height": 2667,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:P059080-38890.jpg"
+    },
+    {
+     "ref": "commons:126938958",
+     "width": 2667,
+     "height": 4000,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:P059080-679781.jpg"
+    },
+    {
+     "ref": "commons:80409416",
+     "width": 3443,
+     "height": 2582,
+     "licence": "by 4.0",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Anker_power_bank_and_cable.jpg"
+    },
+    {
+     "ref": "commons:43243834",
+     "width": 2240,
+     "height": 1696,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:The_Street_railway_journal_(1899)_(14572808477).jpg"
+    },
+    {
+     "ref": "commons:42458056",
+     "width": 2800,
+     "height": 1872,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Thirty-six_voyages_to_various_parts_of_the_world,_made_between_the_years_1799_and_1841_(1858)_(14804762423).jpg"
+    },
+    {
+     "ref": "commons:61822862",
+     "width": 2692,
+     "height": 4496,
+     "licence": "pd",
+     "title": null,
+     "page": "https://commons.wikimedia.org/wiki/File:Thomas_Butler_Gunn_Diaries-_Volume_2,_page_162,_August_24-26,_1851.jpg"
+    }
+   ]
+  },
+  "search:jar-tube-dropper": {
+   "candidatesSeen": [
+    {
+     "ref": "commons:144864651",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Cosmetic jar",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:144864644",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Cosmetic jar",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:60931750",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Wide-Necked Cosmetic Jar",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:60909286",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Cosmetic Jar Sealed with Linen",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:60930731",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Cosmetic jar with lid",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:60930700",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Cosmetic jar with lid",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:65140305",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Cosmetic Jar Sealed with Linen",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:60910872",
+     "width": null,
+     "height": null,
+     "licence": "cc0",
+     "title": "Open-Mouthed Cosmetic Jar of Neferkhawet",
+     "page": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+     "ref": "commons:123773542",
+     "width": null,
+     "height": null,
+     "licence": "pd",
+     "title": "Jar of Poslam cream",
+     "page": "https://creativecommons.org/publicdomain/mark/1.0/"
+    },
+    {
+     "ref": "commons:123773550",
+     "width": null,
+     "height": null,
+     "licence": "pd",
+     "title": "Jar of Poslam cream",
+     "page": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+   ]
+  }
+ }
+}

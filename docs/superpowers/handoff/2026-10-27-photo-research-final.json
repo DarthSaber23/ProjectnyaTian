@@ -1,0 +1,1703 @@
+{
+ "results": [
+  {
+   "group": "usb-c-cables",
+   "name": "Sambung USB-C and USB-A cables",
+   "found": [
+    {
+     "productId": "B01",
+     "variant": "B01-1M-BLK, B01-2M-BLK, B01-3M-BLK (black)",
+     "verdict": "weak",
+     "verdictReason": "No confirmed black braided USB-C to USB-C photo found. Low-risk CC0 USB-C cable photos exist but colour and braiding are unverified (cannot see pixels). Black-cable PNG may be a render.",
+     "queriesRun": [
+      "usb-c cable (interim)",
+      "usb type-c cable (cc0,pd; interim)",
+      "braided usb cable (interim)",
+      "black usb-c cable (by)",
+      "braided usb cable (by)",
+      "usb type-c cable (by)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:92009891",
+       "title": "USB Type-C",
+       "creator": "Flanoz",
+       "license": "cc0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+       "licenseVersion": "1.0",
+       "page": "https://commons.wikimedia.org/wiki/File:USB_Type-C.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/thumb/USB_Type-C.jpg",
+       "width": 3024,
+       "height": 4032,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "possible",
+       "matchQuality": "close",
+       "templatesFound": [],
+       "notes": "Wikitext clean (self cc-zero, only Category USB-C plugs, no Trademarked/Copyvio/Logo templates). Description: USB Type-C plug terminating a cable. Portrait 3:4 phone photo so square crop works. Cable colour/braiding unknown; possible brand print on plug and possible hand in frame. Original URL must be resolved via the page (hashed upload path not captured)."
+      },
+      {
+       "ref": "commons:179155149",
+       "title": "USB-C-connector-and-cable",
+       "creator": "Deergirl",
+       "license": "cc0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "licenseVersion": "1.0",
+       "page": "https://commons.wikimedia.org/wiki/File:USB-C-connector-and-cable.png",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/6/69/USB-C-connector-and-cable.png",
+       "width": 2395,
+       "height": 2140,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "none",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "templatesFound": [],
+       "notes": "Wikitext clean (self cc-zero, Category USB-C-to-C cables). Description: black USB Type C connector with short section of its cable. Near-square. PNG dated 2025-11: could be a render or AI/illustration rather than a photo, so check visually before use. Only black candidate found."
+      },
+      {
+       "ref": "commons:64025084",
+       "title": "USB-C cable 2017 A",
+       "creator": "Fructibus",
+       "license": "cc0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "licenseVersion": "1.0",
+       "page": "https://commons.wikimedia.org/wiki/File:USB-C_cable_2017_A.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/c/c3/USB-C_cable_2017_A.jpg",
+       "width": 3872,
+       "height": 2904,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Wikitext clean. This is a USB-A to USB-C cable (categories), not C-to-C, with a twist tie; colour unknown. Better used for B07; listed here only as a fallback."
+      }
+     ]
+    },
+    {
+     "productId": "B01",
+     "variant": "B01-2M-WHT (white)",
+     "verdict": "weak",
+     "verdictReason": "No cc0/pd white USB-C cable photo exists in Commons results. Only a CC BY 2.0 white-cord photo of an Apple cable (brand risk) and a held-in-fingers photo with Baseus/Xiaomi brands.",
+     "queriesRun": [
+      "white usb-c cable (cc0,pd)",
+      "usb type-c white (cc0,pd)",
+      "white usb-c cable (by)",
+      "usb type-c cable (by)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:75481762",
+       "title": "USB Type-C Cable - iPad USB-C Charger (45640822114)",
+       "creator": "Tony Webster",
+       "license": "by",
+       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+       "licenseVersion": "2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:USB_Type-C_Cable_-_iPad_USB-C_Charger_(45640822114).jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/ (resolve from page)",
+       "width": 6306,
+       "height": 4383,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "exact",
+       "templatesFound": [
+        "FlickreviewR passed (cc-by-2.0)"
+       ],
+       "notes": "White USB-C to USB-C cable plug (description: white cord, Apple MacBook Pro cable; categories USB 2 Type-C-to-Type-C cables). Flickr-reviewed licence, no Trademarked/Copyvio templates. Apple-branded cable so a logo or print on plug/cable is possible; title mentions iPad/MacBook charger. Needs credits page entry. Check visually and crop out any logo."
+      },
+      {
+       "ref": "commons:151471106",
+       "title": "Two USB-C connectors being held",
+       "creator": "Logant547",
+       "license": "by",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "licenseVersion": "4.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Two_USB-C_connectors_being_held.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/ (resolve from page)",
+       "width": 2461,
+       "height": 3281,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "visible",
+       "peopleRisk": "present",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Contains one black (Baseus) and one white (Xiaomi) cable, held in fingers. Description names both brands and a hand is in frame. Reject unless nothing else; listed for completeness."
+      }
+     ]
+    },
+    {
+     "productId": "B07",
+     "variant": "B07",
+     "verdict": "good",
+     "verdictReason": "CC0 photo explicitly categorised as USB 2 Standard-A-to-Type-C cable with both plugs, 3872x2904, clean wikitext.",
+     "queriesRun": [
+      "usb-a to usb-c cable (cc0,pd)",
+      "usb-a to usb-c cable (by)",
+      "usb type-c cable (by)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:64025084",
+       "title": "USB-C cable 2017 A",
+       "creator": "Fructibus",
+       "license": "cc0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "licenseVersion": "1.0",
+       "page": "https://commons.wikimedia.org/wiki/File:USB-C_cable_2017_A.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/c/c3/USB-C_cable_2017_A.jpg",
+       "width": 3872,
+       "height": 2904,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "exact",
+       "templatesFound": [],
+       "notes": "Wikitext clean (self cc-zero; categories USB 2 Standard-A-to-Type-C cables, Standard-A plugs, Type-C plugs, Twist ties). Own-work phone photo, no people indicated. Cable colour and background unknown; possible print on cable. 4:3 so centred square crop must still include both plugs, verify visually."
+      },
+      {
+       "ref": "commons:151470857",
+       "title": "USB-C cable connected to a powerbank",
+       "creator": "Logant547",
+       "license": "by",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "licenseVersion": "4.0",
+       "page": "https://commons.wikimedia.org/wiki/File:USB-C_cable_connected_to_a_powerbank.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/ (resolve from page)",
+       "width": 3060,
+       "height": 2295,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Wikitext clean. USB-C cable plugged into a power bank; not shown as A-to-C and power bank may carry brand text. Weak fallback."
+      },
+      {
+       "ref": "commons:62107009",
+       "title": "USB OTG Type-C Adapter - A",
+       "creator": "Fructibus",
+       "license": "cc0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "licenseVersion": "1.0",
+       "page": "https://commons.wikimedia.org/wiki/File:USB_OTG_Type-C_Adapter_-_A.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/ (resolve from page)",
+       "width": 4608,
+       "height": 3456,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Wikitext clean, but it is an A-receptacle to C-plug adapter on a wooden background, not a cable. Only usable as a loose stand-in."
+      }
+     ]
+    }
+   ],
+   "verified": [
+    {
+     "productId": "B01",
+     "variant": "B01-1M-BLK, B01-2M-BLK, B01-3M-BLK (black)",
+     "checks": [
+      {
+       "ref": "commons:92009891",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-zero}} (CC0 1.0), Commons wikitext",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Wikitext clean: no Trademarked/Personality/Copyvio/Logo/Watermark templates, no deletion request; HEAD 200 image/jpeg 2370499 bytes (3024x4032).",
+        "Description only says a plug terminating a cable: no colour, no braiding stated, so black cannot be confirmed (cannot see pixels).",
+        "Close-up of a single plug, not a cable product shot; possible printed text on plug and possible hand in frame cannot be ruled out.",
+        "Rejected because the black variants must not be shown with a cable of unknown colour."
+       ]
+      },
+      {
+       "ref": "commons:179155149",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-zero}} (CC0 1.0), Commons wikitext",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Wikitext clean, HEAD 200 image/png 1373152 bytes (2395x2140).",
+        "PNG dated 2025-11-29 with no camera metadata or camera category: likely a render or AI/illustration, not a photo; provenance cannot be verified.",
+        "Shows a connector with only a short stub of cable, not a 1/2/3 m cable product.",
+        "Reject: the task excludes renders when a photo exists, and photo status is unverifiable."
+       ]
+      }
+     ],
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for B01 black variants until the client supplies a real photo; re-search for a black braided C-to-C photo under cc0 or by later."
+    },
+    {
+     "productId": "B01",
+     "variant": "B01-2M-WHT (white)",
+     "checks": [
+      {
+       "ref": "commons:75481762",
+       "accepted": false,
+       "licenseConfirmed": "{{cc-by-2.0}} (CC BY 2.0) with FlickreviewR passed, Commons wikitext",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence valid (CC BY 2.0, Flickr-reviewed); no Trademarked/Copyvio/Logo/Watermark templates; HEAD 200 image/jpeg 13973358 bytes (6306x4383).",
+        "Description names it as the Apple MacBook Pro cable and the file title names iPad/MacBook charger: Apple-branded product, brand marks on plug or cable possible and the product identity is Apple's.",
+        "Cannot see pixels to confirm no logo; when in doubt reject. Would also need a credits-page entry (Tony Webster, CC BY 2.0)."
+       ]
+      },
+      {
+       "ref": "commons:151471106",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-by-4.0}} (CC BY 4.0), Commons wikitext",
+       "attributionRequired": true,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Description names visible brands Baseus and Xiaomi.",
+        "Connectors held in someone's fingers, so a person's hand is in frame.",
+        "Shows two connectors, one black one white, not a single white cable product.",
+        "HEAD to the original returned HTTP 429 (rate limit), so reachability unconfirmed; moot because rejected on brand grounds."
+       ]
+      }
+     ],
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for B01-2M-WHT until the client supplies a photo; no cc0 or pd white USB-C cable photo was found."
+    },
+    {
+     "productId": "B07",
+     "variant": "B07",
+     "checks": [
+      {
+       "ref": "commons:64025084",
+       "accepted": true,
+       "licenseConfirmed": "{{self|cc-zero}} (CC0 1.0), Commons wikitext",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Wikitext clean: no Trademarked/Personality/Copyvio/Logo/Watermark templates, no deletion request; description is just USB-C cable, categories USB 2 Standard-A-to-Type-C cables, Standard-A plugs, Type-C plugs, Twist ties, Taken with Samsung Galaxy A5 (2017) (camera name only, not a visible brand).",
+        "HEAD 200 image/jpeg 1578741 bytes, 3872x2904 (above the 960 px floor, above 1600 wide).",
+        "Product type matches B07 (USB-A to USB-C cable). No people categories.",
+        "Residual risks, cannot see pixels: cable colour and background unknown, possible small print on plug or cable, 4:3 landscape so a centred square crop must be checked to keep both plugs. Visual check required before use; if a brand mark shows, crop it out or drop it."
+       ]
+      },
+      {
+       "ref": "commons:151470857",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-by-4.0}} (CC BY 4.0), Commons wikitext",
+       "attributionRequired": true,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence valid but shows a USB-C cable plugged into a power bank (category USB-C power banks), not an A-to-C cable; the power bank may carry brand text.",
+        "Product type does not match B07.",
+        "HEAD to the original returned HTTP 429 (rate limit), reachability unconfirmed.",
+        "Needs credit (Logant547, CC BY 4.0) while a cc0 candidate survives."
+       ]
+      }
+     ],
+     "chosenRef": "commons:64025084",
+     "fallback": "If the visual check finds a visible brand mark or the crop fails, keep the existing SVG drawing for B07 until the client supplies a photo."
+    }
+   ]
+  },
+  {
+   "group": "lightning",
+   "name": "Sambung Lightning cable",
+   "found": [
+    {
+     "productId": "B05",
+     "variant": "B05",
+     "candidates": [
+      {
+       "ref": "commons:183878390",
+       "title": "Apple Lightning Connector",
+       "creator": "Wikideas1",
+       "license": "cc0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "licenseVersion": "1.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Apple_Lightning_Connector.webp",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Apple_Lightning_Connector.webp",
+       "width": 1864,
+       "height": 1442,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Wikitext clean: no Trademarked/Personality/Copyvio/delete/Logo/Watermark templates. Categories: Lightning (connector), Connectors, Close-up photographs. Lightning plug close-up, matches the Lightning plug close-up need. WebP format (convert for use). Cannot see pixels: Apple logo is unlikely on a plug close-up but unconfirmed; filename contains 'Apple' only as a description of the connector standard. Does not show the USB-C end or a full 1 m cable.",
+       "templatesFound": []
+      },
+      {
+       "ref": "commons:117303244",
+       "title": "Lightning Cable (51826100650)",
+       "creator": "ajay_suresh",
+       "license": "by",
+       "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+       "licenseVersion": "2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Lightning_Cable_(51826100650).jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Lightning_Cable_%2851826100650%29.jpg",
+       "width": 10368,
+       "height": 6480,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "CC BY 2.0, FlickreviewR passed 2022. Wikitext has no Trademarked/Personality/Copyvio/delete/Logo/Watermark templates. Very high resolution (10368x6480), landscape; centred square crop needs checking. Tags mention Apple/iPhone generically; cannot see pixels so possible Apple branding on cable/box. Credit needed on credits page. Fallback if the CC0 photo does not fit.",
+       "templatesFound": []
+      },
+      {
+       "ref": "commons:95535233",
+       "title": "Lightning Connector (49912382613)",
+       "creator": "brett jordan",
+       "license": "by",
+       "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+       "licenseVersion": "2.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Lightning_Connector_(49912382613).jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/",
+       "width": 5184,
+       "height": 3888,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "CC BY 2.0, FlickreviewR passed 2020. Wikitext clean of risk templates, category only Lightning (connector). 5184x3888, plug as subject by title. The 'original' URL is truncated: take the exact upload URL from the page or the tool JSON before any download. Pixels not seen; brand marks possible. Sibling file Apple_Lightning_Cable_End_(48727307142).jpg (commons:95535485, same author, CC BY 2.0, 5184x3888, wikitext also clean) is an equivalent alternative.",
+       "templatesFound": []
+      }
+     ],
+     "verdict": "good",
+     "verdictReason": "A CC0 close-up of the Lightning plug exists (no credit needed, clean wikitext), plus two clean CC BY 2.0 Flickr-reviewed alternatives. Only a plug close-up, not a USB-C to Lightning full cable. Apple logo absence is not confirmed from pixels, so visually check before use. Rejected: Burned out Lightning cable (damaged cable, poor product fit), Anker power bank and cable (Anker brand), Lightning_connector.jpg commons:23255185 (empty description, only 1200x800, below the 1600 px preference).",
+     "queriesRun": [
+      "lightning cable --license cc0,pd --source commons",
+      "lightning cable --license by --source commons",
+      "wikitext checks via curl for 8 Commons files",
+      "interim JSON candidatesSeen review"
+     ]
+    }
+   ],
+   "verified": [
+    {
+     "productId": "B05",
+     "variant": "B05",
+     "chosenRef": "commons:183878390",
+     "fallback": "Keep the existing SVG drawing for B05 until the client supplies its own photo, if a visual check finds an Apple logo or the plug-only crop looks wrong as a product image.",
+     "checks": [
+      {
+       "ref": "commons:183878390",
+       "accepted": true,
+       "licenseConfirmed": "{{self|cc-zero}} (CC0 1.0 Universal, Creative Commons Zero) per the Commons wikitext",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Wikitext (action=raw) is clean: no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark templates. Categories are only Lightning (connector), Connectors and Close-up photographs. Own work by Wikideas1, dated 2026-02-12.",
+        "HEAD on the original URL returned 200 with content-type image/webp and content-length 574240. Nothing was downloaded.",
+        "Flag, not a rejection: the title is 'Apple Lightning Connector', so Apple is named, though only as the connector standard. I cannot see pixels, so an Apple logo or marking on the plug is possible but unlikely on a close-up of the plug. Do a visual check before use.",
+        "It shows only the Lightning plug close-up, not a full cable or the USB-C end. That works as a detail or hero shot for a Lightning cable but not as a full-length cable photo.",
+        "The file is WebP, so convert it for use. It is 1864x1442, landscape, so a centred square crop should still show the plug but needs a visual check."
+       ]
+      },
+      {
+       "ref": "commons:117303244",
+       "accepted": false,
+       "licenseConfirmed": "{{cc-by-2.0}} (CC BY 2.0) plus FlickreviewR passed 2022-04-25, per the Commons wikitext",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "The licence is acceptable (CC BY 2.0, credit to ajay_suresh), and no risk templates appear in the wikitext.",
+        "HEAD on the original URL returned 200 with content-type image/jpeg. The file is 30,757,882 bytes (about 30 MB), which is impractical for the shop and adds a heavy re-encode step.",
+        "The description names Apple, Apple Lightning, Apple Lightning Cable, iPads, iPhones and iPod. That strongly suggests a genuine Apple-branded cable or packaging, and printed marks are possible on a white cable. A third-party brand is likely visible, and the rule is to reject when in doubt.",
+        "The category is only Lightning (connector). The description is a keyword list with no statement of what is shown, so I cannot confirm the product type or an unbranded, clean subject.",
+        "The 10368x6480 landscape frame makes a clean centred square crop uncertain. This candidate adds more risk and a credit obligation than the CC0 option, so reject it and keep it only as a conditional backup."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "group": "video-cables",
+   "name": "Sambung HDMI and DisplayPort cables",
+   "found": [
+    {
+     "productId": "B06",
+     "variant": "B06",
+     "verdict": "good",
+     "verdictReason": "Evan-Amos HDMI-Connector.jpg is PD-self, 2000x1500, on a white background with an HDMI plug as the only subject; no trademark/personality/copyvio templates. It shows a connector rather than a full 2 m cable, which is acceptable for the thumbnail.",
+     "queriesRun": [
+      "hdmi cable (commons, cc0,pd)",
+      "interim JSON candidatesSeen review",
+      "raw wikitext checks for 5 candidates"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:16128115",
+       "title": "HDMI-Connector.jpg",
+       "creator": "Evan-Amos",
+       "license": "pd",
+       "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-self",
+       "page": "https://commons.wikimedia.org/wiki/File:HDMI-Connector.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/9/9e/HDMI-Connector.jpg",
+       "width": 2000,
+       "height": 1500,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Wikitext read: PD-self, categories HDMI connectors (male) and Electronic devices on white background. No Trademarked/Logo/Watermark/Copyvio/delete templates. Description is a standard HDMI connector. Original URL path hash is inferred from the typical Commons layout; use the page URL or API to resolve before use. Cannot see pixels, so small marking on the plug is possible but unlikely. Landscape 4:3, a centred square crop should keep the plug."
+      },
+      {
+       "ref": "commons:57003351",
+       "title": "2009-265-83 The Connection (3384421358)",
+       "creator": "cogdogblog (Alan Levine)",
+       "license": "cc0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "page": "https://commons.wikimedia.org/wiki/File:2009-265-83_The_Connection_(3384421358).jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/f/f1/2009-265-83_The_Connection_%283384421358%29.jpg",
+       "width": 2400,
+       "height": 1800,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "possible",
+       "matchQuality": "close",
+       "notes": "Wikitext read: Cc-zero, Flickr review passed, categories HDMI cables, HDMI connectors (male), DVI adapters. It is a DVI-to-HDMI cable, a real cable with an HDMI plug, but the other end is DVI and the description mentions a MacBook, so a laptop or Apple logo may be in frame. Cannot see pixels. Fallback only."
+      },
+      {
+       "ref": "commons:2878716",
+       "title": "HDMI-CloseupOfPlugs-vs-USB.jpg",
+       "creator": "Calbookaddict",
+       "license": "pd",
+       "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-user-en",
+       "page": "https://commons.wikimedia.org/wiki/File:HDMI-CloseupOfPlugs-vs-USB.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/9/9d/HDMI-CloseupOfPlugs-vs-USB.jpg",
+       "width": 2008,
+       "height": 1860,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "notes": "Wikitext read: PD-user-en, own photo from 2007, category HDMI connectors (male). Shows an HDMI plug beside a USB plug, so the product is not the sole subject. Older camera, background unknown. Original URL path hash is inferred; resolve via the page URL before use."
+      }
+     ]
+    },
+    {
+     "productId": "B08",
+     "variant": "B08",
+     "verdict": "weak",
+     "verdictReason": "No cc0 or pd DisplayPort photo exists on Commons in the results. Best fit is the D-Kuru focus-stacked DisplayPort male plug photos (CC BY-SA 3.0, Quality Image, own work), which show the plug clearly but require share-alike and credit. The only CC BY option is a DP-to-DVI cable with an Assmann brand risk.",
+     "queriesRun": [
+      "displayport cable (commons, cc0,pd) returned 0 items",
+      "displayport cable (commons, by) returned only irrelevant SKW results plus the DP-DVI cable",
+      "interim JSON candidatesSeen review",
+      "raw wikitext checks for 5 candidates"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:37610184",
+       "title": "DisplayPort connector-male-front PNr°0439.jpg",
+       "creator": "D-Kuru",
+       "license": "by-sa",
+       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+       "licenseVersion": "3.0",
+       "page": "https://commons.wikimedia.org/wiki/File:DisplayPort_connector-male-front_PNr%C2%B00439.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/DisplayPort_connector-male-front_PNr%C2%B00439.jpg",
+       "width": 3110,
+       "height": 1996,
+       "attributionRequired": true,
+       "shareAlike": true,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Wikitext read: own work, licence code 03-CBS3 (CC BY-SA 3.0), Quality Image, focus stacked, category DisplayPort connectors only. No Trademarked/Logo/Copyvio templates. Male DP plug front view, a connector only with no cable. Share-alike applies to adaptations, so a crop or colour grade would also need CC BY-SA. Credit needed on the credits page."
+      },
+      {
+       "ref": "commons:37610191",
+       "title": "DisplayPort connector-male-front oblique PNr°0441.jpg",
+       "creator": "D-Kuru",
+       "license": "by-sa",
+       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+       "licenseVersion": "3.0",
+       "page": "https://commons.wikimedia.org/wiki/File:DisplayPort_connector-male-front_oblique_PNr%C2%B00441.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/DisplayPort_connector-male-front_oblique_PNr%C2%B00441.jpg",
+       "width": 2823,
+       "height": 2030,
+       "attributionRequired": true,
+       "shareAlike": true,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Same author and templates as 0439, oblique view with a better aspect (about 1.39:1) for a square crop. Wikitext read: CC BY-SA 3.0, Quality Image, only the DisplayPort connectors category. The sibling file 0440 (2529x2478, almost square) has the same licence and wikitext and may crop best of the three."
+      },
+      {
+       "ref": "commons:125817847",
+       "title": "Kabel DisplayPort zu Digital Visual Interface 20221119 HOF06615-HDR.png",
+       "creator": "PantheraLeo1359531",
+       "license": "by",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "licenseVersion": "4.0",
+       "page": "https://commons.wikimedia.org/wiki/File:Kabel_DisplayPort_zu_Digital_Visual_Interface_20221119_HOF06615-HDR.png",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Kabel_DisplayPort_zu_Digital_Visual_Interface_20221119_HOF06615-HDR.png",
+       "width": 4233,
+       "height": 2965,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "notes": "Wikitext read: self CC BY 4.0, photographed in a photobox (clean background), a real cable with a DisplayPort plug at one end and DVI at the other. Category Assmann Electronic suggests brand printing on the cable or its packaging. HDR file; the SDR twin is 06616 (4145x3216). Use only if share-alike is unacceptable. Cannot see pixels."
+      }
+     ]
+    }
+   ],
+   "verified": [
+    {
+     "productId": "B06",
+     "variant": "B06",
+     "chosenRef": "commons:16128115",
+     "fallback": "Keep the existing drawing if the client wants a full 2 m cable shown; the connector-only photo is acceptable as a sample thumbnail.",
+     "checks": [
+      {
+       "ref": "commons:16128115",
+       "accepted": true,
+       "licenseConfirmed": "Public domain (PD-self), Commons API LicenseShortName; AttributionRequired=false",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Wikitext raw: Permission {{PD-self}}, own work by Evan-Amos, 2011-08-12; categories HDMI connectors (male) and Electronic devices on white background; no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark template.",
+        "Description is a generic HDMI connector with no brand named. Small marking on the plug is possible but unlikely; pixels not seen.",
+        "Corrected original URL (the searcher's 9/9e path returns 404): https://upload.wikimedia.org/wikipedia/commons/c/c2/HDMI-Connector.jpg. HEAD returned 200, image/jpeg, 819842 bytes, 2000x1500 per API. A user-agent header is required or Commons returns 429.",
+        "Shows a plug only, not a whole cable, so it is a loose match for a 2 m cable product. Centred square crop of a 4:3 image should keep the plug.",
+        "Wikitext includes the Evan-Amos banner templates, which are user-page banners, not licence restrictions."
+       ]
+      },
+      {
+       "ref": "commons:57003351",
+       "accepted": false,
+       "licenseConfirmed": "CC0 (Cc-zero template, FlickreviewR pass cc-zero)",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence is fine and HEAD returned 200, image/jpeg, 915657 bytes.",
+        "Description says the cable runs from a DVI port on a MacBook Pro to an HDTV, so an Apple laptop, logo or an HDTV brand may be in frame, and the cable has a DVI end, so it does not match an HDMI-to-HDMI product.",
+        "Possible brand and device clutter, and a photo from 2009 of a living-room setup; likely not a clean neutral background. Rejected when in doubt."
+       ]
+      }
+     ]
+    },
+    {
+     "productId": "B08",
+     "variant": "B08",
+     "chosenRef": "commons:37610191",
+     "fallback": "If share-alike is not acceptable to the owner, keep the existing drawing for B08 until the client supplies a photo. No cc0 or pd DisplayPort photo was found.",
+     "checks": [
+      {
+       "ref": "commons:37610184",
+       "accepted": true,
+       "licenseConfirmed": "CC BY-SA 3.0 at (Commons API LicenseShortName; Attribution-Share Alike 3.0 Austria port, code 03-CBS3 in the template)",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Wikitext raw: own work by D-Kuru, 2014-07-26, focus stacked, {{QualityImage}}, only category DisplayPort connectors; no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark template.",
+        "HEAD (with a user-agent) on the Special:FilePath redirect returned 200, image/jpeg, 4099788 bytes; original https://upload.wikimedia.org/wikipedia/commons/c/c3/DisplayPort_connector-male-front_PNr%C2%B00439.jpg, 3110x1996.",
+        "shareAlike=true: crops and colour grading are adaptations and must stay CC BY-SA; credit D-Kuru on the credits page with a link to the licence. The licence is the Austria port of 3.0, so record the exact string.",
+        "Front view of a male DisplayPort plug, connector only, no cable; frontal view is flatter than the oblique one for a thumbnail. Brand marking on the plug is possible but unlikely; pixels not seen."
+       ]
+      },
+      {
+       "ref": "commons:37610191",
+       "accepted": true,
+       "licenseConfirmed": "CC BY-SA 3.0 at (Commons API LicenseShortName; Attribution-Share Alike 3.0 Austria port)",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Wikitext raw: own work by D-Kuru, 2014-07-26, focus stacked, {{QualityImage}}, only category DisplayPort connectors; no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark template.",
+        "HEAD (with a user-agent) returned 200, image/jpeg, 2057767 bytes; original https://upload.wikimedia.org/wikipedia/commons/1/1a/DisplayPort_connector-male-front_oblique_PNr%C2%B00441.jpg, 2823x2030 (about 1.39:1).",
+        "Oblique front and top view shows more of the plug shape and crops better to a centred square than the 3110x1996 frontal view, so it is preferred.",
+        "shareAlike=true, credit D-Kuru required on the credits page; connector only, a loose match for a cable product. Searcher's suggestion that sibling 0440 is nearly square was not verified by me."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "group": "adapter-hub",
+   "name": "Sambung USB-C adapter and hub",
+   "found": [
+    {
+     "productId": "B02",
+     "variant": "B02",
+     "verdict": "weak",
+     "verdictReason": "No Commons photo of a USB-C to HDMI dongle exists under cc0/pd/by. Only loose proxies: a USB-C to USB-A OTG adapter (cc0, same dongle form factor but wrong ports) and a mini-HDMI plug (by). Usable as a stand-in only; an Unsplash/Pexels search outside this tool would be the better route.",
+     "queriesRun": [
+      "usb-c hdmi adapter (cc0,pd)",
+      "usb-c dongle (cc0,pd)",
+      "usb type-c adapter (cc0,pd)",
+      "hdmi adapter (cc0,pd)",
+      "usb-c hdmi (cc0,pd)",
+      "usb-c hdmi adapter (by)",
+      "usb type-c adapter (by)",
+      "hdmi adapter (by)",
+      "Commons category HDMI_adapters / USB_Type-C_adapters listing"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:62107009",
+       "title": "USB OTG Type-C Adapter - A",
+       "creator": "Fructibus",
+       "license": "cc0",
+       "licenseVersion": "1.0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "page": "https://commons.wikimedia.org/wiki/File:USB_OTG_Type-C_Adapter_-_A.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/c/ce/USB_OTG_Type-C_Adapter_-_A.jpg",
+       "width": 4608,
+       "height": 3456,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "templatesFound": [],
+       "notes": "Wikitext clean: self|cc-zero, no Trademarked/Copyvio/Logo/Watermark templates. Description: USB 3 Standard-A receptacle to Type-C plug adapter (not HDMI). Categories mention wooden background; product is the sole subject. Cannot see pixels, so a printed logo on the adapter is possible. Shows a USB-C dongle shape but the wrong function; would need a neutral caption (generic USB-C adapter), not 'HDMI'."
+      },
+      {
+       "ref": "commons:62107008",
+       "title": "USB OTG Type-C Adapter - B",
+       "creator": "Fructibus",
+       "license": "cc0",
+       "licenseVersion": "1.0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "page": "https://commons.wikimedia.org/wiki/File:USB_OTG_Type-C_Adapter_-_B.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/6/61/USB_OTG_Type-C_Adapter_-_B.jpg",
+       "width": 4608,
+       "height": 3456,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Same series, clean wikitext. Includes a one-euro coin for scale, which is a distracting prop and a currency mismatch for an Indonesian shop. Prefer image A."
+      },
+      {
+       "ref": "commons:50348151",
+       "title": "Mini HDMI Connector",
+       "creator": "www.hdmi-experte.com",
+       "license": "by",
+       "licenseVersion": "4.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:Mini_HDMI_Connector.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/2/25/Mini_HDMI_Connector.jpg",
+       "width": 5184,
+       "height": 3456,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Wikitext clean with OTRS permission ticket, cc-by-4.0, categories HDMI connectors (male), HDMI adapters. Shows a male mini-HDMI plug, not a USB-C adapter. Credit required on a credits page. Source is a commercial cable shop (hdmi-experte.com), so a logo on the cable is possible; cannot verify without pixels. Last-resort option."
+      }
+     ]
+    },
+    {
+     "productId": "B04",
+     "variant": "B04",
+     "verdict": "weak",
+     "verdictReason": "No photo of a modern USB-C multiport hub with HDMI/USB-A/SD under cc0/pd. Best cc0 is a generic 4-port USB hub (older style, brand 'Gembird' likely printed). Best true match is a USB-C hub with SD, microSD, USB-A and two USB-C ports, but it is CC BY 4.0 and the maker TUNEWEAR is named on the back and in the title/category, so brand risk is real.",
+     "queriesRun": [
+      "usb-c hub (cc0,pd)",
+      "usb hub (cc0,pd)",
+      "usb type-c hub (cc0,pd)",
+      "multiport adapter (cc0,pd)",
+      "usb-c hub (by)",
+      "usb hub (by)",
+      "usb type-c adapter (by)",
+      "Commons category USB_hubs listing (licence filter)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:130584645",
+       "title": "TUNEWEAR-ALMIGHTY-DOCK-nano1 02",
+       "creator": "RuinDig/Yuki Uchida",
+       "license": "by",
+       "licenseVersion": "4.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:TUNEWEAR-ALMIGHTY-DOCK-nano1_02.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/3/3e/TUNEWEAR-ALMIGHTY-DOCK-nano1_02.jpg",
+       "width": 4624,
+       "height": 3468,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "visible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "templatesFound": [],
+       "notes": "Wikitext clean (self|cc-by-4.0, no Trademarked/Copyvio/Logo templates). Description: USB hub with SD slot, microSD slot, USB Type-A 3.2 Gen2 and two USB Type-C ports. Closest real USB-C multiport hub found, but the description says the word 'TUNEWEAR' is printed on the back side, and the file name and category carry the brand. No HDMI port. Credit required. Brand visibility depends on which side is shown; cannot verify without pixels. Siblings _01 and _03 exist (same series, _01 is a single USB-C port close-up)."
+      },
+      {
+       "ref": "commons:69767059",
+       "title": "USB hub Gembird",
+       "creator": "А. Кабанов (WildBoar)",
+       "license": "cc0",
+       "licenseVersion": "1.0",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "page": "https://commons.wikimedia.org/wiki/File:USB_hub_Gembird.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/7/7e/USB_hub_Gembird.jpg",
+       "width": 2119,
+       "height": 1901,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "visible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Wikitext clean (self|cc-zero). 4-port USB-A hub, transparent casing (category Transparent USB devices), nearly square so a centred crop works. Not USB-C and not multiport, and the description names the brand Gembird, which is likely printed on it. Fallback if no brand-free option is accepted."
+      },
+      {
+       "ref": "commons:1134122",
+       "title": "USB hubs",
+       "creator": "rautiocination",
+       "license": "by",
+       "licenseVersion": "2.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:USB_hubs.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/7/78/USB_hubs.jpg",
+       "width": 1024,
+       "height": 768,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Flickr import (cc-by-2.0, reviewed). Three transparent USB hubs, USB-A era. Only 768 px on the shorter side, below the 960 px minimum, so reject unless nothing else is available. Listed only for completeness."
+      }
+     ]
+    }
+   ],
+   "verified": [
+    {
+     "productId": "B02",
+     "variant": "B02",
+     "checks": [
+      {
+       "ref": "commons:62107009",
+       "accepted": false,
+       "licenseConfirmed": "cc-zero (CC0 1.0), per {{self|cc-zero}} in wikitext",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Licence and templates clean (no Trademarked/Personality/Copyvio/Logo/Watermark/delete); HEAD 200 image/jpeg, 2.27 MB.",
+        "Rejected on product match: shows a USB-A female to USB-C plug OTG adapter, not a USB-C to HDMI adapter. Using it would misrepresent the product.",
+        "Wooden background, not clean neutral; a printed logo on the adapter is possible (cannot see pixels).",
+        "Usable only as an explicitly generic 'USB-C adapter' stand-in if the owner relaxes the product-type requirement."
+       ]
+      },
+      {
+       "ref": "commons:62107008",
+       "accepted": false,
+       "licenseConfirmed": "cc-zero (CC0 1.0), per {{self|cc-zero}} in wikitext",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Licence and templates clean; HEAD 200 image/jpeg, 3.9 MB.",
+        "Rejected: same wrong product type (USB-A to USB-C OTG), plus a one-euro coin prop (category 'One euro coin used for scale') and wooden background.",
+        "Worse than image A for this need."
+       ]
+      }
+     ],
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for B02 (USB-C to HDMI adapter) until the client supplies a real photo, or search Unsplash/Pexels for a genuine USB-C HDMI dongle. Weakest stand-in if the owner insists: commons:62107009 (CC0) captioned generically, not 'HDMI'."
+    },
+    {
+     "productId": "B04",
+     "variant": "B04",
+     "checks": [
+      {
+       "ref": "commons:130584645",
+       "accepted": false,
+       "licenseConfirmed": "cc-by-4.0 (CC BY 4.0), per {{self|cc-by-4.0}} in wikitext",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence valid and no deletion/Copyvio/Trademarked templates; HEAD 200 image/jpeg, 1.5 MB.",
+        "Rejected on brand: description states the word 'TUNEWEAR' is printed on the back, and file name and category (Tunewear ALMIGHTY DOCK nano1) carry the brand. Brand visibility cannot be ruled out without pixels.",
+        "No HDMI port (SD, microSD, USB-A, 2x USB-C), so only a partial match to the multiport hub.",
+        "Credit required (RuinDig/Yuki Uchida, CC BY 4.0) if ever used."
+       ]
+      },
+      {
+       "ref": "commons:69767059",
+       "accepted": false,
+       "licenseConfirmed": "cc-zero (CC0 1.0), per {{self|cc-zero}} in wikitext",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence clean, no risky templates; HEAD 200 image/jpeg, 151 KB.",
+        "Rejected: description names brand Gembird, likely printed on the unit.",
+        "Wrong product: 4-port USB-A transparent hub, not a USB-C multiport hub.",
+        "Original file is only about 151 KB, so the pixel dimensions claimed by the searcher (2119x1901) are plausible but weak in quality; transparent casing is not clean product-photo style."
+       ]
+      }
+     ],
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for B04 (USB-C multiport hub) until the client supplies a photo, or search Unsplash/Pexels for an unbranded USB-C hub. If the owner accepts brand risk, the only candidate worth a pixel check is commons:130584645 (CC BY 4.0, credit required), choosing a view where the back is not shown."
+    }
+   ]
+  },
+  {
+   "group": "charger",
+   "name": "Sambung GaN charger",
+   "found": [
+    {
+     "productId": "B03",
+     "variant": "B03",
+     "verdict": "weak",
+     "verdictReason": "No unbranded 2xUSB-C+1xUSB-A GaN charger photo exists under CC0/PD or BY on Commons. Real USB wall chargers exist but all are from identifiable brands (ADTEC, LEPLUS, Orico, Baseus, Pisen) with likely printed logos or labels. The most GaN-specific photo shows Apple and Anker side by side, so it is rejected. Pixels were not inspected, so brand visibility is judged from titles only. Best option is one of the BY candidates after a human look, or a client-supplied photo.",
+     "queriesRun": [
+      "usb charger (commons cc0,pd)",
+      "usb-c charger (commons cc0,pd)",
+      "wall charger (commons cc0,pd)",
+      "gan charger (commons by)",
+      "usb power adapter (commons by, 0 results)",
+      "multiport usb charger (commons by, 0 results)",
+      "Commons categories Plug-in_USB-C_power_supplies and USB_chargers (API listing)",
+      "Openverse not tried (timeouts in earlier run; not needed)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:ADTEC-USBcharger-APD-V140AC2-BK_001.jpg",
+       "title": "ADTEC USB charger APD-V140AC2-BK 001",
+       "creator": "RuinDig / Yuki Uchida",
+       "license": "by",
+       "licenseVersion": "4.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:ADTEC-USBcharger-APD-V140AC2-BK_001.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/c/cd/ADTEC-USBcharger-APD-V140AC2-BK_001.jpg",
+       "width": 4624,
+       "height": 3468,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Black 140W USB-PD 3.1 multi-port wall charger, product is the subject (photographer's own product shot). Wikitext is clean: no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark templates; categories USB chargers and Adtec. The ADTEC brand name is probably printed on the unit. Port count (likely 2xUSB-C) not confirmed. Black body does not match Sambung white/grey/blue, and 4:3 crop should still centre the product. Siblings 002 to 007 exist (same licence). Credit required on credits page. Original URL returned HTTP 200.",
+       "templatesFound": []
+      },
+      {
+       "ref": "commons:LEPLUS-USBcharger-LN-ACPD130WH_001.jpg",
+       "title": "LEPLUS USB charger LN-ACPD130WH 001",
+       "creator": "RuinDig / Yuki Uchida",
+       "license": "by",
+       "licenseVersion": "4.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:LEPLUS-USBcharger-LN-ACPD130WH_001.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/c/cf/LEPLUS-USBcharger-LN-ACPD130WH_001.jpg",
+       "width": 4624,
+       "height": 3468,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Likely white (model suffix WH) 130W multi-port GaN-class USB-PD charger, which fits the Sambung white/grey look best. Wikitext is clean: no problem templates, only Category:USB chargers. LEPLUS brand and spec text are probably printed on the body. Port count not confirmed. Siblings 002 to 004 exist (same licence). Credit required. Original URL returned HTTP 200.",
+       "templatesFound": []
+      },
+      {
+       "ref": "commons:176817216",
+       "title": "Orico YC-PE0508000H multiport USB charger-1",
+       "creator": "Imgrenb",
+       "license": "cc0",
+       "page": "https://commons.wikimedia.org/wiki/File:Orico_YC-PE0508000H_multiport_USB_charger-1.jpg",
+       "original": "https://upload.wikimedia.org/wikipedia/commons/6/62/Orico_YC-PE0508000H_multiport_USB_charger-1.jpg",
+       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "licenseVersion": "1.0",
+       "width": 4032,
+       "height": 3024,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "visible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "notes": "Only CC0 multi-port candidate and no credit needed. Wikitext is clean (self cc-zero; categories USB chargers and Orico Technologies Co., Ltd.). It is a multi-port 5V 8A USB-A desktop-style charger, not a USB-C GaN wall charger, and the Orico name is in the title and category, so the brand is likely visible. Use only if a brand logo is acceptable or can be hidden by cropping. Original URL not re-checked because of a 429 rate limit.",
+       "templatesFound": []
+      }
+     ]
+    }
+   ],
+   "verified": [
+    {
+     "productId": "B03",
+     "variant": "B03",
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for B03 until the client supplies an unbranded photo (or a human views the LEPLUS/ADTEC photos and confirms the brand marking can be cropped out).",
+     "checks": [
+      {
+       "ref": "commons:ADTEC-USBcharger-APD-V140AC2-BK_001.jpg",
+       "accepted": false,
+       "licenseConfirmed": "CC BY 4.0 (Creative Commons Attribution 4.0)",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence confirmed from Commons metadata and wikitext ({{self|cc-by-4.0}}). Credit to RuinDig / Yuki Uchida required.",
+        "Wikitext is clean: no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark templates. Categories: USB chargers, Adtec.",
+        "HEAD on original returned 200 image/jpeg (2,569,049 bytes).",
+        "Rejected on brand risk: the description and category name ADTEC and the model number APD-V140AC2-BK, so the third-party brand is probably printed on the unit, which is a product shot of a named retail model.",
+        "Black body conflicts with the Sambung white/grey/blue look.",
+        "140W USB-PD 3.1 charger, port layout not confirmed (not confirmed as 2xUSB-C + 1xUSB-A). I cannot inspect pixels, so the brand marking is a possible, not a certain, risk."
+       ]
+      },
+      {
+       "ref": "commons:LEPLUS-USBcharger-LN-ACPD130WH_001.jpg",
+       "accepted": false,
+       "licenseConfirmed": "CC BY 4.0 (Creative Commons Attribution 4.0)",
+       "attributionRequired": true,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence confirmed from Commons metadata and wikitext ({{self|cc-by-4.0}}). Credit to RuinDig / Yuki Uchida required.",
+        "Wikitext is clean: no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark templates. Only category: USB chargers.",
+        "HEAD on original could not be verified: two attempts returned HTTP 429 (Wikimedia rate limit), not 200. The searcher earlier saw 200, but I could not reconfirm it.",
+        "Rejected on brand risk: the description names LEPLUS and MS Solutions with the model LN-ACPD130WH, so the brand and spec text is probably printed on the white body. White colour (WH) would otherwise suit Sambung.",
+        "Port count (2xUSB-C + 1xUSB-A) not confirmed, and 130W multi-port may match only loosely. Pixels not inspected, so brand visibility is possible, not confirmed."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "group": "cleansers-bundle",
+   "name": "Halimun cleansers and morning bundle",
+   "found": [
+    {
+     "productId": "A01",
+     "variant": "A01-100, A01-200",
+     "verdict": "weak",
+     "verdictReason": "Commons has almost no unbranded facial-cleanser pump bottle photos under cc0/pd/by. Only loose matches: a pump-dispenser shower gel photo (by), a lotion pump mechanism close-up (pd) and rosewater bottles (cc0). None is a clean product shot; likely needs a different source (Unsplash/Pexels, not checked) or keep the SVG.",
+     "queriesRun": [
+      "cosmetic pump bottle (cc0,pd)",
+      "pump bottle (cc0,pd)",
+      "cleanser bottle (cc0,pd; interim run)",
+      "skincare bottle (cc0,pd)",
+      "pump dispenser bottle (by)",
+      "cosmetic bottle (by)",
+      "cosmetic pump bottle (openverse, timed out)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:152115998",
+       "title": "Refillable bottles with two different types of shower gel",
+       "creator": "Immanuelle",
+       "license": "by",
+       "licenseVersion": "4.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:Refillable_bottles_with_two_different_types_of_shower_gel.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Refillable_bottles_with_two_different_types_of_shower_gel.jpg",
+       "width": 4032,
+       "height": 3024,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Wikitext clean (cc-by-4.0, no Trademarked/Copyvio/Logo templates). Categories: Hotels in Chiang Mai, Shower gels, Pump dispensers, Plastic bottles. Hotel refill pump bottles of shower gel, not a facial cleanser; label text unknown (cannot see pixels), likely a hotel-brand or Thai text label. Landscape, two bottles, needs crop. Fallback only."
+      },
+      {
+       "ref": "commons:155702653",
+       "title": "Pump bottle mechanism",
+       "creator": "MKFI",
+       "license": "pd",
+       "page": "https://commons.wikimedia.org/wiki/File:Pump_bottle_mechanism.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Pump_bottle_mechanism.jpg",
+       "width": 5006,
+       "height": 2651,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [
+        "PD-self"
+       ],
+       "notes": "Self-made, PD-self, no risk templates. Shows the pump mechanism of a 440 g moisture lotion bottle, so likely a close-up of the pump part rather than a whole bottle; wide 5006x2651 aspect. Lotion bottle brand may be visible. Not a cleanser product shot."
+      },
+      {
+       "ref": "commons:159447441",
+       "title": "Dog rose water",
+       "creator": "DrRachT",
+       "license": "cc0",
+       "page": "https://commons.wikimedia.org/wiki/File:Dog_rose_water.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Dog_rose_water.jpg",
+       "width": 1417,
+       "height": 2848,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [
+        "self|cc-zero"
+       ],
+       "notes": "Two bottles of Tunisian rosehip hydrolat, one artisanal and one supermarket product (likely printed brand label). Food/pastry flavouring first, skincare second. Tall 1417x2848 so below the preferred 1600 px width and a square crop is awkward. Weak."
+      }
+     ]
+    },
+    {
+     "productId": "A05",
+     "variant": "A05",
+     "verdict": "none",
+     "verdictReason": "No small unbranded travel-size cosmetic bottle photo found with cc0/pd/by on Commons. Results were water bottles (Wahaha brand), toy bottles (Nik-L-Nip), museum antiquities, perfume vessels from the MET or paintings.",
+     "queriesRun": [
+      "travel size bottle (cc0,pd)",
+      "small cosmetic bottle (cc0,pd)",
+      "travel bottle (cc0,pd)",
+      "travel size bottle (by; empty)",
+      "cosmetic bottle (by)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:152115998",
+       "title": "Refillable bottles with two different types of shower gel",
+       "creator": "Immanuelle",
+       "license": "by",
+       "licenseVersion": "4.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:Refillable_bottles_with_two_different_types_of_shower_gel.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Refillable_bottles_with_two_different_types_of_shower_gel.jpg",
+       "width": 4032,
+       "height": 3024,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [],
+       "notes": "Same file as under A01, listed only as a last resort: plastic pump bottles, not a travel-size 30 ml bottle. Do not use the same photo for two products."
+      },
+      {
+       "ref": "commons:64704361",
+       "title": "Optical caustic: Cosmetic oil bottle in the sun",
+       "creator": "Mariojan photo",
+       "license": "by",
+       "licenseVersion": "4.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:Optical_caustic_Cosmetic_oil_bottle_in_the_sun_mj.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Optical_caustic_Cosmetic_oil_bottle_in_the_sun_mj.jpg",
+       "width": 3672,
+       "height": 2752,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [
+        "Wiki Science Competition 2017"
+       ],
+       "notes": "Small cosmetic oil bottle but the subject is a light caustic effect in strong sun, a science photo, not a clean product shot. Not suitable for a travel cleanser; listed only for completeness."
+      }
+     ]
+    },
+    {
+     "productId": "BND-PAGI",
+     "variant": "BND-PAGI",
+     "verdict": "weak",
+     "verdictReason": "No clean unbranded three-product skincare set found. Best low-risk-licence options are the Korean K-beauty photo (cc0, but products are real branded items) and Shixart1985 pink-background jar/skincare photos (cc-by-2.0, correct mood for Halimun but only jars and possibly AI-like stock content, and no bottle/tube trio). Needs a better source or a manual pick.",
+     "queriesRun": [
+      "skincare products (cc0,pd)",
+      "skin care set (cc0,pd)",
+      "cosmetic products (cc0,pd)",
+      "skincare products (by)",
+      "toiletries (by)"
+     ],
+     "candidates": [
+      {
+       "ref": "commons:177575310",
+       "title": "Korean cosmetic products",
+       "creator": "Jmh65890",
+       "license": "cc0",
+       "page": "https://commons.wikimedia.org/wiki/File:Korean_cosmetic_products.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean_cosmetic_products.jpg",
+       "width": 3024,
+       "height": 4032,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "visible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "templatesFound": [
+        "self|cc-zero"
+       ],
+       "notes": "Own work, cc-zero, uploaded 2025-10-30. Description: a selection of South Korean skincare and cosmetic products. Categories: Skincare products, K-beauty, Cosmetics of South Korea. Right subject (several products together) and high res portrait 3024x4032, but these are real market products, so third-party brand names almost certainly legible. No Trademarked template present, yet I cannot see pixels, so treat as brand risk visible. Needs a human look before use."
+      },
+      {
+       "ref": "commons:187707422",
+       "title": "Skin care products displayed on a light pink background with a spoonful of powder near jars",
+       "creator": "Shixart1985",
+       "license": "by",
+       "licenseVersion": "2.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:Skin_care_products_displayed_on_a_light_pink_background_with_a_spoonful_of_powder_near_jars.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Skin_care_products_displayed_on_a_light_pink_background_with_a_spoonful_of_powder_near_jars.jpg",
+       "width": 6016,
+       "height": 4016,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [
+        "self",
+        "Cc-by-2.0"
+       ],
+       "notes": "Two jars (one open with pink balm) plus a spoon of pink powder on a soft pink surface; categories Skin care products, Cosmetics, Powder. Wikitext clean. Description says jars only, not a bottle+jar+tube trio, and pink rather than warm beige/green. Jars appear plain. Landscape, so square crop must keep the jars. Uploader's description style is generic, so check visually."
+      },
+      {
+       "ref": "commons:186098610",
+       "title": "Cosmetic jar with light pink product displayed on a textured background",
+       "creator": "Shixart1985",
+       "license": "by",
+       "licenseVersion": "2.0",
+       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+       "page": "https://commons.wikimedia.org/wiki/File:Cosmetic_jar_with_light_pink_product_displayed_on_a_textured_background.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmetic_jar_with_light_pink_product_displayed_on_a_textured_background.jpg",
+       "width": 5538,
+       "height": 3697,
+       "attributionRequired": true,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "templatesFound": [
+        "self",
+        "Cc-by-2.0"
+       ],
+       "notes": "Single small glass jar with light pink product on a textured surface; categories Skin care products, Cosmetics, Beauty products. Wikitext clean. One jar only, so it fits a moisturizer rather than the three-piece bundle. Similar clean photo also exists as commons:196010766 (clear cosmetic bag with creams and tools on pink, cc-by-2.0, 5576x3722, Toiletry bags category), not wikitext-checked beyond licence and description."
+      }
+     ]
+    }
+   ],
+   "verified": [
+    {
+     "productId": "A01",
+     "variant": "A01-100, A01-200",
+     "checks": [
+      {
+       "ref": "commons:152115998",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-by-4.0}} (CC BY 4.0)",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Licence confirmed and wikitext clean, but the photo shows hotel refill shower gel pump bottles (Chiang Mai), not a facial cleanser",
+        "Label text and brand cannot be verified without seeing pixels; the description is vague and the page is flagged 'need descriptions improved'",
+        "Landscape with two bottles; the product is not a clear single subject",
+        "Direct upload URL returns 200 image/jpeg (the Special:FilePath URL redirects)"
+       ]
+      },
+      {
+       "ref": "commons:155702653",
+       "accepted": false,
+       "licenseConfirmed": "{{PD-self}} (public domain)",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Licence is fine and no risk templates, but the subject is the pump mechanism of a 440 g moisture lotion bottle, a component close-up, not a cleanser bottle",
+        "Wide 5006x2651 crop and a possible visible lotion brand",
+        "Direct upload URL returns 200 image/jpeg"
+       ]
+      }
+     ],
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for A01-100/A01-200 until the client supplies a photo, or run a targeted Unsplash/Pexels search for an unbranded pump cleanser bottle and verify the licence page."
+    },
+    {
+     "productId": "A05",
+     "variant": "A05",
+     "checks": [
+      {
+       "ref": "commons:152115998",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-by-4.0}} (CC BY 4.0)",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Large pump shower gel refill bottles, not a travel-size 30 ml cosmetic bottle",
+        "Same file proposed for A01; one photo must not serve two products",
+        "Brand and label cannot be verified"
+       ]
+      },
+      {
+       "ref": "commons:64704361",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-by-4.0}} (CC BY 4.0)",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Licence is fine, but it is a Wiki Science Competition optics photo of light caustics from a cosmetic oil bottle, not a product shot",
+        "Categories are Caustics, Refraction and Focus; the bottle is not the clear subject on a clean background",
+        "Not a travel-size cleanser, and a possible brand cannot be excluded"
+       ]
+      }
+     ],
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for A05 until the client supplies a photo."
+    },
+    {
+     "productId": "BND-PAGI",
+     "variant": "BND-PAGI",
+     "checks": [
+      {
+       "ref": "commons:177575310",
+       "accepted": false,
+       "licenseConfirmed": "{{self|cc-zero}} (CC0)",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Licence is clean and no risk templates, but the description says it shows real South Korean market skincare products, so third-party brand names are very likely legible",
+        "Categories K-beauty and Cosmetics of South Korea confirm branded retail goods",
+        "Brand-safety rule rejects visible third-party brands; cannot rule it out without a visual check",
+        "Direct upload URL returns 200 image/jpeg"
+       ]
+      },
+      {
+       "ref": "commons:187707422",
+       "accepted": false,
+       "licenseConfirmed": "{{self}} {{Cc-by-2.0}} (CC BY 2.0)",
+       "attributionRequired": true,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Licence and wikitext are clean (no Trademarked, Copyvio, Logo or Watermark templates)",
+        "Description: two jars (one open with pink balm) and a spoon of pink powder on a pink surface, so not a three-product bundle and not Halimun's beige/green look",
+        "A morning bundle needs a cleanser, a moisturiser and a sunscreen; two jars with loose powder do not represent it and would mislead",
+        "Dated 2021-12; the uploader's generic description style suggests stock-like content, and jar labels cannot be verified",
+        "Direct upload URL returns 200 image/jpeg"
+       ]
+      }
+     ],
+     "chosenRef": "",
+     "fallback": "Keep the existing SVG drawing for BND-PAGI. A bundle image is best composed per client from the client's own product photos. The Shixart1985 jar photos (CC BY 2.0, credit required) could serve as a single moisturiser jar image only after a human visual check."
+    }
+   ]
+  },
+  {
+   "group": "jar-tube-dropper",
+   "name": "Halimun moisturizer, sunscreen and serum",
+   "found": [
+    {
+     "productId": "A02",
+     "variant": "A02",
+     "verdict": "weak",
+     "verdictReason": "Commons has no usable modern unbranded cream jar: cc0 'cosmetic jar' hits are Egyptian museum artefacts. Only Pexels (unseen pixels, page text only) gives plausible modern jars, with props/background caveats. Needs visual confirmation.",
+     "queriesRun": [
+      "cream jar",
+      "moisturizer jar",
+      "cosmetic jar",
+      "cosmetic cream",
+      "skincare cream container",
+      "moisturizer",
+      "WebSearch: unsplash/pexels blank cosmetic cream jar (x2)"
+     ],
+     "candidates": [
+      {
+       "ref": "https://www.pexels.com/photo/white-cosmetic-cream-container-on-wooden-surface-8490089/",
+       "title": "White Cosmetic Cream Container on Wooden Surface",
+       "creator": "PNW Production",
+       "license": "pexels",
+       "page": "https://www.pexels.com/photo/white-cosmetic-cream-container-on-wooden-surface-8490089/",
+       "original": "https://www.pexels.com/photo/white-cosmetic-cream-container-on-wooden-surface-8490089/",
+       "width": 2667,
+       "height": 4000,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "White cosmetic jar with wooden surface and green leaves (props). Page lists no brand text; not visually checked. Green leaves fit Halimun warm beige/green look. Portrait; centred square crop should keep jar. Direct image URL not captured; get from page."
+      },
+      {
+       "ref": "https://www.pexels.com/photo/a-plastic-tube-bottle-leaning-on-an-empty-container-8015480/",
+       "title": "A Plastic Tube Bottle leaning on an Empty Container (white plastic containers with cream, studio, white background)",
+       "creator": "Cup of Couple",
+       "license": "pexels",
+       "page": "https://www.pexels.com/photo/a-plastic-tube-bottle-leaning-on-an-empty-container-8015480/",
+       "original": "https://www.pexels.com/photo/a-plastic-tube-bottle-leaning-on-an-empty-container-8015480/",
+       "width": 8192,
+       "height": 5464,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "notes": "Studio shot on white; shows tube and container together (also a sunscreen-tube candidate, see A04). Title/description mismatch; may be mockup with yellow cream. Must verify no label text visually."
+      },
+      {
+       "ref": "commons:37898285",
+       "title": "Cream in round container",
+       "creator": "stux (via Pixabay)",
+       "license": "cc0",
+       "page": "https://commons.wikimedia.org/wiki/File:Cream_in_round_container.jpg",
+       "original": "https://commons.wikimedia.org/wiki/Special:FilePath/Cream_in_round_container.jpg",
+       "width": 1280,
+       "height": 853,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Wikitext clean (Pixabay licence template, confirmed review, category Cream (cosmetics), no trademark/copyvio templates). But 853 px short side is below the 960 px minimum, so only a fallback. Tool lists it as cc0; true licence is the Pixabay Licence."
+      }
+     ]
+    },
+    {
+     "productId": "A04",
+     "variant": "A04",
+     "verdict": "weak",
+     "verdictReason": "Commons offers no modern sunscreen/cosmetic tube (only kohl tubes, military sunscreen, oil paint tubes). Unsplash 'unbranded' mock-up tube is a good licence/brand fit but a general body-care tube, not sunscreen. Pixels unseen.",
+     "queriesRun": [
+      "cosmetic tube",
+      "sunscreen tube",
+      "squeeze tube",
+      "tube of cream",
+      "WebSearch: unsplash unbranded sunscreen squeeze tube"
+     ],
+     "candidates": [
+      {
+       "ref": "https://unsplash.com/photos/white-and-black-labeled-soft-tube-n-_eThobLXk",
+       "title": "White and black labeled soft tube",
+       "creator": "Luisa Brimble",
+       "license": "unsplash",
+       "page": "https://unsplash.com/photos/white-and-black-labeled-soft-tube-n-_eThobLXk",
+       "original": "https://unsplash.com/photos/white-and-black-labeled-soft-tube-n-_eThobLXk",
+       "width": 3000,
+       "height": 0,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Description tags: mock-up, blank, unbranded, no brand, hotel amenities. Unsplash License page reachable. Title says labeled (white/black), so a generic label may exist; verify visually. Real pixel size not stated (w=3000 is a render param; height unknown, recorded as 0). Camera Canon 5D III, 2020."
+      },
+      {
+       "ref": "https://unsplash.com/photos/a-tube-of-hand-cream-on-a-white-surface-l450yFnd7Bw",
+       "title": "A tube of hand cream on a white surface",
+       "creator": "Dmitry Vechorko",
+       "license": "unsplash",
+       "page": "https://unsplash.com/photos/a-tube-of-hand-cream-on-a-white-surface-l450yFnd7Bw",
+       "original": "https://unsplash.com/photos/a-tube-of-hand-cream-on-a-white-surface-l450yFnd7Bw",
+       "width": 3000,
+       "height": 0,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "possible",
+       "matchQuality": "close",
+       "notes": "Tags include sunscreen, cream, lotion; white surface, clean. Page attributes it to a named Tel Aviv perfumery (Zielinski & Rozen), so tube may carry that brand; tags also include female/face. Verify visually. Sony A7 IV, Jan 2023. Height unknown (0)."
+      },
+      {
+       "ref": "https://www.pexels.com/photo/a-plastic-tube-bottle-leaning-on-an-empty-container-8015480/",
+       "title": "A Plastic Tube Bottle leaning on an Empty Container",
+       "creator": "Cup of Couple",
+       "license": "pexels",
+       "page": "https://www.pexels.com/photo/a-plastic-tube-bottle-leaning-on-an-empty-container-8015480/",
+       "original": "https://www.pexels.com/photo/a-plastic-tube-bottle-leaning-on-an-empty-container-8015480/",
+       "width": 8192,
+       "height": 5464,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "loose",
+       "notes": "Tube on white studio background, very high resolution, but landscape with a second container as co-subject; a centred square crop may cut the tube. Verify no text."
+      }
+     ]
+    },
+    {
+     "productId": "A03",
+     "variant": "A03",
+     "verdict": "weak",
+     "verdictReason": "Commons has no modern serum/dropper bottle (results are Roman/Victorian museum bottles, CBD-with-person, a scientist holding serum). Pexels has plausible minimalist dropper/serum shots with high resolution, but brand/text cannot be confirmed from page text alone; one explicitly has Korean text. Upgrade to good if visual check passes.",
+     "queriesRun": [
+      "dropper bottle",
+      "serum bottle",
+      "essential oil dropper bottle",
+      "amber glass dropper",
+      "skin care bottle",
+      "WebSearch: unsplash glass dropper bottle serum minimal unbranded"
+     ],
+     "candidates": [
+      {
+       "ref": "https://www.pexels.com/photo/minimalist-skincare-serum-bottle-flat-lay-31251033/",
+       "title": "Minimalist Skincare Serum Bottle Flat Lay",
+       "creator": "N H Corp",
+       "license": "pexels",
+       "page": "https://www.pexels.com/photo/minimalist-skincare-serum-bottle-flat-lay-31251033/",
+       "original": "https://www.pexels.com/photo/minimalist-skincare-serum-bottle-flat-lay-31251033/",
+       "width": 3981,
+       "height": 5971,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Flat lay of skincare serum with dropper on white background; no brand text stated on main image (only related thumbnails show 'Shake'). Nikon Z8, Mar 2025. Flat-lay angle: bottle may be small in frame; check a square crop."
+      },
+      {
+       "ref": "https://www.pexels.com/photo/bottle-with-dropper-on-white-surface-7796597/",
+       "title": "Bottle with Dropper on White Surface",
+       "creator": "Alesia Kozik",
+       "license": "pexels",
+       "page": "https://www.pexels.com/photo/bottle-with-dropper-on-white-surface-7796597/",
+       "original": "https://www.pexels.com/photo/bottle-with-dropper-on-white-surface-7796597/",
+       "width": 3000,
+       "height": 4500,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "possible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Cosmetic serum with dried flowers and petals (props, fits warm natural look). No brand text on page; not visually verified. Props may clutter the crop."
+      },
+      {
+       "ref": "https://www.pexels.com/photo/serum-bottle-on-a-white-surface-13946076/",
+       "title": "Serum Bottle on a White Surface",
+       "creator": "Brian Phetmeuangmay",
+       "license": "pexels",
+       "page": "https://www.pexels.com/photo/serum-bottle-on-a-white-surface-13946076/",
+       "original": "https://www.pexels.com/photo/serum-bottle-on-a-white-surface-13946076/",
+       "width": 3648,
+       "height": 5472,
+       "attributionRequired": false,
+       "shareAlike": false,
+       "brandRisk": "visible",
+       "peopleRisk": "none",
+       "matchQuality": "close",
+       "notes": "Page says the glass bottle has Korean text, so likely printed brand/label: use only if text is generic; probably reject. Included as fallback."
+      }
+     ]
+    }
+   ],
+   "verified": [
+    {
+     "productId": "A02",
+     "variant": "A02",
+     "chosenRef": "https://www.pexels.com/photo/white-cosmetic-cream-container-on-wooden-surface-8490089/",
+     "fallback": "Keep the existing SVG drawing until a client photo or a visually verified image is available.",
+     "checks": [
+      {
+       "ref": "https://www.pexels.com/photo/white-cosmetic-cream-container-on-wooden-surface-8490089/",
+       "accepted": true,
+       "licenseConfirmed": "Free (Pexels page label, links to /license/ i.e. Pexels License; full text not on page)",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Page text names no brand or label; description: white cosmetic jar on wooden surface with green leaves, ideal for product mockups (suggests blank jar).",
+        "Image URL https://images.pexels.com/photos/8490089/pexels-photo-8490089.jpeg answered HEAD 200 image/jpeg (787 KB). Page lists 2667x4000, portrait.",
+        "Page is reachable by WebFetch (curl got blocked by Pexels), so source page was read, but pixels not seen: brand risk is possible, not none. Needs a visual check before use.",
+        "Wooden surface and green leaves fit Halimun warm beige/green look."
+       ]
+      },
+      {
+       "ref": "https://www.pexels.com/photo/a-plastic-tube-bottle-leaning-on-an-empty-container-8015480/",
+       "accepted": false,
+       "licenseConfirmed": "not confirmed",
+       "attributionRequired": false,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Not verified: page could not be re-fetched in this review.",
+        "Searcher itself flagged title/description mismatch, loose match, two co-subjects, and unconfirmed label text.",
+        "Rejected under the in-doubt rule."
+       ]
+      },
+      {
+       "ref": "commons:37898285",
+       "accepted": false,
+       "licenseConfirmed": "Pixabay licence template (status=confirmed) on Commons; tool listed it as cc0",
+       "attributionRequired": false,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Raw wikitext is clean: no Trademarked, Personality rights, Copyvio, delete, Logo or Watermark templates; category Cream (cosmetics).",
+        "Resolution 1280x853: short side 853 px is below the 960 px minimum.",
+        "Licence is the Pixabay Licence, not true CC0, so it falls outside the accepted list.",
+        "HEAD on the original hit HTTP 429 from Wikimedia (rate limit), so reachability not confirmed."
+       ]
+      }
+     ]
+    },
+    {
+     "productId": "A04",
+     "variant": "A04",
+     "chosenRef": "https://unsplash.com/photos/white-and-black-labeled-soft-tube-n-_eThobLXk",
+     "fallback": "Keep the existing SVG drawing until a client photo or a visually verified image is available.",
+     "checks": [
+      {
+       "ref": "https://unsplash.com/photos/white-and-black-labeled-soft-tube-n-_eThobLXk",
+       "accepted": true,
+       "licenseConfirmed": "Free to use under the Unsplash License",
+       "attributionRequired": false,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Description tags: natural body care products, mock-up, blank, unbranded, no brand, hotel amenities. Photographer Luisa Brimble, Canon 5D Mark III, 2020.",
+        "Page fetched via WebFetch; curl got 401 from Unsplash, so the original image URL could not be HEAD-checked (originalReachable=false for that reason only). Check the download link before use.",
+        "Pixel size not stated; a 5D III file is normally above 5000 px wide, but this is an assumption.",
+        "Shows a generic body-care tube, not a sunscreen specifically; acceptable as a stand-in because it is unbranded. Title says labeled, so a plain label may exist; pixels not seen, brand risk possible."
+       ]
+      },
+      {
+       "ref": "https://unsplash.com/photos/a-tube-of-hand-cream-on-a-white-surface-l450yFnd7Bw",
+       "accepted": false,
+       "licenseConfirmed": "Free to use under the Unsplash License",
+       "attributionRequired": false,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Description names Zielinski & Rozen, and the location is Zielinski & Rozen Perfumery in Tel Aviv, so the tube is likely branded.",
+        "Tags include female and face, so a person may be present.",
+        "Pixel size not stated; original not HEAD-checkable (401 to curl)."
+       ]
+      }
+     ]
+    },
+    {
+     "productId": "A03",
+     "variant": "A03",
+     "chosenRef": "https://www.pexels.com/photo/minimalist-skincare-serum-bottle-flat-lay-31251033/",
+     "fallback": "Keep the existing SVG drawing until a client photo or a visually verified image is available.",
+     "checks": [
+      {
+       "ref": "https://www.pexels.com/photo/minimalist-skincare-serum-bottle-flat-lay-31251033/",
+       "accepted": true,
+       "licenseConfirmed": "Free (Pexels page label, links to /license/ i.e. Pexels License; full text not on page)",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Alt text: flat lay of skincare serum with dropper on white background; page text reports no label on the product.",
+        "Image URL https://images.pexels.com/photos/31251033/pexels-photo-31251033.jpeg answered HEAD 200 image/jpeg (383 KB). Page lists 3981x5971.",
+        "Pixels not seen: brand/label risk is possible. Flat lay may leave the bottle small in a centred square crop; check before use.",
+        "Tags on the page are from the More like this section and may belong to other images."
+       ]
+      },
+      {
+       "ref": "https://www.pexels.com/photo/bottle-with-dropper-on-white-surface-7796597/",
+       "accepted": true,
+       "licenseConfirmed": "Free (Pexels page label, links to /license/ i.e. Pexels License; full text not on page)",
+       "attributionRequired": false,
+       "originalReachable": true,
+       "trademarkOrPersonalityFlag": false,
+       "reasons": [
+        "Description: cosmetic serum with dried flowers and petals; no brand text on the page. Photographer Alesia Kozik, 2021.",
+        "Image URL https://images.pexels.com/photos/7796597/pexels-photo-7796597.jpeg answered HEAD 200 image/jpeg (415 KB). Page lists 3000x4500.",
+        "Pixels not seen: brand risk possible. Props may clutter a square crop. Kept as backup to the chosen photo."
+       ]
+      },
+      {
+       "ref": "https://www.pexels.com/photo/serum-bottle-on-a-white-surface-13946076/",
+       "accepted": false,
+       "licenseConfirmed": "not confirmed",
+       "attributionRequired": false,
+       "originalReachable": false,
+       "trademarkOrPersonalityFlag": true,
+       "reasons": [
+        "Searcher reports Korean text on the glass bottle, so a printed label or brand is likely visible.",
+        "Page not re-fetched; rejected under the brand-safety rule."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "needs": 15,
+  "withPhoto": 7,
+  "missing": [
+   {
+    "group": "usb-c-cables",
+    "productId": "B01",
+    "variant": "B01-1M-BLK, B01-2M-BLK, B01-3M-BLK (black)",
+    "chosen": ""
+   },
+   {
+    "group": "usb-c-cables",
+    "productId": "B01",
+    "variant": "B01-2M-WHT (white)",
+    "chosen": ""
+   },
+   {
+    "group": "adapter-hub",
+    "productId": "B02",
+    "variant": "B02",
+    "chosen": ""
+   },
+   {
+    "group": "adapter-hub",
+    "productId": "B04",
+    "variant": "B04",
+    "chosen": ""
+   },
+   {
+    "group": "charger",
+    "productId": "B03",
+    "variant": "B03",
+    "chosen": ""
+   },
+   {
+    "group": "cleansers-bundle",
+    "productId": "A01",
+    "variant": "A01-100, A01-200",
+    "chosen": ""
+   },
+   {
+    "group": "cleansers-bundle",
+    "productId": "A05",
+    "variant": "A05",
+    "chosen": ""
+   },
+   {
+    "group": "cleansers-bundle",
+    "productId": "BND-PAGI",
+    "variant": "BND-PAGI",
+    "chosen": ""
+   }
+  ]
+ }
+}

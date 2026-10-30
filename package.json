@@ -1,0 +1,36 @@
+{
+  "name": "projectnyatian",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Modular Indonesian B2C e-commerce starter (Agent 02 Backend & Integrations)",
+  "type": "module",
+  "scripts": {
+    "graphify:check": "node scripts/graphify-check.js",
+    "graphify:sync": "node scripts/graphify-sync.js",
+    "dev": "docker-compose up --build",
+    "dev:down": "docker-compose down",
+    "dev:logs": "docker-compose logs -f",
+    "api:logs": "docker-compose logs -f api",
+    "web:logs": "docker-compose logs -f web",
+    "test:api": "cd server && npm test",
+    "test:web": "cd web && npm test",
+    "build:api": "cd server && npm run build",
+    "build:web": "cd web && npm run build",
+    "build:client": "cd web && npm run build:client",
+    "lint": "cd web && npm run typecheck && cd ../server && npm run build",
+    "precommit": "npm run graphify:sync && git status"
+  },
+  "keywords": [
+    "ecommerce",
+    "react",
+    "nestjs",
+    "postgresql",
+    "indonesia"
+  ],
+  "author": "Agent 02",
+  "license": "PROPRIETARY",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DarthSaber23/ProjectnyaTian.git"
+  }
+}
