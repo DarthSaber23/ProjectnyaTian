@@ -71,9 +71,19 @@ function CompareTray() {
 
 export function Layout() {
   const brand = useBrand();
+  const setBrand = useShop((s) => s.setBrand);
   const count = useShop((s) => s.cart.reduce((n, l) => n + l.qty, 0));
   const session = useShop((s) => s.session);
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    const b = params.get("brand");
+    if ((b === "halimun" || b === "sambung") && b !== brand.id) {
+      setBrand(b);
+    }
+  }, [search, brand.id, setBrand]);
+
   useEffect(() => applyBrand(brand), [brand]);
   // Braces keep the effect from returning scrollTo's result: newer Chrome returns a Promise, which React then calls as a cleanup and crashes on route change.
   useEffect(() => {
@@ -117,8 +127,16 @@ export function Layout() {
       </main>
       <footer className="border-t border-line bg-surface">
         {/* The Blog link sits inline so the footer keeps its height (a taller footer makes the loading-state jump larger). */}
-        <div className="mx-auto max-w-[1280px] px-4 py-6 text-[13px] text-muted">
-          <Link to="/blog" className="py-1 text-ink underline">Blog</Link> · {brand.name} · {brand.tagline}. Harga sudah termasuk PPN. Nama brand adalah nama kerja (belum dicek merek).
+        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-2 px-4 py-6 text-[13px] text-muted">
+          <span>
+            <Link to="/blog" className="py-1 text-ink underline">Blog</Link> · {brand.name} · {brand.tagline}. Harga sudah termasuk PPN. Nama brand adalah nama kerja (belum dicek merek).
+          </span>
+          <span className="flex items-center gap-2">
+            <span>Brand:</span>
+            <Link to="/?brand=sambung" className={`font-semibold underline ${brand.id === "sambung" ? "text-primary font-bold" : "text-muted"}`}>Sambung</Link>
+            <span>·</span>
+            <Link to="/?brand=halimun" className={`font-semibold underline ${brand.id === "halimun" ? "text-primary font-bold" : "text-muted"}`}>Halimun</Link>
+          </span>
         </div>
       </footer>
       <CompareTray />
