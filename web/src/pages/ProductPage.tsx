@@ -98,7 +98,7 @@ export function ProductPage() {
             <span className="text-[13px] text-muted">{room === 0 ? (stock === 0 ? "" : "Semua stok tersedia sudah di keranjang") : `maks. ${room}`}</span>
           </div>
           <p className="text-[13px] text-muted">Harga sudah termasuk PPN. Ulasan belum ditampilkan di prototipe.</p>
-          <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface p-3 md:static md:border-0 md:bg-transparent md:p-0">
+          <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:static md:border-0 md:bg-transparent md:p-0">
             <button type="button" className="btn-primary w-full md:w-auto" disabled={room === 0} onClick={add}>
               {room === 0 ? (stock === 0 ? "Stok habis" : "Batas stok tercapai") : `+ Keranjang · ${formatIDR(best.unit * q)}`}
             </button>

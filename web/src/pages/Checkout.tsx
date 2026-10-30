@@ -150,7 +150,7 @@ export function Checkout() {
           ) : null}
           {error ? <p role="alert" className="rounded-brand bg-[#FDECEC] p-3 text-sm font-semibold text-danger">{error}</p> : null}
         </div>
-        <aside className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface p-3 lg:static lg:self-start lg:rounded-brand lg:border lg:p-4">
+        <aside className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:static lg:self-start lg:rounded-brand lg:border lg:p-4">
           <div className="mx-auto flex max-w-[1280px] flex-col gap-3">
             <div className="hidden lg:block"><SummaryRows totals={totals} stage="checkout" courierName={courier.service.split(" · ")[0]} /></div>
             <div className="flex justify-between text-sm font-bold lg:hidden"><span>Total</span><span className="money">{formatIDR(totals.total)}</span></div>

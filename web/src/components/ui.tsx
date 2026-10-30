@@ -4,22 +4,24 @@ import { formatIDR } from "../domain/money";
 import type { ArtKind } from "../domain/types";
 import { useShop } from "../store/shop";
 
-/** Placeholder illustration, shown when a product has no photo. `decorative` hides it when the name is already beside it. */
+/** Specimen fallback presentation, shown when a product has no photo. `decorative` hides it when the name is already beside it. */
 export function ProductArt({ kind, bg, accent, label, className = "", decorative = false }: { kind: ArtKind; bg: string; accent: string; label: string; className?: string; decorative?: boolean }) {
-  const ink = "#1A2233";
-  const shape: Record<ArtKind, ReactNode> = {
-    cable: (<><path d="M30 70 C30 40, 70 40, 70 30" stroke={accent} strokeWidth="5" fill="none" strokeLinecap="round" /><rect x="22" y="68" width="16" height="14" rx="3" fill={ink} /><rect x="62" y="18" width="16" height="14" rx="3" fill={ink} /></>),
-    charger: (<><rect x="30" y="28" width="40" height="44" rx="8" fill={ink} /><rect x="38" y="40" width="10" height="4" rx="2" fill={accent} /><rect x="52" y="40" width="10" height="4" rx="2" fill={accent} /><rect x="42" y="54" width="16" height="5" rx="1" fill="#fff" /></>),
-    adapter: (<><rect x="24" y="40" width="52" height="20" rx="6" fill={ink} /><rect x="76" y="45" width="10" height="10" rx="2" fill={accent} /><path d="M24 50 H12" stroke={accent} strokeWidth="4" strokeLinecap="round" /></>),
-    hub: (<><rect x="18" y="38" width="64" height="24" rx="6" fill={ink} />{[26, 38, 50, 62].map((x) => <rect key={x} x={x} y="47" width="8" height="6" rx="1" fill={accent} />)}</>),
-    bottle: (<><rect x="38" y="20" width="24" height="10" rx="2" fill={ink} /><rect x="30" y="30" width="40" height="52" rx="10" fill="#fff" stroke={ink} strokeWidth="2" /><rect x="36" y="48" width="28" height="12" rx="2" fill={accent} /></>),
-    jar: (<><rect x="26" y="34" width="48" height="12" rx="3" fill={ink} /><rect x="24" y="46" width="52" height="34" rx="8" fill="#fff" stroke={ink} strokeWidth="2" /><rect x="34" y="56" width="32" height="10" rx="2" fill={accent} /></>),
-    tube: (<><path d="M34 22 H66 L60 74 H40 Z" fill="#fff" stroke={ink} strokeWidth="2" /><rect x="42" y="74" width="16" height="8" rx="2" fill={ink} /><rect x="40" y="36" width="20" height="14" rx="2" fill={accent} /></>),
-    dropper: (<><rect x="44" y="14" width="12" height="16" rx="5" fill={ink} /><rect x="34" y="30" width="32" height="50" rx="8" fill="#fff" stroke={ink} strokeWidth="2" /><rect x="40" y="48" width="20" height="12" rx="2" fill={accent} /></>),
-  };
+  const shortKind = kind.toUpperCase();
   return (
-    <div className={`flex aspect-square w-full items-center justify-center ${className}`} style={{ background: bg }} {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": `Ilustrasi ${label}` })}>
-      <svg viewBox="0 0 100 100" className="h-3/5 w-3/5" aria-hidden="true">{shape[kind]}</svg>
+    <div
+      className={`relative flex aspect-square w-full flex-col items-center justify-center overflow-hidden border border-line/40 p-4 transition-all ${className}`}
+      style={{ background: bg || "var(--c-alt)" }}
+      {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": `Spesimen ${label}` })}
+    >
+      <div className="flex h-12 w-12 items-center justify-center rounded-full border border-current opacity-30" style={{ color: accent }}>
+        <span className="font-mono text-xs font-bold uppercase">{shortKind.slice(0, 2)}</span>
+      </div>
+      <span className="mt-3 font-mono text-[11px] font-medium uppercase tracking-widest opacity-60" style={{ color: accent }}>
+        {kind}
+      </span>
+      <span className="mt-1 line-clamp-1 max-w-[85%] text-center font-display text-[12px] opacity-75">
+        {label}
+      </span>
     </div>
   );
 }

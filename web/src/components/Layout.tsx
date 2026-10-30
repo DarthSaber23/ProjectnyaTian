@@ -57,7 +57,7 @@ function CompareTray() {
   return (
     <>
     <div aria-hidden="true" className="h-28" />
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface px-4 py-3 shadow-[0_-4px_12px_rgba(0,0,0,0.06)]" aria-label="Perbandingan">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_12px_rgba(0,0,0,0.06)]" aria-label="Perbandingan">
       <div className="mx-auto flex max-w-[1280px] flex-wrap items-center gap-3">
         {msg ? <span role="status" className="w-full text-[13px] font-semibold text-warning">{msg}</span> : null}
         <span className="flex-1 text-sm">{ids.length} produk dipilih{ids.length < 2 ? " · pilih minimal 2" : ""}</span>
