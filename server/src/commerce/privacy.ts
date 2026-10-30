@@ -2,6 +2,7 @@ import { maskEmail, maskPhone } from "../domain/rbac";
 import type { StaffRole } from "../domain/types";
 
 export interface ContactRecord {
+  id?: string;
   name: string;
   email: string;
   phone: string;
@@ -27,6 +28,7 @@ export function visibleContact(
     ? customer.address.replace(/^[^,]+,\s*/, "Jalan disamarkan, ")
     : "Jalan disamarkan";
   return {
+    ...(customer.id ? { id: customer.id } : {}),
     name: customer.name,
     email: maskEmail(customer.email),
     phone: maskPhone(customer.phone),

@@ -6,8 +6,9 @@ import { assertFulfilmentTransition, assertPaymentTransition } from "../domain/o
 import { can, REVEAL_REASONS, REVEAL_SECONDS, ROLE_LABEL } from "../domain/rbac";
 import { addMinutes, toWibIso } from "../domain/time";
 import type { BrandId, Order, StaffRole } from "../domain/types";
-import { customers } from "../data/fixtures";
+import { customers, type CustomerRecord } from "../data/fixtures";
 import { visibleContact } from "./privacy";
+import { decryptField } from "./field-crypto";
 import { PrismaService } from "../prisma.service";
 import { AuthService } from "./auth.service";
 import { CatalogService } from "./catalog.service";
@@ -34,7 +35,14 @@ export class AdminService {
     if (!can(user.role, "customers.contact.full") && !can(user.role, "customers.contact.reveal") && !can(user.role, "orders.view")) {
       throw new HttpException({ code: "FORBIDDEN", message: `Peran ${ROLE_LABEL[user.role]} tidak punya izin untuk aksi ini.` }, 403);
     }
-    return customers.map((customer) => visibleContact(user.role, customer, undefined, toWibIso(new Date())));
+    const dbRows = await this.prisma.customerAccount.findMany({
+      include: { addresses: { take: 1 } },
+      orderBy: { id: "asc" },
+    });
+    const dbCustomers = dbRows.map((row) => this.toCustomerRecord(row));
+    const dbIds = new Set(dbCustomers.map((c) => c.id));
+    const merged = [...dbCustomers, ...customers.filter((c) => !dbIds.has(c.id))];
+    return merged.map((customer) => visibleContact(user.role, customer, undefined, toWibIso(new Date())));
   }
 
   async promotion(authorization: string | undefined, code: string) {
@@ -141,15 +149,57 @@ export class AdminService {
 
   async contact(authorization: string | undefined, customerId: string) {
     const user = await this.auth.staff(authorization);
-    const customer = customers.find((row) => row.id === customerId);
-    if (!customer) throw new HttpException({ code: "NOT_FOUND", message: "Pelanggan tidak ditemukan." }, 404);
     if (!can(user.role, "customers.contact.full") && !can(user.role, "customers.contact.reveal")) {
       throw new HttpException({ code: "FORBIDDEN", message: `Peran ${ROLE_LABEL[user.role]} tidak punya izin untuk aksi ini.` }, 403);
     }
+    let customer: CustomerRecord | undefined;
+    const dbRow = await this.prisma.customerAccount.findUnique({
+      where: { id: customerId },
+      include: { addresses: { take: 1 } },
+    });
+    if (dbRow) {
+      customer = this.toCustomerRecord(dbRow);
+    } else {
+      customer = customers.find((row) => row.id === customerId);
+    }
+    if (!customer) throw new HttpException({ code: "NOT_FOUND", message: "Pelanggan tidak ditemukan." }, 404);
     const grant = can(user.role, "customers.contact.reveal")
       ? await this.prisma.revealGrant.findFirst({ where: { staffId: user.id, customerId }, orderBy: { until: "desc" } })
       : null;
     return visibleContact(user.role, customer, grant?.until, toWibIso(new Date()));
+  }
+
+  private toCustomerRecord(row: {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    addresses?: Array<{ detail: string; district: string; city: string; postalCode: string }>;
+  }): CustomerRecord {
+    let address = "Alamat belum diatur";
+    const fixture = customers.find((c) => c.id === row.id);
+    if (row.addresses && row.addresses.length > 0) {
+      const first = row.addresses[0]!;
+      const secret = process.env.ADDRESS_ENCRYPTION_KEY?.trim();
+      let detail = first.detail;
+      if (secret) {
+        try {
+          detail = decryptField(first.detail, secret);
+        } catch {
+          detail = "Alamat terenkripsi";
+        }
+      }
+      address = `${detail}, ${first.district}, ${first.city} ${first.postalCode}`;
+    } else if (fixture) {
+      address = fixture.address;
+    }
+    return {
+      id: row.id,
+      name: row.name,
+      email: row.email,
+      phone: row.phone,
+      address,
+    };
   }
 
   async auditLog(authorization: string | undefined) {
