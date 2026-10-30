@@ -10,6 +10,20 @@ import { backend } from "../services/http/backend";
 import { useBackendVersion, useShop } from "../store/shop";
 import { NotFound } from "./NotFound";
 
+export const PAYMENT_POLL_INTERVAL_MS = 3000;
+
+export function computeCountdownSeconds(expiresAtIso: string, nowMs = Date.now()): number {
+  const expiresAtMs = new Date(expiresAtIso).getTime();
+  const diffSec = Math.floor((expiresAtMs - nowMs) / 1000);
+  return Math.max(0, diffSec);
+}
+
+export function formatCountdown(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}m ${s.toString().padStart(2, "0")}s`;
+}
+
 const METHOD_NAME = { qris: "QRIS", ewallet: "E-wallet", va: "Virtual account Bank A" } as const;
 
 export function PaymentPage() {
@@ -25,6 +39,35 @@ export function PaymentPage() {
   const restoreCart = useShop((s) => s.restoreCart);
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>();
+
+  const [remainingSeconds, setRemainingSeconds] = useState<number>(() =>
+    order ? computeCountdownSeconds(order.payment.expiresAt) : 0
+  );
+
+  useEffect(() => {
+    if (!order || order.payment.status !== "pending") return;
+
+    setRemainingSeconds(computeCountdownSeconds(order.payment.expiresAt));
+
+    const countdownInterval = setInterval(() => {
+      const rem = computeCountdownSeconds(order.payment.expiresAt);
+      setRemainingSeconds(rem);
+      if (rem <= 0) {
+        clearInterval(countdownInterval);
+        void backend.refreshOrder(nomor);
+      }
+    }, 1000);
+
+    const pollInterval = setInterval(() => {
+      void backend.refreshOrder(nomor);
+    }, PAYMENT_POLL_INTERVAL_MS);
+
+    return () => {
+      clearInterval(countdownInterval);
+      clearInterval(pollInterval);
+    };
+  }, [nomor, order?.payment?.status, order?.payment?.expiresAt]);
+
   if (!loaded && !order) return <p className="text-sm text-muted">Memuat pesanan…</p>;
   if (!order) return <NotFound />;
   const { payment } = order;
@@ -44,7 +87,15 @@ export function PaymentPage() {
       {open ? (
         <>
           <h1 className="text-3xl font-semibold">Selesaikan pembayaran</h1>
-          <p className="rounded-brand bg-[#FDF1DC] p-3 text-sm text-[#6B4100]"><b>Bayar sebelum {formatWib(payment.expiresAt)}</b> · stok dicadangkan sampai saat itu.</p>
+          <p className="rounded-brand bg-[#FDF1DC] p-3 text-sm text-[#6B4100]">
+            <b>Bayar sebelum {formatWib(payment.expiresAt)}</b>{" "}
+            {remainingSeconds > 0 ? (
+              <span className="font-mono font-semibold">({formatCountdown(remainingSeconds)})</span>
+            ) : (
+              <span className="font-semibold text-danger">(Waktu habis)</span>
+            )}{" "}
+            · stok dicadangkan sampai saat itu.
+          </p>
           <section className="card flex flex-col items-center gap-3 p-6 text-center">
             <span className="flex items-center gap-2 text-sm">{METHOD_NAME[payment.method]} <SimBadge /></span>
             <b className="money text-3xl">{formatIDR(order.totals.total)}</b>
